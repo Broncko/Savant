@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+	<default>
+		<wsdl>http://localhost/Webservice/?wsdl</wsdl>
+		<username>default</username>
+		<password>passwd</password>
+	</default>
+	<hendrik>
+		<wsdl>http://local.hendrik/Webservice/?wsdl</wsdl>
+		<username>hendrik</username>
+		<password>password</password>
+	</hendrik>
+</configurations>

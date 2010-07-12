@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<configurations>
+	<default>
+		<login>broncko</login>
+		<apikey>R_57d500ca82ec1ee06d4fddae7f3b66e1</apikey>
+		<resturl><![CDATA[http://api.bit.ly/shorten?version=2.0.1&longUrl=%s&login=%s&apiKey=%s]]></resturl>
+	</default>
+</configurations>
+<joinpoints>
+	<Logger>
+		<name>Logger</name>
+		<class><![CDATA[\Savant\Utils\CFileLogging]]></class>
+		<method>advice</method>
+	</Logger>
+</joinpoints>
+</config>
