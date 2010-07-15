@@ -64,7 +64,18 @@ class CBitly extends \Savant\Protocol\CRest implements \Savant\IConfigure
 	{
 		$url = sprintf($this->RESTURL, $pLongUrl, $this->LOGIN, $this->APIKEY);
 		$result = json_decode($this->getRequest($url));
-		$urlResult = $result->results->$pLongUrl;
+                if($result->statusCode != 'OK')
+                {
+                    throw new EBitly($result->statusCode, \Savant\AFramework::LEVEL_ERROR);
+                }
+                else
+                {
+                    $urlResult = $result->results->$pLongUrl;
+                    if(!empty($urlResult->errorCode))
+                    {
+                        throw new EBitly($urlResult->errorMessage, \Savant\AFramework::LEVEL_ERROR);
+                    }
+                }
 		return $urlResult->shortUrl;
 	}
 }

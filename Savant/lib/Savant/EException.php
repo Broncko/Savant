@@ -9,6 +9,11 @@
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 
+/**
+ * TODO: exception output has to be a template
+ * TODO: seperate output from exception class
+ */
+
 namespace Savant;
 
 use Savant\Utils;
@@ -50,12 +55,40 @@ class EException extends \Exception
 	 */
 	public function __toString()
 	{
-		$ret = $this->getFile().' :: line '.$this->getLine()." -> ".$this->getCode()."; ".$this->getMessage()."<br/>";
-		foreach($this->getTrace() as $traceline)
-		{
-			$ret .= $traceline["file"].' :: line '.$traceline["line"]." -> ".$traceline["function"]."(".implode(",",$traceline["args"]).")<br/>";
-			$ret .= self::getLOC($traceline['file'],$traceline['line'])."<br/>";
-		}
+		//print_r($this);
+                $trace = $this->getTrace();
+                $firstTrace = \array_shift($trace);
+                $ret = "<h3>Error</h3><br/>";
+                $ret .= $this->getCode().' '.$this->getMessage().'<br/>';
+                $ret .= $this->getFile().' line '.$this->getLine().'<br/>';
+                $ret .= (!empty($firstTrace["class"])?$firstTrace["class"].$firstTrace["type"].$firstTrace["function"]:$firstTrace["function"]).'()<br/>';
+                $ret .= implode('<br/>',self::getLOC($this->getFile(), $this->getLine(), 3)).'<br/><hr/>';
+		foreach(\array_reverse($this->getTrace(), true) as $traceline)
+                {
+                    $sloc = '';
+                    $traceline["line"] -= 1;
+                    if(!empty($traceline["file"]) && !empty($traceline["line"]))
+                    {
+                        $ret .= $traceline["file"].' line '.$traceline["line"].'<br/>';
+                        $sloc = self::getLOC($traceline["file"], $traceline["line"], 3);
+                    }
+                    if(!empty($traceline["class"]))
+                    {
+                        $ret .= $traceline["class"].$traceline["type"];
+                    }
+                    if(!empty($traceline["function"]))
+                    {
+                        $ret .= $traceline["function"].'()<br/>';
+                    }
+                    if(!empty($sloc))
+                    {
+                        foreach($sloc as $lineNumber => $line)
+                        {
+                            $ret .= $lineNumber.($lineNumber==$traceline["line"]?'*':'').' '.$line.'<br/>';
+                        }
+                    }
+                    $ret .= '<hr/>';
+                }
 		return $ret;
 	}
 	
@@ -73,11 +106,20 @@ class EException extends \Exception
 	 * @static get line of code
 	 * @param string $pFile path to file
 	 * @param integer $pLine line
+         * @param integer $pLineDiff difference between first and last line
 	 * @return string line of code
 	 */
-	private static function getLOC($pFile = '', $pLine)
+	private static function getLOC($pFile = '', $pLine = 0, $pLineDiff = 0)
 	{
 		$lineArr = file($pFile);
+                if($pLineDiff != 0)
+                {
+                    for($counter = $pLine-$pLineDiff; $counter <= $pLine+$pLineDiff; $counter++)
+                    {
+                        $lines[$counter] = $lineArr[$counter];
+                    }
+                    return $lines;
+                }
 		return $lineArr[$pLine-1];
 	}
 }

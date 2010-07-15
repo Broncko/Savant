@@ -5,7 +5,7 @@ require_once 'bootstrapper.php';
 
 try 
 {
-	echo "<pre>";
+        echo "<pre>";
 	$webservice = CFrontController::main();
 	$webservice->querySomething('test', array('test1','test2'));
 	echo "</pre>";

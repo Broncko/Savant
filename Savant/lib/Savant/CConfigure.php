@@ -12,9 +12,12 @@
 
 /**
  * TODO: do this more api-conform.
+ * TODO: implement configuration as an aspect
  */
 
 namespace Savant;
+
+use \Savant\AOP;
 
 /**
  * @package Savant
@@ -28,7 +31,7 @@ class EConfigure extends EException {}
  * Provides configuration handling
  *  
  */
-class CConfigure
+class CConfigure implements AOP\IAspect
 {
 	/**
 	 * object to configure
@@ -150,4 +153,18 @@ class CConfigure
 		}
 		return true;
 	}
+
+        public static function advice($pObj = null, AOP\CJoinPoint $pJoinPoint)
+        {
+            switch($pJoinPoint->DIRECTION)
+            {
+                case AOP\CJoinPoint::DIRECTION_IN:
+                    self::configure($pObj);
+                    break;
+                case AOP\CJoinPoint::DIRECTION_OUT:
+                    break;
+                default:
+                    break;
+            }
+        }
 }

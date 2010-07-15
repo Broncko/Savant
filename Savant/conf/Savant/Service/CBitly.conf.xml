@@ -13,5 +13,10 @@
 		<class><![CDATA[\Savant\Utils\CFileLogging]]></class>
 		<method>advice</method>
 	</Logger>
+        <!--<Config>
+                <name>Config</name>
+                <class><![CDATA[\Savant\CConfiguration]]></class>
+                <method>advice</method>
+        </Config>-->
 </joinpoints>
 </config>
