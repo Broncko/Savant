@@ -18,5 +18,6 @@ class TFrontController extends \Savant\ATestCase
 	public function testMain()
 	{
 		$result = \Savant\Controller\CFrontController::main();
+                $this->assertEqual(true, true);
 	}
 }

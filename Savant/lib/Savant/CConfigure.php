@@ -51,15 +51,15 @@ class CConfigure implements AOP\IAspect
 	 */
 	public function __construct(AStandardObject $pObj)
 	{
-		if(!($pObj instanceof IConfigure))
-		{
-			throw new EConfigure('try to configure object of type %s which does not implements IConfigure Interface',get_class($pObj),300);
-		}
-		if(!file_exists($pObj->confFile))
-		{
-			throw new EConfigure('config file %s does not exist',$pObj->confFile, 120);
-		}
-		$this->simpleXml = simplexml_load_file($pObj->confFile);	
+                if(!empty($pObj->confFile) && $pObj->confFile != null)
+                {
+                    if(!file_exists($pObj->confFile))
+                    {
+                            throw new EConfigure('config file %s does not exist',$pObj->confFile, 120);
+                    }
+                    $this->simpleXml = simplexml_load_file($pObj->confFile);
+                }
+                $this->configObj = $pObj;
 	}
 	
 	/**

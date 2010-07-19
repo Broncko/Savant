@@ -10,13 +10,10 @@ abstract class ATestCase extends PHPUNIT_Framework_TestCase
 	public function main()
 	{
 		$testClass = get_class($this);
-        $suite = new PHPUnit_Framework_TestSuite($testClass);
-        $suite->addTestSuite($testClass);
+                $suite = new PHPUnit_Framework_TestSuite($testClass);
+                $suite->addTestSuite($testClass);
 
-        $result = $runner->doRun(
-          $suite,
-          $arguments
-        );
+                $result = $runner->doRun($suite, $arguments);
 	}
 	
 }

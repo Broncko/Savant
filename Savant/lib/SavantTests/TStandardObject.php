@@ -1,5 +1,5 @@
 <?php
-namespace \SavantTests;
+//namespace \SavantTests;
 
 class TStandardObject extends \Savant\ATestCase
 {
