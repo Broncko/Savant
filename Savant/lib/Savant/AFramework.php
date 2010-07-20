@@ -10,6 +10,7 @@
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 namespace Savant;
+require_once 'EException.php';
 
 /**
  * @package Savant
@@ -22,7 +23,7 @@ class EFramework extends EException {}
  * @package Savant
  * holds information and helper functions for the framework
  */
-abstract class AFramework implements IConfigure 
+abstract class AFramework
 {
 	/**
 	 * level debug
@@ -53,6 +54,30 @@ abstract class AFramework implements IConfigure
 	 * @var string
 	 */
 	const LEVEL_CRITICAL = 'critical';
+
+        /**
+         * framework status initializing
+         * @var integer
+         */
+        const STATUS_INITIALIZING = 0;
+
+        /**
+         * framework status active
+         * @var integer
+         */
+        const STATUS_ACTIVE = 1;
+
+        /**
+         * framework status inactive
+         * @var integer
+         */
+        const STATUS_INACTIVE = 2;
+
+        /**
+         * framework status finalizing
+         * @var integer
+         */
+        const STATUS_FINALIZING = 3;
 	
 	/**
 	 * log indent
@@ -64,14 +89,56 @@ abstract class AFramework implements IConfigure
 	 * log level
 	 * @var string
 	 */
-	public static $LEVEL = self::LEVEL_DEBUG; 
+	public static $LEVEL = self::LEVEL_DEBUG;
+
+        /**
+         * current framework status
+         * @var integer
+         */
+        public static $STATUS = self::STATUS_INACTIVE;
 	
 	/**
 	 * permanent logging
 	 * @var bool
 	 */
 	public static $PERMANENT_LOG = true;
-	
+
+        /**
+         * base folder
+         * @var string
+         */
+        public static $BASE_DIR;
+
+        /**
+         * root folder
+         * @var string
+         */
+        public static $ROOT_DIR;
+
+        /**
+         * library folder
+         * @var string
+         */
+        public static $LIB_DIR;
+
+        /**
+         * framework folder
+         * @var string
+         */
+        public static $FRAMEWORK_DIR;
+
+        /**
+         * unit tests folder
+         * @var string
+         */
+        public static $TESTS_DIR;
+
+        /**
+         * configuration folder
+         * @var string
+         */
+        public static $CONF_DIR;
+
 	/**
 	 * @static get error code from error level
 	 * @param string $pLevel error level
@@ -107,5 +174,55 @@ abstract class AFramework implements IConfigure
 		
 		return $errTypeArr[$pCode];
 	}
+
+        /**
+         *  @static initialize framework properties
+         *
+         */
+        public static function initialize()
+        {
+            if(self::$STATUS == self::STATUS_ACTIVE)
+            {
+                return;
+            }
+            self::$STATUS = self::STATUS_INITIALIZING;
+            self::$BASE_DIR = \realpath(dirname(__FILE__) . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . '..');
+            self::$ROOT_DIR = \realpath(self::$BASE_DIR . \DIRECTORY_SEPARATOR . '..');
+            self::$CONF_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'conf';
+            self::$LIB_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'lib';
+            self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
+            self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
+            \spl_autoload_register(array('Savant\AFramework','loadClass'),true);
+            \register_shutdown_function(array('Savant\AFramework', 'finalize'));
+            self::$STATUS = self::STATUS_ACTIVE;
+        }
+
+        /**
+         * @static shutdown framework
+         */
+        public static function finalize()
+        {
+            self::$STATUS = self::STATUS_FINALIZING;
+            //put code here, which will be executed when the framework shuts down or exit is called
+            self::$STATUS = self::STATUS_INACTIVE;
+        }
+
+        /**
+         * @static framwork class loader
+         * @param string $pClass
+         */
+        public static function loadClass($pClass)
+        {
+            $pClass = str_replace('\\', \DIRECTORY_SEPARATOR, $pClass);
+            $classPath = self::$LIB_DIR.\DIRECTORY_SEPARATOR.str_replace('_',\DIRECTORY_SEPARATOR,$pClass).'.php';
+            if(!file_exists($classPath))
+            {
+                    throw new EException('class %s not found in %s', $pClass, $classPath, 200);
+            }
+            else
+            {
+                    require_once($classPath);
+            }
+        }
 	
 }

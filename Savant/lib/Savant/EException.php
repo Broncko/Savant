@@ -13,10 +13,9 @@
  * TODO: exception output has to be a template
  * TODO: seperate output from exception class
  */
-
 namespace Savant;
 
-use Savant\Utils;
+use \Savant\Utils;
 
 /**
  * @package Savant

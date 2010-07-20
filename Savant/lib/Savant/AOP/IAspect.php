@@ -25,4 +25,10 @@ interface IAspect
 	 * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
 	 */
 	public static function advice($pObj = null, CJoinPoint $pJoinPoint);
+
+        /**
+         * @static getJoinPointMask
+         * @return array
+         */
+        public static function getJoinPointMask();
 }

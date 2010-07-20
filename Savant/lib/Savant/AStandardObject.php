@@ -22,7 +22,9 @@ use Savant\AOP;
  * @abstract AStandardObject
  * @package Savant
  * Main class, which encapsules basic functionality of all objects. It defines the top of the class tree
- * every new class should extend from this.  
+ * every new class should extend from this. (wait a minute, godclasses are evil!)
+ *
+ * TODO: try to seperate extending classes!
  * 
  */
 abstract class AStandardObject
