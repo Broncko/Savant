@@ -5,7 +5,7 @@ require_once 'PHPUnit/Framework.php';
 
 class ETestCase extends EException {}
 
-abstract class ATestCase extends \PHPUNIT_Framework_TestCase
+abstract class ATestCase extends \PHPUNIT_Framework_TestCase implements ITestCase
 {
     
     public function main()
@@ -16,5 +16,9 @@ abstract class ATestCase extends \PHPUNIT_Framework_TestCase
 
             $result = $runner->doRun($suite, $arguments);
     }
+
+    public function setUp() {}
+
+    public function tearDown() {}
 	
 }

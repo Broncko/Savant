@@ -123,13 +123,12 @@ abstract class AStandardObject
 	public function __call($pMethod = '', $pArgs = array())
 	{
 		$aspectMethod = '_'.$pMethod;
-		
-		$joinPointIn = new AOP\CJoinPoint(AOP\CJoinPoint::TYPE_CALL,get_class($this),$pMethod, $pArgs);
+
+                $joinPoint = new AOP\JoinPoints\CMethodCall($pMethod, $pArgs);
 		$pointCut = new AOP\CPointcut($this->_aspects);
-		$pointCut->weave($this, $joinPointIn);
+		$pointCut->weave($this, $joinPoint);
 		$joinPoint->result = call_user_method_array($aspectMethod,$this,$pArgs);
-		$joinPointOut = new AOP\CJoinPoint(AOP\CJoinPoint::TYPE_CALL,get_class($this),$pMethod,$pArgs,AOP\CJoinPoint::DIRECTION_OUT);
-		$pointCut->weave($this, $joinPointOut);
+		$pointCut->weave($this, $joinPoint);
 		return $joinPoint->result;
 	}
 	

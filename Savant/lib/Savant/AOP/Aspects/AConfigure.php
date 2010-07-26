@@ -10,8 +10,11 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
         return array('CClassLoader');
     }
 
-    public static function advice($pObj = null, AOP\AJoinPoint $pJoinPoint)
+    public static function advice(&$pObj = null, AOP\AJoinPoint $pJoinPoint)
     {
-        
+        if($pJoinPoint instanceof AOP\JoinPoints\CClassLoader && $pObj instanceof \Savant\IConfigure)
+        {
+            CConfigure::configure($pObj);
+        }
     }
 }
