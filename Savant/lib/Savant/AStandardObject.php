@@ -65,13 +65,13 @@ abstract class AStandardObject
 	 */
 	public function __construct($pConfig = 'default')
 	{
-			$this->_class = get_class($this);
-			$this->confFile = '../conf/'.str_replace('\\','/',$this->_class).'.conf.xml';
-			$rf = new \ReflectionObject($this);
-			if($rf->implementsInterface('Savant\IConfigure'))
-			{
-				$this->configure($pConfig);
-			}
+            $this->_class = get_class($this);
+            $this->confFile = AFramework::$CONF_DIR.\DIRECTORY_SEPARATOR.str_replace('\\',\DIRECTORY_SEPARATOR,$this->_class).'.conf.xml';
+            $rf = new \ReflectionObject($this);
+            if($rf->implementsInterface('Savant\IConfigure'))
+            {
+                    $this->configure($pConfig);
+            }
 	}
 	
 	/**
@@ -81,26 +81,33 @@ abstract class AStandardObject
 	 */
 	public function configure($pConfigSection = 'default')
 	{
-		try
-		{
-			$config = new CConfigure($this);
-			$xmlRoot = $config->getXmlRootObj();
-			if(CConfigure::hasChilds($xmlRoot->configurations->{$pConfigSection}))
-			{
-				foreach($config->getConfigFromSection($xmlRoot->configurations->{$pConfigSection}) as $prop => $val)
-				{
-					$this->{strtoupper($prop)} = $val;
-				}
-			}
-			if(CConfigure::hasChilds($xmlRoot->joinpoints))
-			{
-				$this->_aspects = $config->getConfigFromSection($xmlRoot->joinpoints);
-			}
-		}
-		catch(EConfigure $e)
-		{
-			$e->log();
-		}
+            try
+            {
+                $config = new CConfigure($this);
+                $xmlRoot = $config->getXmlRootObj();
+                if(CConfigure::hasChilds($xmlRoot->configurations->{$pConfigSection}))
+                {
+                    foreach($config->getConfigFromSection($xmlRoot->configurations->{$pConfigSection}) as $prop => $val)
+                    {
+                        if(count($val) > 0)
+                        {
+                            $this->{\strtoupper($prop)} = $val;
+                        }
+                        else
+                        {
+                            $this->{\strtoupper($prop)} = \sprintf('%s',$val);
+                        }
+                    }
+                }
+                if(CConfigure::hasChilds($xmlRoot->joinpoints))
+                {
+                    $this->_aspects = $config->getConfigFromSection($xmlRoot->joinpoints);
+                }
+            }
+            catch(EConfigure $e)
+            {
+                $e->log();
+            }
 	}
 	
 	/**

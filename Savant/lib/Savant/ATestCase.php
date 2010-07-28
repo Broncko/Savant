@@ -17,8 +17,14 @@ abstract class ATestCase extends \PHPUNIT_Framework_TestCase implements ITestCas
             $result = $runner->doRun($suite, $arguments);
     }
 
-    public function setUp() {}
+    public function setUp()
+    {
+        echo 'remember to define set up method';
+    }
 
-    public function tearDown() {}
+    public function tearDown()
+    {
+        echo 'remember to define tear down method';
+    }
 	
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <default>
+            <username>root</username>
+            <password>3w4ghi8</password>
+            <driver>CMySqlPdo</driver>
+        </default>
+    </configurations>
+</config>

@@ -31,7 +31,7 @@ class EConfigure extends EException {}
  * Provides configuration handling
  *  
  */
-class CConfigure implements AOP\IAspect
+class CConfigure //implements AOP\IAspect
 {
 	/**
 	 * object to configure
@@ -114,7 +114,7 @@ class CConfigure implements AOP\IAspect
 	 * @param IConfigure $pObj object (call by reference)
 	 * @param string $pSection configuration section
 	 */
-	public static function configure(IConfigure &$pObj, $pSection = 'default')
+	public static function configure(&$pObj, $pSection = 'default')
 	{
 		$instance = new self($pObj);
 		self::configureBySection($pObj, $instance->configurations->{$pSection});
@@ -125,7 +125,7 @@ class CConfigure implements AOP\IAspect
 	 * @param IConfigure $pObj object (call by reference)
 	 * @param SimpleXMLElement $pSection configuration section
 	 */
-	public static function configureBySection(IConfigure &$pObj, \SimpleXMLElement $pSection)
+	public static function configureBySection(&$pObj, \SimpleXMLElement $pSection)
 	{
 		if(!self::hasChilds($pSection))
 		{
@@ -135,7 +135,14 @@ class CConfigure implements AOP\IAspect
 		//configure object
 		foreach($pSection->children() as $confProp => $confVal)
 		{
+                    if($confVal->count() > 0)
+                    {
 			$pObj->{strtoupper($confProp)} = $confVal;
+                    }
+                    else
+                    {
+                        $pObj->{strtoupper($confProp)} = sprintf('%s',$confVal);
+                    }
 		}
 	}
 	

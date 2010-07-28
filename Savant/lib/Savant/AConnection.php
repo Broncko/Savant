@@ -5,7 +5,9 @@ class EConnection extends EException{}
 
 abstract class AConnection extends AStandardObject implements IConfigure, IConnection 
 {
-	public $DSN = null;
+	public $HOST = '';
+
+        public $PORT = 0;
 	
 	public function __construct($pConfig = 'default')
 	{
