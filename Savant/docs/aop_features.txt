@@ -1,0 +1,6 @@
+#AUTHOR: Hendrik Heinemann
+
+To provide the entire aspect oriented spectrum of savant, some features have to be added. Further there are many bugs to fix!
+
+Configuration aspect:
+Actually the class configuration is handled by the astandardobject class. While the instantiation of a class, which extends astandardobject, the object is configured by the configure-method, directly called after the constructor, of the astandardobject class. In terms of aop, the framework (aframework) has to take responsibility of configurating the object. The aspect(advice) has to be executed after instantiating the object(constructor). The real pointcut has to be defined at the right place in code.
