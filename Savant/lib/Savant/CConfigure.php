@@ -31,7 +31,7 @@ class EConfigure extends EException {}
  * Provides configuration handling
  *  
  */
-class CConfigure //implements AOP\IAspect
+class CConfigure
 {
 	/**
 	 * object to configure
@@ -49,16 +49,21 @@ class CConfigure //implements AOP\IAspect
 	 * Constructor
 	 * @param \Savant\AStandardObject $pObj object to configure
 	 */
-	public function __construct(AStandardObject $pObj)
+	public function __construct($pObj, $pValidate = false)
 	{
-                if(!empty($pObj->confFile) && $pObj->confFile != null)
-                {
-                    if(!file_exists($pObj->confFile))
-                    {
-                            throw new EConfigure('config file %s does not exist',$pObj->confFile, 120);
-                    }
-                    $this->simpleXml = simplexml_load_file($pObj->confFile);
-                }
+            $confFile = ($pObj instanceof AStandardObject ? $pObj->confFile : AFramework::getConfigFile(\get_class($pObj)));
+            if(!file_exists($confFile))
+            {
+                    throw new EConfigure('config file %s does not exist',$pObj->confFile, 120);
+            }
+            if($pValidate)
+            {
+                $this->simpleXml = simplexml_load_file($confFile, '\SimpleXMLElement', \LIBXML_DTDVALID);
+            }
+            else
+            {
+                $this->simpleXml = simplexml_load_file($confFile, '\SimpleXMLElement');
+            }
                 $this->configObj = $pObj;
 	}
 	
@@ -160,18 +165,4 @@ class CConfigure //implements AOP\IAspect
 		}
 		return true;
 	}
-
-        public static function advice($pObj = null, AOP\CJoinPoint $pJoinPoint)
-        {
-            switch($pJoinPoint->DIRECTION)
-            {
-                case AOP\CJoinPoint::DIRECTION_IN:
-                    self::configure($pObj);
-                    break;
-                case AOP\CJoinPoint::DIRECTION_OUT:
-                    break;
-                default:
-                    break;
-            }
-        }
 }
