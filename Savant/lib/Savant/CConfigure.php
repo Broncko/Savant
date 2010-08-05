@@ -16,7 +16,6 @@
  */
 
 namespace Savant;
-
 use \Savant\AOP;
 
 /**
@@ -54,7 +53,7 @@ class CConfigure
             $confFile = ($pObj instanceof AStandardObject ? $pObj->confFile : AFramework::getConfigFile(\get_class($pObj)));
             if(!file_exists($confFile))
             {
-                    throw new EConfigure('config file %s does not exist',$pObj->confFile, 120);
+                    throw new EConfigure('config file %s does not exist',$confFile, 120);
             }
             if($pValidate)
             {
@@ -105,7 +104,7 @@ class CConfigure
 	 * @param SimpleXMLElement $pSection configuration section
 	 * @return array
 	 */
-	public function getConfigFromSection(\SimpleXMLElement $pSection)
+	public static function getConfigFromSection(\SimpleXMLElement $pSection)
 	{
 		if(!self::hasChilds($pSection))
 		{
@@ -165,4 +164,16 @@ class CConfigure
 		}
 		return true;
 	}
+
+        /**
+         * returns configuration from given class
+         * @param string $pClass
+         * @param string $pSection
+         * @return SimpleXMLElement
+         */
+        public static function getClassConfig($pClass, $pSection = 'default')
+        {
+            $config = \simplexml_load_file(AFramework::getConfigFile($pClass));
+            return self::getConfigFromSection($config->configurations->{$pSection});
+        }
 }
