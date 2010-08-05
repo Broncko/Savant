@@ -33,14 +33,21 @@ class CPointcut extends \Savant\AStandardObject
 	 * @var array
 	 */
 	private $pointCutMask = array();
+
+        /**
+         * aspect class
+         * @var string
+         */
+        private $aspectClass = '';
 	
 	/**
 	 * Constructor
 	 * @param array $pPointCutMask
 	 */
-	public function __construct($pPointCutMask = array())
+	public function __construct($pAspect, $pPointCutMask = array())
 	{
-		$this->pointCutMask = $pPointCutMask;
+            $this->aspectClass = $pAspect;
+            $this->pointCutMask = $pPointCutMask;
 	}
 	
 	/**

@@ -50,11 +50,6 @@ abstract class AJoinPoint
 	 * @var string
 	 */
 	public $DIRECTION = self::DIRECTION_IN;
-
-        /**
-         * @var SplStack
-         */
-        public $STACK = null;
 	
 	/**
 	 * stores result from invoked method
@@ -73,6 +68,5 @@ abstract class AJoinPoint
 	public function __construct($pDirection = self::DIRECTION_IN)
 	{
 		$this->DIRECTION = $pDirection;
-                $this->STACK = new \SplStack();
 	}
 }
