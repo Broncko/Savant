@@ -27,12 +27,6 @@ class EFramework extends \Savant\EException {}
  */
 class CFramework
 {
-	/**
-	 * stack to store joinpoints
-	 * @var SplStack
-	 */
-	private $joinPointStack = null;
-
         /**
          * list of aspects
          * @var array
@@ -50,45 +44,8 @@ class CFramework
 	 */
 	public function __construct()
 	{
-		$this->joinPointStack = new \SplStack();
                 $this->pointcuts = new \SplObjectStorage();
 	}
-
-	/**
-	 * Adds joinpoint to stack
-	 * @param \Savant\AOP\AJoinPoint $pJoinPoint joinpoint
-	 */
-	public function addJoinPoint(AJoinPoint $pJoinPoint)
-	{
-		$this->joinPointStack->push($pJoinPoint);
-	}
-	
-	/**
-	 * Removes joinpoint from stack
-	 * @param \Savant\AOP\AJoinPoint $pJoinPoint joinpoint
-	 */
-	public function removeJoinPoint(AJoinPoint $pJoinPoint)
-	{
-		$this->joinPointStack->pop();
-	}
-	
-	/**
-	 * Returns all joinpoints
-	 * @return SplStack
-	 */
-	public function getJoinPoints()
-	{
-		return $this->joinPointStack;
-	}
-
-        /**
-         * Returns last joinpoint from stack
-         * @return \Savant\AOP\AJoinPoint $pJoinPoint joinpoint
-         */
-        public function getLastJoinPoint()
-        {
-            return $this->joinPointStack->pop();
-        }
 
         /**
          * register aop aspect of type Savant\AOP\AAspect
