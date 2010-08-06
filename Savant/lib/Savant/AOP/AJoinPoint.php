@@ -56,6 +56,12 @@ abstract class AJoinPoint
 	 * @var mixed
 	 */
 	public $result = '';
+
+        /**
+         * stores pointcuts
+         * @var SplStack
+         */
+        public $stack = null;
 	
 	/**
 	 * Constructor
@@ -68,5 +74,6 @@ abstract class AJoinPoint
 	public function __construct($pDirection = self::DIRECTION_IN)
 	{
 		$this->DIRECTION = $pDirection;
+                $this->stack = new \SplStack();
 	}
 }

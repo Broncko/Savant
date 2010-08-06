@@ -40,10 +40,10 @@ class CFramework
         private $aspects = array();
 
         /**
-         * stack to store pointcuts
-         * @var SplStack
+         * pointcut store
+         * @var SplObjectStore
          */
-        private $PointcutStack = null;
+        private $pointcuts = null;
 	
 	/**
 	 * Constructor
@@ -51,6 +51,7 @@ class CFramework
 	public function __construct()
 	{
 		$this->joinPointStack = new \SplStack();
+                $this->pointcuts = new \SplObjectStorage();
 	}
 
 	/**
@@ -104,6 +105,56 @@ class CFramework
          */
         public function registerPointCut(CPointcut $pPointcut)
         {
-            $this->PointcutStack->push($pPointcut);
+            $this->pointcuts->attach($pPointcut);
+        }
+
+        /**
+         * weave in a joinpoint
+         * invokes all interceptors whose pointcuts match the given joinpoint
+         * @param object $pObj calling object
+         * @param AJoinPoint $pJoinPoint joinpoint object
+         */
+        public static function weaveIn($pObj, AJoinPoint $pJoinPoint)
+        {
+            foreach($this->pointcuts as $pointcut)
+            {
+                $pJoinPoint->stack->push($pointcut);
+                forward_static_call(array((string)$pointcut->aspectClass, 'advice'),$pObj,$pJoinPoint);
+            }
+        }
+
+        /**
+         * weave out a joinpoint
+         * invokes all interceptors stored in joinPointStack
+         * @param object $pObj calling object
+         * @param AJoinPoint $pJoinPoint joinpoint object
+         */
+        public static function weaveOut($pObj, AJoinPoint $pJoinPoint)
+        {
+            $pJoinPoint->DIRECTION = AJoinPoint::DIRECTION_OUT;
+            $pointcut = $pJoinPoint->stack->pop();
+            while($pJoinPoint->stack->count() !== 0)
+            {
+                forward_static_call(array((string)$pointcut->aspectClass, 'advice'),$pObj,$pJoinPoint);
+                $pointcut = $pJoinPoint->stack->pop();
+            }
+        }
+
+        /**
+         * convenience method to weave in and weave out a joinpoint
+         * @param object $pObj
+         * @param AJoinPoint $pJoinPoint
+         */
+        public function weave($pObj, AJoinPoint $pJoinPoint)
+        {
+            try
+            {
+                self::weaveIn($pObj, $pJoinPoint);
+                self::weaveOut($pObj, $pJoinPoint);
+            }
+            catch(\Savant\EFramework $e)
+            {
+                //silently stop call stack execution
+            }
         }
 }
