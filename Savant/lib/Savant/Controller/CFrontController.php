@@ -52,7 +52,7 @@ class CFrontController
 	 * 
 	 * @todo: this method does not makes much sense. what about passing values/parameters?
 	 */
-	public function invokeFactory($pClass = null)
+	public static function invokeFactory($pClass = null)
 	{
 		if(null != $pClass)
 		{

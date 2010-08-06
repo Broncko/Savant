@@ -12,6 +12,7 @@
 /**
  * TODO: exception output has to be a template
  * TODO: seperate output from exception class
+ * TODO: check why Exceptions could not be called properly
  */
 namespace Savant;
 
