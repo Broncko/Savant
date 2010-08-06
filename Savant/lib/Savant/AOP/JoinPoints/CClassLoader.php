@@ -12,7 +12,7 @@ class CClassLoader extends AJoinPoint
 
     public $file = null;
 
-    public function __construct($pClass = null, $pLoader = null, $pFile = null)
+    public function __construct($pClass, $pLoader = null, $pFile = null)
     {
         parent::__construct();
         $this->class = $pClass;

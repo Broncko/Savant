@@ -21,50 +21,97 @@ namespace Savant\AOP;
 class EFramework extends \Savant\EException {}
 
 /**
- * @package    Savant
+ * @package    Savant$value
  * @subpackage AOP
  * provides global information for objects which use aop functionality
  */
 class CFramework
 {
-	/**
-	 * stack to store joinpoints
-	 * @var SplObjectStorage
-	 */
-	private $joinPointStack = null;
+        /**
+         * list of aspects
+         * @var array
+         */
+        private $aspects = array();
+
+        /**
+         * pointcut store
+         * @var SplObjectStore
+         */
+        private $pointcuts = null;
 	
 	/**
 	 * Constructor
 	 */
 	public function __construct()
 	{
-		$this->joinPointStack = new SplObjectStorage();
+                $this->pointcuts = new \SplObjectStorage();
 	}
 
-	/**
-	 * Adds joinpoint to stack
-	 * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
-	 */
-	public function addJoinPoint(CJoinPoint $pJoinPoint)
-	{
-		$this->joinPointStack->attach($pJoinPoint);
-	}
-	
-	/**
-	 * Removes joinpoint from stack
-	 * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
-	 */
-	public function removeJoinPoint(CJoinPoint $pJoinPoint)
-	{
-		$this->joinPointStack->detach($pJoinPoint);
-	}
-	
-	/**
-	 * Returns all joinpoints
-	 * @return SplObjectStorage
-	 */
-	public function getJoinPoints()
-	{
-		return $this->joinPointStack;
-	}
+        /**
+         * register aop aspect of type Savant\AOP\AAspect
+         * @param AAspect $aspect
+         */
+        public function registerAspect($pAspect)
+        {
+            $this->registerPointCut(new CPointcut($pAspect));
+        }
+
+        /**
+         * register aop pointcut
+         * @param CPointcut $pPointcut
+         */
+        public function registerPointCut(CPointcut $pPointcut)
+        {
+            $this->pointcuts->attach($pPointcut);
+        }
+
+        /**
+         * weave in a joinpoint
+         * invokes all interceptors whose pointcuts match the given joinpoint
+         * @param object $pObj calling object
+         * @param AJoinPoint $pJoinPoint joinpoint object
+         */
+        public static function weaveIn($pObj, AJoinPoint $pJoinPoint)
+        {
+            foreach($this->pointcuts as $pointcut)
+            {
+                $pJoinPoint->stack->push($pointcut);
+                forward_static_call(array((string)$pointcut->aspectClass, 'advice'),$pObj,$pJoinPoint);
+            }
+        }
+
+        /**
+         * weave out a joinpoint
+         * invokes all interceptors stored in joinPointStack
+         * @param object $pObj calling object
+         * @param AJoinPoint $pJoinPoint joinpoint object
+         */
+        public static function weaveOut($pObj, AJoinPoint $pJoinPoint)
+        {
+            $pJoinPoint->DIRECTION = AJoinPoint::DIRECTION_OUT;
+            $pointcut = $pJoinPoint->stack->pop();
+            while($pJoinPoint->stack->count() !== 0)
+            {
+                forward_static_call(array((string)$pointcut->aspectClass, 'advice'),$pObj,$pJoinPoint);
+                $pointcut = $pJoinPoint->stack->pop();
+            }
+        }
+
+        /**
+         * convenience method to weave in and weave out a joinpoint
+         * @param object $pObj
+         * @param AJoinPoint $pJoinPoint
+         */
+        public function weave($pObj, AJoinPoint $pJoinPoint)
+        {
+            try
+            {
+                self::weaveIn($pObj, $pJoinPoint);
+                self::weaveOut($pObj, $pJoinPoint);
+            }
+            catch(\Savant\EFramework $e)
+            {
+                //silently stop call stack execution
+            }
+        }
 }

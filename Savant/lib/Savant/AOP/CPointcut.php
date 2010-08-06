@@ -33,14 +33,21 @@ class CPointcut extends \Savant\AStandardObject
 	 * @var array
 	 */
 	private $pointCutMask = array();
+
+        /**
+         * aspect class
+         * @var string
+         */
+        public $aspectClass = '';
 	
 	/**
 	 * Constructor
 	 * @param array $pPointCutMask
 	 */
-	public function __construct($pPointCutMask = array())
+	public function __construct($pAspect, $pPointCutMask = array())
 	{
-		$this->pointCutMask = $pPointCutMask;
+            $this->aspectClass = $pAspect;
+            $this->pointCutMask = $pPointCutMask;
 	}
 	
 	/**
@@ -51,18 +58,4 @@ class CPointcut extends \Savant\AStandardObject
 	{
 		array_push($this->pointCutMask,$pPointCut);
 	}
-	
-	/**
-	 * weaves in or weaves out an aspect at a given joinpoint and invokes the advice method
-	 * @param object $pObject any object
-	 * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
-	 */
-	public function weave($pObj = null, CJoinPoint $pJoinPoint)
-	{
-		foreach($this->pointCutMask as $aspect)
-		{
-			forward_static_call(array((string)$aspect->class, (string)$aspect->method),$pObj,$pJoinPoint);	
-		}
-	}
-	
 }
