@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+SAVANT_PHP_FILE=`readlink -f $0`
+SAVANT_PATH=`dirname $SAVANT_PHP_FILE`
+php -f $SAVANT_PATH/SavantCLI.php $@
+echo 

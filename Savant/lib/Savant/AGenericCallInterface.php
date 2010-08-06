@@ -6,15 +6,21 @@
  *
  * @category   Savant
  * @package    Savant
- * @subpackage AOP
+ * @subpackage Savant
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 namespace Savant;
 
+/**
+ * @package Savant
+ * exception handling of AGenericCallInterface
+ */
 class EGenericCallInterface extends EException {}
 
 /**
+ * @package Savant
+ * @abstract AGenericCallInterface
  * provides generic call interface for the platform
  */
 abstract class AGenericCallInterface
@@ -39,12 +45,12 @@ abstract class AGenericCallInterface
 
     /**
      * execute given classmethod and return result
-     * @param string $pClass
-     * @param string $pMethod
-     * @param array $pArgs
-     * @param array $pOpts
+     * @param string $pClass class to invoke
+     * @param string $pMethod method to execute
+     * @param array $pArgs method arguments
+     * @param array $pOpts call options
      */
-    public function call($pClass, $pMethod = 'main', $pArgs = array(), $pOpts = array())
+    public static function call($pClass, $pMethod = 'main', $pArgs = array(), $pOpts = array())
     {
         if(!\class_exists($pClass))
         {
@@ -54,7 +60,8 @@ abstract class AGenericCallInterface
         {
             throw new EGenericCallInterface('method does not exist');
         }
-        switch($pOpts['mode'])
+        $mode = (!empty($pOpts['mode']) ? $pOpts['mode'] : self::getCallMode($pClass, $pMethod));
+        switch($mode)
         {
             case self::MODE_STATIC:
                 $res = \call_user_func_array(array($pClass, $pMethod), $pArgs);
@@ -64,5 +71,17 @@ abstract class AGenericCallInterface
                 $res = \call_user_func_array(array($instance, $pMethod), $pArgs);
         }
         return $res;
+    }
+
+    /**
+     * return method call mode (static/object)
+     * @param string $pClass class to call
+     * @param string $pMethod method to call
+     * @return string
+     */
+    public static function getCallMode($pClass, $pMethod)
+    {
+        $rf = new \ReflectionMethod($pClass, $pMethod);
+        return ($rf->isStatic() ? self::MODE_STATIC : self::MODE_OBJECT);
     }
 }
