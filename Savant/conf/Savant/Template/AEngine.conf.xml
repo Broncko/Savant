@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <default>
+            <template_dir>/home/broncko/Documents/projects/Savant/skins</template_dir>
+            <compile_dir>/home/broncko/Documents/projects/Savant/cache/Twig</compile_dir>
+        </default>
+    </configurations>
+</config>

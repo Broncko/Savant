@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Savant" tests="2" assertions="2" failures="0" errors="0" time="0.001912">
+    <testsuite name="SavantTests\TStandardObject" file="/home/broncko/Documents/projects/Savant/lib/SavantTests/TStandardObject.php" namespace="SavantTests" fullPackage="SavantTests" tests="2" assertions="2" failures="0" errors="0" time="0.001912">
+      <testcase name="testConfFile" class="SavantTests\TStandardObject" file="/home/broncko/Documents/projects/Savant/lib/SavantTests/TStandardObject.php" line="28" assertions="1" time="0.001321"/>
+      <testcase name="testConfContent" class="SavantTests\TStandardObject" file="/home/broncko/Documents/projects/Savant/lib/SavantTests/TStandardObject.php" line="36" assertions="1" time="0.000591"/>
+    </testsuite>
+    <testsuite name="SavantTests\TException" file="/home/broncko/Documents/projects/Savant/lib/SavantTests/TException.php" namespace="SavantTests" fullPackage="SavantTests" tests="0" assertions="0" failures="0" errors="0" time="0.000000"/>
+  </testsuite>
+</testsuites>
