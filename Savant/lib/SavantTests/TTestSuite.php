@@ -29,7 +29,8 @@ class TTestSuite extends \Savant\ATestCase
 
     public function testGetTests()
     {
-        $this->obj->getTests();
+        $res = $this->obj->getTests('Savant\AAutoTestCase');
+        print_r($res);
     }
 
 }

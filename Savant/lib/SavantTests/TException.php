@@ -2,7 +2,7 @@
 namespace SavantTests;
 require_once '/home/broncko/Documents/projects/Savant/savant.php';
 
-class TException extends \Savant\ATestCase
+class TException extends \Savant\AAutoTestCase
 {
     protected $obj = null;
 

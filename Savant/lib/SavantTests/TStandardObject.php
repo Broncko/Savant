@@ -2,9 +2,16 @@
 namespace SavantTests;
 require_once '/home/broncko/Documents/projects/Savant/savant.php';
 
-class testClass extends \Savant\AStandardObject implements \Savant\IConfigure {}
+class testClass extends \Savant\AStandardObject implements \Savant\IConfigure
+{
+    public function __construct()
+    {
+        self::$_DTD_VALID = false;
+        parent::__construct();
+    }
+}
 
-class TStandardObject extends \Savant\ATestCase
+class TStandardObject extends \Savant\AAutoTestCase
 {
 	public $obj = null;
 	

@@ -1,5 +1,5 @@
 <?php
-namespace \SavantTests\Controller;
+namespace SavantTests\Controller;
 
 class TFrontController extends \Savant\ATestCase
 {

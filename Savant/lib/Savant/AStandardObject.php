@@ -58,6 +58,12 @@ abstract class AStandardObject
 	 * @var array
 	 */
 	protected $_aspects = null;
+
+        /**
+         * set dtd validation when config is being loaded
+         * @var boolean
+         */
+        protected static $_DTD_VALID = true;
 	
 	/**
 	 * Constructor
@@ -66,7 +72,7 @@ abstract class AStandardObject
 	public function __construct($pConfig = 'default')
 	{
             $this->_class = get_class($this);
-            $this->confFile = AFramework::$CONF_DIR.\DIRECTORY_SEPARATOR.str_replace('\\',\DIRECTORY_SEPARATOR,$this->_class).'.conf.xml';
+            $this->confFile = AFramework::getConfigFile($this->_class);
             $rf = new \ReflectionObject($this);
             if($rf->implementsInterface('Savant\IConfigure'))
             {
@@ -83,7 +89,7 @@ abstract class AStandardObject
 	{
             try
             {
-                $config = new CConfigure($this);
+                $config = new CConfigure($this, self::$_DTD_VALID);
                 $xmlRoot = $config->getXmlRootObj();
                 if(CConfigure::hasChilds($xmlRoot->configurations->{$pConfigSection}))
                 {

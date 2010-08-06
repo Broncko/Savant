@@ -139,6 +139,12 @@ abstract class AFramework
          */
         public static $CONF_DIR;
 
+        /**
+         * extension folder
+         * @var string
+         */
+        public static $EXT_DIR;
+
 	/**
 	 * @static get error code from error level
 	 * @param string $pLevel error level
@@ -192,6 +198,7 @@ abstract class AFramework
             self::$LIB_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'lib';
             self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
             self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
+            self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
             \spl_autoload_register(array('Savant\AFramework','loadClass'),true);
             \register_shutdown_function(array('Savant\AFramework', 'finalize'));
             self::$STATUS = self::STATUS_ACTIVE;
@@ -224,5 +231,16 @@ abstract class AFramework
                     require_once($classPath);
             }
         }
+
+        /**
+         * @static returns path to config file from given class
+         * @param string $pClass
+         * @return string
+         */
+        public static function getConfigFile($pClass)
+        {
+            return AFramework::$CONF_DIR.\DIRECTORY_SEPARATOR.str_replace('\\',\DIRECTORY_SEPARATOR,$pClass).'.conf.xml';
+        }
+
 	
 }

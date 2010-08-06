@@ -2,7 +2,7 @@
 namespace SavantTests;
 require_once '/home/broncko/Documents/projects/Savant/savant.php';
 
-class testClass extends \Savant\AStandardObject {}
+class configClass extends \Savant\AStandardObject {}
 
 class TConfigure extends \Savant\ATestCase
 {
@@ -10,7 +10,7 @@ class TConfigure extends \Savant\ATestCase
 	
 	public function setUp()
 	{
-            $this->obj = new \Savant\CConfigure(new testClass());
+            $this->obj = new \Savant\CConfigure(new configClass(),true);
 	}
 	
 	public function tearDown()
