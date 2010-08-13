@@ -42,6 +42,12 @@ abstract class ACommandLineInterface
         return true;
     }
 
+    /**
+     * parse given parameters
+     * @static parseArgs
+     * @param string $pArgs
+     * @return object
+     */
     public static function parseArgs($pArgs)
     {
         $argArr['self'] = \array_shift($pArgs);

@@ -11,19 +11,20 @@
  */
 namespace Savant;
 require_once 'EException.php';
+require_once 'CConfigure.php';
 
 /**
  * @package Savant
  * Exception-handling for framework class
  *
  */
-class EFramework extends EException {}
+class EBootstrap extends EException {}
 
 /**
  * @package Savant
  * holds information and helper functions for the framework
  */
-abstract class AFramework
+final class CBootstrap
 {
 	/**
 	 * level debug
@@ -78,12 +79,6 @@ abstract class AFramework
          * @var integer
          */
         const STATUS_FINALIZING = 3;
-	
-	/**
-	 * log indent
-	 * @var string
-	 */
-	const LOG_INDENT = '    ';
 	
 	/**
 	 * log level
@@ -145,8 +140,29 @@ abstract class AFramework
          */
         public static $EXT_DIR;
 
+        /**
+         * aspects folder
+         * @var string
+         */
+        public static $ASPECT_DIR;
+
+        /**
+         * bootstrap configuration
+         * @var \Savant\CConfiguration
+         */
+        private $config = null;
+
+        /**
+         * create bootstrapper instance
+         */
+        public function __construct()
+        {
+            $this->config = CConfigure::getClassConfig(\get_class($this));
+        }
+
 	/**
-	 * @static get error code from error level
+         * get error code from error level
+	 * @static getErrorCode
 	 * @param string $pLevel error level
 	 * @return integer error code
 	 */
@@ -164,7 +180,8 @@ abstract class AFramework
 	}
 	
 	/**
-	 * @static get error type from error code
+         * get error type from error code
+	 * @static getErrorType
 	 * @param integer $pCode error code
 	 * @return string error level
 	 */
@@ -182,16 +199,11 @@ abstract class AFramework
 	}
 
         /**
-         *  @static initialize framework properties
-         *
+         * set bootstrapper properties
+         * @static setProperties
          */
-        public static function initialize()
+        public static function setProperties()
         {
-            if(self::$STATUS == self::STATUS_ACTIVE)
-            {
-                return;
-            }
-            self::$STATUS = self::STATUS_INITIALIZING;
             self::$BASE_DIR = \realpath(dirname(__FILE__) . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . '..');
             self::$ROOT_DIR = \realpath(self::$BASE_DIR . \DIRECTORY_SEPARATOR . '..');
             self::$CONF_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'conf';
@@ -199,13 +211,24 @@ abstract class AFramework
             self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
             self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
             self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
-            \spl_autoload_register(array('Savant\AFramework','loadClass'),true);
-            \register_shutdown_function(array('Savant\AFramework', 'finalize'));
-            self::$STATUS = self::STATUS_ACTIVE;
+            self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
         }
 
         /**
-         * @static shutdown framework
+         * initialize bootstrapper
+         */
+        public function initialize()
+        {
+            self::$STATUS = self::STATUS_INITIALIZING;
+            self::setProperties();
+            \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
+            \register_shutdown_function(array('Savant\CBootstrap', 'finalize'));
+            $this->initializeAOP();
+        }
+
+        /**
+         * shutdown framework
+         * @static finalize
          */
         public static function finalize()
         {
@@ -215,7 +238,8 @@ abstract class AFramework
         }
 
         /**
-         * @static framwork class loader
+         * framework class loader
+         * @static loadClass
          * @param string $pClass
          */
         public static function loadClass($pClass)
@@ -224,7 +248,7 @@ abstract class AFramework
             $classPath = self::$LIB_DIR.\DIRECTORY_SEPARATOR.str_replace('_',\DIRECTORY_SEPARATOR,$pClass).'.php';
             if(!file_exists($classPath))
             {
-                    throw new EException('class %s not found in %s', $pClass, $classPath, 200);
+                    throw new EException('class %s not found in %s', $pClass, $classPath);
             }
             else
             {
@@ -233,13 +257,35 @@ abstract class AFramework
         }
 
         /**
-         * @static returns path to config file from given class
+         * returns path to config file from given class
+         * @static getConfigFile
          * @param string $pClass
          * @return string
          */
         public static function getConfigFile($pClass)
         {
-            return AFramework::$CONF_DIR.\DIRECTORY_SEPARATOR.str_replace('\\',\DIRECTORY_SEPARATOR,$pClass).'.conf.xml';
+            return self::$CONF_DIR.\DIRECTORY_SEPARATOR.str_replace('\\',\DIRECTORY_SEPARATOR,$pClass).'.conf.xml';
+        }
+
+        /**
+         * initialize aop framework
+         */
+        public function initializeAOP()
+        {
+            AOP\AFramework::registerAspects();
+        }
+
+        /**
+         * run bootstrapper
+         */
+        public function run()
+        {
+            if(self::$STATUS == self::STATUS_ACTIVE)
+            {
+                return;
+            }
+            $this->initialize();
+            self::$STATUS = self::STATUS_ACTIVE;
         }
 
 	

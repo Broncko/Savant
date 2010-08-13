@@ -20,8 +20,11 @@ class ETestCase extends EException {}
  */
 abstract class ATestCase extends \PHPUNIT_Framework_TestCase implements ITestCase
 {
-    
-    public function main()
+    /**
+     * returns testsuite
+     * @return PHPUnit_Framework_TestSuite
+     */
+    public static function main()
     {
             $suite = new PHPUnit_Framework_TestSuite(\get_class($this));
             $suite->addTestSuite($testClass);

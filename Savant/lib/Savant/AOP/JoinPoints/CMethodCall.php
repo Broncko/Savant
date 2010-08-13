@@ -10,9 +10,9 @@ class CMethodCall extends AJoinPoint
 
     public $ARGS = array();
 
-    public function __construct($pMethod = '', $pArgs = array())
+    public function __construct($pClass, $pMethod, $pArgs = array())
     {
-        parent::AJoinPoint();
+        parent::__construct($pClass);
         $this->METHOD = $pMethod;
         $this->ARGS = $pArgs;
     }

@@ -45,6 +45,11 @@ abstract class AJoinPoint
 	 * @var string
 	 */
 	public $NAME = '';
+
+        /**
+         * @var string
+         */
+        public $CLASS = '';
 	
 	/**
 	 * @var string
@@ -65,15 +70,13 @@ abstract class AJoinPoint
 	
 	/**
 	 * Constructor
-	 * @param string $pName
-	 * @param string $pClassName
-	 * @param string $pMethodName
-	 * @param array $pMethodArgs
+         * @param string $pClass
 	 * @param string $pDirection
 	 */
-	public function __construct($pDirection = self::DIRECTION_IN)
+	public function __construct($pClass, $pDirection = self::DIRECTION_IN)
 	{
-		$this->DIRECTION = $pDirection;
-                $this->stack = new \SplStack();
+            $this->CLASS = $pClass;
+            $this->DIRECTION = $pDirection;
+            $this->stack = new \SplStack();
 	}
 }

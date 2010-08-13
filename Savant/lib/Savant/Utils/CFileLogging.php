@@ -35,7 +35,7 @@ class EFileLogging extends \Savant\EException { }
  * this class is an aspect used by aspect oriented programming. check interface \Savant\AOP\IAspect to get
  * more information
  */
-class CFileLogging extends ALogging implements ILogging, AOP\IAspect   
+class CFileLogging extends \Savant\AStandardObject implements ILogging, \Savant\IConfigure
 {
 	/**
 	 * Linebreak
@@ -48,6 +48,12 @@ class CFileLogging extends ALogging implements ILogging, AOP\IAspect
 	 * @var string
 	 */
 	const DEFAULT_TPL = "%TIMESTAMP %PID %LEVEL %CONTENT";
+
+        /**
+	 * log indent
+	 * @var string
+	 */
+	const LOG_INDENT = '    ';
 	
 	/**
 	 * indent counter
@@ -60,6 +66,12 @@ class CFileLogging extends ALogging implements ILogging, AOP\IAspect
 	 * @var string
 	 */
 	public $LOGFILE = null;
+
+        /**
+         * logging template
+         * @var string
+         */
+        public $LOGTEMPLATE = self::DEFAULT_TPL;
 	
 	/**
 	 * Constructor
@@ -79,42 +91,16 @@ class CFileLogging extends ALogging implements ILogging, AOP\IAspect
 	 * @param string $pText content
 	 * @param string $pLevel loglevel
 	 */
-	public function log($pText = '', $pLevel = \Savant\AFramework::LEVEL_DEBUG)
+	public function log($pText = '', $pLevel = \Savant\CBootstrap::LEVEL_DEBUG)
 	{
-		$indent = (self::$INDENT_COUNT > 0 ? str_repeat(\Savant\AFramework::LOG_INDENT,self::$INDENT_COUNT) : '');
+                //calc indent count in aspect
+		//$indent = (self::$INDENT_COUNT > 0 ? str_repeat(self::LOG_INDENT,self::$INDENT_COUNT) : '');
 		
-		$content = str_replace('%CONTENT',$indent.$pText,$this->LOGTEMPLATE);
+		$content = str_replace('%CONTENT',$pText,self::DEFAULT_TPL);
 		$content = str_replace('%LEVEL',$pLevel,$content);
-		$content = str_replace('%TIMESTAMP',date('m/d H:i:s'),$content);
+		$content = str_replace('%TIMESTAMP',date('Y/m/d H:i:s'),$content);
 		$content = str_replace('%PID',getmypid(),$content);
 		
 		file_put_contents($this->LOGFILE, $content.self::CR, FILE_APPEND);
-	}
-	
-	/**
-	 * advice to call from pointcut
-	 * @static advice
-	 * @param object $pObject any object
-	 * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
-	 */
-	public static function advice($pObj = null, AOP\CJoinPoint $pJoinPoint)
-	{
-		$instance = new self();
-		
-		switch($pJoinPoint->DIRECTION)
-		{
-			case AOP\CJoinPoint::DIRECTION_IN:
-				$content = sprintf('%senter %s %s->%s(%s)',$indent,$pJoinPoint->NAME,$pJoinPoint->CLASS,$pJoinPoint->METHOD,implode(',',$pJoinPoint->ARGS));
-				$instance->log($content);
-				self::$INDENT_COUNT += 1;
-				break;
-			case AOP\CJoinPoint::DIRECTION_OUT:
-				$content = sprintf('%sleave %s %s->%s',$indent,$pJoinPoint->NAME,$pJoinPoint->CLASS,$pJoinPoint->METHOD);
-				self::$INDENT_COUNT -= 1;
-				$instance->log($content);
-				break;
-			default:
-				break;
-		}
 	}
 }

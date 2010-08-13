@@ -32,20 +32,20 @@ class EException extends \Exception
 	 * @param string $pLevel error level
 	 * @param array $pArgs arguments used by message
 	 */
-	public function __construct($pMessage = '', $pLevel = null, $pArgs = array())
+	public function __construct($pMessage = '', $pArgs = array())
 	{
-		$code = AFramework::getErrorCode($pLevel);
-		if(count($pArgs) > 0)
+		//$code = CBootstrap::getErrorCode($pLevel);
+		if(count($pArgs) > 1)
 		{
-			parent::__construct(vsprintf($pMessage,$pArgs),$code);
+                    parent::__construct(vsprintf($pMessage,$pArgs));
 		}
 		else
 		{
-			parent::__construct($pMessage,$code);
+                    parent::__construct($pMessage);
 		}
-		if(AFramework::$PERMANENT_LOG && $code >= AFramework::getErrorCode(AFramework::$LEVEL))
+		if(CBootstrap::$PERMANENT_LOG)
 		{
-			$this->log();
+                    $this->log();
 		}
 	}
 	
@@ -99,7 +99,7 @@ class EException extends \Exception
 	{	
 		$content = $this->getMessage().' '.$this->getFile().' :: line '.$this->getLine();
 		$logger = new Utils\CFileLogging();
-		$logger->log($content, AFramework::getErrorType($this->getCode()));
+		$logger->log($content);
 	}
 	
 	/**

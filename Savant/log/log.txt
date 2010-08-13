@@ -1,74 +1,39 @@
-03/25 14:56:27 4364 debug enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/25 14:56:32 4364 debug leave call Savant\Service\CBitly->getRequest
-03/25 15:36:22 4364 400 26
-03/25 23:10:30 4364 400 26
-03/25 23:15:07 4364 error 26
-03/25 23:17:37 4364 200 47
-03/25 23:31:28 4364 error 26
-03/25 23:31:44 4364 error 26
-03/25 23:32:34 4364 error 26
-03/25 23:36:20 4364 error 26
-03/25 23:37:14 4364 error 26
-03/25 23:44:11 4364 error could not read config file
-03/25 23:45:50 4364 error could not read config file C:\Users\hendrik\Documents\projects\Savant\Savant\htdocs\debug.php :: line 9
-03/25 23:46:48 4364 critical could not read config file C:\Users\hendrik\Documents\projects\Savant\Savant\htdocs\debug.php :: line 9
-03/25 23:47:29 4364 critical 26 C:\Users\hendrik\Documents\projects\Savant\Savant\htdocs\debug.php :: line 9
-03/25 23:49:03 4364 critical could not read config file C:\Users\hendrik\Documents\projects\Savant\Savant\htdocs\debug.php :: line 9
-03/25 23:51:40 4364 debug enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/25 23:51:42 4364 debug leave call Savant\Service\CBitly->getRequest
-03/25 23:55:10 4364 debug enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/25 23:55:13 4364 debug leave call Savant\Service\CBitly->getRequest
-03/25 23:56:28 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/25 23:56:28 4364 debug enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/25 23:56:31 4364 debug leave call Savant\Service\CBitly->getRequest
-03/25 23:56:31 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 00:55:03 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 00:55:54 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 00:56:23 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 00:56:23 4364 debug 0enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 00:56:24 4364 debug 0leave call Savant\Service\CBitly->getRequest
-03/26 00:56:24 4364 debug 0leave call Savant\Service\CBitly->getShortUrl
-03/26 01:00:41 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:00:41 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:00:44 4364 debug         leave call Savant\Service\CBitly->getRequest
-03/26 01:00:44 4364 debug     leave call Savant\Service\CBitly->getShortUrl
-03/26 01:01:46 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:01:46 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:01:50 4364 debug         leave call Savant\Service\CBitly->getRequest
-03/26 01:01:50 4364 debug     leave call Savant\Service\CBitly->getShortUrl
-03/26 01:03:55 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:03:55 4364 debug enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:03:58 4364 debug leave call Savant\Service\CBitly->getRequest
-03/26 01:03:58 4364 debug leave call Savant\Service\CBitly->getShortUrl
-    03/26 01:05:07 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-        03/26 01:05:07 4364 debug enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-    03/26 01:05:09 4364 debug leave call Savant\Service\CBitly->getRequest
-03/26 01:05:09 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 01:06:15 4364 debug     enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:06:15 4364 debug         enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:06:18 4364 debug     leave call Savant\Service\CBitly->getRequest
-03/26 01:06:18 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 01:07:39 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:07:39 4364 debug         enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:07:42 4364 debug leave call Savant\Service\CBitly->getRequest
-03/26 01:07:42 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 01:08:08 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:08:08 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:08:10 4364 debug leave call Savant\Service\CBitly->getRequest
-03/26 01:08:10 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 01:11:35 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:11:35 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:11:38 4364 debug         leave call Savant\Service\CBitly->getRequest
-03/26 01:11:38 4364 debug     leave call Savant\Service\CBitly->getShortUrl
-03/26 01:12:13 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:12:13 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:12:16 4364 debug     leave call Savant\Service\CBitly->getRequest
-03/26 01:12:16 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 01:14:13 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:14:13 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:14:16 4364 debug     leave call Savant\Service\CBitly->getRequest
-03/26 01:14:16 4364 debug leave call Savant\Service\CBitly->getShortUrl
-03/26 01:14:46 4364 debug enter call Savant\Service\CBitly->getShortUrl(http://www.microsoft.com/germany/presseservice/default.mspx)
-03/26 01:14:46 4364 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.microsoft.com/germany/presseservice/default.mspx&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
-03/26 01:14:49 4364 debug     leave call Savant\Service\CBitly->getRequest
-03/26 01:14:49 4364 debug leave call Savant\Service\CBitly->getShortUrl
+08/13 19:36:40 5980 debug log ma das hier
+2010/08/13 19:37:35 5988 debug log ma das hier
+2010/08/13 19:38:15 6001 debug     enter call ->testMethod()
+2010/08/13 19:39:54 6030 debug     enter call ->testMethod()
+2010/08/13 19:42:54 6062 debug     enter call SavantTests\testClass->testMethod()
+2010/08/13 19:46:50 6106 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 19:48:59 6134 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 19:49:55 6146 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 19:50:32 6153 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 19:50:32 6153 debug 0leave call SavantTests\testClass->testMethod
+2010/08/13 19:51:45 6173 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 19:51:45 6173 debug leave call SavantTests\testClass->testMethod
+2010/08/13 19:59:37 6254 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 19:59:37 6254 debug     leave call SavantTests\testClass->testMethod
+2010/08/13 20:00:18 6266 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 20:00:18 6266 debug     leave call SavantTests\testClass->testMethod
+2010/08/13 20:01:34 6282 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 20:01:34 6282 debug     leave call SavantTests\testClass->testMethod
+2010/08/13 20:08:10 6350 debug     enter call SavantTests\testClass->testMethod()
+2010/08/13 20:08:10 6350 debug leave call SavantTests\testClass->testMethod()
+2010/08/13 20:08:44 6365 debug enter call SavantTests\testClass->testMethod()
+2010/08/13 20:08:44 6365 debug leave call SavantTests\testClass->testMethod()
+2010/08/13 20:17:19 6478 debug config file /home/broncko/Documents/projects/Savant/conf/SavantTests/configClass.conf.xml does not exist /home/broncko/Documents/projects/Savant/lib/Savant/CConfigure.php :: line 55
+2010/08/13 20:17:19 6478 debug config file /home/broncko/Documents/projects/Savant/conf/SavantTests/configClass.conf.xml does not exist /home/broncko/Documents/projects/Savant/lib/Savant/CConfigure.php :: line 55
+2010/08/13 20:20:09 6511 debug config file /home/broncko/Documents/projects/Savant/conf/SavantTests/configClass.conf.xml does not exist /home/broncko/Documents/projects/Savant/lib/Savant/CConfigure.php :: line 55
+2010/08/13 20:20:09 6511 debug config file /home/broncko/Documents/projects/Savant/conf/SavantTests/configClass.conf.xml does not exist /home/broncko/Documents/projects/Savant/lib/Savant/CConfigure.php :: line 55
+2010/08/13 20:26:10 6580 debug class %s not found in %s /home/broncko/Documents/projects/Savant/lib/Savant/CBootstrap.php :: line 251
+2010/08/13 20:26:10 6580 debug class %s not found in %s /home/broncko/Documents/projects/Savant/lib/Savant/CBootstrap.php :: line 251
+2010/08/13 20:27:29 6593 debug class %s not found in %s /home/broncko/Documents/projects/Savant/lib/Savant/CBootstrap.php :: line 252
+2010/08/13 20:27:29 6593 debug class %s not found in %s /home/broncko/Documents/projects/Savant/lib/Savant/CBootstrap.php :: line 252
+2010/08/13 20:45:41 6794 debug log ma das hier
+2010/08/13 20:46:50 6816 debug enter call ->getShortUrl(www.google.de)
+2010/08/13 20:46:50 6816 debug enter     call ->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=www.google.de&login=&apiKey=)
+2010/08/13 20:49:29 6848 debug enter call Savant\Service\CBitly->getShortUrl(http://www.google.de)
+2010/08/13 20:49:29 6848 debug enter     call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.google.de&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
+2010/08/13 20:51:07 6869 debug enter call Savant\Service\CBitly->getShortUrl(http://www.google.de)
+2010/08/13 20:51:07 6869 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.google.de&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)
+2010/08/13 20:53:15 6952 debug enter call Savant\Service\CBitly->getShortUrl(http://www.google.de)
+2010/08/13 20:53:15 6952 debug     enter call Savant\Service\CBitly->getRequest(http://api.bit.ly/shorten?version=2.0.1&longUrl=http://www.google.de&login=broncko&apiKey=R_57d500ca82ec1ee06d4fddae7f3b66e1)

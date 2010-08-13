@@ -11,9 +11,15 @@
  */
 namespace Savant;
 
+/**
+ * @package Savant
+ * exception handling of AAutoTestCase
+ */
 class EAutoTestCase extends EException {}
 
 /**
+ * @abstract AAutoTestCase
+ * @package Savant
  * just an empty class frame to provide an interface to extend to testcases
  */
 abstract class AAutoTestCase extends ATestCase {} 

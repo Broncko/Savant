@@ -9,6 +9,11 @@ class testClass extends \Savant\AStandardObject implements \Savant\IConfigure
         self::$_DTD_VALID = false;
         parent::__construct();
     }
+
+    public function _testMethod()
+    {
+        return "Hallo Broncko";
+    }
 }
 
 class TStandardObject extends \Savant\AAutoTestCase
@@ -25,16 +30,19 @@ class TStandardObject extends \Savant\AAutoTestCase
             $this->obj = null;
 	}
 
-        public function testConfFile()
+        public function xtestConfFile()
         {
             $this->assertTrue(\file_exists($this->obj->confFile));
         }
 
-        /**
-         * @depends testConfFile
-         */
-        public function testConfContent()
+        public function xtestConfContent()
         {
             $this->assertEquals('bronckotest.log',$this->obj->LOGFILE);
+        }
+
+        public function testAOPMethodCall()
+        {
+            $res = $this->obj->testMethod();
+            print_r($res);
         }
 }

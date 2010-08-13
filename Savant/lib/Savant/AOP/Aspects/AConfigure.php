@@ -1,16 +1,40 @@
 <?php
+/**
+ * Savant Framework / Module Savant (Core)
+ *
+ * This PHP source file is part of the Savant PHP Framework.
+ *
+ * @category   Savant
+ * @package    Savant
+ * @subpackage Aspects
+ * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
+ * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
+ */
 namespace Savant\AOP\Aspects;
 use Savant\AOP;
 use Savant\CConfigure;
 
+/**
+ * @package Aspects
+ * provides aspect decorator of configuration
+ */
 class AConfigure extends AOP\AAspect implements AOP\IAspect
 {
+    /**
+     * return list of joinpoints
+     * @return array
+     */
     public static function getJoinPointMask()
     {
-        return array('CClassLoader', 'CConstructor');
+        return array('Savant\AOP\JoinPoints\CClassLoader', 'Savant\AOP\JoinPoints\CConstructor');
     }
 
-    public static function advice(&$pObj = null, AOP\AJoinPoint $pJoinPoint)
+    /**
+     * provides aspect functionality
+     * @param object $pObj object to configure
+     * @param AOP\AJoinPoint $pJoinPoint joinpoint
+     */
+    public static function advice($pObj = null, AOP\AJoinPoint $pJoinPoint)
     {
         switch($pJoinPoint)
         {
@@ -29,6 +53,11 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
         }
     }
 
+    /**
+     * invoke before constructor is called
+     * @param IConfigure $pObj
+     * @param AOP\AJoinPoint $pJoinPoint
+     */
     public static function onBeforeConstructor(&$pObj, AOP\AJoinPoint $pJoinPoint)
     {
         if(!($pObj instanceof \Savant\IConfigure))
@@ -38,11 +67,11 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
 
         $class = \get_class($pObj);
         $config = CConfigure::getClassConfig($class);
-        foreach($config->children() as $confProp => $confVal)
+        foreach($config as $confProp => $confVal)
         {
             try
             {
-                $propObj = new ReflectionProperty($class, $confProp);
+                $propObj = new \ReflectionProperty($class, \strtoupper($confProp));
                 $propObj->setValue($pObj, $confVal);
             }
             catch(ReflectionException $e)
@@ -52,6 +81,11 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
         }
     }
 
+    /**
+     * invoke after classloader is called
+     * @param IConfigure $pObj
+     * @param AOP\AJoinPoint $pJoinPoint
+     */
     public static function onAfterLoadClass(&$pObj, AOP\AJoinPoint $pJoinPoint)
     {
 

@@ -12,7 +12,6 @@
 
 /**
  * TODO: do this more api-conform.
- * TODO: implement configuration as an aspect
  */
 
 namespace Savant;
@@ -48,23 +47,34 @@ class CConfigure
 	 * Constructor
 	 * @param \Savant\AStandardObject $pObj object to configure
 	 */
-	public function __construct($pObj, $pValidate = false)
+	public function __construct($pObj)
 	{
-            $confFile = ($pObj instanceof AStandardObject ? $pObj->confFile : AFramework::getConfigFile(\get_class($pObj)));
+            $confFile = ($pObj instanceof AStandardObject ? $pObj->confFile : CBootstrap::getConfigFile(\get_class($pObj)));
             if(!file_exists($confFile))
             {
                     throw new EConfigure('config file %s does not exist',$confFile, 120);
             }
+            $this->simpleXml = self::load($pObj->confFile); //TODO: implement dtd validation
+            $this->configObj = $pObj;
+	}
+
+        /**
+         * load xml configuration file
+         * @param string $pFile
+         * @param boolean $pValidate
+         * @return SimpleXMLElement
+         */
+        public static function load($pFile, $pValidate = false)
+        {
             if($pValidate)
             {
-                $this->simpleXml = simplexml_load_file($confFile, '\SimpleXMLElement', \LIBXML_DTDVALID);
+                return \simplexml_load_file($pFile, '\SimpleXMLElement', \LIBXML_DTDVALID);
             }
             else
             {
-                $this->simpleXml = simplexml_load_file($confFile, '\SimpleXMLElement');
+                return \simplexml_load_file($pFile, '\SimpleXMLElement');
             }
-                $this->configObj = $pObj;
-	}
+        }
 	
 	/**
 	 * magic function __get
@@ -173,7 +183,12 @@ class CConfigure
          */
         public static function getClassConfig($pClass, $pSection = 'default')
         {
-            $config = \simplexml_load_file(AFramework::getConfigFile($pClass));
+            $configFile = CBootstrap::getConfigFile($pClass);
+            if(!\file_exists($configFile))
+            {
+                return;
+            }
+            $config = self::load($configFile);
             return self::getConfigFromSection($config->configurations->{$pSection});
         }
 }

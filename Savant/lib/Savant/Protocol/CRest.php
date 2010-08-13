@@ -31,9 +31,9 @@ abstract class CRest extends \Savant\AStandardObject
 	/**
 	 * Constructor
 	 */
-	public function __construct()
+	public function __construct($pConfig = 'default')
 	{
-		
+            parent::__construct($pConfig);
 	}
 	
 	/**

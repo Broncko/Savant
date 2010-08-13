@@ -2,7 +2,7 @@
 <config>
 <configurations>
 	<default>
-		<logfile><![CDATA[C:\Users\hendrik\Documents\projects\Savant\Savant\log\log.txt]]></logfile>
+		<logfile>/home/broncko/Documents/projects/Savant/log/log.txt</logfile>
 		<logtemplate>%TIMESTAMP %PID %LEVEL %CONTENT</logtemplate>
 	</default>
 </configurations>

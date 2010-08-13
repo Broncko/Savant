@@ -1,8 +1,27 @@
 <?php
+/**
+ * Savant Framework / Module Savant (Core)
+ *
+ * This PHP source file is part of the Savant PHP Framework.
+ *
+ * @category   Savant
+ * @package    Savant
+ * @subpackage DataSet
+ * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
+ * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
+ */
 namespace Savant\Storage\DataSet;
 
+/**
+ * @package DataSet
+ * exception handling of CQuery
+ */
 class EQuery extends \Savant\EException {}
 
+/**
+ * @package DataSet
+ * provides database query 
+ */
 class CQuery
 {
     public $name = '';

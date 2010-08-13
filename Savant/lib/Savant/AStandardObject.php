@@ -11,7 +11,7 @@
  */
 
 /**
- * TODO: build joinpoint stack
+ * TODO: build joinpoint stack -> has moved to aop framework
  */
 
 namespace Savant;
@@ -72,12 +72,8 @@ abstract class AStandardObject
 	public function __construct($pConfig = 'default')
 	{
             $this->_class = get_class($this);
-            $this->confFile = AFramework::getConfigFile($this->_class);
-            $rf = new \ReflectionObject($this);
-            if($rf->implementsInterface('Savant\IConfigure'))
-            {
-                    $this->configure($pConfig);
-            }
+            $this->confFile = CBootstrap::getConfigFile($this->_class);
+            AOP\AFramework::weaveIn($this, new AOP\JoinPoints\CConstructor($this->_class));
 	}
 	
 	/**
@@ -136,12 +132,10 @@ abstract class AStandardObject
 	public function __call($pMethod = '', $pArgs = array())
 	{
 		$aspectMethod = '_'.$pMethod;
-
-                $joinPoint = new AOP\JoinPoints\CMethodCall($pMethod, $pArgs);
-		$pointCut = new AOP\CPointcut($this->_aspects);
-		$pointCut->weave($this, $joinPoint);
+                $joinPoint = new AOP\JoinPoints\CMethodCall($this->_class, $pMethod, $pArgs);
+                AOP\AFramework::weaveIn($this, $joinPoint);
 		$joinPoint->result = call_user_method_array($aspectMethod,$this,$pArgs);
-		$pointCut->weave($this, $joinPoint);
+                AOP\AFramework::weaveOut($this, $joinPoint);
 		return $joinPoint->result;
 	}
 	

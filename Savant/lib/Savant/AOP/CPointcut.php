@@ -29,10 +29,10 @@ class EPointcut extends \Savant\EException { }
 class CPointcut extends \Savant\AStandardObject
 {
 	/**
-	 * pointcutmask
+	 * joinpointmask
 	 * @var array
 	 */
-	private $pointCutMask = array();
+	public $joinPointMask = array();
 
         /**
          * aspect class
@@ -44,10 +44,10 @@ class CPointcut extends \Savant\AStandardObject
 	 * Constructor
 	 * @param array $pPointCutMask
 	 */
-	public function __construct($pAspect, $pPointCutMask = array())
+	public function __construct($pAspect, $pJoinPointMask = array())
 	{
             $this->aspectClass = $pAspect;
-            $this->pointCutMask = $pPointCutMask;
+            $this->joinPointMask = $pJoinPointMask;
 	}
 	
 	/**

@@ -6,7 +6,7 @@
  *
  * @category   Savant
  * @package    Savant
- * @subpackage AOP
+ * @subpackage Service
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
@@ -52,7 +52,7 @@ class CBitly extends \Savant\Protocol\CRest implements \Savant\IConfigure
 	 */
 	public function __construct($pConfig = 'default')
 	{
-		parent::__construct();
+		parent::__construct($pConfig);
 	}
 
 	/**
