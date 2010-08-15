@@ -99,6 +99,12 @@ final class CBootstrap
 	public static $PERMANENT_LOG = true;
 
         /**
+         * define logger
+         * @var ILogging
+         */
+        public static $LOGGER = null;
+
+        /**
          * base folder
          * @var string
          */
@@ -145,6 +151,12 @@ final class CBootstrap
          * @var string
          */
         public static $ASPECT_DIR;
+
+        /**
+         * joinpoints folder
+         * @var string
+         */
+        public static $JOINPOINT_DIR;
 
         /**
          * bootstrap configuration
@@ -212,6 +224,7 @@ final class CBootstrap
             self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
             self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
             self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
+            self::$JOINPOINT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'JoinPoints';
         }
 
         /**
@@ -221,8 +234,13 @@ final class CBootstrap
         {
             self::$STATUS = self::STATUS_INITIALIZING;
             self::setProperties();
+
             \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
             \register_shutdown_function(array('Savant\CBootstrap', 'finalize'));
+
+            self::$LOGGER = new Utils\CMultiLogging();
+            self::$LOGGER->addLogger(new Utils\CFileLogging());
+            
             $this->initializeAOP();
         }
 
@@ -286,6 +304,11 @@ final class CBootstrap
             }
             $this->initialize();
             self::$STATUS = self::STATUS_ACTIVE;
+        }
+
+        public static function log($pContent)
+        {
+            self::$LOGGER->log($pContent);
         }
 
 	

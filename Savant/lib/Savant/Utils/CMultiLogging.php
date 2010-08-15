@@ -11,7 +11,7 @@
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 
-namespace \Savant\Utils;
+namespace Savant\Utils;
 
 /**
  * @package    Savant
@@ -26,16 +26,8 @@ class EMultiLogging extends \Savant\EException{}
  * @subpackage Utils
  * Administrates multiple loggers by using the composite pattern(extending SplObjectStorage).
  */
-class CMultiLogging extends SplObjectStorage implements ILogging 
+class CMultiLogging extends \SplObjectStorage implements ILogging
 {	
-	/**
-	 * Constructor
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-	}
-	
 	/**
 	 * add logger
 	 * @param ILogging $pLogger logger

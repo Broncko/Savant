@@ -26,7 +26,7 @@ class EPointcut extends \Savant\EException { }
  * @subpackage AOP
  * A Pointcut matches the joinpoints with the aspects and invokes the advice methods
  */
-class CPointcut extends \Savant\AStandardObject
+class CPointcut
 {
 	/**
 	 * joinpointmask

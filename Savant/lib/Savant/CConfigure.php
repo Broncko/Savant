@@ -158,6 +158,7 @@ class CConfigure
                         $pObj->{strtoupper($confProp)} = sprintf('%s',$confVal);
                     }
 		}
+                $pObj->config = $pSection;
 	}
 	
 	/**

@@ -32,16 +32,17 @@ class EException extends \Exception
 	 * @param string $pLevel error level
 	 * @param array $pArgs arguments used by message
 	 */
-	public function __construct($pMessage = '', $pArgs = array())
+	public function __construct()
 	{
-		//$code = CBootstrap::getErrorCode($pLevel);
-		if(count($pArgs) > 1)
+		$args = \func_get_args();
+                $message = \array_shift($args);
+		if(count($args) > 0)
 		{
-                    parent::__construct(vsprintf($pMessage,$pArgs));
+                    parent::__construct(vsprintf($message,$args)."\n");
 		}
 		else
 		{
-                    parent::__construct($pMessage);
+                    parent::__construct($message."\n");
 		}
 		if(CBootstrap::$PERMANENT_LOG)
 		{

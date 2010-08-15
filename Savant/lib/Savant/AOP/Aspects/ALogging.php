@@ -5,12 +5,14 @@ use Savant\Utils\CFileLogging;
 
 abstract class ALogging extends AOP\AAspect implements AOP\IAspect
 {
+    public static $BASE_CLASS = 'Savant\Utils\CFileLogging';
+
     public static function getJoinPointMask()
     {
-        return array('Savant\AOP\JoinPoints\CMethodCall');
+        return array('Savant\AOP\JoinPoints\CMethodCall','Savant\AOP\JoinPoints\CConstructor');
     }
 
-    public static function advice($pObj = null, AOP\AJoinPoint $pJoinPoint)
+    public static function advice($pObj, AOP\AJoinPoint $pJoinPoint)
     {
         $instance = new CFileLogging();
         
@@ -27,7 +29,11 @@ abstract class ALogging extends AOP\AAspect implements AOP\IAspect
                         $action = 'leave';
                         break;
         }
-        $content = sprintf('%s%s %s %s->%s(%s)',$indent,$action,$pJoinPoint->NAME,$pJoinPoint->CLASS,$pJoinPoint->METHOD,implode(',',$pJoinPoint->ARGS));
+
+        $method = (\property_exists($pJoinPoint, 'METHOD') ? $pJoinPoint->METHOD : '');
+        $args = (\property_exists($pJoinPoint, 'ARGS') ? $pJoinPoint->ARGS : array());
+
+        $content = sprintf('%s%s %s %s->%s(%s)',$indent,$action,$pJoinPoint->NAME,$pJoinPoint->CLASS,$method,implode(',',$args));
         $instance->log($content);
     }
 }

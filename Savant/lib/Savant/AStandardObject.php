@@ -40,6 +40,12 @@ abstract class AStandardObject
 	 * @var string
 	 */
 	public $confFile = null;
+
+        /**
+	 * contains content of the xml configuration section
+	 * @var SimpleXMLElement
+	 */
+	public $config = null;
 	
 	/**
 	 * class
@@ -47,18 +53,6 @@ abstract class AStandardObject
 	 */
 	protected $_class = null;
 	
-	/**
-	 * contains content of the xml configuration section
-	 * @var SimpleXMLElement
-	 */
-	protected $_configuration = null;
-	
-	/**
-	 * contains aspects which belong to the class
-	 * @var array
-	 */
-	protected $_aspects = null;
-
         /**
          * set dtd validation when config is being loaded
          * @var boolean
@@ -113,16 +107,6 @@ abstract class AStandardObject
 	}
 	
 	/**
-	 * Set configuration property manually
-	 * @param string $pProperty class property
-	 * @param mixed $pValue value
-	 */
-	public function setConfProperty($pProperty = '', $pValue = '')
-	{
-		$this->_configuration->$pProperty = $pValue;	
-	}
-	
-	/**
 	 * magic funtion __call
 	 * implements aop functionality by invoking methods which have a underscore(_) prefix
 	 * and weave in aspects before and after method
@@ -146,18 +130,7 @@ abstract class AStandardObject
 	 */
 	public function __get($pName)
 	{
-		return $this;
-	}
-	
-	/**
-	 * magic function __set
-	 * returns the object itself
-	 * @param string $pName
-	 * @param mixed $pVal
-	 */
-	public function __set($pName, $pVal)
-	{
-		return $this;
+		return $this->config->{$pName};
 	}
 	
 	/**

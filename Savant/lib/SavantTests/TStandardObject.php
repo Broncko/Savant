@@ -4,6 +4,8 @@ require_once '/home/broncko/Documents/projects/Savant/savant.php';
 
 class testClass extends \Savant\AStandardObject implements \Savant\IConfigure
 {
+    const returnValue = "Hallo Broncko";
+
     public function __construct()
     {
         self::$_DTD_VALID = false;
@@ -12,7 +14,7 @@ class testClass extends \Savant\AStandardObject implements \Savant\IConfigure
 
     public function _testMethod()
     {
-        return "Hallo Broncko";
+        return self::returnValue;
     }
 }
 
@@ -30,12 +32,12 @@ class TStandardObject extends \Savant\AAutoTestCase
             $this->obj = null;
 	}
 
-        public function xtestConfFile()
+        public function testConfFile()
         {
             $this->assertTrue(\file_exists($this->obj->confFile));
         }
 
-        public function xtestConfContent()
+        public function testConfContent()
         {
             $this->assertEquals('bronckotest.log',$this->obj->LOGFILE);
         }
@@ -43,6 +45,6 @@ class TStandardObject extends \Savant\AAutoTestCase
         public function testAOPMethodCall()
         {
             $res = $this->obj->testMethod();
-            print_r($res);
+            $this->assertEquals($res, testClass::returnValue);
         }
 }

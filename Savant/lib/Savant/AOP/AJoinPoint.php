@@ -79,4 +79,9 @@ abstract class AJoinPoint
             $this->DIRECTION = $pDirection;
             $this->stack = new \SplStack();
 	}
+
+        public function __get($pKey)
+        {
+            return null;
+        }
 }

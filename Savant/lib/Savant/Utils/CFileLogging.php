@@ -37,70 +37,71 @@ class EFileLogging extends \Savant\EException { }
  */
 class CFileLogging extends \Savant\AStandardObject implements ILogging, \Savant\IConfigure
 {
-	/**
-	 * Linebreak
-	 * @var string
-	 */
-	const CR = "\n";
-	
-	/**
-	 * default logging output
-	 * @var string
-	 */
-	const DEFAULT_TPL = "%TIMESTAMP %PID %LEVEL %CONTENT";
+    /**
+     * Linebreak
+     * @var string
+     */
+    const CR = "\n";
 
-        /**
-	 * log indent
-	 * @var string
-	 */
-	const LOG_INDENT = '    ';
-	
-	/**
-	 * indent counter
-	 * @var integer
-	 */
-	public static $INDENT_COUNT = 0;
-	
-	/**
-	 * path to logfile
-	 * @var string
-	 */
-	public $LOGFILE = null;
+    /**
+     * default logging output
+     * @var string
+     */
+    const DEFAULT_TPL = "%TIMESTAMP %PID %LEVEL %CONTENT";
 
-        /**
-         * logging template
-         * @var string
-         */
-        public $LOGTEMPLATE = self::DEFAULT_TPL;
-	
-	/**
-	 * Constructor
-	 * @param string $pLogfile path to logfile
-	 */
-	public function __construct($pLogfile = null)
-	{
-		parent::__construct();
-		if($pLogfile != null)
-		{
-			$this->LOGFILE = $pLogfile;
-		}
-	}
-	
-	/**
-	 * log
-	 * @param string $pText content
-	 * @param string $pLevel loglevel
-	 */
-	public function log($pText = '', $pLevel = \Savant\CBootstrap::LEVEL_DEBUG)
-	{
-                //calc indent count in aspect
-		//$indent = (self::$INDENT_COUNT > 0 ? str_repeat(self::LOG_INDENT,self::$INDENT_COUNT) : '');
-		
-		$content = str_replace('%CONTENT',$pText,self::DEFAULT_TPL);
-		$content = str_replace('%LEVEL',$pLevel,$content);
-		$content = str_replace('%TIMESTAMP',date('Y/m/d H:i:s'),$content);
-		$content = str_replace('%PID',getmypid(),$content);
-		
-		file_put_contents($this->LOGFILE, $content.self::CR, FILE_APPEND);
-	}
+    /**
+     * log indent
+     * @var string
+     */
+    const LOG_INDENT = '    ';
+
+    /**
+     * indent counter
+     * @var integer
+     */
+    public static $INDENT_COUNT = 0;
+
+    /**
+     * path to logfile
+     * @var string
+     */
+    public $LOGFILE = null;
+
+    /**
+     * logging template
+     * @var string
+     */
+    public $LOGTEMPLATE = self::DEFAULT_TPL;
+
+    /**
+     * Constructor
+     * @param string $pLogfile path to logfile
+     */
+    public function __construct($pLogfile = null)
+    {
+        parent::__construct();
+        if($pLogfile != null)
+        {
+            $this->LOGFILE = $pLogfile;
+        }
+    }
+
+    /**
+     * log
+     * @param string $pText content
+     * @param string $pLevel loglevel
+     */
+    public function log($pText = '', $pLevel = \Savant\CBootstrap::LEVEL_DEBUG)
+    {
+        if(!\file_exists($this->LOGFILE))
+        {
+            return;
+        }
+        $content = str_replace('%CONTENT',$pText,self::DEFAULT_TPL);
+        $content = str_replace('%LEVEL',$pLevel,$content);
+        $content = str_replace('%TIMESTAMP',date('Y/m/d H:i:s'),$content);
+        $content = str_replace('%PID',getmypid(),$content);
+
+        file_put_contents($this->LOGFILE, $content.self::CR, FILE_APPEND);
+    }
 }

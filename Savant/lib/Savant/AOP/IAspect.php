@@ -19,16 +19,16 @@ namespace Savant\AOP;
  */
 interface IAspect
 {
-	/**
-	 * @static advice
-	 * @param object $pObj any object
-	 * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
-	 */
-	public static function advice($pObj = null, AJoinPoint $pJoinPoint);
+    /**
+     * @static advice
+     * @param object $pObj any object
+     * @param \Savant\AOP\CJoinPoint $pJoinPoint joinpoint
+     */
+    public static function advice($pObj = null, AJoinPoint $pJoinPoint);
 
-        /**
-         * @static getJoinPointMask
-         * @return array
-         */
-        public static function getJoinPointMask();
+    /**
+     * @static getJoinPointMask
+     * @return array
+     */
+    public static function getJoinPointMask();
 }

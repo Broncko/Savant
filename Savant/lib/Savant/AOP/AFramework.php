@@ -76,6 +76,21 @@ abstract class AFramework
     }
 
     /**
+     * TODO: merge with getAspectsFromFolder
+     * @return array
+     */
+    public static function getJoinPointsFromFolder()
+    {
+        $dirIter = new \FilesystemIterator(\Savant\CBootstrap::$JOINPOINT_DIR, \FilesystemIterator::SKIP_DOTS);
+        foreach ($dirIter as $aspectFile) {
+            $aspect = \str_replace('.php', '', $aspectFile);
+            $aspect = \str_replace(\Savant\CBootstrap::$FRAMEWORK_DIR, '', $aspect);
+            $aspects[] = 'Savant'.\str_replace(\DIRECTORY_SEPARATOR, '\\', $aspect);
+        }
+        return $aspects;
+    }
+    
+    /**
      * weave in a joinpoint
      * invokes all interceptors whose pointcuts match the given joinpoint
      * @param object $pObj calling object
@@ -88,6 +103,14 @@ abstract class AFramework
             if(!\in_array(\get_class($pJoinPoint), (array)$pointcut->joinPointMask))
             {
                 continue;
+            }
+            if(\property_exists($pointcut->aspectClass, 'BASE_CLASS'))
+            {
+                $rf = new \ReflectionProperty($pointcut->aspectClass, 'BASE_CLASS');
+                if($rf->getValue() == $pJoinPoint->CLASS)
+                {
+                    continue;
+                }
             }
             $pJoinPoint->stack->push($pointcut);
             forward_static_call(array((string)$pointcut->aspectClass, 'advice'),$pObj,$pJoinPoint);
@@ -103,7 +126,7 @@ abstract class AFramework
     public static function weaveOut($pObj, AJoinPoint $pJoinPoint)
     {
         $pJoinPoint->DIRECTION = AJoinPoint::DIRECTION_OUT;
-        while($pJoinPoint->stack->count() !== 0)
+        while($pJoinPoint->stack->count() != 0)
         {
             $pointcut = $pJoinPoint->stack->pop();
             forward_static_call(array((string)$pointcut->aspectClass, 'advice'),$pObj,$pJoinPoint);

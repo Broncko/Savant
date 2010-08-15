@@ -26,15 +26,14 @@ class EAspect extends \Savant\EException {}
  * @subpackage AOP
  * Holds basic informations of aspects 
  */
-abstract class AAspect extends \Savant\AStandardObject
+abstract class AAspect
 {
-	/**
-	 * Constructor
-	 * @param string $pSection section of configuration file
-	 */
-	public function __construct($pSection = 'default')
-	{
-		parent::__construct($pSection);
-	}
-	
+    /**
+     * returns joinpointmask
+     * @return array
+     */
+    public static function getJoinPointMask()
+    {
+        return AFramework::getJoinPointsFromFolder();
+    }
 }
