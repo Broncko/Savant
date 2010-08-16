@@ -8,11 +8,10 @@ class testClass extends \Savant\AStandardObject implements \Savant\IConfigure
 
     public function __construct()
     {
-        self::$_DTD_VALID = false;
         parent::__construct();
     }
 
-    public function _testMethod()
+    public function _testMethod($pVar1, $pVar2)
     {
         return self::returnValue;
     }
@@ -44,7 +43,7 @@ class TStandardObject extends \Savant\AAutoTestCase
 
         public function testAOPMethodCall()
         {
-            $res = $this->obj->testMethod();
+            $res = $this->obj->testMethod('var1','var2');
             $this->assertEquals($res, testClass::returnValue);
         }
 }

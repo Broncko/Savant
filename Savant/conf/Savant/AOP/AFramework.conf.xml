@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <default>
+            <do_not_weave_in>
+                <class>Savant\Utils\CFileLogging</class>
+            </do_not_weave_in>
+        </default>
+    </configurations>
+</config>

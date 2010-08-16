@@ -34,7 +34,7 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
      * @param object $pObj object to configure
      * @param AOP\AJoinPoint $pJoinPoint joinpoint
      */
-    public static function advice($pObj = null, AOP\AJoinPoint $pJoinPoint)
+    public static function advice($pObj, AOP\AJoinPoint $pJoinPoint)
     {
         switch($pJoinPoint)
         {

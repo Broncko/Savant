@@ -1,12 +1,11 @@
 <?php
 namespace Savant\AOP\JoinPoints;
-use Savant\AOP\AJoinPoint;
 
-class CConstructor extends AJoinPoint
+class CDestructor extends \Savant\AOP\AJoinPoint
 {
-    public $LABEL = 'construct';
+    public $LABEL = 'destruct';
 
-    public $NAME = 'Constructor';
+    public $NAME = 'Destructor';
 
     public function __construct($pClass)
     {

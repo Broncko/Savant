@@ -77,13 +77,9 @@ class CFileLogging extends \Savant\AStandardObject implements ILogging, \Savant\
      * Constructor
      * @param string $pLogfile path to logfile
      */
-    public function __construct($pLogfile = null)
+    public function __construct($pSection = 'default')
     {
-        parent::__construct();
-        if($pLogfile != null)
-        {
-            $this->LOGFILE = $pLogfile;
-        }
+        parent::__construct($pSection);
     }
 
     /**

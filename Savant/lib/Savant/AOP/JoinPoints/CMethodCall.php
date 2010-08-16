@@ -4,7 +4,9 @@ use Savant\AOP\AJoinPoint;
 
 class CMethodCall extends AJoinPoint
 {
-    public $NAME = 'call';
+    public $LABEL = 'call';
+
+    public $NAME = 'Method Call';
 
     public $METHOD = '';
 

@@ -51,11 +51,11 @@ class CMultiLogging extends \SplObjectStorage implements ILogging
 	 * @param string $pText content
 	 * @param string $pLevel loglevel
 	 */
-	public function log($pText = '', $pLevel = parent::LEVEL_DEBUG)
+	public function log($pText = '')
 	{
 		foreach($this as $logger)
 		{
-			$logger->log($pText, $pLevel);
+                    $logger->log($pText);
 		}
 	}
 }

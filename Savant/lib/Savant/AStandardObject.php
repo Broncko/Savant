@@ -47,12 +47,6 @@ abstract class AStandardObject
 	 */
 	public $config = null;
 	
-	/**
-	 * class
-	 * @var string
-	 */
-	protected $_class = null;
-	
         /**
          * set dtd validation when config is being loaded
          * @var boolean
@@ -65,47 +59,10 @@ abstract class AStandardObject
 	 */
 	public function __construct($pConfig = 'default')
 	{
-            $this->_class = get_class($this);
-            $this->confFile = CBootstrap::getConfigFile($this->_class);
-            AOP\AFramework::weaveIn($this, new AOP\JoinPoints\CConstructor($this->_class));
+            $this->confFile = CBootstrap::getConfigFile(\get_class($this));
+            AOP\AFramework::weave($this, new AOP\JoinPoints\CConstructor(\get_class($this)));
 	}
-	
-	/**
-	 * Configures object
-	 * puts data from the configuration section in the xml files into capitalized class members
-	 * @param string $pConfigSection section of the xml configuration file
-	 */
-	public function configure($pConfigSection = 'default')
-	{
-            try
-            {
-                $config = new CConfigure($this, self::$_DTD_VALID);
-                $xmlRoot = $config->getXmlRootObj();
-                if(CConfigure::hasChilds($xmlRoot->configurations->{$pConfigSection}))
-                {
-                    foreach($config->getConfigFromSection($xmlRoot->configurations->{$pConfigSection}) as $prop => $val)
-                    {
-                        if(count($val) > 0)
-                        {
-                            $this->{\strtoupper($prop)} = $val;
-                        }
-                        else
-                        {
-                            $this->{\strtoupper($prop)} = \sprintf('%s',$val);
-                        }
-                    }
-                }
-                if(CConfigure::hasChilds($xmlRoot->joinpoints))
-                {
-                    $this->_aspects = $config->getConfigFromSection($xmlRoot->joinpoints);
-                }
-            }
-            catch(EConfigure $e)
-            {
-                $e->log();
-            }
-	}
-	
+		
 	/**
 	 * magic funtion __call
 	 * implements aop functionality by invoking methods which have a underscore(_) prefix
@@ -116,7 +73,7 @@ abstract class AStandardObject
 	public function __call($pMethod = '', $pArgs = array())
 	{
 		$aspectMethod = '_'.$pMethod;
-                $joinPoint = new AOP\JoinPoints\CMethodCall($this->_class, $pMethod, $pArgs);
+                $joinPoint = new AOP\JoinPoints\CMethodCall(\get_class($this), $pMethod, $pArgs);
                 AOP\AFramework::weaveIn($this, $joinPoint);
 		$joinPoint->result = call_user_method_array($aspectMethod,$this,$pArgs);
                 AOP\AFramework::weaveOut($this, $joinPoint);
@@ -138,6 +95,6 @@ abstract class AStandardObject
 	 */
 	public function __destruct()
 	{
-		
+            AOP\AFramework::weave($this, new AOP\JoinPoints\CDestructor(\get_class($this)));
 	}
 }

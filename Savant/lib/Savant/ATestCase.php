@@ -33,12 +33,12 @@ abstract class ATestCase extends \PHPUNIT_Framework_TestCase implements ITestCas
 
     public function setUp()
     {
-        echo 'remember to define set up method';
+        echo "remember to define set up method\n";
     }
 
     public function tearDown()
     {
-        echo 'remember to define tear down method';
+        echo "remember to define tear down method\n";
     }
 	
 }

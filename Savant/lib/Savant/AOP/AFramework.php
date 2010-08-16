@@ -98,6 +98,10 @@ abstract class AFramework
      */
     public static function weaveIn($pObj, AJoinPoint $pJoinPoint)
     {
+        if(count(self::$pointcuts) == 0)
+        {
+            self::registerAspects();
+        }
         foreach(self::$pointcuts as $pointcut)
         {
             if(!\in_array(\get_class($pJoinPoint), (array)$pointcut->joinPointMask))

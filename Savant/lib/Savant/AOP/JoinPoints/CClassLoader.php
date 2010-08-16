@@ -4,7 +4,9 @@ use Savant\AOP\AJoinPoint;
 
 class CClassLoader extends AJoinPoint
 {
-    public $NAME = 'LoadClass';
+    public $LABEL = 'load class';
+
+    public $NAME = 'Classloader';
 
     public $loader = null;
 

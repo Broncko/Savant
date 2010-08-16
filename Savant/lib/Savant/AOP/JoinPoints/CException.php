@@ -4,6 +4,8 @@ use Savant\AOP\AJoinPoint;
 
 class CException extends AJoinPoint
 {
+    public $LABEL = 'exception';
+
     public $NAME = 'Exception';
 
     public $e = null;
