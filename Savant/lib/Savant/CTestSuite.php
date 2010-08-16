@@ -2,7 +2,8 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -14,6 +15,13 @@ require_once '/home/broncko/Documents/projects/Savant/savant.php';
 require_once 'PHPUnit/Framework.php';
 
 /**
+ * @package Savant
+ * exception handling of CTestSuite
+ */
+class ETestSuite extends EException {}
+
+/**
+ * @package Savant
  * Provides a testsuite to run all tests which extend the AAutotestCase class
  */
 class CTestSuite extends \PHPUnit_Framework_TestSuite

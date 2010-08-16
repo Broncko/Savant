@@ -16,7 +16,7 @@ use \Savant\AOP;
 
 class EBenchmark extends \Savant\EException {}
 
-class CBenchmark extends \Savant\CStandardObject implements AOP\IAspect
+class CBenchmark extends \Savant\CStandardObject implements \Savant\IConfigure
 {
     public function __construct()
     {

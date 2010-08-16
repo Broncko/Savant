@@ -2,10 +2,12 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
- * @package    JoinPoints
+ * @package    Savant
+ * @subpackage JoinPoints
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
@@ -13,7 +15,8 @@ namespace Savant\AOP\JoinPoints;
 use Savant\AOP\AJoinPoint;
 
 /**
- * @package JoinPoints
+ * @package AOP
+ * @subpackage JoinPoints
  * exception joinpoint
  */
 class CException extends AJoinPoint
@@ -49,7 +52,7 @@ class CException extends AJoinPoint
      */
     public function __construct($pE = null, $pHandler = null)
     {
-        parent::__construct();
+        parent::__construct(get_class($pE));
         $this->e = $pE;
         $this->handler = $pHandler;
     }

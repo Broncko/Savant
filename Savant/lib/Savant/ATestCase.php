@@ -2,7 +2,8 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -15,8 +16,8 @@ require_once 'PHPUnit/Framework.php';
 class ETestCase extends EException {}
 
 /**
+ * @package Savant
  * provides a testcase extending from phpunit testcases
- * @abstract ATestCase
  */
 abstract class ATestCase extends \PHPUNIT_Framework_TestCase implements ITestCase
 {
@@ -31,11 +32,17 @@ abstract class ATestCase extends \PHPUNIT_Framework_TestCase implements ITestCas
             return $suite;
     }
 
+    /**
+     * just a reminder, if you forget to define a setUp() method in the testcase
+     */
     public function setUp()
     {
         echo "remember to define set up method\n";
     }
 
+    /**
+     * just a reminder, if you forget to define a tearDown() method in the testcase
+     */
     public function tearDown()
     {
         echo "remember to define tear down method\n";

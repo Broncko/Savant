@@ -17,7 +17,6 @@
  */
 
 namespace Savant\Utils;
-
 use \Savant\AOP;
 
 /**
@@ -32,8 +31,6 @@ class EFileLogging extends \Savant\EException { }
  * @package    Savant
  * @subpackage Utils
  * Writes Logdata into a file
- * this class is an aspect used by aspect oriented programming. check interface \Savant\AOP\IAspect to get
- * more information
  */
 class CFileLogging extends \Savant\AStandardObject implements ILogging, \Savant\IConfigure
 {

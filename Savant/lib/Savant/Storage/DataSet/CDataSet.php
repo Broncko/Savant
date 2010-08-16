@@ -2,7 +2,8 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -13,13 +14,15 @@
 namespace Savant\Storage\DataSet;
 
 /**
- * @package DataSet$storageSplObjectStorage
+ * @package Storage
+ * @subpackage DataSet
  * exception handler of CDataSet
  */
 class EDataSet extends \Savant\EException {}
 
 /**
- * @package DataSet
+ * @package Storage
+ * @subpackage DataSet
  * provides dataset object which holds data from several sources
  */
 class CDataSet implements \IteratorAggregate, \Countable

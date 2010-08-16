@@ -1,21 +1,38 @@
 <?php
+/**
+ * Savant Framework / Module Savant (Core)
+ *
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
+ *
+ * @category   Savant
+ * @package    Savant
+ * @subpackage Aspects
+ * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
+ * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
+ */
 namespace Savant\AOP\Aspects;
 use Savant\AOP;
 use Savant\Utils\CFileLogging;
 
+/**
+ * @package AOP
+ * @subpackage Aspects
+ * provides aspect decorator of logging
+ */
 abstract class ALogging extends AOP\AAspect implements AOP\IAspect
 {
+    /**
+     * define base class of this aspect
+     * @var string
+     */
     public static $BASE_CLASS = 'Savant\Utils\CFileLogging';
 
-    /*public static function getJoinPointMask()
-    {
-        return array(
-            'Savant\AOP\JoinPoints\CMethodCall',
-            'Savant\AOP\JoinPoints\CConstructor',
-            'Savant\AOP\JoinPoints\CDestructor'
-        );
-    }*/
-
+    /**
+     * provides aspect functionality
+     * @param object $pObj object to configure
+     * @param AOP\AJoinPoint $pJoinPoint joinpoint
+     */
     public static function advice($pObj, AOP\AJoinPoint $pJoinPoint)
     {   
         switch($pJoinPoint->DIRECTION)

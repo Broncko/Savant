@@ -2,7 +2,8 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -18,8 +19,9 @@ namespace Savant;
 class EAutoTestCase extends EException {}
 
 /**
- * @abstract AAutoTestCase
  * @package Savant
- * just an empty class frame to provide an interface to extend to testcases
+ * just an empty class frame to provide an interface to extend testcases.
+ * if a testcase extends this class it will automatically be tested by the
+ * test suite.
  */
 abstract class AAutoTestCase extends ATestCase {} 

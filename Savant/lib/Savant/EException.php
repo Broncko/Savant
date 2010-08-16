@@ -2,9 +2,12 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ * This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
+ *
  *
  * @category   Savant
+ * @package    Savant
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
@@ -46,7 +49,15 @@ class EException extends \Exception
 		}
 		if(CBootstrap::$PERMANENT_LOG)
 		{
-                    $this->log();
+                    if(CBootstrap::$STATUS == CBootstrap::STATUS_ACTIVE)
+                    {
+                        $joinPoint = new AOP\JoinPoints\CException($this);
+                        AOP\AFramework::weave(null, $joinPoint);
+                    }
+                    else
+                    {
+                        CBootstrap::log($this->getMessage());
+                    }
 		}
 	}
 	
@@ -91,16 +102,6 @@ class EException extends \Exception
                     $ret .= '<hr/>';
                 }
 		return $ret;
-	}
-	
-	/**
-	 * logs exception to file
-	 */
-	public function log()
-	{	
-		$content = $this->getMessage().' '.$this->getFile().' :: line '.$this->getLine();
-		$logger = new Utils\CFileLogging();
-		$logger->log($content);
 	}
 	
 	/**

@@ -2,20 +2,15 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-
-/**
- * TODO: build joinpoint stack -> has moved to aop framework
- */
-
 namespace Savant;
-
 use Savant\AOP;
 
 /**
@@ -23,9 +18,6 @@ use Savant\AOP;
  * @package Savant
  * Main class, which encapsules basic functionality of all objects. It defines the top of the class tree
  * every new class should extend from this. (wait a minute, godclasses are evil!)
- *
- * TODO: try to seperate extending classes!
- * 
  */
 abstract class AStandardObject
 {
@@ -48,13 +40,13 @@ abstract class AStandardObject
 	public $config = null;
 	
         /**
-         * set dtd validation when config is being loaded
+         * set dtd validation when config is being loaded *eventually deprecated*
          * @var boolean
          */
         protected static $_DTD_VALID = true;
 	
 	/**
-	 * Constructor
+	 * create a standardobject instance
 	 * @param string $pConfig section of the configuration file
 	 */
 	public function __construct($pConfig = 'default')

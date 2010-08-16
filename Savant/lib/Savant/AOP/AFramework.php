@@ -2,7 +2,8 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -39,7 +40,7 @@ abstract class AFramework
      */
     public static function registerAspect($pAspect)
     {
-        $joinPointMask = \forward_static_call(array($pAspect, 'getJoinPointMask'));
+        $joinPointMask = \forward_statJoinPointsic_call(array($pAspect, 'getJoinPointMask'));
         self::registerPointCut(new CPointcut($pAspect, $joinPointMask));
     }
 
@@ -52,6 +53,11 @@ abstract class AFramework
         self::$pointcuts[] = $pPointcut;
     }
 
+    /**
+     * register given aspects when array is not empty. Otherwise the aspects
+     * will be fetched from the aspects folder
+     * @param array $pAspects
+     */
     public static function registerAspects($pAspects = array())
     {
         if(count($pAspects) == 0)
@@ -64,6 +70,10 @@ abstract class AFramework
         }
     }
 
+    /**
+     * get aspects from aspects folder
+     * @return array aspects
+     */
     public static function getAspectsFromFolder()
     {
         $dirIter = new \FilesystemIterator(\Savant\CBootstrap::$ASPECT_DIR, \FilesystemIterator::SKIP_DOTS);
@@ -77,6 +87,7 @@ abstract class AFramework
 
     /**
      * TODO: merge with getAspectsFromFolder
+     * get joinpoint from folder
      * @return array
      */
     public static function getJoinPointsFromFolder()

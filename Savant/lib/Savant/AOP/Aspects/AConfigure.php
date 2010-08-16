@@ -2,7 +2,8 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -15,7 +16,8 @@ use Savant\AOP;
 use Savant\CConfigure;
 
 /**
- * @package Aspects
+ * @package AOP
+ * @subpackage Aspects
  * provides aspect decorator of configuration
  */
 class AConfigure extends AOP\AAspect implements AOP\IAspect
@@ -66,7 +68,15 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
         }
 
         $class = \get_class($pObj);
-        $config = CConfigure::getClassConfig($class);
+        try
+        {
+            $config = CConfigure::getClassConfig($class);
+        }
+        catch(\Savant\EConfigure $e)
+        {
+            \Savant\CBootstrap::log($e->getMessage());
+            return;
+        }
         foreach($config as $confProp => $confVal)
         {
             try
