@@ -37,6 +37,12 @@ abstract class AConnection extends AStandardObject implements IConfigure, IConne
     public $PORT = 0;
 
     /**
+     * connection
+     * @var mixed
+     */
+    private $connection = null;
+
+    /**
      * create connection instance
      * @param string $pConfig
      */
@@ -59,5 +65,14 @@ abstract class AConnection extends AStandardObject implements IConfigure, IConne
     public function disconnect()
     {
 
+    }
+
+    /**
+     * check if connection already exists
+     * @return boolean
+     */
+    public function isConnected()
+    {
+        return ($this->isConnected() != null);
     }
 }

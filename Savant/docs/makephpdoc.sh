@@ -9,7 +9,7 @@ TARGET=/home/broncko/Documents/projects/Savant/docs/phpdoc/
 
 OUTPUTFORMAT=HTML
 
-CONVERTER=Smarty
+CONVERTER=frames
 
 TEMPLATE=default
 

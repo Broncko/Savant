@@ -7,24 +7,44 @@
  *
  * @category   Savant
  * @package    Savant
- * @subpackage
+ * @subpackage Storage
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 namespace Savant\Storage;
 
 /**
- * @package Storage
+ * @package Savant
+ * @subpackage Storage
  * exception handler of CDatabase
  */
 class EDatabase extends \Savant\EException {}
 
 /**
- * @package Storage
+ * @package Savant
+ * @subpackage Storage
  * provides abstract connection to a database
  */
 class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Savant\IConnection
 {
+    /**
+     * host
+     * @var string
+     */
+    public $HOST = '';
+
+    /**
+     * port
+     * @var integer
+     */
+    public $PORT = 0;
+
+    /**
+     * database
+     * @var string
+     */
+    public $DATABASE = '';
+
     /**
      * connection username credential
      * @var string $USERNAME
@@ -38,29 +58,115 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
     public $PASSWORD = '';
 
     /**
-     * connection driver class
-     * @var driver $DRIVER
+     * data source name
+     * @var string
      */
-    public $DRIVER = null;
+    public $DSN = '';
+
+    /**
+     * database driver class
+     * @var string
+     */
+    public $DRIVER = '';
 
     /**
      * database handler
-     * @var mixed $dbh
+     * @var PDO $dbh
      */
-    protected $dbh = null;
+    public $dbh = null;
 
     /**
-     * config section
-     * @param string $pConfig
+     * connection driver class
+     * @var Savant\Storage\Driver\IDriver
+     */
+    public $driver = null;
+
+    /**
+     * create database instance
+     * @param string $pConfig config section
      */
     public function __construct($pConfig = 'default')
     {
-        parent::__construct($pConfig);
-        echo "Hello World";
-        //$this->dbh = new $this->DRIVER($pConfig);
+        parent::__construct($pSection);
     }
 
-    public function connect() {}
+    /**
+     * kill database object
+     */
+    public function __destruct()
+    {
+        $this->disconnect();
+        parent::__destruct();
+    }
 
-    public function disconnect() {}
+    /**
+     * connect to defined database driver
+     * @param string $pConn
+     */
+    public function connect($pConn = 'default')
+    {
+        if(!$this->isConnected())
+        {
+            try
+            {
+                $this->driver->connect($this);
+                \Savant\CBootstrap::log("connect to %s as %s",$this->DSN,$this->USERNAME);
+            }
+            catch(EDatabase $e)
+            {
+                throw $e;
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    /**
+     * kill database connection
+     */
+    public function disconnect()
+    {
+        if(!$this->isConnected())
+        {
+            return;
+        }
+        $this->driver->disconnect($this);
+    }
+
+    /**
+     * set connection properties
+     * @param string $pConn
+     */
+    public function setConnection($pConn = 'default')
+    {
+        \Savant\CConfigure::configure($this, $pConn);
+    }
+
+    /**
+     * execute sql query with result set
+     * @param string $pSql
+     */
+    public function query($pSql)
+    {
+        if(!$this->isConnected())
+        {
+            throw new EDatabase("this method requires a database connection");
+        }
+        $this->dbh->query($pSql);
+    }
+
+    /**
+     * execute sql query without result set
+     * @param string $pSql
+     */
+    public function exec($pSql)
+    {
+        if(!$this->isConnected())
+        {
+            throw new EDatabase("this method requires a database connection");
+        }
+        $this->dbh->exec($pSql);
+    }
 }

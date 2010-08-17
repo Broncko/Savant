@@ -1,32 +1,32 @@
 phploc 1.5.1 by Sebastian Bergmann.
 
-Directories:                                         23
-Files:                                               72
+Directories:                                         17
+Files:                                               66
 
-Lines of Code (LOC):                               3320
+Lines of Code (LOC):                               4171
   Cyclomatic Complexity / Lines of Code:           0.04
-Comment Lines of Code (CLOC):                      1223
-Non-Comment Lines of Code (NCLOC):                 2097
+Comment Lines of Code (CLOC):                      2106
+Non-Comment Lines of Code (NCLOC):                 2065
 
-Namespaces:                                          23
+Namespaces:                                          18
 Interfaces:                                          10
-Classes:                                             98
-  Abstract:                                          10 (10.20%)
-  Concrete:                                          88 (89.80%)
-  Average Class Length (NCLOC):                      19
-Methods:                                            190
+Classes:                                             92
+  Abstract:                                          14 (15.22%)
+  Concrete:                                          78 (84.78%)
+  Average Class Length (NCLOC):                      21
+Methods:                                            179
   Scope:
-    Non-Static:                                     156 (82.11%)
-    Static:                                          34 (17.89%)
+    Non-Static:                                     130 (72.63%)
+    Static:                                          49 (27.37%)
   Visibility:
-    Public:                                         158 (83.16%)
-    Non-Public:                                      32 (16.84%)
-  Average Method Length (NCLOC):                      9
-  Cyclomatic Complexity / Number of Methods:       1.39
+    Public:                                         154 (86.03%)
+    Non-Public:                                      25 (13.97%)
+  Average Method Length (NCLOC):                     11
+  Cyclomatic Complexity / Number of Methods:       1.51
 
 Anonymous Functions:                                  0
 Functions:                                            0
 
-Constants:                                           35
+Constants:                                           38
   Global constants:                                   0
-  Class constants:                                   35
+  Class constants:                                   38

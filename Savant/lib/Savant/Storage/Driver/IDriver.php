@@ -7,28 +7,25 @@
  *
  * @category   Savant
  * @package    Savant
- * @subpackage DataSet
+ * @subpackage Driver
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-namespace Savant\Storage\DataSet;
+namespace Savant\Storage\Driver;
 
 /**
- * @package Storage
- * @subpackage DataSet
- * exception handling of CDataSetProvider
+ * database driver interface. Each database driver class has to implement this
+ * interface to provide global db functionality
  */
-class EDataSetProvider extends \Savant\EException {}
-
-/**
- * @package Storage
- * @subpackage DataSet
- * this class provides datasets from several sources
- */
-class CDataSetProvider
+interface IDriver
 {
-    public function query()
-    {
+    /**
+     * establish db connection
+     */
+    public function connect(Savant\Storage\CDatabase $pDb);
 
-    }
+    /**
+     * kill db connection
+     */
+    public function disconnect();
 }

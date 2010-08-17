@@ -13,6 +13,10 @@
 namespace Savant;
 require_once 'PHPUnit/Framework.php';
 
+/**
+ * @package Savant
+ * exception handling of ATestCase
+ */
 class ETestCase extends EException {}
 
 /**
