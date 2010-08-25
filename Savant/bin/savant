@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
+# ===========================================================================
+# Savant PHP Data Platform
+# Command Line Interface for Unix
+#
+# Usage: savant [OPTIONS] CLASS[::METHOD] [ARGUMENTS]
+# ---------------------------------------------------------------------------
+# $Id
+# ===========================================================================
 SAVANT_PHP_FILE=`readlink -f $0`
 SAVANT_PATH=`dirname $SAVANT_PHP_FILE`
-php -f $SAVANT_PATH/SavantCLI.php $@
+php -f $SAVANT_PATH/SavantCLI.php -- $@
 echo 

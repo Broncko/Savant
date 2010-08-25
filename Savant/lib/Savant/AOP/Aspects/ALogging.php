@@ -34,25 +34,54 @@ abstract class ALogging extends AOP\AAspect implements AOP\IAspect
      * @param AOP\AJoinPoint $pJoinPoint joinpoint
      */
     public static function advice($pObj, AOP\AJoinPoint $pJoinPoint)
-    {   
-        switch($pJoinPoint->DIRECTION)
-        {
-                case AOP\AJoinPoint::DIRECTION_IN:
-                        $indent = \str_repeat(CFileLogging::LOG_INDENT, CFileLogging::$INDENT_COUNT);
-                        $action = 'enter';
-                        CFileLogging::$INDENT_COUNT += 1;
-                        break;
-                case AOP\AJoinPoint::DIRECTION_OUT:
-                        CFileLogging::$INDENT_COUNT -= 1;
-                        $indent = \str_repeat(CFileLogging::LOG_INDENT, CFileLogging::$INDENT_COUNT);
-                        $action = 'leave';
-                        break;
-        }
-
+    {
         $method = (\property_exists($pJoinPoint, 'METHOD') ? $pJoinPoint->METHOD : '');
         $args = (\property_exists($pJoinPoint, 'ARGS') ? $pJoinPoint->ARGS : array());
 
-        $content = sprintf('%s%s %s %s->%s(%s)',$indent,$action,$pJoinPoint->LABEL,$pJoinPoint->CLASS,$method,implode(',',$args));
-        \Savant\CBootstrap::log($content);
+        switch($pJoinPoint->DIRECTION)
+        {
+            case AOP\AJoinPoint::DIRECTION_IN:
+                $indent = \str_repeat(CFileLogging::LOG_INDENT, CFileLogging::$INDENT_COUNT);
+                CFileLogging::$INDENT_COUNT += 1;
+                switch(true)
+                {
+                    case $pJoinPoint instanceof AOP\JoinPoints\CConstructor:
+                    case $pJoinPoint instanceof AOP\JoinPoints\CDestructor:
+                        $content = sprintf('%s%s %s', $indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS);
+                        break;
+                    case $pJoinPoint instanceof AOP\JoinPoints\CException:
+                        $content = sprintf('%s%s %s %s', $indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $pJoinPoint->MESSAGE);
+                        break;
+                    case $pJoinPoint instanceof AOP\JoinPoints\CClassLoader:
+                        $content = sprintf('%s%s %s from frile %s', $indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $pJoinPoint->file);
+                        break;
+                    case $pJoinPoint instanceof AOP\JoinPoints\CMethodCall:
+                        $content = sprintf('%senter %s %s->%s(%s)',$indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $method, \implode(',', $args));
+                        break;
+                    default:
+                        $content = sprintf('%senter %s->%s(%s)',$indent, $pJoinPoint->CLASS, $method, \implode(',', $args));
+                }
+                break;
+            case AOP\AJoinPoint::DIRECTION_OUT:
+                CFileLogging::$INDENT_COUNT -= 1;
+                $indent = \str_repeat(CFileLogging::LOG_INDENT, CFileLogging::$INDENT_COUNT);
+                switch(true)
+                {
+                    case $pJoinPoint instanceof AOP\JoinPoints\CMethodCall:
+                        $content = sprintf('%senter %s %s->%s(%s)',$indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $method, \implode(',', $args));
+                        break;
+                    case $pJoinPoint instanceof AOP\JoinPoints\CConstructor:
+                    case $pJoinPoint instanceof AOP\JoinPoints\CDestructor:
+                    case $pJoinPoint instanceof AOP\JoinPoints\CClassLoader:
+                    case $pJoinPoint instanceof AOP\JoinPoints\CException:
+                    default:
+                        break;
+                }
+                break;
+        }
+        if(isset($content) && $content != '')
+        {
+            \Savant\CBootstrap::log($content);
+        }
     }
 }

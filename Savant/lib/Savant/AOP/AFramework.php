@@ -40,7 +40,7 @@ abstract class AFramework
      */
     public static function registerAspect($pAspect)
     {
-        $joinPointMask = \forward_statJoinPointsic_call(array($pAspect, 'getJoinPointMask'));
+        $joinPointMask = \forward_static_call(array($pAspect, 'getJoinPointMask'));
         self::registerPointCut(new CPointcut($pAspect, $joinPointMask));
     }
 

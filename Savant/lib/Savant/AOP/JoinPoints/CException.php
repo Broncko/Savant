@@ -34,6 +34,12 @@ class CException extends AJoinPoint
     public $NAME = 'Exception';
 
     /**
+     * message
+     * @var string
+     */
+    public $MESSAGE = '';
+
+    /**
      * exception object
      * @var Savant\EException
      */
@@ -50,10 +56,11 @@ class CException extends AJoinPoint
      * @param Savant\EException $pE
      * @param object $pHandler
      */
-    public function __construct($pE = null, $pHandler = null)
+    public function __construct(\Savant\EException $pE, $pHandler = null)
     {
         parent::__construct(get_class($pE));
         $this->e = $pE;
+        $this->MESSAGE = $pE->getMessage();
         $this->handler = $pHandler;
     }
 }

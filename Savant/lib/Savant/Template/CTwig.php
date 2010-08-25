@@ -14,6 +14,7 @@
  * check if that can be fixed without modifying twig code
  */
 namespace Savant\Template;
+require_once \Savant\CBootstrap::$EXT_DIR.\DIRECTORY_SEPARATOR.'extNamespaceWrapper.php';
 
 /**
  * @package Savant
@@ -42,10 +43,10 @@ class CTwig extends AEngine implements IEngine
     public function __construct($pSection = 'default')
     {
         parent::__construct($pSection);
-        spl_autoload_register(array(__CLASS__,'loadTwigClass'));
-        $loader = new Twig_Loader_Filesystem($this->TEMPLATE_DIR);
+        spl_autoload_register(array(new self,'loadClass'));
+        $loader = \invokeClass('Twig_Loader_Filesystem',array($this->TEMPLATE_DIR));
         $options = array('cache' => $this->COMPILE_DIR);
-        $this->twig = new Twig_Environment($loader, $options);
+        $this->twig = \invokeClass('Twig_Environment',array($loader, $options));
     }
 
     /**
@@ -70,18 +71,17 @@ class CTwig extends AEngine implements IEngine
      * class loader for twig classes
      * @param string $pClass twig class
      */
-    public function loadTwigClass($pClass)
+    public function loadClass($pClass)
     {
-        echo "try to load twig class ".$pClass."\n";
+        echo $pClass."\n";
         $twigDir = \Savant\CBootstrap::$EXT_DIR . \DIRECTORY_SEPARATOR . 'Twig' . \DIRECTORY_SEPARATOR . 'lib';
         $pClass = \array_reverse(\explode('\\', $pClass));
         $twigFile = $twigDir . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $pClass[0]) . '.php';
-        echo "twig file ".$twigFile."\n";
         if(!\file_exists($twigFile))
         {
-            throw new ETwig("can't find Twig autoloader in %s", $twigFile);
+            throw new ETwig("can't find Twig class in %s", $twigFile);
         }
-        echo "... load file ...\n";
+        echo $twigFile."\n";
         require_once $twigFile;
     }
 }

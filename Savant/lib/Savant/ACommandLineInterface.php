@@ -17,7 +17,13 @@ namespace Savant;
  * @package Savant
  * exception handling of commandline interface
  */
-class ECommandLineInterface extends EException {}
+class ECommandLineInterface extends EException
+{
+    public function __toString()
+    {
+        return $this->getMessage();
+    }
+}
 
 /**
  * @package Savant
@@ -37,10 +43,22 @@ abstract class ACommandLineInterface
         {
             throw new ECommandLineInterface("invalid argruments");
         }
-        $parsedArgs = self::parseArgs($pArgs);
-        $res = AGenericCallInterface::call($parsedArgs->class, $parsedArgs->method, $parsedArgs->args);
-        print_r($res);
-        return true;
+        if(count($pArgs) < 2)
+        {
+            print("Usage: savant [OPTIONS] CLASS[::METHOD] [ARGUMENTS]\nTry savant --help for more information\n");
+        }
+        else
+        {
+            $parsedArgs = self::parseArgs($pArgs);
+            if(isset($parsedArgs->options) == '--help')
+            {
+                print(self::getHelp());
+                return true;
+            }
+            $res = AGenericCallInterface::call($parsedArgs->class, $parsedArgs->method, $parsedArgs->args);
+            print_r($res);
+            return true;
+        }
     }
 
     /**
@@ -52,6 +70,10 @@ abstract class ACommandLineInterface
     public static function parseArgs($pArgs)
     {
         $argArr['self'] = \array_shift($pArgs);
+        if($pArgs[0][0] == '-')
+        {
+            $argArr['options'] = \array_shift($pArgs);
+        }
         $argArr['class'] = \array_shift($pArgs);
         $argArr['method'] = \array_shift($pArgs);
         $argArr['args'] = $pArgs;
@@ -61,6 +83,6 @@ abstract class ACommandLineInterface
 
     private static function getHelp()
     {
-
+        return "Please hold the line";
     }
 }

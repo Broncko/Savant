@@ -67,6 +67,7 @@ class EException extends \Exception
 	 */
 	public function __toString()
 	{
+            return $this->getTraceAsString();
 		//print_r($this);
                 $trace = $this->getTrace();
                 $firstTrace = \array_shift($trace);
