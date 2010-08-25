@@ -5,7 +5,7 @@
 #
 # Usage: savant [OPTIONS] CLASS[::METHOD] [ARGUMENTS]
 # ---------------------------------------------------------------------------
-# $Id
+# $Id: hc4p 475 2008-01-05 23:55:30Z avarney $
 # ===========================================================================
 SAVANT_PHP_FILE=`readlink -f $0`
 SAVANT_PATH=`dirname $SAVANT_PHP_FILE`
