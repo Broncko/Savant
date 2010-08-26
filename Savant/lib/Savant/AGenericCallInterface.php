@@ -68,7 +68,7 @@ abstract class AGenericCallInterface
                 break;
             case self::MODE_OBJECT:
                 $instance = new $pClass;
-                $res = \call_user_func_array(array($instance, $pMethod), $pArgs);
+                $res = \call_user_method_array($pMethod, $instance, $pArgs);
         }
         return $res;
     }

@@ -28,7 +28,7 @@ class EHttp extends \Savant\EException {}
  *
  * TODO: handle http error codes correctly (catch and pass through EHttp)
  */
-class CHttp extends \Savant\AStandardObject
+class CHttp extends \Savant\AStandardObject implements \Savant\IConfigure
 {
     /**
      * http request method GET
@@ -62,9 +62,9 @@ class CHttp extends \Savant\AStandardObject
      * Constructor
      * @param string $pUrl url
      */
-    public function __construct()
+    public function __construct($pSection = 'default')
     {
-        parent::__construct();
+        parent::__construct($pSection);
     }
 
     /**
@@ -98,20 +98,24 @@ class CHttp extends \Savant\AStandardObject
      * send http request
      * @param string $pUrl url to send request to
      * @param string $pType request type GET/POST
-     * @param array $pParams associative array of parameters
+     * @param array $pContent associative array of parameters
      * @return string any type of data
      */
-    public function send($pType = self::HTTP_GET, $pParams = array())
+    public function send($pContent, $pType = null)
     {
+        if(\is_null($pType))
+        {
+            $pType = $this->REQUEST_TYPE;
+        }
         switch(strtoupper($pType))
         {
             case self::HTTP_GET:
-                $context = self::buildGetContext($pParams);
+                $context = self::buildGetContext($pContent);
                 $url = $this->REQUEST_URL . '?' . $context;
                 echo file_get_contents($url, false);
                 break;
             case self::HTTP_POST:
-                $context = self::buildPostContext($pParams);
+                $context = self::buildPostContext($pContent);
                 return file_get_contents($this->REQUEST_URL, false, $context);
                 break;
             default:
@@ -144,6 +148,15 @@ class CHttp extends \Savant\AStandardObject
             )
         );
         return stream_context_create($optArr);
+    }
+
+    /**
+     * send a post request to a webserver and read the response
+     * @return mixed
+     */
+    public static function getPostData()
+    {
+        return \file_get_contents('php://input');
     }
 
 }

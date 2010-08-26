@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <default>
+            <request_url>http://localhost/projects/Savant/htdocs/xmlrpcserver.php</request_url>
+            <request_type>post</request_type>
+        </default>
+    </configurations>
+</config>

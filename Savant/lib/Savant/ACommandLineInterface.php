@@ -21,7 +21,7 @@ class ECommandLineInterface extends EException
 {
     public function __toString()
     {
-        return $this->getMessage();
+        return $this->getMessage()."\n";
     }
 }
 
@@ -74,8 +74,16 @@ abstract class ACommandLineInterface
         {
             $argArr['options'] = \array_shift($pArgs);
         }
-        $argArr['class'] = \array_shift($pArgs);
-        $argArr['method'] = \array_shift($pArgs);
+        $classmethod = \array_shift($pArgs);
+        if(\strpos($classmethod, "::") === true)
+        {
+            list($argArr['class'],$argArr['method']) = \explode('::', $classmethod);
+        }
+        else
+        {
+            $argArr['class'] = $classmethod;
+            $argArr['method'] = 'main';
+        }
         $argArr['args'] = $pArgs;
 
         return (object)$argArr;

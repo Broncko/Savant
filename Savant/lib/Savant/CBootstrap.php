@@ -10,6 +10,10 @@
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
+/**
+ * TODO: seperate framework methods from bootstrap file. some methods like
+ * extensionLoaded() or log() dont belong to the bootstrap sequence.
+ */
 namespace Savant;
 require_once 'EException.php';
 require_once 'CConfigure.php';
@@ -323,6 +327,18 @@ final class CBootstrap
         if(isset(self::$LOGGER) && self::$LOGGER->count() > 0)
         {
             self::$LOGGER->log($pContent);
+        }
+    }
+
+    /**
+     * check if needed extension is loaded
+     * @param string $pExtension
+     */
+    public static function extensionLoaded($pExtension)
+    {
+        if(!\extension_loaded($pExtension))
+        {
+            throw new EBootstrap("extension %s is not loaded, check php.ini configuration",$pExtension);
         }
     }
 }
