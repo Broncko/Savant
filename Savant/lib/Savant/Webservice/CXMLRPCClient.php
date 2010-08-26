@@ -93,11 +93,11 @@ class CXMLRPCCLient extends \Savant\AStandardObject implements \Savant\IConnecti
     public function call($pMethod, $pArgs = array())
     {
         $request = \xmlrpc_encode_request($pMethod, $pArgs);
-
-        $file = $this->httpHandler->send($request);
-
+        
+        $file = $this->httpHandler->send(array($request));
+        
         $response = \xmlrpc_decode($file);
-
+        
         return $response;
     }
 }

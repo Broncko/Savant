@@ -50,7 +50,7 @@ class CRemoteXMLRPCServer extends Webservice\AXMLRPCServer
      */
     public function call($pClass, $pMethod = 'main', $pArgs = array())
     {
-        return \base64_encode(\serialize(AGenericCallInterface::call($pClass, $pMethod, $pArgs)));
+        return AGenericCallInterface::call($pClass, $pMethod, $pArgs);
     }
 
     /**

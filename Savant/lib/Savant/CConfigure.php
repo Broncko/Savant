@@ -48,7 +48,7 @@ class CConfigure
         $confFile = ($pObj instanceof AStandardObject ? $pObj->confFile : CBootstrap::getConfigFile(\get_class($pObj)));
         if(!file_exists($confFile))
         {
-                throw new EConfigure('config file %s does not exist',$confFile, 120);
+            throw new EConfigure('config file %s does not exist',$confFile, 120);
         }
         $this->simpleXml = self::load($pObj->confFile); //TODO: implement dtd validation
         $this->configObj = $pObj;

@@ -26,7 +26,7 @@ class EXMLRPCServer extends \Savant\EException {}
  * provides an abstract xmlrpc server that every concrete xmlrpc server can
  * be derived from.
  */
-abstract class AXMLRPCServer
+abstract class AXMLRPCServer extends \Savant\AStandardObject
 {
     /**
      * php5's build in xmlrpc functions
@@ -55,7 +55,7 @@ abstract class AXMLRPCServer
      * @param string $pMethod
      * @param string $pCallback
      */
-    public function registerMethod($pMethod, $pCallback = null)
+    public function _registerMethod($pMethod, $pCallback = null)
     {
         if(!isset($pCallback))
         {
@@ -65,7 +65,10 @@ abstract class AXMLRPCServer
         {
             throw new EXMLRPCServer("method %s is not callable",$pMethod);
         }
-        \xmlrpc_server_register_method($this->server, $pMethod, $pCallback);
+        if(!\xmlrpc_server_register_method($this->server, $pMethod, $pCallback))
+        {
+            throw new EXMLRPCServer("method %s could not be registered",$pMethod);
+        }
     }
 
     /**
@@ -75,19 +78,19 @@ abstract class AXMLRPCServer
      * @param boolean $displayReponse
      * @return mixed
      */
-    public function handle($pData = null, $displayReponse = true)
+    public function _handle($pData = null, $displayReponse = true)
     {
         if(\is_null($pData))
         {
-            $pData = \Savant\Protocol\AHttp::getPostData();
+            $pData = \Savant\Protocol\CHttp::getPostData();
         }
         if(empty($pData))
         {
             throw new EXMLRPCServer("invalid xml rpc call without data");
         }
-
-        $response = \xmlrpc_server_call_method($this->server, $data, '');
-
+        \Savant\CBootstrap::setContentType(\Savant\CBootstrap::CONTENT_TYPE_XMLRPC);
+        $response = \xmlrpc_server_call_method($this->server, $pData, '');
+        
         if($displayReponse)
         {
             print $response;

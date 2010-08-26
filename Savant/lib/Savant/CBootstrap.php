@@ -86,6 +86,24 @@ final class CBootstrap
     const STATUS_FINALIZING = 3;
 
     /**
+     * content type html
+     * @var string
+     */
+    const CONTENT_TYPE_HTML = 'text/html';
+
+    /**
+     * content type xml
+     * @var string
+     */
+    const CONTENT_TYPE_XML = 'text/xml';
+
+    /**
+     * content type for xmlrpc
+     * @var string
+     */
+    const CONTENT_TYPE_XMLRPC = 'application/x-www-form-urlencoded';
+
+    /**
      * log level
      * @var string
      */
@@ -340,5 +358,18 @@ final class CBootstrap
         {
             throw new EBootstrap("extension %s is not loaded, check php.ini configuration",$pExtension);
         }
+    }
+
+    /**
+     * set content type
+     * @param string $pType
+     */
+    public static function setContentType($pType)
+    {
+        if(\headers_sent())
+        {
+            \header_remove();
+        }
+        header(sprintf("Content-type: %s\r\n",$pType));
     }
 }

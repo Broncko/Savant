@@ -1,4 +1,5 @@
 <?php
 require_once '../savant.php';
 
-\Savant\CRemoteXMLRPCServer::create();
+$server = \Savant\CRemoteXMLRPCServer::create();
+$server->handle($HTTP_RAW_POST_DATA);

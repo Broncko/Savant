@@ -3,7 +3,8 @@
     <configurations>
         <default>
             <request_url>http://localhost/projects/Savant/htdocs/xmlrpcserver.php</request_url>
-            <request_type>post</request_type>
+            <request_type>POST</request_type>
+            <content_type>application/x-www-form-urlencoded</content_type>
         </default>
     </configurations>
 </config>
