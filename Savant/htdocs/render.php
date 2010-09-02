@@ -1,17 +1,22 @@
 <?php
 use \Savant\Controller\CFrontController as CFrontController;
+use Savant\Template\CChunk as CChunk;
+use Savant\Storage\DataSet\CDataSet as CDataSet;
 
-require_once 'bootstrapper.php';
+require_once '../savant.php';
 
 try 
 {
-        echo "<pre>";
-	$webservice = CFrontController::main();
-	$webservice->querySomething('test', array('test1','test2'));
-	echo "</pre>";
+    $engine = new CChunk();
+    $fc = new CFrontController($engine);
+    $testdata = new CDataSet();
+    $testdata->addRow((object)array('testvar'=>'Welt'));
+    $testdata->addRow((object)array('testvar2'=>'Hendrik'));
+    $fc->merge($testdata);
+    $fc->out();
 }
-catch(Exception $e)
+catch(EException $e)
 {
-	print_r($e->getTrace());
+    echo $e;
 }
 ?>

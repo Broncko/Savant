@@ -30,7 +30,7 @@ class ETwig extends \Savant\EException {}
  */
 class CTwig extends AEngine implements IEngine
 {
-    /**<type>
+    /**
      * twig environment
      * @var Twig_Environment
      */
@@ -43,10 +43,10 @@ class CTwig extends AEngine implements IEngine
     public function __construct($pSection = 'default')
     {
         parent::__construct($pSection);
-        spl_autoload_register(array(new self,'loadClass'));
-        $loader = \invokeClass('Twig_Loader_Filesystem',array($this->TEMPLATE_DIR));
+        spl_autoload_register(array(__CLASS__,'loadClass'));
+        $loader = new \Twig_Loader_Filesystem($this->TEMPLATE_DIR);
         $options = array('cache' => $this->COMPILE_DIR);
-        $this->twig = \invokeClass('Twig_Environment',array($loader, $options));
+        $this->twig = \Twig_Environment($loader, $options);
     }
 
     /**

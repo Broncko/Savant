@@ -23,5 +23,14 @@ interface IEngine
     /**
      * render template
      */
-    public function render();
+    public function render($pDisplay = true);
+
+    /**
+     * assign data to template
+     */
+    public function assign($pData);
+    /**
+     * set template
+     */
+    public function setTemplate($pTemplate);
 }

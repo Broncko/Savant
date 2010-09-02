@@ -18,6 +18,6 @@ class CSoapServer extends \Savant\AStandardObject implements \Savant\IConfigure
 	
 	public function _querySomething()
 	{
-		echo "query something - magic function";
+		echo "query something";
 	}
 }

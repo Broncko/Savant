@@ -51,7 +51,7 @@ class CDataSet implements \IteratorAggregate, \Countable
     }
 
     /**
-     * provide iterator
+     * provide iterator$pTemplate
      * @return ArrayIterator
      */
     public function getIterator()
@@ -86,5 +86,14 @@ class CDataSet implements \IteratorAggregate, \Countable
     public function addRow($pData)
     {
         $this->data->attach($pData);
+    }
+
+    /**
+     * returns dataset data as array
+     * @return array
+     */
+    public function getDataAsArray()
+    {
+        return (array)$this->data;
     }
 }

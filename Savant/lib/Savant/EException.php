@@ -37,28 +37,28 @@ class EException extends \Exception
 	 */
 	public function __construct()
 	{
-		$args = \func_get_args();
-                $message = \array_shift($args);
-		if(count($args) > 0)
-		{
-                    parent::__construct(vsprintf($message,$args)."\n");
-		}
-		else
-		{
-                    parent::__construct($message."\n");
-		}
-		if(CBootstrap::$PERMANENT_LOG)
-		{
-                    if(CBootstrap::$STATUS == CBootstrap::STATUS_ACTIVE)
-                    {
-                        $joinPoint = new AOP\JoinPoints\CException($this);
-                        AOP\AFramework::weave(null, $joinPoint);
-                    }
-                    else
-                    {
-                        CBootstrap::log($this->getMessage());
-                    }
-		}
+            $args = \func_get_args();
+            $message = \array_shift($args);
+            if(count($args) > 0)
+            {
+                parent::__construct(vsprintf($message,$args)."\n");
+            }
+            else
+            {
+                parent::__construct($message."\n");
+            }
+            if(CBootstrap::$PERMANENT_LOG)
+            {
+                if(CBootstrap::$STATUS == CBootstrap::STATUS_ACTIVE)
+                {
+                    $joinPoint = new AOP\JoinPoints\CException($this);
+                    AOP\AFramework::weave(null, $joinPoint);
+                }
+                else
+                {
+                    CBootstrap::log($this->getMessage());
+                }
+            }
 	}
 	
 	/**
@@ -67,16 +67,26 @@ class EException extends \Exception
 	 */
 	public function __toString()
 	{
-            return $this->getTraceAsString();
-		//print_r($this);
+            if(CBootstrap::$MODE == CBootstrap::MODE_CLI)
+            {
+                return $this->getTraceAsString();
+            }
+            else
+            {
                 $trace = $this->getTrace();
+                
                 $firstTrace = \array_shift($trace);
-                $ret = "<h3>Error</h3><br/>";
-                $ret .= $this->getCode().' '.$this->getMessage().'<br/>';
-                $ret .= $this->getFile().' line '.$this->getLine().'<br/>';
-                $ret .= (!empty($firstTrace["class"])?$firstTrace["class"].$firstTrace["type"].$firstTrace["function"]:$firstTrace["function"]).'()<br/>';
-                $ret .= implode('<br/>',self::getLOC($this->getFile(), $this->getLine(), 3)).'<br/><hr/>';
-		foreach(\array_reverse($this->getTrace(), true) as $traceline)
+
+                $ret = (!empty($firstTrace["class"])?$firstTrace["class"].$firstTrace["type"].$firstTrace["function"]:$firstTrace["function"]).'()<br/>';
+                $ret = \implode(self::getLOC($this->getFile(), $this->getLine(), 5));
+                return \highlight_string("<?php\n".$ret,true);
+                foreach(self::getLOC($this->getFile(), $this->getLine(), 5) as $lineNumber => $line)
+                {
+                    $ret .= $lineNumber.($lineNumber==$this->getLine()?'*':'').' '.$line;
+                }
+                
+                return $ret;
+                /*foreach(\array_reverse($this->getTrace(), true) as $traceline)
                 {
                     $sloc = '';
                     $traceline["line"] -= 1;
@@ -101,8 +111,16 @@ class EException extends \Exception
                         }
                     }
                     $ret .= '<hr/>';
-                }
-		return $ret;
+                }*/
+
+                $errTplFile = CBootstrap::$SKINS_DIR . \DIRECTORY_SEPARATOR . 'error' . Template\CChunk::SUFFIX;
+                $errTpl = new Template\CChunk();
+                $errTpl->setTemplate($errTplFile);
+                $errTpl->code = $this->getCode();
+                $errTpl->message = $this->getMessage();
+                $errTpl->trace = $ret;
+                return $errTpl->render(false);
+            }
 	}
 	
 	/**
@@ -114,15 +132,15 @@ class EException extends \Exception
 	 */
 	private static function getLOC($pFile = '', $pLine = 0, $pLineDiff = 0)
 	{
-		$lineArr = file($pFile);
-                if($pLineDiff != 0)
+            $lineArr = file($pFile);
+            if($pLineDiff != 0)
+            {
+                for($counter = $pLine-$pLineDiff; $counter <= $pLine+$pLineDiff; $counter++)
                 {
-                    for($counter = $pLine-$pLineDiff; $counter <= $pLine+$pLineDiff; $counter++)
-                    {
-                        $lines[$counter] = $lineArr[$counter];
-                    }
-                    return $lines;
+                    $lines[$counter+1] = $lineArr[$counter];
                 }
-		return $lineArr[$pLine-1];
+                return $lines;
+            }
+            return $lineArr[$pLine-1];
 	}
 }

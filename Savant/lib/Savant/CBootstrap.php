@@ -32,6 +32,18 @@ class EBootstrap extends EException {}
 final class CBootstrap
 {
     /**
+     * framework mode web
+     * @var string
+     */
+    const MODE_WEB = 'web';
+
+    /**
+     * framework mode cli
+     * @var string
+     */
+    const MODE_CLI = 'cli';
+
+    /**
      * level debug
      * @var string
      */
@@ -104,6 +116,12 @@ final class CBootstrap
     const CONTENT_TYPE_XMLRPC = 'application/x-www-form-urlencoded';
 
     /**
+     * framework mode
+     * @var string
+     */
+    public static $MODE = self::MODE_WEB;
+
+    /**
      * log level
      * @var string
      */
@@ -144,6 +162,12 @@ final class CBootstrap
      * @var string
      */
     public static $LIB_DIR;
+
+    /**
+     * skins folder
+     * @var string
+     */
+    public static $SKINS_DIR;
 
     /**
      * framework folder
@@ -250,6 +274,7 @@ final class CBootstrap
         self::$ROOT_DIR = \realpath(self::$BASE_DIR . \DIRECTORY_SEPARATOR . '..');
         self::$CONF_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'conf';
         self::$LIB_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'lib';
+        self::$SKINS_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'skins';
         self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
         self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
         self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
@@ -267,6 +292,16 @@ final class CBootstrap
 
         \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
         \register_shutdown_function(array('Savant\CBootstrap', 'finalize'));
+
+        if(isset($_SERVER['HTTP_USER_AGENT']))
+        {
+            self::$MODE = self::MODE_WEB;
+        }
+        else
+        {
+            self::$MODE = self::MODE_CLI;
+        }
+
         self::$LOGGER = new Utils\CMultiLogging();
         self::$LOGGER->addLogger(new Utils\CFileLogging());
 

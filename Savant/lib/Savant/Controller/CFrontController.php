@@ -31,15 +31,53 @@ class EFrontController extends \Savant\EException {}
  */
 class CFrontController
 {
-    public $engine = null;
+    /**
+     * template engine
+     * @var Savant\Template\IEngine
+     */
+    private $engine = null;
 
+    /**
+     * create frontcontroller instance
+     * @param \Savant\Template\IEngine $pEngine
+     */
     public function __construct(\Savant\Template\IEngine $pEngine)
     {
+        $params = self::parseRequest();
+        $tplFile = \Savant\CBootstrap::$SKINS_DIR .\DIRECTORY_SEPARATOR . $params->tpl . $pEngine::SUFFIX;
+        $pEngine->setTemplate($tplFile);
         $this->engine = $pEngine;
     }
 
-    public function parseRequest()
+    /**
+     * merge template with data
+     * @param \Savant\Storage\DataSet\CDataSet $pData
+     */
+    public function merge(\Savant\Storage\DataSet\CDataSet $pData)
     {
-        print_r($_REQUEST);
+        foreach($pData->data as $row)
+        {
+            foreach($row as $tplVar => $var)
+            {
+                $this->engine->{$tplVar} = $var;
+            }
+        }
+    }
+
+    /**
+     * print template
+     */
+    public function out()
+    {
+        $this->engine->render();
+    }
+
+    /**
+     * parse url request
+     * @return object $_REQUEST as object
+     */
+    public static function parseRequest()
+    {
+        return (object)$_REQUEST;
     }
 }
