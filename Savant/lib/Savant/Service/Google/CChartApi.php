@@ -33,7 +33,7 @@ class CChartApi extends \Savant\AStandardObject
 	 * default api url, without parameters
 	 * @var string
 	 */
-	public API_URL = 'http://chart.apis.google.com/chart';
+	public $API_URL = 'http://chart.apis.google.com/chart';
 	
 	/**
 	 * holds params to add to API_URL

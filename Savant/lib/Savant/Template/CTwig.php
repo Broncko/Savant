@@ -53,7 +53,7 @@ class CTwig extends AEngine implements IEngine
      * load template from file
      * @param string $pTemplate template file name
      */
-    public function loadTemplate($pTemplate = '')
+    public function setTemplate($pTemplate = '')
     {
         $this->template = $this->twig->loadTemplate($pTemplate);
     }
@@ -62,7 +62,7 @@ class CTwig extends AEngine implements IEngine
      * render template
      * @return string
      */
-    public function render()
+    public function render($pDisplay = true)
     {
         return $this->template->render($this->data);
     }

@@ -10,11 +10,11 @@
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-namespace \Savant\Security;
+namespace Savant\Security;
 
 class EContext extends \Savant\EException {}
 
-class CContext extends \Savant\CStandardObject implements \Savant\IConfigure
+class CContext extends \Savant\AStandardObject implements \Savant\IConfigure
 {
     public $MODULES = array();
 

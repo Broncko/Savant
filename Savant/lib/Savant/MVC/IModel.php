@@ -19,17 +19,6 @@ namespace Savant\MVC;
 interface IModel
 {
     /**
-     * model label
-     * @var string
-     */
-    public static $LABEL;
-
-    /**
-     * model description
-     * @var string
-     */
-    public static $DESCRIPTION;
-    /**
      * get query meta data
      */
     public function __metaDefaultQuery();

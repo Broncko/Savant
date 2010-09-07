@@ -10,7 +10,7 @@
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-namespace \Savant\Security;
+namespace Savant\Security;
 
 interface IModule
 {

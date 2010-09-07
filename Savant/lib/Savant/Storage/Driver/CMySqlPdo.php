@@ -3,7 +3,7 @@ namespace Savant\Storage\Driver;
 
 class EMySqlPdo extends \Savant\EException {}
 
-class CMySqlPdo implements IStorage, \Savant\IConfigure
+class CMySqlPdo implements \Savant\IConfigure
 {
     public $DSN = '';
 

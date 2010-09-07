@@ -10,13 +10,13 @@
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-namespace \Savant\Utils;
+namespace Savant\Utils;
 
 use \Savant\AOP;
 
 class EBenchmark extends \Savant\EException {}
 
-class CBenchmark extends \Savant\CStandardObject implements \Savant\IConfigure
+class CBenchmark extends \Savant\AStandardObject implements \Savant\IConfigure
 {
     public function __construct()
     {

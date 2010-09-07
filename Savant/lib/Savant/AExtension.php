@@ -11,7 +11,7 @@
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 namespace Savant;
-require_once 'extNamespaceWrapper.php';
+//require_once 'extNamespaceWrapper.php';
 
 /**
  * @package Savant

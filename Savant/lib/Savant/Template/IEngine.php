@@ -29,6 +29,7 @@ interface IEngine
      * assign data to template
      */
     public function assign($pData);
+
     /**
      * set template
      */

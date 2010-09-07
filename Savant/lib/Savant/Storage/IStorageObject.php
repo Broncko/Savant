@@ -1,7 +1,7 @@
 <?php
 namespace Savant\Storage;
 
-interface IStorageObject()
+interface IStorageObject
 {
     public function store();
 }

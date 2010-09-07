@@ -12,7 +12,7 @@
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 
-namespace \Savant\Service;
+namespace Savant\Service;
 use \Savant\Service\Twitter;
 
 /**

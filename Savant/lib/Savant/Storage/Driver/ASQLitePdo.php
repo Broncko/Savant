@@ -24,7 +24,7 @@ abstract class ASQLitePdo implements IDriver
      * connect database driver
      * @param \Savant\Storage\CDatabase $pDb
      */
-    public static function connect(\Savant\Storage\CDatabase $pDb)
+    public function connect(\Savant\Storage\CDatabase $pDb)
     {
         $pDb->DSN = sprintf("sqlite:%s", $pDb->DATABASE);
         $pDb->dbh = new \PDO($pDb->DSN, $pDb->USERNAME, $pDb->PASSWORD);
@@ -34,7 +34,7 @@ abstract class ASQLitePdo implements IDriver
      * disconnnect database driver
      * @param \Savant\Storage\CDatabase $pDb
      */
-    public static function disconnect(\Savant\Storage\CDatabase $pDb)
+    public function disconnect(\Savant\Storage\CDatabase $pDb)
     {
         $pDb->DSN = null;
     }

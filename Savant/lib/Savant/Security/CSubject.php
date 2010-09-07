@@ -14,7 +14,7 @@ namespace Savant\Security;
 
 class ESubject extends \Savant\EException {}
 
-class CSubject extends \Savant\CStandardObject
+class CSubject extends \Savant\AStandardObject
 {
     private $principals = array();
 

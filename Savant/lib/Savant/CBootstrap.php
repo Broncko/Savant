@@ -140,6 +140,12 @@ final class CBootstrap
     public static $PERMANENT_LOG = true;
 
     /**
+     * benchmark application
+     * @var bool
+     */
+    public static $BENCHMARK = false;
+
+    /**
      * define logger
      * @var Savant\Utils\ILogging
      */
@@ -212,6 +218,14 @@ final class CBootstrap
     private $config = null;
 
     /**
+     * class loaders
+     * @var SplObjectStorage
+     */
+    private $classLoaders = null;
+
+
+
+    /**
      * create bootstrapper instance
      */
     public function __construct()
@@ -219,6 +233,7 @@ final class CBootstrap
         try
         {
             $this->config = CConfigure::getClassConfig(\get_class($this));
+            $this->classLoaders = new \SplObjectStorage();
         }
         catch(EException $e)
         {
@@ -291,6 +306,15 @@ final class CBootstrap
         self::setProperties();
 
         \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
+
+        if(isset($this->classLoaders) && $this->classLoaders->count() > 0)
+        {
+            foreach($this->classLoaders as $loader)
+            {
+                \spl_autoload_register($loader);
+            }
+        }
+        
         \register_shutdown_function(array('Savant\CBootstrap', 'finalize'));
 
         if(isset($_SERVER['HTTP_USER_AGENT']))
@@ -330,11 +354,29 @@ final class CBootstrap
         $classPath = self::$LIB_DIR.\DIRECTORY_SEPARATOR.str_replace('_',\DIRECTORY_SEPARATOR,$pClass).'.php';
         if(!file_exists($classPath))
         {
-            throw new EBootstrap('class %s not found in %s', $pClass, $classPath);
+            //silently stop if file not exists, cause maybe other classloaders
+            //can find the file
+            return false;
+        }
+        if(!include_once($classPath))
+        {
+            throw new EBootstrap("class %s could not be load from file %s", $pClass, $classPath);
+        }
+    }
+
+    /**
+     * register class loader
+     * @param function $pCallback anonymus function to load classes
+     */
+    public function registerClassLoader($pCallback)
+    {
+        if(self::$STATUS == self::STATUS_ACTIVE)
+        {
+            \spl_autoload_register($pCallback);
         }
         else
         {
-            require_once($classPath);
+            $this->classLoaders->attach($pCallback);
         }
     }
 
@@ -406,5 +448,93 @@ final class CBootstrap
             \header_remove();
         }
         header(sprintf("Content-type: %s\r\n",$pType));
+    }
+
+    /**
+     * invoke classmethod and return the result
+     * @param string $pClass
+     * @param string $pMethod
+     * @return <type> mixed
+     */
+    public static function invoke($pClass, $pMethod = '__construct', $pArgs = array())
+    {
+        if(!\class_exists($pClass))
+        {
+            throw new EBootstrap("class %s dont exists", $pClass);
+        }
+        if(!\method_exists($pClass, $pMethod))
+        {
+            throw new EBootstrap("method %s of class %s dont exists", $pMethod, $pClass);
+        }
+        $res = \forward_static_call_array(array($pClass,$pMethod),$pArgs);
+        return $res;
+    }
+
+    /**
+     * get files of pType from pFolder
+     * @param string $pFolder
+     * @param string $pType
+     * @return \RegexIterator
+     */
+    public static function getFiles($pFolder, $pType = 'php')
+    {
+        $Directory = new \RecursiveDirectoryIterator($pFolder, \FilesystemIterator::SKIP_DOTS);
+        $Iterator = new \RecursiveIteratorIterator($Directory);
+        $Regex = new \RegexIterator($Iterator, '/^.+\.'.$pType.'$/i', \RecursiveRegexIterator::GET_MATCH);
+        return $Regex;
+    }
+
+    /**
+     * returns a list of classes which extend the given subclass
+     * TODO: test subclass filter
+     * @param string $pSubclass
+     * @return array
+     */
+    public static function getClasses($pSubclass = '', $pFilter = null)
+    {
+        $fileType = 'php';
+        foreach(self::getFiles(self::$FRAMEWORK_DIR, $fileType) as $phpFile)
+        {
+            //replace directory, filesuffix and turn slash
+            $class = __NAMESPACE__.str_replace(array(self::$FRAMEWORK_DIR,'/','.'.$fileType), array('', '\\',''), $phpFile[0]);
+            $rf = new \ReflectionClass($class);
+            if($rf->isInterface())
+            {
+                continue;
+            }
+            if($pSubclass != '' && !$rf->isSubclassOf($pSubclass))
+            {
+                continue;
+            }
+            $res[] = $class;
+        }
+        if(!\is_null($pFilter))
+        {
+            \array_filter($res, $pFilter);
+        }
+        return $res;
+    }
+
+    /**
+     * returns classes which implements given interface
+     * @param string $pInterface
+     * @return array
+     */
+    public static function getClassesWithInterface($pInterface)
+    {
+        return self::getClasses('',
+            function($class)
+            {
+                $rf = new \ReflectionClass($class);
+                if($rf->implementsInterface($pInterface))
+                {
+                    return $class;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        );
     }
 }

@@ -2,15 +2,16 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- * This PHP source file is part of the utility tools of the Savant PHP Framework.
+ ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
  * @package    Savant
- * @subpackage Benchmark
+ * @subpackage AOP
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-namespace \Savant\Utils\Benchmark;
+namespace Savant\Utils\Benchmark;
 
 /**
  * @package Benchmark

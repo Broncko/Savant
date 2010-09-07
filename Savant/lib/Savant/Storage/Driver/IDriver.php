@@ -22,10 +22,10 @@ interface IDriver
     /**
      * establish db connection
      */
-    public function connect(Savant\Storage\CDatabase $pDb);
+    public function connect(\Savant\Storage\CDatabase $pDb);
 
     /**
      * kill db connection
      */
-    public function disconnect();
+    public function disconnect(\Savant\Storage\CDatabase $pDb);
 }
