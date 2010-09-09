@@ -23,7 +23,7 @@ class EConfigure extends EException {}
 /**
  * @package Savant
  * Provides configuration handling
- *  
+ * TODO: stop configuration silently, if config file doesnt exists
  */
 class CConfigure
 {

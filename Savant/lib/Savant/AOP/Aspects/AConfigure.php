@@ -63,7 +63,7 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
     public static function onBeforeConstructor(&$pObj, AOP\AJoinPoint $pJoinPoint)
     {
         if(!($pObj instanceof \Savant\IConfigure))
-        {
+        {<type>
             return;
         }
 
@@ -74,7 +74,7 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
         }
         catch(\Savant\EConfigure $e)
         {
-            \Savant\CBootstrap::log($e->getMessage());
+            //\Savant\CBootstrap::log($e->getMessage());
             return;
         }
         foreach($config as $confProp => $confVal)
@@ -86,7 +86,7 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
             }
             catch(ReflectionException $e)
             {
-
+                return;
             }
         }
     }

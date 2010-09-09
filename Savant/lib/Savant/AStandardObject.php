@@ -81,6 +81,24 @@ abstract class AStandardObject
 	{
 		return $this->config->{$pName};
 	}
+
+        /**
+         * execute when object is serialized
+         * @return string
+         */
+        public function __sleep()
+        {
+            return CJson::encode($this);
+        }
+
+        /**
+         * execute when object is unserialized
+         * @return mixed
+         */
+        public function __wakeup()
+        {
+            return CJson::decode($this);
+        }
 	
 	/**
 	 * Destructor

@@ -200,6 +200,12 @@ final class CBootstrap
     public static $EXT_DIR;
 
     /**
+     * data folder
+     * @var string
+     */
+    public static $DATA_DIR;
+
+    /**
      * aspects folder
      * @var string
      */
@@ -293,6 +299,7 @@ final class CBootstrap
         self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
         self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
         self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
+        self::$DATA_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'data';
         self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
         self::$JOINPOINT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'JoinPoints';
     }
