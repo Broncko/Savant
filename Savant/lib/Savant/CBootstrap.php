@@ -116,6 +116,18 @@ final class CBootstrap
     const CONTENT_TYPE_XMLRPC = 'application/x-www-form-urlencoded';
 
     /**
+     * framework state development
+     * @var string
+     */
+    const STATE_DEVELOPMENT = 'dev';
+
+    /**
+     * framework state production (live)
+     * @var string
+     */
+    const STATE_PRODUCTION = 'live';
+
+    /**
      * framework mode
      * @var string
      */
@@ -144,6 +156,12 @@ final class CBootstrap
      * @var bool
      */
     public static $BENCHMARK = false;
+
+    /**
+     * framework execution state
+     * @var string
+     */
+    public static $EXECUTE_STATE = self::STATE_DEVELOPMENT;
 
     /**
      * define logger
@@ -336,7 +354,7 @@ final class CBootstrap
         self::$LOGGER = new Utils\CMultiLogging();
         self::$LOGGER->addLogger(new Utils\CFileLogging());
 
-        $this->initializeAOP();
+        self::initializeAOP();
     }
 
     /**
@@ -401,9 +419,13 @@ final class CBootstrap
     /**
      * initialize aop framework
      */
-    public function initializeAOP()
+    public static function initializeAOP()
     {
-        AOP\AFramework::registerAspects();
+        if(count(AOP\AFramework::$pointcuts) == 0)
+        {
+            echo "is echt null - status: ".self::$STATUS."<br/>";
+            AOP\AFramework::registerAspects();
+        }
     }
 
     /**

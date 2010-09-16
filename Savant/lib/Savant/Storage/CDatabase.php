@@ -3,7 +3,7 @@
  * Savant Framework / Module Savant (Core)
  *
  ** This PHP source file is part of the Savant PHP Framework. It is subject to
- * the Savant License that is bundled with this package in the file LICENSE
+ * the Savant License that is bundled with this package i$thisn the file LICENSE
  *
  * @category   Savant
  * @package    Savant
@@ -23,22 +23,10 @@ class EDatabase extends \Savant\EException {}
 /**
  * @package Savant
  * @subpackage Storage
- * provides abstract connection to a database
+ * provides connection to a database based on php data objects(PDO)
  */
 class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Savant\IConnection
 {
-    /**
-     * host
-     * @var string
-     */
-    public $HOST = '';
-
-    /**
-     * port
-     * @var integer
-     */
-    public $PORT = 0;
-
     /**
      * database
      * @var string
@@ -67,27 +55,19 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
      * database driver class
      * @var string
      */
-    public $DRIVER = '';
-
-    /**
-     * database handler
-     * @var PDO $dbh
-     */
-    public $dbh = null;
-
-    /**
-     * connection driver class
-     * @var Savant\Storage\Driver\IDriver
-     */
-    public $driver = null;
+    public $DRIVER_CLASS = '';
 
     /**
      * create database instance
      * @param string $pConfig config section
      */
-    public function __construct($pConfig = 'default')
+    public function __construct($pSection = 'default', $pAutoconnect = true)
     {
         parent::__construct($pSection);
+        if($pAutoconnect == true)
+        {
+            $this->connect();
+        }
     }
 
     /**
@@ -103,14 +83,14 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
      * connect to defined database driver
      * @param string $pConn
      */
-    public function connect($pConn = 'default')
+    public function _connect()
     {
         if(!$this->isConnected())
         {
             try
             {
-                $this->driver->connect($this);
-                \Savant\CBootstrap::log("connect to %s as %s",$this->DSN,$this->USERNAME);
+                $this->con = \Savant\AGenericCallInterface::call((string)$this->DRIVER_CLASS, 'connect', array($this));
+                \Savant\CBootstrap::log("connect to %s as %s",$this->confSection,$this->USERNAME);
             }
             catch(EDatabase $e)
             {
@@ -126,13 +106,13 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
     /**
      * kill database connection
      */
-    public function disconnect()
+    public function _disconnect()
     {
         if(!$this->isConnected())
         {
             return;
         }
-        $this->driver->disconnect($this);
+        //\Savant\AGenericCallInterface::call($this->DRIVER_CLASS, 'disconnect', array($this));
     }
 
     /**
@@ -145,28 +125,41 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
     }
 
     /**
+     * check if connection is set
+     * @return boolean
+     */
+    public function connectionIsSet()
+    {
+        return $this->config instanceof \SimpleXMLElement;
+    }
+
+    /**
      * execute sql query with result set
      * @param string $pSql
      */
-    public function query($pSql)
+    public function _query($pSql, $pSection = 'default')
     {
         if(!$this->isConnected())
         {
-            throw new EDatabase("this method requires a database connection");
+            if(!$this->connectionIsSet())
+            {
+                $this->setConnection($pSection);
+            }
+            $this->connect();
         }
-        $this->dbh->query($pSql);
+        return $this->con->query($pSql);
     }
 
     /**
      * execute sql query without result set
      * @param string $pSql
      */
-    public function exec($pSql)
+    public function _exec($pSql)
     {
         if(!$this->isConnected())
         {
             throw new EDatabase("this method requires a database connection");
         }
-        $this->dbh->exec($pSql);
+        $this->con->exec($pSql);
     }
 }

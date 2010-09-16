@@ -28,7 +28,7 @@ abstract class ABenchmark extends AOP\AAspect implements AOP\IAspect
      */
     public static function getJoinPointMask()
     {
-        return array('Savant\AOP\JoinPoints\CMethodCall');
+        return array();
     }
 
     /**

@@ -27,7 +27,18 @@ class EDataSetProvider extends \Savant\EException {}
  */
 class CDataSetProvider
 {
-    public function query()
+    /**
+     * database object
+     * @var \Savant\Storage\CDatabase
+     */
+    private $db = null;
+    
+    public function __construct($pSection = 'default')
+    {
+        
+    }
+
+    public function query($pSql, $pParams = array())
     {
 
     }

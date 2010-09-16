@@ -27,29 +27,60 @@ class EQuery extends \Savant\EException {}
  */
 class CQuery
 {
+    /**
+     * query name
+     * @var string
+     */
     public $name = '';
 
+    /**
+     * query label meta information
+     * @var string
+     */
     public $label = '';
 
+    /**
+     * query description meta information
+     * @var string
+     */
     public $description = '';
 
-    public $params;
+    /**
+     * query params
+     * @var string
+     */
+    public $params = array();
 
-    public function __construct($pName = '', $pLabel = '', $pDescription = '')
+    /**
+     * create database query instance
+     * @param string $pName
+     * @param string $pLabel
+     * @param string $pDescription
+     */
+    public function __construct($pName, $pLabel = '', $pDescription = '')
     {
         $this->name = $pName;
         $this->label = $pLabel;
         $this->description=$pDescription;
-        $this->params = new \SplObjectStorage();
     }
 
-    public function addParam(\Savant\Storage\CParameter $pParam)
+    /**
+     * add query parameter
+     * @param string $pName
+     * @param \Savant\CParameter $pParam
+     */
+    public function addParam($pName, \Savant\CParameter $pParam)
     {
-        $this->params->attach($pParam);
+        $this->params[$pName] = $pParam;
     }
 
-    public function removeParam(\Savant\Storage\CParameter $pParam)
+    /**
+     * set query parameter, alias of addParam()
+     * @param string $pKey
+     * @param \Savant\CParameter $pValue
+     */
+    public function __set($pKey, \Savant\CParameter $pValue)
     {
-        $this->params->detach($pParam);
+        $this->addParam($pKey, $pValue);
     }
 }

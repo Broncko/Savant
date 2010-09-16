@@ -20,7 +20,7 @@ use Savant\CConfigure;
  * @subpackage Aspects
  * provides aspect decorator of configuration
  */
-class AConfigure extends AOP\AAspect implements AOP\IAspect
+abstract class AConfigure extends AOP\AAspect implements AOP\IAspect
 {
     /**
      * return list of joinpoints
@@ -60,17 +60,16 @@ class AConfigure extends AOP\AAspect implements AOP\IAspect
      * @param IConfigure $pObj
      * @param AOP\AJoinPoint $pJoinPoint
      */
-    public static function onBeforeConstructor(&$pObj, AOP\AJoinPoint $pJoinPoint)
+    public static function onBeforeConstructor(\Savant\AStandardObject &$pObj, AOP\AJoinPoint $pJoinPoint)
     {
         if(!($pObj instanceof \Savant\IConfigure))
-        {<type>
+        {
             return;
         }
-
         $class = \get_class($pObj);
         try
         {
-            $config = CConfigure::getClassConfig($class);
+            $config = $pObj->config = CConfigure::getClassConfig($class, $pObj->confSection);
         }
         catch(\Savant\EConfigure $e)
         {

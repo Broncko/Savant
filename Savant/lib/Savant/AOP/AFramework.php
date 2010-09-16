@@ -109,7 +109,7 @@ abstract class AFramework
      */
     public static function weaveIn($pObj, AJoinPoint $pJoinPoint)
     {
-        if(count(self::$pointcuts) == 0)
+        if(\Savant\CBootstrap::$STATUS == \Savant\CBootstrap::STATUS_INITIALIZING)
         {
             self::registerAspects();
         }

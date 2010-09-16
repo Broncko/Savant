@@ -34,13 +34,19 @@ abstract class AStandardObject
 	public $confFile = null;
 
         /**
+         * config section
+         * @var string
+         */
+        public $confSection = null;
+
+        /**
 	 * contains content of the xml configuration section
 	 * @var SimpleXMLElement
 	 */
 	public $config = null;
 	
         /**
-         * set dtd validation when config is being loaded *eventually deprecated*
+         * set dtd validation when conf$pObj->ig is being loaded *eventually deprecated*
          * @var boolean
          */
         protected static $_DTD_VALID = true;
@@ -51,6 +57,8 @@ abstract class AStandardObject
 	 */
 	public function __construct($pConfig = 'default')
 	{
+            echo \get_class($this)."\n";
+            $this->confSection = $pConfig;
             $this->confFile = CBootstrap::getConfigFile(\get_class($this));
             AOP\AFramework::weave($this, new AOP\JoinPoints\CConstructor(\get_class($this)));
 	}
@@ -79,7 +87,7 @@ abstract class AStandardObject
 	 */
 	public function __get($pName)
 	{
-		return $this->config->{$pName};
+            return $this->config->{$pName};
 	}
 
         /**

@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config>
+<config xmlns:savant="http://localhost/savant">
     <configurations>
         <default>
             <username>root</username>
             <password>3w4ghi8</password>
-            <driver>CMySqlPdo</driver>
+            <driver_class>CMySqlPdo</driver_class>
         </default>
+        <test_sqlite>
+            <driver_class>Savant\Storage\Driver\ASQLitePdo</driver_class>
+            <database>/home/broncko/Documents/projects/Savant/data/testdb.sq3</database>
+            <username></username>
+            <password></password>
+        </test_sqlite>
+        <test_mysql>
+            <driver_class>Savant\Storage\Driver\AMySqlPdo</driver_class>
+            <database>test</database>
+            <username>root</username>
+            <password>W2sshsG!</password>
+            <host>localhost</host>
+            <port>3306</port>
+        </test_mysql>
+        <savant_mysql>
+            <driver_class>Savant\Storage\Driver\AMySqlPdo</driver_class>
+            <database>savant</database>
+            <username>savant</username>
+            <password>QdYWCD3vtXu9tWhy</password>
+            <host>localhost</host>
+            <port>3306</port>
+        </savant_mysql>
     </configurations>
 </config>

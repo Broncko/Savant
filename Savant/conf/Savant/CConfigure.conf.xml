@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <dev>
+            <BASE_DIR>Savant\CBootstrap::$BASE_DIR</BASE_DIR>
+            <DATA_DIR>Savant\CBootstrap::$DATA_DIR</DATA_DIR>
+        </dev>
+    </configurations>
+</config>

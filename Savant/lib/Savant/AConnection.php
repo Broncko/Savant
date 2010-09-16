@@ -38,9 +38,9 @@ abstract class AConnection extends AStandardObject implements IConfigure, IConne
 
     /**
      * connection
-     * @var mixed
+     * @var PDO
      */
-    private $connection = null;
+    protected $con = null;
 
     /**
      * create connection instance
@@ -48,7 +48,7 @@ abstract class AConnection extends AStandardObject implements IConfigure, IConne
      */
     public function __construct($pConfig = 'default')
     {
-            parent::__construct($pConfig);
+        parent::__construct($pConfig);
     }
 
     /**
@@ -73,6 +73,6 @@ abstract class AConnection extends AStandardObject implements IConfigure, IConne
      */
     public function isConnected()
     {
-        return ($this->isConnected() != null);
+        return ($this->con != null);
     }
 }

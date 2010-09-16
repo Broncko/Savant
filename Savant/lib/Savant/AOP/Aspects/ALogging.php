@@ -68,7 +68,7 @@ abstract class ALogging extends AOP\AAspect implements AOP\IAspect
                 switch(true)
                 {
                     case $pJoinPoint instanceof AOP\JoinPoints\CMethodCall:
-                        $content = sprintf('%senter %s %s->%s(%s)',$indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $method, \implode(',', $args));
+                        $content = sprintf('%sleave %s %s->%s',$indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $method);
                         break;
                     case $pJoinPoint instanceof AOP\JoinPoints\CConstructor:
                     case $pJoinPoint instanceof AOP\JoinPoints\CDestructor:

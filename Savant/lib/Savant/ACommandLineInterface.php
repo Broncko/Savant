@@ -69,6 +69,7 @@ abstract class ACommandLineInterface
      */
     public static function parseArgs($pArgs)
     {
+        print_r($pArgs);
         $argArr['self'] = \array_shift($pArgs);
         if($pArgs[0][0] == '-')
         {

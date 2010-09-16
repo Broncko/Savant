@@ -28,6 +28,12 @@ class EConfigure extends EException {}
 class CConfigure
 {
     /**
+     * config of myself
+     * @var SimpleXmlElement
+     */
+    private $config = null;
+
+    /**
      * object to configure
      * @var \Savant\AStandardObject
      */
@@ -55,6 +61,30 @@ class CConfigure
     }
 
     /**
+     * replace global parameters in config section
+     * @param \SimpleXMLElement $pSection
+     * @return \SimpleXMLElement
+     */
+    public static function replaceGlobalParams(\SimpleXMLElement $pSimpleXml)
+    {
+        $pSimpleXml->registerXPathNamespace('savant', 'http://localhost/savant');
+        print_r($pSimpleXml->xpath('//savant:var'));
+        /*$myConf = self::getClassConfig(__CLASS__,  CBootstrap::$EXECUTE_STATE);
+        if(!self::hasChilds($myConf))
+        {
+            return;
+        }
+        else
+        {
+            foreach($myConf as $var => $val)
+            {
+                $pSection = \str_replace('<'.$var.'/>', eval('return '.$val.';'), $pSection);
+            }
+        }
+        return $pSection;*/
+    }
+
+    /**
      * load xml configuration file
      * @param string $pFile
      * @param boolean $pValidate
@@ -64,12 +94,13 @@ class CConfigure
     {
         if($pValidate)
         {
-            return \simplexml_load_file($pFile, '\SimpleXMLElement', \LIBXML_DTDVALID);
+            $simplexml = \simplexml_load_file($pFile, '\SimpleXMLElement', \LIBXML_DTDVALID);
         }
         else
         {
-            return \simplexml_load_file($pFile, '\SimpleXMLElement');
+            $simplexml = \simplexml_load_file($pFile, '\SimpleXMLElement');
         }
+        return $simplexml;
     }
 
     /**

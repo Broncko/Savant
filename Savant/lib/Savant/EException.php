@@ -41,11 +41,11 @@ class EException extends \Exception
             $message = \array_shift($args);
             if(count($args) > 0)
             {
-                parent::__construct(vsprintf($message,$args)."\n");
+                parent::__construct(vsprintf($message,$args));
             }
             else
             {
-                parent::__construct($message."\n");
+                parent::__construct($message);
             }
             if(CBootstrap::$PERMANENT_LOG)
             {

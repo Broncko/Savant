@@ -54,11 +54,11 @@ abstract class AGenericCallInterface
     {
         if(!\class_exists($pClass))
         {
-            throw new EGenericCallInterface('class does not exist');
+            throw new EGenericCallInterface('class %s does not exist', $pClass);
         }
         if(!\method_exists($pClass, $pMethod))
         {
-            throw new EGenericCallInterface('method does not exist');
+            throw new EGenericCallInterface('method %s::%s does not exist', $pClass, $pMethod);
         }
         $mode = (!empty($pOpts['mode']) ? $pOpts['mode'] : self::getCallMode($pClass, $pMethod));
         switch($mode)

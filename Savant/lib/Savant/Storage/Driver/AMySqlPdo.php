@@ -16,9 +16,17 @@ namespace Savant\Storage\Driver;
 /**
  * @package Storage
  * @subpackage Driver
- * sqlite pdo driver
+ * exception handling of AMySqlPdo
  */
-abstract class ASQLitePdo implements IDriver
+class EMySqlPdo extends \Savant\EException {}
+
+/**
+ * @package Storage
+ * @subpackage Driver
+ * provides abstract database driver for mysql databases based on php data
+ * objects (PDO)
+ */
+abstract class AMySqlPdo implements IDriver
 {
     /**
      * connect database driver
@@ -27,10 +35,12 @@ abstract class ASQLitePdo implements IDriver
      */
     public static function connect(\Savant\Storage\CDatabase $pDb)
     {
-        $pDb->DSN = sprintf("sqlite:%s", $pDb->DATABASE);
+        echo "invoke connection method<br/>";
+        $dsn = \sprintf("mysql:host=%s;dbname=%s", (string)$pDb->HOST, (string)$pDb->DATABASE);
         try
         {
-            return new \PDO($pDb->DSN, $pDb->USERNAME, $pDb->PASSWORD);
+            echo "try to connect<br/>";
+            return new \PDO($dsn, (string)$pDb->USERNAME, (string)$pDb->PASSWORD);
         }
         catch(PDOException $e)
         {
@@ -39,7 +49,7 @@ abstract class ASQLitePdo implements IDriver
     }
 
     /**
-     * disconnnect database driver
+     * disconnect from database
      * @param \Savant\Storage\CDatabase $pDb
      */
     public static function disconnect(\Savant\Storage\CDatabase $pDb)
