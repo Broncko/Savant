@@ -90,7 +90,7 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
             try
             {
                 $this->con = \Savant\AGenericCallInterface::call((string)$this->DRIVER_CLASS, 'connect', array($this));
-                \Savant\CBootstrap::log("connect to %s as %s",$this->confSection,$this->USERNAME);
+                \Savant\CBootstrap::log("connect to ".$this->confSection." as ".$this->USERNAME);
             }
             catch(EDatabase $e)
             {
@@ -119,7 +119,7 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
      * set connection properties
      * @param string $pConn
      */
-    public function setConnection($pConn = 'default')
+    public function _setConnection($pConn = 'default')
     {
         \Savant\CConfigure::configure($this, $pConn);
     }
@@ -128,7 +128,7 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
      * check if connection is set
      * @return boolean
      */
-    public function connectionIsSet()
+    public function _connectionIsSet()
     {
         return $this->config instanceof \SimpleXMLElement;
     }
@@ -137,7 +137,7 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
      * execute sql query with result set
      * @param string $pSql
      */
-    public function _query($pSql, $pSection = 'default')
+    public function _query($pSql, $pParams = array(), $pSection = 'default')
     {
         if(!$this->isConnected())
         {
@@ -147,7 +147,16 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
             }
             $this->connect();
         }
-        return $this->con->query($pSql);
+        if(count($pParams) > 0)
+        {
+            $pdoStmt = $this->con->prepare($pSql);
+            return $pdoStmt->execute($pParams);
+        }
+        else
+        {
+            return $this->con->query($pSql);
+        }
+        
     }
 
     /**

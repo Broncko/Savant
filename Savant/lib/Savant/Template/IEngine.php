@@ -23,15 +23,15 @@ interface IEngine
     /**
      * render template
      */
-    public function render($pDisplay = true);
+    public function _render($pDisplay = true);
 
     /**
      * assign data to template
      */
-    public function assign($pData);
+    public function _assign(\Savant\Storage\DataSet\CDataSet $pDataSet);
 
     /**
      * set template
      */
-    public function setTemplate($pTemplate);
+    public function _setTemplate($pTemplate);
 }

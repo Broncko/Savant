@@ -14,7 +14,7 @@
  * check if that can be fixed without modifying twig code
  */
 namespace Savant\Template;
-require_once \Savant\CBootstrap::$EXT_DIR.\DIRECTORY_SEPARATOR.'extNamespaceWrapper.php';
+require_once \Savant\CBootstrap::$EXT_DIR.\DIRECTORY_SEPARATOR.'Twig'.\DIRECTORY_SEPARATOR.'lib'.\DIRECTORY_SEPARATOR.'Twig'.\DIRECTORY_SEPARATOR.'Autoloader.php';
 
 /**
  * @package Savant
@@ -31,6 +31,12 @@ class ETwig extends \Savant\EException {}
 class CTwig extends AEngine implements IEngine
 {
     /**
+     * template suffix
+     * @var string (eg. test.twig.html)
+     */
+    const SUFFIX = '.twig.html';
+
+    /**
      * twig environment
      * @var Twig_Environment
      */
@@ -43,17 +49,17 @@ class CTwig extends AEngine implements IEngine
     public function __construct($pSection = 'default')
     {
         parent::__construct($pSection);
-        spl_autoload_register(array(__CLASS__,'loadClass'));
+        \Twig_Autoloader::register();
         $loader = new \Twig_Loader_Filesystem($this->TEMPLATE_DIR);
-        $options = array('cache' => $this->COMPILE_DIR);
-        $this->twig = \Twig_Environment($loader, $options);
+        $options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
+        $this->twig = new \Twig_Environment($loader, $options);
     }
 
     /**
      * load template from file
      * @param string $pTemplate template file name
      */
-    public function setTemplate($pTemplate = '')
+    public function _setTemplate($pTemplate = '')
     {
         $this->template = $this->twig->loadTemplate($pTemplate);
     }
@@ -62,7 +68,7 @@ class CTwig extends AEngine implements IEngine
      * render template
      * @return string
      */
-    public function render($pDisplay = true)
+    public function _render($pDisplay = true)
     {
         return $this->template->render($this->data);
     }

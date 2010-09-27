@@ -25,21 +25,52 @@ class EDataSetProvider extends \Savant\EException {}
  * @subpackage DataSet
  * this class provides datasets from several sources
  */
-class CDataSetProvider
+class ADataSetProvider extends \Savant\AStandardObject
 {
     /**
      * database object
      * @var \Savant\Storage\CDatabase
      */
-    private $db = null;
-    
-    public function __construct($pSection = 'default')
+    protected $db = null;
+
+    /**
+     * create datasetprovider instance
+     * @param \Savant\Storage\CDatabase $db
+     */
+    public function __construct(\Savant\Storage\CDatabase $db)
     {
-        
+        parent::__construct();
+        $this->db = $db;
+    }
+    
+    /**
+     * query data set
+     * @param string $pQuery
+     * @param array $pParams
+     * @param string $pConnection
+     * @return \Savant\Storage\DataSet\CDataSet
+     */
+    public function _dsQuery($pQuery, $pParams = array(), $pConnection = 'default')
+    {
+        $method = 'query'.$pQuery;
+        if(!\method_exists($this, $method))
+        {
+            throw new EDataSetProvider("unknown query %s", $pQuery);
+        }
+        if($this->db == null || !$this->db->isConnected())
+        {
+            $this->db = new \Savant\Storage\CDatabase($pConnection);
+        }
+        $dataSet = new CDataSet($this->$method($pParams)->fetchAll());
+        return $dataSet;
     }
 
-    public function query($pSql, $pParams = array())
+    /**
+     * create instance of dataset provider
+     * @return \Savant\Storage\DataSet\CDataSetProvider
+     */
+    public function create()
     {
-
+        return \Savant\CBootstrap::invoke(\get_class());
     }
 }

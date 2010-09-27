@@ -22,7 +22,7 @@ class EConnection extends EException{}
  * @package Savant
  * abstracts a connection to whatever
  */
-abstract class AConnection extends AStandardObject implements IConfigure, IConnection 
+abstract class AConnection extends AStandardObject implements IConfigure
 {
     /**
      * host
@@ -52,26 +52,10 @@ abstract class AConnection extends AStandardObject implements IConfigure, IConne
     }
 
     /**
-     * establish the connection
-     */
-    public function connect()
-    {
-
-    }
-
-    /**
-     * kill the connection
-     */
-    public function disconnect()
-    {
-
-    }
-
-    /**
      * check if connection already exists
      * @return boolean
      */
-    public function isConnected()
+    public function _isConnected()
     {
         return ($this->con != null);
     }

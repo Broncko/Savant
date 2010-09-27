@@ -33,7 +33,13 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
      * delimits template variables
      * @var string
      */
-    const DELIMITER = "@";
+    const STARTDEL = "{{";
+
+    /**
+     * delimits template variables
+     * @var string
+     */
+    const ENDDEL = "{{";
 
     /**
      * html template
@@ -56,7 +62,20 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
      */
     private function assignVar($pParam, $pValue)
     {
-        $this->Html = \str_replace(self::DELIMITER.$pParam.self::DELIMITER, $pValue, $this->Html);
+        switch(true)
+        {
+            case \is_string($pValue):
+                $this->Html = \str_replace(self::STARTDEL.$pParam.self::ENDDEL, $pValue, $this->Html);
+                break;
+            case \is_array($pValue):
+                $res = \preg_match('/{{for (?<var>\w+) in (?<arr>)\w+)}}(?<content>){{\/for}}/', $this->Html);
+                print_r($res);
+                break;
+            case \is_object($pValue):
+                \preg_match_all('/{{([\w]+)\.([\w]+)}}/', $this->Html, $res);
+                \print_r($res);
+                break;
+        }
     }
 
     /**
@@ -73,7 +92,7 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
      * assigns array of type key => value to template
      * @param array $pData
      */
-    public function assign($pData)
+    public function _assign(\Savant\Storage\DataSet\CDataSet $pData)
     {
         if(!\is_array($pData))
         {
@@ -89,7 +108,7 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
      * set template
      * @param string $pTemplate
      */
-    public function setTemplate($pTemplateFile)
+    public function _setTemplate($pTemplateFile)
     {
         if(!\file_exists($pTemplateFile))
         {
@@ -103,7 +122,7 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
      * @param boolean $pDislay set to false to return template instead of
      * printing out
      */
-    public function render($pDisplay = true)
+    public function _render($pDisplay = true)
     {
         if($pDisplay == true)
         {

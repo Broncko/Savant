@@ -31,14 +31,18 @@ class CDataSet implements \IteratorAggregate, \Countable
      * Datasafe
      * @var SplObjectStorage $data
      */
-    public $data = null;
+    private $data = null;
 
     /**
      * create dataset instance
      */
-    public function __construct()
+    public function __construct($pData = null)
     {
         $this->data = new \SplObjectStorage();
+        if($pData != null)
+        {
+            $this->assign($pData);
+        }
     }
 
     /**
@@ -65,7 +69,7 @@ class CDataSet implements \IteratorAggregate, \Countable
      */
     public function assign($pData)
     {
-        switch($pData)
+        switch(true)
         {
             case $pData instanceof \SplObjectStorage:
                 $this->data->addAll($pData);
@@ -85,6 +89,10 @@ class CDataSet implements \IteratorAggregate, \Countable
      */
     public function addRow($pData)
     {
+        if(\is_array($pData))
+        {
+            $pData = (object)$pData;
+        }
         $this->data->attach($pData);
     }
 
@@ -94,6 +102,23 @@ class CDataSet implements \IteratorAggregate, \Countable
      */
     public function getDataAsArray()
     {
-        return (array)$this->data;
+        $res = array();
+        foreach($this->data as $row)
+        {
+            $res[] = (array)$row;
+        }
+        return $res;
+    }
+
+    /**
+     * get dataset field names
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        foreach($this->data as $row)
+        {
+            return \array_keys(\get_object_vars($row));
+        }
     }
 }

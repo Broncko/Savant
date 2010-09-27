@@ -35,11 +35,9 @@ abstract class AMySqlPdo implements IDriver
      */
     public static function connect(\Savant\Storage\CDatabase $pDb)
     {
-        echo "invoke connection method<br/>";
         $dsn = \sprintf("mysql:host=%s;dbname=%s", (string)$pDb->HOST, (string)$pDb->DATABASE);
         try
         {
-            echo "try to connect<br/>";
             return new \PDO($dsn, (string)$pDb->USERNAME, (string)$pDb->PASSWORD);
         }
         catch(PDOException $e)

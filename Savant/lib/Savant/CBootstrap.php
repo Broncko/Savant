@@ -194,6 +194,12 @@ final class CBootstrap
     public static $SKINS_DIR;
 
     /**
+     * cache data folder
+     * @var string
+     */
+    public static $CACHE_DIR;
+
+    /**
      * framework folder
      * @var string
      */
@@ -314,6 +320,7 @@ final class CBootstrap
         self::$CONF_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'conf';
         self::$LIB_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'lib';
         self::$SKINS_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'skins';
+        self::$CACHE_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'cache';
         self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
         self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
         self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
@@ -519,7 +526,7 @@ final class CBootstrap
      * @param string $pSubclass
      * @return array
      */
-    public static function getClasses($pSubclass = '', $pFilter = null)
+    public static function getClasses($pSubclass = '')
     {
         $fileType = 'php';
         foreach(self::getFiles(self::$FRAMEWORK_DIR, $fileType) as $phpFile)
@@ -531,15 +538,11 @@ final class CBootstrap
             {
                 continue;
             }
-            if($pSubclass != '' && !$rf->isSubclassOf($pSubclass))
+            if($pSubclass != '' && $rf->isSubclassOf($pSubclass))
             {
                 continue;
             }
             $res[] = $class;
-        }
-        if(!\is_null($pFilter))
-        {
-            \array_filter($res, $pFilter);
         }
         return $res;
     }
@@ -551,19 +554,14 @@ final class CBootstrap
      */
     public static function getClassesWithInterface($pInterface)
     {
-        return self::getClasses('',
-            function($class)
+        foreach(self::getClasses() as $class)
+        {
+            $rf = new \ReflectionClass($class);
+            if($rf->implementsInterface($pInterface))
             {
-                $rf = new \ReflectionClass($class);
-                if($rf->implementsInterface($pInterface))
-                {
-                    return $class;
-                }
-                else
-                {
-                    return false;
-                }
+                $res[] = $class;
             }
-        );
+        }
+        return $res;
     }
 }

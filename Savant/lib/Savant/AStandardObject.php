@@ -13,6 +13,8 @@
 namespace Savant;
 use Savant\AOP;
 
+class EFrameworkInterceptor extends \Exception {}
+
 /**
  * @abstract AStandardObject
  * @package Savant
@@ -57,7 +59,6 @@ abstract class AStandardObject
 	 */
 	public function __construct($pConfig = 'default')
 	{
-            echo \get_class($this)."\n";
             $this->confSection = $pConfig;
             $this->confFile = CBootstrap::getConfigFile(\get_class($this));
             AOP\AFramework::weave($this, new AOP\JoinPoints\CConstructor(\get_class($this)));
@@ -73,6 +74,10 @@ abstract class AStandardObject
 	public function __call($pMethod = '', $pArgs = array())
 	{
 		$aspectMethod = '_'.$pMethod;
+                if(!\method_exists($this, $aspectMethod))
+                {
+                    throw new EFrameworkInterceptor(sprintf("aspectized method %s does not exists\n",$aspectMethod));
+                }
                 $joinPoint = new AOP\JoinPoints\CMethodCall(\get_class($this), $pMethod, $pArgs);
                 AOP\AFramework::weaveIn($this, $joinPoint);
 		$joinPoint->result = call_user_method_array($aspectMethod,$this,$pArgs);
@@ -87,7 +92,10 @@ abstract class AStandardObject
 	 */
 	public function __get($pName)
 	{
-            return $this->config->{$pName};
+            if(isset($this->config) && \property_exists($this->config, $pName))
+            {
+                return $this->config->{$pName};
+            }
 	}
 
         /**

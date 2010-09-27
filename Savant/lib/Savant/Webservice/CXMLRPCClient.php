@@ -77,12 +77,12 @@ class CXMLRPCCLient extends \Savant\AStandardObject implements \Savant\IConnecti
     /**
      * establish connection
      */
-    public function connect() {}
+    public function _connect() {}
 
     /**
      * disconnect
      */
-    public function disconnect() {}
+    public function _disconnect() {}
 
     /**
      * execute xml remote procedure call

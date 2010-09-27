@@ -2,7 +2,7 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * This PHP source file is part of the Savant PHP Framework. It is subject to
  * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
@@ -58,6 +58,8 @@ abstract class AEngine extends \Savant\AStandardObject implements \Savant\IConfi
     public function __construct($pSection = 'default')
     {
         parent::__construct($pSection);
+        $this->TEMPLATE_DIR = \Savant\CBootstrap::$SKINS_DIR;
+        $this->COMPILE_DIR = \Savant\CBootstrap::$CACHE_DIR;
     }
 
     /**
@@ -67,7 +69,7 @@ abstract class AEngine extends \Savant\AStandardObject implements \Savant\IConfi
      */
     public function __set($pKey, $pValue)
     {
-        $this->data->{$pKey} = $pValue;
+        $this->data[$pKey] = $pValue;
     }
 
     /**
@@ -77,15 +79,15 @@ abstract class AEngine extends \Savant\AStandardObject implements \Savant\IConfi
      */
     public function __get($pKey)
     {
-        return $this->data->{$pKey};
+        return $this->data[$pKey];
     }
 
     /**
      * assign data
-     * @param mixed $obj
+     * @param \Savant\Storage\DataSet\CDataSet $obj
      */
-    public function assign($obj)
+    public function _assign(\Savant\Storage\DataSet\CDataSet $pDataSet)
     {
-        $this->data = $obj;
+        $this->data['dataset'] = $pDataSet;
     }
 }

@@ -5,6 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   </head>
   <body>
-    Hello <h3>@testvar@</h3>
+    Hello <h3>{{testvar}}</h3>
+    {{for test in testArr}}
+    {{test}}<br/>
+    {{/for}}
+    <p>
+        Name: {{hendrik.name}}
+    </p>
   </body>
 </html>

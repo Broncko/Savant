@@ -10,6 +10,9 @@ class TTwig extends \Savant\ATestCase
     {
         $this->obj = new \Savant\Template\CTwig();
         $this->obj->testvar = "World";
+        $testObj = new \stdClass();
+        $testObj->name = 'Hendrik Heinemann';
+        $this->obj->hendrik = $testObj;
     }
 
     public function tearDown()
@@ -17,14 +20,14 @@ class TTwig extends \Savant\ATestCase
         $this->obj = null;
     }
 
-    public function loadTemplate()
-    {
-        $this->obj->loadTemplate('test.html');
-    }
-
     public function testRender()
     {
+        $this->obj->setTemplate('test'.\Savant\Template\CTwig::SUFFIX);
+        $varsFound = function($tpl) {
+            return (\strpos($tpl, '{{testvar}}') !== false);
+        };
+        $this->assertTrue($varsFound(\file_get_contents(\Savant\CBootstrap::$SKINS_DIR.\DIRECTORY_SEPARATOR.'test'.\Savant\Template\CTwig::SUFFIX)));
         $res = $this->obj->render();
-        print_r($res);
+        $this->assertFalse($varsFound($res));
     }
 }

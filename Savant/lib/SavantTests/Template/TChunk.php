@@ -11,13 +11,20 @@ class TChunk extends \Savant\ATestCase
         $this->obj = new \Savant\Template\CChunk();
     }
 
-    public function testTemplating()
+    public function testAssignVar()
     {
-        $tplFile = \Savant\CBootstrap::$SKINS_DIR . \DIRECTORY_SEPARATOR .'test.html';
+        $testObj = new \stdClass();
+        $testObj->name = 'Hendrik Heinemann';
+        $this->obj->hendrik = $testObj;
+    }
+
+    public function xtestTemplating()
+    {
+        $tplFile = \Savant\CBootstrap::$SKINS_DIR . \DIRECTORY_SEPARATOR .'test'.\Savant\Template\CChunk::SUFFIX;
         $this->obj->setTemplate($tplFile);
-        $this->assertEquals(true, strpos($this->obj->render(false),"@testvar@") !== false);
+        $this->assertTrue(strpos($this->obj->render(false),"{{testvar}}") !== false);
         $this->obj->testvar = 'Welt';
-        $this->assertFalse(strpos($this->obj->render(false),"@testvar@"));
+        $this->assertTrue(strpos($this->obj->render(false),"{{testvar}}") !== false);
     }
 
     public function tearDown() {}

@@ -48,7 +48,7 @@ class CMemcache extends \Savant\AStandardObject implements \Savant\IConfigure, \
     /**
      * conntect to memcache server
      */
-    public function connect()
+    public function _connect()
     {
         foreach ($this->SERVER as $server) {
             $this->mc->addserver($server->host, $server->port, $server->persistent, $server->weight);
@@ -78,7 +78,7 @@ class CMemcache extends \Savant\AStandardObject implements \Savant\IConfigure, \
     /**
      * close memcache connection
      */
-    public function disconnect()
+    public function _disconnect()
     {
         $this->mc->close();
     }
@@ -90,6 +90,4 @@ class CMemcache extends \Savant\AStandardObject implements \Savant\IConfigure, \
     {
         $this->disconnect();
     }
-
-
 }

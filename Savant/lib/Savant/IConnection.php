@@ -20,10 +20,10 @@ interface IConnection
     /**
      * establish the connection
      */
-    public function connect();
+    public function _connect();
 
     /**
      * kill the connection
      */
-    public function disconnect();
+    public function _disconnect();
 }

@@ -17,7 +17,7 @@ class TBootstrap extends \Savant\ATestCase
 
     public function testGetClassesWithInterface()
     {
-        $classes = \Savant\CBootstrap::getClassesWithInterface('Savant\IConfigure');
+        $classes = \Savant\CBootstrap::getClassesWithInterface('\Savant\Template\IEngine');
         print_r($classes);
     }
 }
