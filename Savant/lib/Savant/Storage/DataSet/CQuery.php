@@ -57,11 +57,12 @@ class CQuery
      * @param string $pLabel
      * @param string $pDescription
      */
-    public function __construct($pName, $pLabel = '', $pDescription = '')
+    public function __construct($pName, $pLabel = '', $pDescription = '', $pParams = array())
     {
         $this->name = $pName;
         $this->label = $pLabel;
         $this->description=$pDescription;
+        $this->params = $pParams;
     }
 
     /**

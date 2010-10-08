@@ -90,4 +90,13 @@ abstract class AEngine extends \Savant\AStandardObject implements \Savant\IConfi
     {
         $this->data['dataset'] = $pDataSet;
     }
+
+    /**
+     * set template
+     * @param string $pTemplate
+     */
+    public function _setTemplate($pTemplate)
+    {
+        $this->template = $pTemplate;
+    }
 }

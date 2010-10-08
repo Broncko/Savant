@@ -16,9 +16,9 @@ namespace Savant\Storage\Driver;
 /**
  * @package Storage
  * @subpackage Driver
- * sqlite pdo driver
+ * oracle pdo driver
  */
-abstract class ASQLitePdo implements IDriver
+abstract class AOraclePdo implements IDriver
 {
     /**
      * connect database driver
@@ -27,7 +27,7 @@ abstract class ASQLitePdo implements IDriver
      */
     public static function connect(\Savant\Storage\CDatabase $pDb)
     {
-        $pDb->DSN = sprintf("sqlite:%s", $pDb->DATABASE);
+        $pDb->DSN = sprintf("oci:dbname=%s", $pDb->DATABASE);
         try
         {
             return new \PDO($pDb->DSN, $pDb->USERNAME, $pDb->PASSWORD);

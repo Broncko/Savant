@@ -113,7 +113,7 @@ class CProcess
      */
     private function isTimedOut()
     {
-        if(\shm_has_var($this->shmId, self::VAR_KEY))
+        if(isset($this->shmId) && \shm_has_var($this->shmId, self::VAR_KEY))
         {
             $time = \shm_get_var($this->shmId, self::VAR_KEY);
             return $time > time() - $this->TIMEOUT;
@@ -129,9 +129,12 @@ class CProcess
      */
     public function unlock()
     {
-        \shm_detach($this->shmId);
-        \sem_release($this->semId);
-        \sem_remove($this->semId);
+        if(isset($this->shmId))
+        {
+            \shm_detach($this->shmId);
+            \sem_release($this->semId);
+            \sem_remove($this->semId);
+        }
     }
 
     /**

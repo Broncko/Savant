@@ -26,13 +26,49 @@ class ERender extends \Savant\EException {}
  * provides a renderer to handle url parameters and build a template out of the
  * dataset data
  */
-class CRender extends \Savant\Template\AEngine
+class CRender extends \Savant\AStandardObject
 {
     /**
      * url parts
      * @var array
      */
     private $urlParts = array();
+
+    /**
+     * class
+     * @var string
+     */
+    private $class;
+
+    /**
+     * method
+     * @var string
+     */
+    private $method;
+
+    /**
+     * connection
+     * @var string
+     */
+    private $connection;
+
+    /**
+     * template
+     * @var string
+     */
+    private $template;
+
+    /**
+     * mode
+     * @var string
+     */
+    private $mode;
+
+    /**
+     * dataset data
+     * @var \Savant\Storage\DataSet\CDataSet
+     */
+    private $dataset;
 
     /**
      * create renderer instance
@@ -45,6 +81,40 @@ class CRender extends \Savant\Template\AEngine
         {
             $this->urlParts = $pParams;
         }
+    }
+
+    /**
+     * return meta information of query method
+     * @return array
+     */
+    private function getMetaInformation()
+    {
+        $method = 'meta__query'.$this->method;
+        if(\method_exists($this->class, $method))
+        {
+            return \Savant\AGenericCallInterface::call($this->class, $method);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * parse request parameters
+     * @param array $pParams
+     */
+    private function parseParams($pParams)
+    {
+        if(!\array_key_exists('class', $this->urlParts))
+        {
+            throw new ERender("class parameter is not set");
+        }
+        $this->class = $this->urlParts['class'];
+        $this->query = $this->getUrlParam('query', 'Default');
+        $this->connection = $this->getUrlParam('con', 'default');
+        $this->template = $this->getUrlParam('tpl',$this->class);
+        $this->mode = $this->getUrlParam('mode', \Savant\Template\CTwig::SUFFIX);
     }
 
     /**
@@ -73,37 +143,22 @@ class CRender extends \Savant\Template\AEngine
      */
     public function _handle()
     {
-        if(!\array_key_exists('class', $this->urlParts))
-        {
-            throw new ERender("class parameter is not set");
-        }
-        $class = $this->urlParts['class'];
-        $query = $this->getUrlParam('query', 'Default');
-        $connection = $this->getUrlParam('con', 'default');
-        $template = $this->getUrlParam('tpl',$class);
-        $mode = $this->getUrlParam('mode', \Savant\Template\CTwig::SUFFIX);
-        $dsp = new $class(new \Savant\Storage\CDatabase($connection));
-        $dataSet = $dsp->dsQuery($query);
-        /*print_r(\Savant\CBootstrap::getClassesWithInterface('Savant\Template\IEngine'));
-        foreach (\Savant\CBootstrap::getClassesWithInterface('Savant\Template\IEngine') as $engine)
-        {
-            if('.'.$mode.'.html' == $engine::SUFFIX)
-            {
-                $tplEngine = new $engine();
-            }
-        }*/
+        $dsp = new $this->class(new \Savant\Storage\CDatabase($this->connection));
+        $this->dataSet = $dsp->dsQuery($this->query);
+        $metaInfo = $this->getMetaInformation();
         $tplEngine = new \Savant\Template\CTwig();
         $tplEngine->setTemplate(\Savant\CBootstrap::$SKINS_DIR.\DIRECTORY_SEPARATOR.'dataset'.\Savant\Template\CTwig::SUFFIX);
-        $tplEngine->assign($dataSet);
+        $tplEngine->title = $metaInfo->label;
+        $tplEngine->assign($this->dataSet);
         $tplEngine->render();
     }
 
     /**
      * create renderer instance and handle requests
      */
-    public static function create()
+    public static function create($pRequest)
     {
-        $instance = new self($_GET);
+        $instance = new self($pRequest);
         $instance->handle();
     }
 }

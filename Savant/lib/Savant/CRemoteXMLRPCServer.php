@@ -20,7 +20,7 @@ class ERemoteXMLRPCServer extends EException {}
 
 /**
  * @package Savant
- * provides remote procedure class server
+ * provides remote procedure call server
  */
 class CRemoteXMLRPCServer extends Webservice\AXMLRPCServer
 {

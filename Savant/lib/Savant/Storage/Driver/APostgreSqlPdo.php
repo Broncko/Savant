@@ -16,9 +16,9 @@ namespace Savant\Storage\Driver;
 /**
  * @package Storage
  * @subpackage Driver
- * sqlite pdo driver
+ * postgresql pdo driver
  */
-abstract class ASQLitePdo implements IDriver
+abstract class APostgreSqlPdo implements IDriver
 {
     /**
      * connect database driver
@@ -27,10 +27,10 @@ abstract class ASQLitePdo implements IDriver
      */
     public static function connect(\Savant\Storage\CDatabase $pDb)
     {
-        $pDb->DSN = sprintf("sqlite:%s", $pDb->DATABASE);
+        $pDb->DSN = sprintf("pgsql:host=%s;port=%s;dbname=%s;user=%s;password=%s", $pDb->HOST, $pDb->PORT, $pDb->DATABASE, $pDb->USERNAME, $pDb->PASSWORD);
         try
         {
-            return new \PDO($pDb->DSN, $pDb->USERNAME, $pDb->PASSWORD);
+            return new \PDO($pDb->DSN);
         }
         catch(PDOException $e)
         {
