@@ -22,10 +22,17 @@ class EContext extends \Savant\EException {}
 /**
  * @package Savant
  * @subpackage Security
- * provides security context
+ * provides security context that can be invoked by an application to authenticate
+ * users against a set of security modules
  */
 class CContext extends \Savant\AStandardObject implements \Savant\IConfigure
 {
+    /**
+     * module interface
+     * @var string
+     */
+    public static $MODULE_INTERFACE = 'Savant\Security\IModule';
+
     /**
      * security modules
      * @var array
@@ -93,6 +100,70 @@ class CContext extends \Savant\AStandardObject implements \Savant\IConfigure
      */
     public function login($pCredentials)
     {
-        
+        $res = false;
+
+        try
+        {
+            foreach($this->MODULES as $modName => $module)
+            {
+                $modObj = $this->getModuleInstance($modName);
+                $modRes = $modObj->login($pCredentials);
+                if($modRes)
+                {
+                    $res = true;
+                    break;
+                }
+            }
+        }
+        catch(Exception $e)
+        {
+            foreach($this->moduleInstances as $module)
+            {
+                $module->abort();
+            }
+            throw new EContext($e->getMessage());
+        }
+
+        if($res)
+        {
+            foreach($this->moduleInstances as $module)
+            {
+                $module->commit();
+            }
+        }
+        else
+        {
+            foreach($this->moduleInstances as $module)
+            {
+                $module->abort();
+            }
+        }
+        return $res;
+    }
+
+    /**
+     * get module instance
+     * @param string $pClass
+     * @return Savant\Security\IModule
+     */
+    private function getModuleInstance($pClass)
+    {
+        if(!\array_key_exists($pClass, $this->moduleInstances))
+        {
+            if(!\class_exists($pClass))
+            {
+                throw new EContext('security module %s does not exist',$pClass);
+            }
+
+            $modInstance = \Savant\AGenericCallInterface::call($pClass, 'create');
+
+            if(!($modInstance instanceof self::$MODULE_INTERFACE))
+            {
+                throw new EContext('invalid security module class %s does not implement %s', $pClass, self::MODULE_INSTANCE);
+            }
+
+            $this->moduleInstances[$pClass] = $modInstance;
+        }
+        return $this->moduleInstances[$pClass];
     }
 }
