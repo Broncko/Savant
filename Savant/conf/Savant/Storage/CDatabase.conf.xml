@@ -28,5 +28,10 @@
             <host>localhost</host>
             <port>3306</port>
         </savant_mysql>
+        <savant_sqlite>
+            <driver_class>Savant\Storage\Driver\ASQLitePdo</driver_class>
+            <database>/home/broncko/Documents/projects/Savant/data/savanttest</database>
+            <password>oJo8QwhyNwEvGu2srCGP4w==</password>
+        </savant_sqlite>
     </configurations>
 </config>

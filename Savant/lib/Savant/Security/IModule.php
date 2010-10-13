@@ -12,13 +12,30 @@
  */
 namespace Savant\Security;
 
+/**
+ * @package Savant
+ * @subpackage Security
+ * provides interface to implement security modules
+ */
 interface IModule
 {
+    /**
+     * create security module
+     */
     public function create(CSubject $pSubject, $pCallbackHandler = null);
 
+    /**
+     * login with given credentials
+     */
     public function login($pCredentials);
 
+    /**
+     * commit changes
+     */
     public function commit();
 
+    /**
+     * abort security module
+     */
     public function abort();
 }

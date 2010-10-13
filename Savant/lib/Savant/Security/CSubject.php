@@ -12,38 +12,64 @@
  */
 namespace Savant\Security;
 
+/**
+ * @package Savant
+ * @subpackage Security
+ * exception handling of CSubject
+ */
 class ESubject extends \Savant\EException {}
 
+/**
+ * @package Savant
+ * @subpackage Security
+ * provides security subject
+ */
 class CSubject extends \Savant\AStandardObject
 {
+    /**
+     * user principals
+     * @var array
+     */
     private $principals = array();
 
+    /**
+     * create security subject instance
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * kill security subject
+     */
     public function __destruct()
     {
         parent::__construct();
     }
 
-    public static function create()
-    {
-        $instance = new self();
-        return $instance;
-    }
-
+    /**
+     * add principal to security subject
+     * @param mixed $principal
+     */
     public function addPrincipal($principal)
     {
         $this->principals[$principal] = $principal;
     }
 
+    /**
+     * remove principal from subject
+     * @param mixed $principal
+     */
     public function removePrincipal($principal)
     {
         unset($this->principals[$principal]);
     }
 
+    /**
+     * return subjects principals
+     * @return array
+     */
     public function getPrincipals()
     {
         return $this->principals;

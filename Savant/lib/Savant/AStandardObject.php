@@ -123,4 +123,13 @@ abstract class AStandardObject
 	{
             AOP\AFramework::weave($this, new AOP\JoinPoints\CDestructor(\get_class($this)));
 	}
+
+        /**
+         * create class instance, without using the constructor directly
+         * @return object
+         */
+        public function create()
+        {
+            return CBootstrap::invoke(\get_class());
+        }
 }

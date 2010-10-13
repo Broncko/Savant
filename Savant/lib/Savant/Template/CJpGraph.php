@@ -10,11 +10,9 @@
  * @subpackage Template
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
- * TODO: it seems like twig template engine doesn't support namespaces yet.
- * check if that can be fixed without modifying twig code
  */
 namespace Savant\Template;
-require_once CJpGraph::$JPGRAPH_DIR . \DIRECTORY_SEPARATOR . 'jpgraph.php';
+require_once \Savant\CBootstrap::$EXT_DIR . \DIRECTORY_SEPARATOR . 'jpgraph' . \DIRECTORY_SEPARATOR . 'src'. \DIRECTORY_SEPARATOR . 'jpgraph.php';
 
 /**
  * @package Savant
@@ -28,8 +26,14 @@ class EJpGraph extends \Savant\EException {}
  * @subpackage Template
  * wrapper of the extension JpGraph
  */
-class CJpGraph extends AEngine implements IEngine
+class CJpGraph extends AEngine
 {
+    /**
+     * template suffix
+     * @var string
+     */
+    const SUFFIX = '.jpgraph.php';
+
     /**
      * plot type line
      * @var string
@@ -103,6 +107,12 @@ class CJpGraph extends AEngine implements IEngine
     const PT_CONTOUR = 'contourplot';
 
     /**
+     * plot type piechart
+     * @var string
+     */
+    const PT_PIE = 'pieplot';
+
+    /**
      * graph type line
      * @var string
      */
@@ -136,7 +146,13 @@ class CJpGraph extends AEngine implements IEngine
      * graph type contour
      * @var string
      */
-    const GT_COUNTOUR = 'contourtype';
+    const GT_CONTOUR = 'contourtype';
+
+    /**
+     * graph type piechart
+     * @var string
+     */
+    const GT_PIE = 'pietype';
 
     /**
      * graph dir
@@ -148,19 +164,31 @@ class CJpGraph extends AEngine implements IEngine
      * graph width
      * @var integer
      */
-    public static $WIDTH;
+    public static $WIDTH = 400;
 
     /**
      * graph height
      * @var integer
      */
-    public static $HEIGHT;
+    public static $HEIGHT = 300;
 
     /**
      * graph title
      * @var string
      */
     public static $TITLE;
+    
+    /**
+     * graph subtitle
+     * @var string
+     */
+    public static $SUBTITLE;
+
+    /**
+     * graph margins
+     * @var array
+     */
+    public static $MARGIN;
 
     /**
      * graph types
@@ -178,7 +206,8 @@ class CJpGraph extends AEngine implements IEngine
         self::PT_IMPULS => self::GT_SCATTER,
         self::PT_MAP => self::GT_SCATTER,
         self::PT_SCATTER => self::GT_SCATTER,
-        self::PT_SPLINE => self::GT_SCATTER
+        self::PT_SPLINE => self::GT_SCATTER,
+        self::PT_PIE => self::GT_PIE
     );
 
     /**
@@ -191,7 +220,8 @@ class CJpGraph extends AEngine implements IEngine
         self::GT_CONTOUR => 'jpgraph_contour.php',
         self::GT_ERROR => 'jpgraph_error.php',
         self::GT_STOCK => 'jpgraph_stock.php',
-        self::GT_SCATTER => 'jpgraph_scatter.php'
+        self::GT_SCATTER => 'jpgraph_scatter.php',
+        self::GT_PIE => 'jpgraph_pie.php'
     );
 
     /**
@@ -226,7 +256,7 @@ class CJpGraph extends AEngine implements IEngine
     {
         parent::__construct($pSection);
         self::$JPGRAPH_DIR = \Savant\CBootstrap::$EXT_DIR . \DIRECTORY_SEPARATOR . 'jpgraph' . \DIRECTORY_SEPARATOR . 'src';
-        $this->graph = new Graph(self::$WIDTH, self::$HEIGHT);
+        $this->graph = new \Graph(self::$WIDTH, self::$HEIGHT);
     }
 
     /**
@@ -246,7 +276,7 @@ class CJpGraph extends AEngine implements IEngine
      */
     public function addPlot($pType = self::PT_LINE, $pOptions = array(), $pAdd = true)
     {
-        $file = self::$JPGRAPH_DIR . \DIRECTORY_SEPARATOR . self::$GRAPH_FILE[self::$GRAPH_TYPES[$pType]];
+        $file = self::$JPGRAPH_DIR . \DIRECTORY_SEPARATOR . self::$GRAPH_FILES[self::$GRAPH_TYPES[$pType]];
         if(\file_exists($file))
         {
             require_once $file;
@@ -289,7 +319,10 @@ class CJpGraph extends AEngine implements IEngine
                 $plot = new \ScatterPlot($this->dataY, $this->dataX);
                 $plot->SetImpuls();
                 break;
-
+            case self::PT_PIE:
+                $this->graph = new \PieGraph(self::$WIDTH, self::$HEIGHT);
+                $plot = new \PiePlot($this->data);
+                break;
         }
         if($pAdd)
         {
@@ -318,5 +351,16 @@ class CJpGraph extends AEngine implements IEngine
         {
             return $this->graph->Stroke();
         }
+    }
+
+    /**
+     * assign data
+     * @param array $data
+     */
+    public function _assign($data)
+    {
+        $this->graph->SetScale('intlin');
+        $this->dataX = $data['x'];
+        $this->dataY = $data['y'];
     }
 }
