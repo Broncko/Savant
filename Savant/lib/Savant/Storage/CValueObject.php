@@ -26,6 +26,15 @@ class CValueObject
     private $storage = array();
 
     /**
+     * create value object instance
+     * @param array $pData
+     */
+    public function  __construct($pData = array())
+    {
+        $this->storage = $pData;
+    }
+
+    /**
      * set data with key
      * @param string $pKey
      * @param mixed $pVal

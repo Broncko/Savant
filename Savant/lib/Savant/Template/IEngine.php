@@ -28,7 +28,7 @@ interface IEngine
     /**
      * assign data to template
      */
-    public function _assign(\Savant\Storage\DataSet\CDataSet $pDataSet);
+    public function _assign(\Savant\Storage\CValueObject $pDataSet);
 
     /**
      * set template

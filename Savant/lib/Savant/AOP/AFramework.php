@@ -2,7 +2,7 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * This PHP source file is part of the Savant PHP Framework. It is subject to
  * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
@@ -22,7 +22,7 @@ namespace Savant\AOP;
 class EFramework extends \Savant\EException {}
 
 /**
- * @package    Savant$value
+ * @package Savant
  * @subpackage AOP
  * provides global information for objects which use aop functionality
  */

@@ -56,7 +56,19 @@ abstract class ALogging extends AOP\AAspect implements AOP\IAspect
                         $content = sprintf('%s%s %s from frile %s', $indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $pJoinPoint->file);
                         break;
                     case $pJoinPoint instanceof AOP\JoinPoints\CMethodCall:
-                        $content = sprintf('%senter %s %s->%s(%s)',$indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $method, \implode(',', $args));
+                        $strArgs = array();
+                        foreach($args as $argument)
+                        {
+                            if(\is_object($argument))
+                            {
+                                $strArgs[] = \get_class($argument);
+                            }
+                            else
+                            {
+                                $strArgs[] = (string)$argument;
+                            }
+                        }
+                        $content = sprintf('%senter %s %s->%s(%s)',$indent, $pJoinPoint->LABEL, $pJoinPoint->CLASS, $method, \implode(',', $strArgs));
                         break;
                     default:
                         $content = sprintf('%senter %s->%s(%s)',$indent, $pJoinPoint->CLASS, $method, \implode(',', $args));

@@ -86,9 +86,9 @@ abstract class AEngine extends \Savant\AStandardObject implements \Savant\IConfi
      * assign data
      * @param \Savant\Storage\DataSet\CDataSet $obj
      */
-    public function _assign(\Savant\Storage\DataSet\CDataSet $pDataSet)
+    public function _assign(\Savant\Storage\CValueObject $pValObj)
     {
-        $this->data['dataset'] = $pDataSet;
+        $this->data = $pValObj;
     }
 
     /**

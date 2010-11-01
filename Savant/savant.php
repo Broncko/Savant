@@ -1,5 +1,5 @@
 <?php
 require_once 'lib/Savant/CBootstrap.php';
 $_SAVANT = new Savant\CBootstrap();
-$_SAVANT->run();
+$_SAVANT->run(new Savant\CApplication('Savant'));
 ?>

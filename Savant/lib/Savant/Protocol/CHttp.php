@@ -34,13 +34,13 @@ class CHttp extends \Savant\AStandardObject implements \Savant\IConfigure
      * http request method GET
      * @var string
      */
-    const HTTP_GET = 'GET';
+    const RM_GET = 'GET';
 
     /**
      * http request method POST
      * @var string
      */
-    const HTTP_POST = 'POST';
+    const RM_POST = 'POST';
 
     /**
      * url to send http request to
@@ -52,7 +52,7 @@ class CHttp extends \Savant\AStandardObject implements \Savant\IConfigure
      * request type whether GET or POST
      * @var string
      */
-    public $REQUEST_TYPE = self::HTTP_POST;
+    public $REQUEST_TYPE = self::RM_POST;
     
     /**
      * set default content type
@@ -103,7 +103,8 @@ class CHttp extends \Savant\AStandardObject implements \Savant\IConfigure
     }
 
     /**
-     * send http request     * @param string $pType request type GET/POST
+     * send http request
+     * @param string $pType request type GET/POST
      * @param array $pContent associative array of parameters
      * @param string $pType request type GET/POST
      * @return string any type of data
@@ -116,12 +117,12 @@ class CHttp extends \Savant\AStandardObject implements \Savant\IConfigure
         }
         switch(strtoupper($pType))
         {
-            case self::HTTP_GET:
+            case self::RM_GET:
                 $context = self::buildGetContext($pContent);
                 $url = $this->REQUEST_URL . '?' . $context;
                 echo file_get_contents($url);
                 break;
-            case self::HTTP_POST:
+            case self::RM_POST:
                 $context = self::buildPostContext($pContent, $this->CONTENT_TYPE);
                 return file_get_contents($this->REQUEST_URL, false, $context);
                 break;
@@ -149,7 +150,7 @@ class CHttp extends \Savant\AStandardObject implements \Savant\IConfigure
     {
         $optArr = array(
             'http' => array(
-                'method' => 'POST',
+                'method' => self::RM_POST,
                 'header' => 'Content-Type: '.$contentType,
                 'content' => http_build_query($pParams)
             )

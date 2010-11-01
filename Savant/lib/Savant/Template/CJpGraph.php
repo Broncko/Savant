@@ -363,4 +363,20 @@ class CJpGraph extends AEngine
         $this->dataX = $data['x'];
         $this->dataY = $data['y'];
     }
+
+    /**
+     * ensure that expression is true
+     * @param mixed $pExpr
+     * @param string $pMesg
+     */
+    private function ensure($pExpr, $pMesg = null)
+    {
+        if(!$pExpr)
+        {
+            if($pMesg != null)
+            {
+                throw new EJpGraph($pMesg);
+            }
+        }
+    }
 }

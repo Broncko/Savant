@@ -121,4 +121,13 @@ class CDataSet implements \IteratorAggregate, \Countable
             return \array_keys(\get_object_vars($row));
         }
     }
+
+    /**
+     * return entire data
+     * @return array
+     */
+    public function getAll()
+    {
+        return $this->data;
+    }
 }

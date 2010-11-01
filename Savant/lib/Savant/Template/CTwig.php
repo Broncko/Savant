@@ -61,7 +61,19 @@ class CTwig extends AEngine implements IEngine
      */
     public function _setTemplate($pTemplate = '')
     {
+        if(!\file_exists($this->TEMPLATE_DIR . \DIRECTORY_SEPARATOR . $pTemplate))
+        {
+            throw new ETwig("Unable to find template %s in %s", $pTemplate, $this->TEMPLATE_DIR);
+        }
         $this->template = $this->twig->loadTemplate($pTemplate);
+        /*try
+        {
+            $this->template = $this->twig->loadTemplate($pTemplate);
+        }
+        catch(\RuntimeException $exc)
+        {
+            throw new ETwig($exc->getMessage());
+        }*/
     }
 
     /**
@@ -70,7 +82,7 @@ class CTwig extends AEngine implements IEngine
      */
     public function _render($pDisplay = true)
     {
-        return $this->template->render($this->data);
+        return $this->template->render($this->data->getAll());
     }
 
     /**

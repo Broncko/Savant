@@ -74,7 +74,10 @@ class EException extends \Exception
             else
             {
                 $trace = $this->getTrace();
-                
+                echo $this->getMessage()."<br/>";
+                echo "<pre>";
+                print_r($trace);
+                echo "</pre>";
                 $firstTrace = \array_shift($trace);
 
                 $ret = (!empty($firstTrace["class"])?$firstTrace["class"].$firstTrace["type"].$firstTrace["function"]:$firstTrace["function"]).'()<br/>';

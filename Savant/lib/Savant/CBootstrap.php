@@ -2,7 +2,7 @@
 /**
  * Savant Framework / Module Savant (Core)
  *
- ** This PHP source file is part of the Savant PHP Framework. It is subject to
+ * This PHP source file is part of the Savant PHP Framework. It is subject to
  * the Savant License that is bundled with this package in the file LICENSE
  *
  * @category   Savant
@@ -16,6 +16,8 @@
  */
 namespace Savant;
 require_once 'EException.php';
+require_once 'IApplication.php';
+require_once 'CApplication.php';
 require_once 'CConfigure.php';
 
 /**
@@ -29,7 +31,7 @@ class EBootstrap extends EException {}
  * @package Savant
  * holds information and helper functions for the framework
  */
-final class CBootstrap
+final class CBootstrap extends CApplication
 {
     /**
      * framework mode web
@@ -170,36 +172,6 @@ final class CBootstrap
     public static $LOGGER = null;
 
     /**
-     * base folder
-     * @var string
-     */
-    public static $BASE_DIR;
-
-    /**
-     * root folder
-     * @var string
-     */
-    public static $ROOT_DIR;
-
-    /**
-     * library folder
-     * @var string
-     */
-    public static $LIB_DIR;
-
-    /**
-     * skins folder
-     * @var string
-     */
-    public static $SKINS_DIR;
-
-    /**
-     * cache data folder
-     * @var string
-     */
-    public static $CACHE_DIR;
-
-    /**
      * framework folder
      * @var string
      */
@@ -210,12 +182,6 @@ final class CBootstrap
      * @var string
      */
     public static $TESTS_DIR;
-
-    /**
-     * configuration folder
-     * @var string
-     */
-    public static $CONF_DIR;
 
     /**
      * extension folder
@@ -242,6 +208,12 @@ final class CBootstrap
     public static $JOINPOINT_DIR;
 
     /**
+     * application name
+     * @var Savant\IApplication
+     */
+    public static $APPLICATION;
+
+    /**
      * bootstrap configuration
      * @var \Savant\CConfiguration
      */
@@ -253,8 +225,6 @@ final class CBootstrap
      */
     private $classLoaders = null;
 
-
-
     /**
      * create bootstrapper instance
      */
@@ -262,8 +232,9 @@ final class CBootstrap
     {
         try
         {
-            $this->config = CConfigure::getClassConfig(\get_class($this));
             $this->classLoaders = new \SplObjectStorage();
+            \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
+            $this->config = CConfigure::getClassConfig(\get_class($this));
         }
         catch(EException $e)
         {
@@ -310,34 +281,27 @@ final class CBootstrap
     }
 
     /**
-     * set bootstrapper properties
-     * @static setProperties
-     */
-    public static function setProperties()
-    {
-        self::$BASE_DIR = \realpath(dirname(__FILE__) . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . '..');
-        self::$ROOT_DIR = \realpath(self::$BASE_DIR . \DIRECTORY_SEPARATOR . '..');
-        self::$CONF_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'conf';
-        self::$LIB_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'lib';
-        self::$SKINS_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'skins';
-        self::$CACHE_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'cache';
-        self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
-        self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
-        self::$EXT_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'ext';
-        self::$DATA_DIR = self::$BASE_DIR . \DIRECTORY_SEPARATOR . 'data';
-        self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
-        self::$JOINPOINT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'JoinPoints';
-    }
-
-    /**
      * initialize bootstrapper
      */
-    public function initialize()
+    public function initialize(IApplication $pApplication = null)
     {
         self::$STATUS = self::STATUS_INITIALIZING;
-        self::setProperties();
 
-        \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
+        $baseDir = self::getBaseDir(__FILE__);
+        self::setFolderStructure($baseDir);
+        self::$FRAMEWORK_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'Savant';
+        self::$TESTS_DIR = self::$LIB_DIR . \DIRECTORY_SEPARATOR . 'SavantTests';
+        self::$EXT_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'ext';
+        self::$DATA_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'data';
+        self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
+        self::$JOINPOINT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'JoinPoints';
+
+        if($pApplication != null)
+        {
+            $pApplication::setFolderStructure($pApplication::getBaseDir(__FILE__));
+            $this->APPLICATION = $pApplication;
+            \spl_autoload_register(array(\get_class($pApplication), 'loadClass'));
+        }
 
         if(isset($this->classLoaders) && $this->classLoaders->count() > 0)
         {
@@ -373,27 +337,6 @@ final class CBootstrap
         self::$STATUS = self::STATUS_FINALIZING;
         //put code here, which will be executed when the framework shuts down or exit is called
         self::$STATUS = self::STATUS_INACTIVE;
-    }
-
-    /**
-     * framework class loader
-     * @static loadClass
-     * @param string $pClass
-     */
-    public static function loadClass($pClass)
-    {
-        $pClass = str_replace('\\', \DIRECTORY_SEPARATOR, $pClass);
-        $classPath = self::$LIB_DIR.\DIRECTORY_SEPARATOR.str_replace('_',\DIRECTORY_SEPARATOR,$pClass).'.php';
-        if(!file_exists($classPath))
-        {
-            //silently stop if file not exists, cause maybe other classloaders
-            //can find the file
-            return false;
-        }
-        if(!include_once($classPath))
-        {
-            throw new EBootstrap("class %s could not be load from file %s", $pClass, $classPath);
-        }
     }
 
     /**
@@ -438,14 +381,14 @@ final class CBootstrap
     /**
      * run bootstrapper
      */
-    public function run()
+    public function run(IApplication $pApplication = null)
     {
         if(self::$STATUS == self::STATUS_ACTIVE)
         {
             echo "already active";
             return;
         }
-        $this->initialize();
+        $this->initialize($pApplication);
         self::$STATUS = self::STATUS_ACTIVE;
     }
 

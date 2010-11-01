@@ -7,24 +7,24 @@
  *
  * @category   Savant
  * @package    Savant
- * @subpackage Controller
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
-namespace Savant\MVC;
+namespace Savant;
 
 /**
- * models have to implement this interface
+ * @package Savant
+ * defines how an application looks like
  */
-interface IModel
+interface IApplication
 {
     /**
-     * get query meta data
+     * set application folder structure
      */
-    public function meta__DefaultQuery();
+    public static function setFolderStructure($pBaseDir);
 
     /**
-     * default query
+     * class loader
      */
-    public function defaultQuery();
+    public static function loadClass($pClass);
 }

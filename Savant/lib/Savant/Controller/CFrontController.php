@@ -30,7 +30,7 @@ class EFrontController extends \Savant\EException {}
  * handles request from client and transforms it to needed data to proceed with the framework
  * 
  */
-class CFrontController extends \Savant\AStandardObject implements \Savant\IConfigure
+class CFrontController extends \Savant\AStandardObject
 {
     /**
      * template engine
@@ -62,6 +62,7 @@ class CFrontController extends \Savant\AStandardObject implements \Savant\IConfi
      */
     public function __construct(\Savant\Template\IEngine $pEngine)
     {
+        parent::__construct();
         $this->engine = $pEngine;
         /*$params = self::parseRequest();
         $tplFile = \Savant\CBootstrap::$SKINS_DIR .\DIRECTORY_SEPARATOR . $params->tpl . $pEngine::SUFFIX;
@@ -72,23 +73,25 @@ class CFrontController extends \Savant\AStandardObject implements \Savant\IConfi
      * merge template with data
      * @param \Savant\Storage\DataSet\CDataSet $pData
      */
-    public function merge(\Savant\Storage\DataSet\CDataSet $pData)
+    public function _merge($pData)
     {
-        foreach($pData->data as $row)
-        {
-            foreach($row as $tplVar => $var)
-            {
-                $this->engine->{$tplVar} = $var;
-            }
-        }
+        $this->engine->assign($pData);
     }
 
     /**
      * print template
      */
-    public function out()
+    public function _out()
     {
-        $this->engine->render();
+        echo $this->engine->render();
+    }
+
+    /**
+     * alias for out()
+     */
+    public function  __toString()
+    {
+        return $this->out();
     }
 
     /**
@@ -104,7 +107,7 @@ class CFrontController extends \Savant\AStandardObject implements \Savant\IConfi
      * parse url
      * @param string $pUri
      */
-    public function parseUri($pUri)
+    public function _parseUri($pUri)
     {
         $uri = (object)\parse_url($pUri);
         $uriParts = \explode('/',  \str_replace($_SERVER['SCRIPT_NAME'], '',$uri->path));
@@ -117,7 +120,7 @@ class CFrontController extends \Savant\AStandardObject implements \Savant\IConfi
      * @param \Savant\Template\IEngine $pEngine
      * @param string $pUri
      */
-    public static function handle(\Savant\Template\IEngine $pEngine, $pUri)
+    public static function _handle(\Savant\Template\IEngine $pEngine, $pUri)
     {
         $instance = new self($pEngine);
         $instance->parseUri($pUri);
@@ -131,6 +134,6 @@ class CFrontController extends \Savant\AStandardObject implements \Savant\IConfi
         //wrong place for setting template? perhaps do this at module code
         $instance->engine->setTemplate($tplPath);
         $instance->engine->assign($res);
-        $instance->engine->render();
+        $instance->out();
     }
 }
