@@ -115,18 +115,25 @@ class CApplication implements IApplication
         {
             return CApplication::$LIB_DIR.\DIRECTORY_SEPARATOR.str_replace('_',\DIRECTORY_SEPARATOR,$class).'.php';
         };
+        //if default classname exists as filename
         if(!\file_exists($classPath($pClass)))
         {
+            /*if not try to find filenames which define baseclasses and have also
+              abstract classes or classes that derive from eexception in the same
+              file*/
             $addClassPrefix = function($prefix) use ($pClass)
             {
                 $classParts = \explode('/', $pClass);
+                //if class is an exception class replace first letter with prefix
                 if($classParts[\count($classParts)-1][0] == 'E')
                 {
                     $classParts[\count($classParts)-1][0] = $prefix;
                     return $pClass = \implode('/', $classParts);
                 }
             };
+            //use C for standard class definitions
             $pClass = (file_exists($classPath($addClassPrefix('C'))) ? $addClassPrefix('C') : false);
+            //use A for abstract classes
             $pClass = (file_exists($classPath($addClassPrefix('A'))) ? $addClassPrefix('A') : false);
             if(!$pClass)
             {
