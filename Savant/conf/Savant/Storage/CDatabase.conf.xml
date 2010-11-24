@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:savant="http://localhost/savant">
     <configurations>
-        <default>
-            <username>root</username>
-            <password>3w4ghi8</password>
-            <driver_class>CMySqlPdo</driver_class>
-        </default>
-        <test_sqlite>
-            <driver_class>Savant\Storage\Driver\ASQLitePdo</driver_class>
-            <database>/home/broncko/Documents/projects/Savant/data/testdb.sq3</database>
-            <username></username>
-            <password></password>
-        </test_sqlite>
-        <test_mysql>
-            <driver_class>Savant\Storage\Driver\AMySqlPdo</driver_class>
-            <database>test</database>
-            <username>root</username>
-            <password>W2sshsG!</password>
-            <host>localhost</host>
-            <port>3306</port>
-        </test_mysql>
-        <savant_mysql>
-            <driver_class>Savant\Storage\Driver\AMySqlPdo</driver_class>
-            <database>savant</database>
-            <username>savant</username>
-            <password>QdYWCD3vtXu9tWhy</password>
-            <host>localhost</host>
-            <port>3306</port>
-        </savant_mysql>
-        <savant_sqlite>
-            <driver_class>Savant\Storage\Driver\ASQLitePdo</driver_class>
-            <database>/home/broncko/Documents/projects/Savant/data/savanttest</database>
-            <password>oJo8QwhyNwEvGu2srCGP4w==</password>
-        </savant_sqlite>
+        <section name="default">
+            <member name="username">root</member>
+            <member name="password">3w4ghi8</member>
+            <member name="driver_class">CMySqlPdo</member>
+        </section>
+        <section name="test_sqlite">
+            <member name="driver_class">Savant\Storage\Driver\ASQLitePdo</member>
+            <member name="database">/home/broncko/Documents/projects/Savant/data/testdb.sq3</member>
+        </section>
+        <section name="test_mysql">
+            <member name="driver_class">Savant\Storage\Driver\AMySqlPdo</member>
+            <member name="database">test</member>
+            <member name="username">root</member>
+            <member name="password">W2sshsG!</member>
+            <member name="host">localhost</member>
+            <member name="port">3306</member>
+        </section>
+        <section name="savant_mysql">
+            <member name="driver_class">Savant\Storage\Driver\AMySqlPdo</member>
+            <member name="database">savant</member>
+            <member name="username">savant</member>
+            <member name="password">QdYWCD3vtXu9tWhy</member>
+            <member name="host">localhost</member>
+            <member name="port">3306</member>
+        </section>
+        <section name="savant_sqlite">
+            <member name="driver_class">Savant\Storage\Driver\ASQLitePdo</member>
+            <member name="database">/home/broncko/Documents/projects/Savant/data/savanttest</member>
+            <member name="password">oJo8QwhyNwEvGu2srCGP4w==</member>
+        </section>
     </configurations>
 </config>

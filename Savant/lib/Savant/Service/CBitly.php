@@ -27,7 +27,7 @@ class EBitly extends \Savant\EException { }
  * Wrapper of Bitly-REST_API
  *  
  */
-class CBitly extends \Savant\Protocol\CRest implements \Savant\IConfigure
+class CBitly extends \Savant\Protocol\ARest implements \Savant\IConfigure
 {
 	/**
 	 * login property

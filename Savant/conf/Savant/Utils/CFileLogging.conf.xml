@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-<configurations>
-	<default>
-		<logfile>/home/broncko/Documents/projects/Savant/log/log.txt</logfile>
-		<logtemplate>%TIMESTAMP %PID %LEVEL %CONTENT</logtemplate>
-	</default>
-        <kss_test>
-            <logfile>/home/broncko/Documents/projects/Savant/log/ksslog.txt</logfile>
-	    <logtemplate>%TIMESTAMP %CONTENT</logtemplate>
-        </kss_test>
-</configurations>
+    <configurations>
+        <section name="default">
+                <member name="logfile">/home/broncko/Documents/projects/Savant/log/log.txt</member>
+                <member name="logtemplate">%TIMESTAMP %PID %LEVEL %CONTENT</member>
+        </section>
+        <section name="kss_test">
+            <member name="logfile">/home/broncko/Documents/projects/Savant/log/ksslog.txt</member>
+            <member name="logtemplate">%TIMESTAMP %CONTENT</member>
+        </section>
+    </configurations>
 </config>

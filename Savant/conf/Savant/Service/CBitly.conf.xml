@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-<configurations>
-	<default>
-		<login>broncko</login>
-		<apikey>R_57d500ca82ec1ee06d4fddae7f3b66e1</apikey>
-		<resturl><![CDATA[http://api.bit.ly/shorten?version=2.0.1&longUrl=%s&login=%s&apiKey=%s]]></resturl>
-	</default>
-</configurations>
-<joinpoints>
-	<Logger>
-		<name>Logger</name>
-		<class><![CDATA[\Savant\Utils\CFileLogging]]></class>
-		<method>advice</method>
-	</Logger>
-        <!--<Config>
-                <name>Config</name>
-                <class><![CDATA[\Savant\CConfiguration]]></class>
-                <method>advice</method>
-        </Config>-->
-</joinpoints>
+    <configurations>
+	<section name="default">
+            <member name="login">broncko</member>
+            <member name="apikey">R_57d500ca82ec1ee06d4fddae7f3b66e1</member>
+            <member name="resturl"><![CDATA[http://api.bit.ly/shorten?version=2.0.1&longUrl=%s&login=%s&apiKey=%s]]></member>
+	</section>
+        <section name="other">
+            <member name="login">hendrik</member>
+            <member name="apikey">ldsfjlsdfjldsflsdaföjl</member>
+            <member name="resturl">www.bronckopedia.de</member>
+        </section>
+    </configurations>
 </config>

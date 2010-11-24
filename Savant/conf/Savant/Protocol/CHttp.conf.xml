@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <configurations>
-        <default>
-            <request_url>http://localhost/projects/Savant/htdocs/xmlrpcserver.php</request_url>
-            <request_type>POST</request_type>
-            <content_type>application/x-www-form-urlencoded</content_type>
-        </default>
+        <section name="default">
+            <member name="request_url">http://localhost/projects/Savant/htdocs/xmlrpcserver.php</member>
+            <member name="request_type">POST</member>
+            <member name="content_type">application/x-www-form-urlencoded</member>
+        </section>
     </configurations>
 </config>

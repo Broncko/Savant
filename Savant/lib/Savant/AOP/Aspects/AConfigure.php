@@ -73,15 +73,14 @@ abstract class AConfigure extends AOP\AAspect implements AOP\IAspect
         }
         catch(\Savant\EConfigure $e)
         {
-            //\Savant\CBootstrap::log($e->getMessage());
             return;
         }
-        foreach($config as $confProp => $confVal)
+        foreach($config->member as $memberElement)
         {
             try
             {
-                $propObj = new \ReflectionProperty($class, \strtoupper($confProp));
-                $propObj->setValue($pObj, $confVal);
+                $propObj = new \ReflectionProperty($class, \strtoupper($memberElement->attributes()->name));
+                $propObj->setValue($pObj, $memberElement);
             }
             catch(ReflectionException $e)
             {

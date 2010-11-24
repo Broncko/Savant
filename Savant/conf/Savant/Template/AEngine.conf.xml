@@ -2,8 +2,9 @@
 <config>
     <configurations>
         <default>
-            <template_dir>/home/broncko/Documents/projects/Savant/skins</template_dir>
-            <compile_dir>/home/broncko/Documents/projects/Savant/cache/Twig</compile_dir>
+            <member name="template_dir">/home/broncko/Documents/projects/Savant/skins</member>
+            <member name="compile_dir">/home/broncko/Documents/projects/Savant/cache/Twig</member>
+            <broncko>shut the fuck up!</broncko>
         </default>
     </configurations>
 </config>
