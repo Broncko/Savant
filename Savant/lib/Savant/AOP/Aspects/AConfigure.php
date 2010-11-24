@@ -68,7 +68,7 @@ abstract class AConfigure extends AOP\AAspect implements AOP\IAspect
         }
         if(\method_exists($pObj, 'configure'))
         {
-            $class->configure($pObj->confSection);
+            $pObj->configure($pObj->confSection);
             return;
         }
         $class = \get_class($pObj);
