@@ -171,4 +171,18 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
         }
         $this->con->exec($pSql);
     }
+
+    /**
+     * configure database object from datasources
+     * @param string $pSection
+     */
+    public function configure($pSection = 'default')
+    {
+        $config = \Savant\CConfigure::getClassConfig(__CLASS__);
+        $section = $config->datasources->xpath("//datasource[@name='".$pSection."']");
+        foreach(\Savant\CConfigure::getConfigFromSection($section[0]) as $configVar => $configVal)
+        {
+            $this->{\strtoupper($configVar)} = $configVal;
+        }
+    }
 }
