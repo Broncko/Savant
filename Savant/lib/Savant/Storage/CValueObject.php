@@ -23,7 +23,7 @@ class CValueObject
      * storage
      * @var array
      */
-    private $storage = array();
+    protected $storage = array();
 
     /**
      * create value object instance

@@ -1,20 +1,21 @@
 <?php
 use \Savant\Controller\CFrontController as CFrontController;
-use Savant\Template\CChunk as CChunk;
 use Savant\Storage\DataSet\CDataSet as CDataSet;
 
 require_once '../savant.php';
 
 try 
 {
-    CFrontController::handle($_SERVER['REQUEST_URI']);
-    $engine = new CChunk();
+    $engine = new \Savant\Template\CTwig();
+    $tplFile = 'test' . $engine::SUFFIX;
+    $engine->setTemplate($tplFile);
     $fc = new CFrontController($engine);
     
-    $testdata = new CDataSet();
-    $testdata->addRow((object)array('testvar'=>'Welt'));
-    $testdata->addRow((object)array('testvar2'=>'Hendrik'));
+    $testdata = new Savant\Storage\CValueObject();
+    $testdata->testvar = "World";
+    $testdata->hendrik = (object)array("name" => "Broncko");
     $fc->merge($testdata);
+    $fc->out();
 }
 catch(EException $e)
 {

@@ -226,6 +226,12 @@ final class CBootstrap extends CApplication
     private $classLoaders = null;
 
     /**
+     * framework instances (used to store singleton classes for example)
+     * @var array
+     */
+    public $instances = array();
+
+    /**
      * create bootstrapper instance
      */
     public function __construct()
@@ -447,6 +453,21 @@ final class CBootstrap extends CApplication
         }
         $res = \forward_static_call_array(array($pClass,$pMethod),$pArgs);
         return $res;
+    }
+
+    /**
+     * returns instance of a stored object (singleton pattern)
+     * @param string $pClass
+     * @return mixed
+     */
+    public static function getInstance($pClass)
+    {
+        $classHash = md5($pClass);
+        if(!\array_key_exists($classHash, $this->instances))
+        {
+            $this->instances[$classHash] = new $pClass;
+        }
+        return $this->instances[$classHash];
     }
 
     /**

@@ -19,17 +19,7 @@ namespace Savant\Protocol;
  * Exception-handling for Rest-API
  *  
  */
-class ERest extends \Savant\EException
-{
-    /**
-     * create exception instance to decode json_encrypted rest exceptions
-     */
-    public function __construct()
-    {
-        $this->message = CJson::decode($this->getMessage());
-        parent::__construct();
-    }
-}
+class ERest extends \Savant\EException {}
 
 /**
  * @package    Savant
@@ -39,52 +29,101 @@ class ERest extends \Savant\EException
  */
 abstract class ARest extends CHttp implements \Savant\IConfigure
 {
+    /**
+     * request method put
+     * @var string
+     */
     const RM_PUT = 'PUT';
 
+    /**
+     * request method delete
+     * @var string
+     */
     const RM_DELETE = 'DELETE';
 
+    /**
+     * host
+     * @var string
+     */
     public static $HOST;
 
+    /**
+     * port
+     * @var integer
+     */
     public static $PORT;
-    
+
+    /**
+     * last of the returned headers
+     * @var string
+     */
+    protected $lastHeader;
+
+    /**
+     * create rest client instance
+     * @param string $pSection
+     */
     public function __construct($pSection = 'default')
     {
         parent::__construct($pSection);
     }
 
-    public function send($pUrl, $pMethod = 'GET', $pPostData = null)
+    public function send($pUrl, $pMethod = self::RM_GET, $pData = array())
     {
-        $socket = \fsockopen(self::$HOST, self::$PORT, $errno, $errmsg);
-        if(!$socket)
+        $optArr = array(
+            'http' => array(
+                'method' => $pMethod,
+                'header' => 'Content-Type: text/plain;charset=utf-8'
+            )
+        );
+
+        $stream =  \stream_context_create($optArr);
+        
+        switch($pMethod)
         {
-            throw new ERest("code: %s - %s", $errno, $errmsg);
+            case self::RM_PUT:
+            case self::RM_POST:
+                $optArr['http']['content'] = CJson::encode($pData);
+                $stream =  \stream_context_create($optArr);
+                $res = \file_get_contents(
+                        sprintf('%s:%s/%s',self::$HOST,self::$PORT,$pUrl),
+                        null,
+                        $stream);
+                break;
+            case self::RM_DELETE:
+            case self::RM_GET:
+                if(count($pData) > 0)
+                {
+                    $res = \file_get_contents(
+                            sprintf('%s:%s/%s?%s',self::$HOST,self::$PORT,$pUrl,\http_build_query($pData)),
+                            null,
+                            $stream);
+                }
+                else
+                {
+                    $res = \file_get_contents(
+                            sprintf('%s:%s/%s',self::$HOST,self::$PORT,$pUrl),
+                            null,
+                            $stream);
+                }
+                break;
         }
-        $request = \sprintf("%s %s HTTP/1.0\r\nHost: localhost\r\n", $pMethod, $pUrl);
 
-        if($pPostData) {
-            $request .= "Content-Length: ".\strlen($pPostData)."\r\n\r\n";
-            $request .= $pPostData."\r\n";
-        }
-        else
-        {
-            $request .= "\r\n";
-        }
-
-        \fwrite($socket, $request);
-        $response = "";
-
-        while(!\feof($socket)) {
-            $response .= \fgets($socket);
-        }
-        return $response;
+        return $res;
+    }
+    
+    public function put($pUrl, $pData = array())
+    {
+        print_r($this->send($pUrl, self::RM_PUT, $pData));
     }
 
-    protected function put($pUrl)
+    public function delete($pUrl)
     {
-        list($header, $content) = explode("\r\n\r\n",$this->send($pUrl, self::RM_PUT));
-        if(!isset($content['ok']) && $content['ok'] != true)
-        {
-            throw new ERest($content);
-        }
+        print_r($this->send($pUrl, self::RM_DELETE));
+    }
+
+    public function get($pUrl)
+    {
+        print_r($this->send($pUrl));
     }
 }

@@ -11,9 +11,19 @@ class TCouchDb extends \Savant\ATestCase
         $this->obj = new \Savant\Storage\CCouchDb();
     }
 
-    public function testCreateDb()
+    public function xtestCreateDb()
     {
-        $this->obj->createDb("BronckoDb");
+        $this->obj->createDb("testdb");
+    }
+
+    public function xtestCreateDocument()
+    {
+        $this->obj->createDocument("testdoc", array("_id"=>"123", "name"=>"Broncko", "age"=>"25"));
+    }
+
+    public function testGetUuid()
+    {
+        $this->obj->getUuid(7);
     }
 
     public function tearDown()

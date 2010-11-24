@@ -5,5 +5,9 @@
 		<logfile>/home/broncko/Documents/projects/Savant/log/log.txt</logfile>
 		<logtemplate>%TIMESTAMP %PID %LEVEL %CONTENT</logtemplate>
 	</default>
+        <kss_test>
+            <logfile>/home/broncko/Documents/projects/Savant/log/ksslog.txt</logfile>
+	    <logtemplate>%TIMESTAMP %CONTENT</logtemplate>
+        </kss_test>
 </configurations>
 </config>

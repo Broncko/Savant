@@ -4,5 +4,11 @@
         <default>
             <logfile>bronckotest.log</logfile>
         </default>
+        <debug>
+            <logfile>debuglog.log</logfile>
+        </debug>
+        <live>
+            <logfile>production_log.log</logfile>
+        </live>
     </configurations>
 </config>

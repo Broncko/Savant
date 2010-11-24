@@ -13,15 +13,35 @@
  */
 namespace Savant\Protocol;
 
+/**
+ * @package Savant
+ * @subpackage Protocol
+ * exception handling of CJson
+ */
 class EJson extends \Savant\EException {}
 
+/**
+ * @package Savant
+ * @subpackage Protocol
+ * provides json encoding and decoding
+ */
 class CJson
 {
+    /**
+     * encode data to json
+     * @param mixed $pObj
+     * @return string
+     */
     public static function encode($pObj)
     {
         return \json_encode($pObj);
     }
 
+    /**
+     * decode json data to native php datatypes
+     * @param mixed $pObj
+     * @return string
+     */
     public static function decode($pObj)
     {
         return \json_decode($pObj);

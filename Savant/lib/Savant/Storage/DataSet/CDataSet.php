@@ -60,7 +60,7 @@ class CDataSet implements \IteratorAggregate, \Countable
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->data);
+        return $this->data;
     }
 
     /**
@@ -129,5 +129,10 @@ class CDataSet implements \IteratorAggregate, \Countable
     public function getAll()
     {
         return $this->data;
+    }
+
+    public function toXml()
+    {
+        $xmlRoot = new \SimpleXMLElement();
     }
 }

@@ -50,7 +50,7 @@ class ADataSetProvider extends \Savant\AStandardObject
      * @param string $pConnection
      * @return \Savant\Storage\DataSet\CDataSet
      */
-    public function _dsQuery($pQuery, $pParams = array(), $pConnection = 'default')
+    public function _dsQuery($pQuery = 'Default', $pParams = array(), $pConnection = 'default')
     {
         $method = 'query'.$pQuery;
         if(!\method_exists($this, $method))
@@ -63,14 +63,5 @@ class ADataSetProvider extends \Savant\AStandardObject
         }
         $dataSet = new CDataSet($this->$method($pParams)->fetchAll());
         return $dataSet;
-    }
-
-    /**
-     * create instance of dataset provider
-     * @return \Savant\Storage\DataSet\CDataSetProvider
-     */
-    public function create()
-    {
-        return \Savant\CBootstrap::invoke(\get_class());
     }
 }
