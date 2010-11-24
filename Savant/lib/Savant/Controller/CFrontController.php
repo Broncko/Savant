@@ -42,7 +42,7 @@ class CFrontController extends \Savant\AStandardObject
      * module
      * @var string
      */
-    private $module = '';
+    private $app = '';
 
     /**
      * mvc controller
@@ -109,10 +109,9 @@ class CFrontController extends \Savant\AStandardObject
      */
     public function _parseUri($pUri)
     {
-        $uri = (object)\parse_url($pUri);
-        $uriParts = \explode('/',  \str_replace($_SERVER['SCRIPT_NAME'], '',$uri->path));
-        $this->controller = '\cms\controller\\'.$uriParts[1];
-        $this->action = $uriParts[2];
+        $uriParts = \explode('/',  \str_replace($_SERVER['SCRIPT_NAME'], '',$pUri));
+        \array_shift($uriParts);
+        list($this->app, $this->controller, $this->action) = $uriParts;
     }
 
     /**
@@ -120,12 +119,17 @@ class CFrontController extends \Savant\AStandardObject
      * @param \Savant\Template\IEngine $pEngine
      * @param string $pUri
      */
-    public static function _handle(\Savant\Template\IEngine $pEngine, $pUri)
+    public static function handle(\Savant\Template\IEngine $pEngine, $pUri)
     {
         $instance = new self($pEngine);
         $instance->parseUri($pUri);
-        $action = (!empty($instance->action) ? $instance->action : 'index');
-        $controller = \array_reverse(\explode('\\', $instance->controller));
+        
+        /* \spl_autoload_register(
+           function() {
+                if(\file_exists(\Savant\CBootstrap::))
+            }
+        ); */
+
         $res = \Savant\AGenericCallInterface::call($instance->controller, $action);
 
         //TODO: remove hardcoded template path

@@ -208,12 +208,6 @@ final class CBootstrap extends CApplication
     public static $JOINPOINT_DIR;
 
     /**
-     * application name
-     * @var Savant\IApplication
-     */
-    public static $APPLICATION;
-
-    /**
      * bootstrap configuration
      * @var \Savant\CConfiguration
      */
@@ -289,7 +283,7 @@ final class CBootstrap extends CApplication
     /**
      * initialize bootstrapper
      */
-    public function initialize(IApplication $pApplication = null)
+    public function initialize()
     {
         self::$STATUS = self::STATUS_INITIALIZING;
 
@@ -301,13 +295,6 @@ final class CBootstrap extends CApplication
         self::$DATA_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'data';
         self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
         self::$JOINPOINT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'JoinPoints';
-
-        if($pApplication != null)
-        {
-            $pApplication::setFolderStructure($pApplication::getBaseDir(__FILE__));
-            $this->APPLICATION = $pApplication;
-            \spl_autoload_register(array(\get_class($pApplication), 'loadClass'));
-        }
 
         if(isset($this->classLoaders) && $this->classLoaders->count() > 0)
         {
