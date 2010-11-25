@@ -61,16 +61,23 @@ abstract class AGenericCallInterface
             throw new EGenericCallInterface('method %s::%s does not exist', $pClass, $pMethod);
         }
         $mode = (!empty($pOpts['mode']) ? $pOpts['mode'] : self::getCallMode($pClass, $pMethod));
-        switch($mode)
+        try
         {
-            case self::MODE_STATIC:
-                $res = \call_user_func_array(array($pClass, $pMethod), $pArgs);
-                break;
-            case self::MODE_OBJECT:
-                $instance = new $pClass;
-                $res = \call_user_method_array($pMethod, $instance, $pArgs);
+            switch($mode)
+            {
+                case self::MODE_STATIC:
+                    $res = \call_user_func_array(array($pClass, $pMethod), $pArgs);
+                    break;
+                case self::MODE_OBJECT:
+                    $res = \call_user_func_array(array($pClass, $pMethod), $pArgs);
+                    break;
+            }
+            return $res;
         }
-        return $res;
+        catch(Exception $e)
+        {
+            throw new EGenericCallInterface($e->getMessage());
+        }
     }
 
     /**

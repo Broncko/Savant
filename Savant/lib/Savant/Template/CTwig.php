@@ -51,7 +51,8 @@ class CTwig extends AEngine implements IEngine
         parent::__construct($pSection);
         \Twig_Autoloader::register();
         $loader = new \Twig_Loader_Filesystem($this->TEMPLATE_DIR);
-        $options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
+        //$options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
+        $options = array('cache' => false);
         $this->twig = new \Twig_Environment($loader, $options);
     }
 
@@ -77,12 +78,31 @@ class CTwig extends AEngine implements IEngine
     }
 
     /**
+     * set template dir
+     * @param string $pDir
+     */
+    public function setTemplateDir($pDir)
+    {
+        $this->twig->setLoader(new \Twig_Loader_Filesystem($pDir));
+        $this->TEMPLATE_DIR = $pDir;
+    }
+
+    /**
      * render template
      * @return string
      */
     public function _render($pDisplay = true)
     {
-        return $this->template->render($this->data->getAll());
+
+        $out = $this->template->render($this->data);
+        if($pDisplay)
+        {
+            echo $out;
+        }
+        else
+        {
+            return $out;
+        }
     }
 
     /**

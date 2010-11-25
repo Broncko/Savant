@@ -14,135 +14,140 @@ namespace Savant;
 
 /**
  * @package Savant
- * exception handling of AAplication
+ * exception handling of CApplication
  */
 class EApplication extends EException {}
 
 /**
  * @package Savant
- * provides an application template
+ * provides an application wrapper
  */
-class CApplication implements IApplication
+class CApplication extends AStandardObject
 {
     /**
-     * application name
-     * @var string
-     */
-    public static $NAME;
-
-    /**
-     * base folder
+     * application base folder
      * @var string
      */
     public static $BASE_DIR;
 
     /**
-     * root folder
+     * application models folder
      * @var string
      */
-    public static $ROOT_DIR;
+    public static $MODELS_DIR;
 
     /**
-     * configuration folder
+     * application controller folder
      * @var string
      */
-    public static $CONF_DIR;
+    public static $CONTROLLER_DIR;
 
     /**
-     * library folder
+     * application views dir
      * @var string
      */
-    public static $LIB_DIR;
+    public static $VIEWS_DIR;
 
     /**
-     * skins folder
+     * application name
      * @var string
      */
-    public static $SKINS_DIR;
+    public $name;
 
-    /**
-     * cache data folder
-     * @var string
-     */
-    public static $CACHE_DIR;
-    
-    /**
-     * use default folder structure if set to true
-     * @var boolean
-     */
-    public static $DEFAULT_FOLDER_STRUCTURE = true;
+    private $requestController;
+
+    private $requestAction;
 
     /**
      * create application instance
-     * @param string $pName
+     * @param string $pName application name
      */
-    public function __construct($pName = '')
+    public function __construct($pName)
     {
-        self::$NAME = $pName;
+        $this->name = $pName;
+        $this->initialize();
     }
 
     /**
-     * return base dir
-     * @param string $pFile
-     * @return string
+     * initialize application
      */
-    protected static function getBaseDir($pFile)
+    public function initialize()
     {
-        return \realpath(dirname($pFile) . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . '..');
+        $baseDir = self::$BASE_DIR = CBootstrap::$APP_DIR . \DIRECTORY_SEPARATOR . $this->name;
+        self::$MODELS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'models';
+        self::$CONTROLLER_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'controller';
+        self::$VIEWS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'views';
     }
 
     /**
-     * set default folder structure below basedir
-     * @param $pBaseDir
+     * get model of application
+     * @param string $pModel
+     * @param string $pQuery
+     * @return mixed
      */
-    public static function setFolderStructure($pBaseDir)
+    public function getModel($pModel = 'index', $pQuery = 'index')
     {
-        self::$ROOT_DIR = \realpath($pBaseDir . \DIRECTORY_SEPARATOR . '..');
-        self::$CONF_DIR = $pBaseDir . \DIRECTORY_SEPARATOR . 'conf';
-        self::$LIB_DIR = $pBaseDir . \DIRECTORY_SEPARATOR . 'lib';
-        self::$SKINS_DIR = $pBaseDir . \DIRECTORY_SEPARATOR . 'skins';
-        self::$CACHE_DIR = $pBaseDir . \DIRECTORY_SEPARATOR . 'cache';
-    }
+        $this->requestController = $pModel;
+        $this->requestAction = $pQuery;
 
-    /**
-     * default class loader
-     * @param string $pClass
-     */
-    public static function loadClass($pClass)
-    {
-        $pClass = str_replace('\\', \DIRECTORY_SEPARATOR, $pClass);
-        $classPath = function($class)
+        $file = self::$MODELS_DIR . \DIRECTORY_SEPARATOR . $pModel.'.php';
+        if(!\file_exists($file))
         {
-            return CApplication::$LIB_DIR.\DIRECTORY_SEPARATOR.str_replace('_',\DIRECTORY_SEPARATOR,$class).'.php';
-        };
-        //if default classname exists as filename
-        if(!\file_exists($classPath($pClass)))
-        {
-            /*if not try to find filenames which define baseclasses and have also
-              abstract classes or classes that derive from eexception in the same
-              file*/
-            $addClassPrefix = function($prefix) use ($pClass)
-            {
-                $classParts = \explode('/', $pClass);
-                //if class is an exception class replace first letter with prefix
-                if($classParts[\count($classParts)-1][0] == 'E')
-                {
-                    $classParts[\count($classParts)-1][0] = $prefix;
-                    return $pClass = \implode('/', $classParts);
-                }
-            };
-            //use C for standard class definitions
-            $pClass = (file_exists($classPath($addClassPrefix('C'))) ? $addClassPrefix('C') : false);
-            //use A for abstract classes
-            $pClass = (file_exists($classPath($addClassPrefix('A'))) ? $addClassPrefix('A') : false);
-            if(!$pClass)
-            {
-                return false;
-            }
+            throw new EApplication("could not find file %s of model %s", $file, $pModel);
         }
-        if(!include_once($classPath($pClass)))
+        require_once $file;
+        $model = "\\".$this->name."\models\\".$pModel;
+        if(!\method_exists($model, 'query'.$pQuery))
         {
-            throw new EApplication("class %s could not be load from file %s", $pClass, $classPath);
+            throw new EApplication("could not call action %s of %s", $pQuery, $model);
         }
+        /*if($model::DEFAULT_DB != "")
+        {
+            throw new EApplication("no database connection specified in model");
+        }
+        else
+        {*/
+            $instance = new $model(new Storage\CDatabase($model::DEFAULT_DB));
+            return $instance->dsQuery($pQuery);
+        //}
+    }
+
+    /**
+     * call application controller
+     * @param MVC\IModel $pModel
+     * @return mixed
+     */
+    public function callController($pModel)
+    {
+        $file  = self::$CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $this->requestController . '.php';
+        if(!\file_exists($file))
+        {
+            //throw new EApplication("could not call controller %s", $this->requestController);
+            return $pModel;
+        }
+        require_once $file;
+        if(!\method_exists($this->requestController, $this->requestAction))
+        {
+            throw new EApplication("could not call action %s of %s", $this->requestController, $this->requestQuery);
+        }
+        $res = AGenericCallInterface::call('controller/'.$this->requestController, $this->requestQuery, array($pModel));
+        return $res;
+    }
+
+    /**
+     * application view
+     * @param Template\IEngine $pEngine template engine
+     * @param mixed $pController application controller
+     * @return Template\IEngine template engine
+     */
+    public function view(Template\IEngine $pEngine, $pController)
+    {
+        $tplFile = $this->requestAction . $pEngine::SUFFIX;
+        $pEngine->setTemplateDir(self::$VIEWS_DIR . \DIRECTORY_SEPARATOR . $this->requestController);
+        $pEngine->setTemplate($tplFile);
+        $data = new Storage\CValueObject(array('data' => $pController));
+        $data->name = "Broncko";
+        $pEngine->assign($data);
+        return $pEngine;
     }
 }

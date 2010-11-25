@@ -16,7 +16,7 @@ namespace Savant;
  * @package Savant
  * defines how an application looks like
  */
-interface IApplication
+interface IProject
 {
     /**
      * set application folder structure

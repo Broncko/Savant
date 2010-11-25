@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <section name="default">
+            <applications>
+                <application name="testApp" />
+            </applications>
+        </section>
+    </configurations>
+</config>

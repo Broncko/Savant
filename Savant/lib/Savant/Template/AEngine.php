@@ -88,7 +88,7 @@ abstract class AEngine extends \Savant\AStandardObject implements \Savant\IConfi
      */
     public function _assign(\Savant\Storage\CValueObject $pValObj)
     {
-        $this->data = $pValObj;
+        $this->data = $pValObj->getAll();
     }
 
     /**

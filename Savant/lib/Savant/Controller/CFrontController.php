@@ -123,21 +123,15 @@ class CFrontController extends \Savant\AStandardObject
     {
         $instance = new self($pEngine);
         $instance->parseUri($pUri);
+
+        $app = new \Savant\CApplication($instance->app);
+
+        $model = $app->getModel($instance->controller, $instance->action);
+
+        $controller = $app->callController($model);
+
+        $view = $app->view($instance->engine, $controller);
         
-        /* \spl_autoload_register(
-           function() {
-                if(\file_exists(\Savant\CBootstrap::))
-            }
-        ); */
-
-        $res = \Savant\AGenericCallInterface::call($instance->controller, $action);
-
-        //TODO: remove hardcoded template path
-        $tplPath = \cms\Core::$VIEW_DIR.'/'.$controller[0].'/'.$action.'.chunk.html';
-
-        //wrong place for setting template? perhaps do this at module code
-        $instance->engine->setTemplate($tplPath);
-        $instance->engine->assign($res);
-        $instance->out();
+        $view->render();
     }
 }

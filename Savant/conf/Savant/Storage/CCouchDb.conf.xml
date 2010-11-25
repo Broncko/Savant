@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <configurations>
+        <default>
+            <host>localhost</host>
+            <port>5984</port>
+        </default>
+    </configurations>
+</config>

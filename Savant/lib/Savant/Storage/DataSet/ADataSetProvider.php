@@ -37,10 +37,10 @@ class ADataSetProvider extends \Savant\AStandardObject
      * create datasetprovider instance
      * @param \Savant\Storage\CDatabase $db
      */
-    public function __construct(\Savant\Storage\CDatabase $db)
+    public function __construct(\Savant\Storage\CDatabase $pDb)
     {
         parent::__construct();
-        $this->db = $db;
+        $this->db = $pDb;
     }
     
     /**

@@ -25,7 +25,7 @@ class EDataSet extends \Savant\EException {}
  * @subpackage DataSet
  * provides dataset object which holds data from several sources
  */
-class CDataSet implements \IteratorAggregate, \Countable
+class CDataSet extends \Savant\Storage\CValueObject implements \IteratorAggregate, \Countable
 {
     /**
      * Datasafe

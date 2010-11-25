@@ -16,8 +16,8 @@
  */
 namespace Savant;
 require_once 'EException.php';
-require_once 'IApplication.php';
-require_once 'CApplication.php';
+require_once 'IProject.php';
+require_once 'CProject.php';
 require_once 'CConfigure.php';
 
 /**
@@ -31,7 +31,7 @@ class EBootstrap extends EException {}
  * @package Savant
  * holds information and helper functions for the framework
  */
-final class CBootstrap extends CApplication
+final class CBootstrap extends CProject
 {
     /**
      * framework mode web
@@ -208,10 +208,34 @@ final class CBootstrap extends CApplication
     public static $JOINPOINT_DIR;
 
     /**
+     * applications folder
+     * @var string
+     */
+    public static $APP_DIR;
+
+    /**
+     * apps which will be loaded into the framework
+     * @var array
+     */
+    public static $APPS = array();
+
+    /**
+     * framework instances (used to store singleton classes for example)
+     * @var array
+     */
+    public static $instances = array();
+
+    /**
      * bootstrap configuration
      * @var \Savant\CConfiguration
      */
     private $config = null;
+
+    /**
+     * bootstrap configuration section
+     * @var string
+     */
+    private $configSection;
 
     /**
      * class loaders
@@ -220,21 +244,15 @@ final class CBootstrap extends CApplication
     private $classLoaders = null;
 
     /**
-     * framework instances (used to store singleton classes for example)
-     * @var array
-     */
-    public $instances = array();
-
-    /**
      * create bootstrapper instance
      */
-    public function __construct()
+    public function __construct($pSection = 'default')
     {
         try
         {
             $this->classLoaders = new \SplObjectStorage();
             \spl_autoload_register(array('Savant\CBootstrap','loadClass'),true);
-            $this->config = CConfigure::getClassConfig(\get_class($this));
+            $this->configSection = $pSection;
         }
         catch(EException $e)
         {
@@ -295,6 +313,7 @@ final class CBootstrap extends CApplication
         self::$DATA_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'data';
         self::$ASPECT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'Aspects';
         self::$JOINPOINT_DIR = self::$FRAMEWORK_DIR . \DIRECTORY_SEPARATOR . 'AOP' .\DIRECTORY_SEPARATOR . 'JoinPoints';
+        self::$APP_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'apps';
 
         if(isset($this->classLoaders) && $this->classLoaders->count() > 0)
         {
@@ -319,6 +338,8 @@ final class CBootstrap extends CApplication
         self::$LOGGER->addLogger(new Utils\CFileLogging());
 
         self::initializeAOP();
+
+        $this->configure($this->configSection);
     }
 
     /**
@@ -374,14 +395,14 @@ final class CBootstrap extends CApplication
     /**
      * run bootstrapper
      */
-    public function run(IApplication $pApplication = null)
+    public function run()
     {
         if(self::$STATUS == self::STATUS_ACTIVE)
         {
             echo "already active";
             return;
         }
-        $this->initialize($pApplication);
+        $this->initialize();
         self::$STATUS = self::STATUS_ACTIVE;
     }
 
@@ -447,12 +468,12 @@ final class CBootstrap extends CApplication
      * @param string $pClass
      * @return mixed
      */
-    public static function getInstance($pClass)
+    public static function getInstance($pClass, $pArgs = array())
     {
         $classHash = md5($pClass);
-        if(!\array_key_exists($classHash, $this->instances))
+        if(!\array_key_exists($classHash, self::$instances))
         {
-            $this->instances[$classHash] = new $pClass;
+            self::$instances[$classHash] = AGenericCallInterface::call($pClass, '__construct', $pArgs);
         }
         return $this->instances[$classHash];
     }
@@ -514,5 +535,19 @@ final class CBootstrap extends CApplication
             }
         }
         return $res;
+    }
+
+    /**
+     * configure bootstrap
+     * @param string $pSection
+     */
+    public function configure($pSection = 'default')
+    {
+        $config = $this->config = CConfigure::getClassConfig(__CLASS__, $pSection);
+        foreach($config->applications->children() as $app)
+        {
+            $name = (string)$app->attributes()->name;
+            $this->apps[$name] = new CApplication($name);
+        }
     }
 }
