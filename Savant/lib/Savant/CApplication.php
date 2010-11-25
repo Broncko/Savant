@@ -54,8 +54,16 @@ class CApplication extends AStandardObject
      */
     public $name;
 
+    /**
+     * request controller
+     * @var string
+     */
     private $requestController;
 
+    /**
+     * request action
+     * @var string
+     */
     private $requestAction;
 
     /**
