@@ -26,7 +26,7 @@ class ETwig extends \Savant\EException {}
 /**
  * @package Savant
  * @subpackage Template
- * this is a template engine using fabien potenciers twig template engine
+ * this is a template engine wrapper using fabien potenciers twig template engine
  */
 class CTwig extends AEngine implements IEngine
 {

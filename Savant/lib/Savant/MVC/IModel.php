@@ -21,10 +21,10 @@ interface IModel
     /**
      * get query meta data
      */
-    public function meta__DefaultQuery();
+    public function meta__queryIndex();
 
     /**
      * default query
      */
-    public function defaultQuery();
+    public function queryIndex();
 }

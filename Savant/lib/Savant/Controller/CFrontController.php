@@ -33,6 +33,30 @@ class EFrontController extends \Savant\EException {}
 class CFrontController extends \Savant\AStandardObject
 {
     /**
+     * response format json
+     * @var string
+     */
+    const RSP_FORMAT_JSON = 'json';
+
+    /**
+     * response format xml
+     * @var string
+     */
+    const RSP_FORMAT_XML = 'xml';
+
+    /**
+     * response format xhtml
+     * @var string
+     */
+    const RSP_FORMAT_XHTML = 'xhtml';
+
+    /**
+     * response format image
+     * @var string
+     */
+    const RSP_FORMAT_IMG = 'img';
+    
+    /**
      * template engine
      * @var Savant\Template\IEngine
      */
@@ -57,6 +81,12 @@ class CFrontController extends \Savant\AStandardObject
     private $action = '';
 
     /**
+     * mvc options
+     * @var array
+     */
+    private $options = array();
+
+    /**
      * create frontcontroller instance
      * @param \Savant\Template\IEngine $pEngine
      */
@@ -64,9 +94,6 @@ class CFrontController extends \Savant\AStandardObject
     {
         parent::__construct();
         $this->engine = $pEngine;
-        /*$params = self::parseRequest();
-        $tplFile = \Savant\CBootstrap::$SKINS_DIR .\DIRECTORY_SEPARATOR . $params->tpl . $pEngine::SUFFIX;
-        $pEngine->setTemplate($tplFile);*/
     }
 
     /**
@@ -107,11 +134,24 @@ class CFrontController extends \Savant\AStandardObject
      * parse url
      * @param string $pUri
      */
-    public function _parseUri($pUri)
+    public static function parseUri($pUri)
     {
-        $uriParts = \explode('/',  \str_replace($_SERVER['SCRIPT_NAME'], '',$pUri));
+        $uri = \parse_url($pUri);
+        $uriParts = \explode('/',$uri['path']);
         \array_shift($uriParts);
-        list($this->app, $this->controller, $this->action) = $uriParts;
+        $res = array();
+        $res['app'] = $uriParts[0];
+        $res['controller'] = (!empty($uriParts[1]) ? $uriParts[1] : 'index');
+        $res['action'] = (!empty($uriParts[2]) ? $uriParts[2] : 'index');
+        if(isset($uri['query']))
+        {
+            foreach(\explode('&', $uri['query']) as $query)
+            {
+                list($key, $val) = \explode('=', $query);
+                $res['options'][$key] = $val;
+            }
+        }
+        return $res;
     }
 
     /**
@@ -119,19 +159,37 @@ class CFrontController extends \Savant\AStandardObject
      * @param \Savant\Template\IEngine $pEngine
      * @param string $pUri
      */
-    public static function handle(\Savant\Template\IEngine $pEngine, $pUri)
+    public static function handle($pUri = '')
     {
-        $instance = new self($pEngine);
-        $instance->parseUri($pUri);
+        $fcParts = self::parseUri($pUri);
+        //print_r($fcParts);
+        if(isset($fcParts['options']['fmt']) && $fcParts['options']['fmt'] != self::RSP_FORMAT_XHTML)
+        {
+            switch($fcParts['options']['fmt'])
+            {
+                case self::RSP_FORMAT_JSON:
+                    $engine = new \Savant\Template\CJson();
+                    break;
+                case self::RSP_FORMAT_IMG:
+                    $engine = new \Savant\Template\CJpGraph();
+                    break;
+            }
+        }
+        else
+        {
+            $engine = new \Savant\Template\CTwig();
+        }
+        
+        $instance = new self($engine);
 
-        $app = new \Savant\CApplication($instance->app);
+        $app = new \Savant\CApplication($fcParts['app']);
 
-        $model = $app->getModel($instance->controller, $instance->action);
+        $model = $app->getModel($fcParts['controller'], $fcParts['action']);
 
         $controller = $app->callController($model);
 
         $view = $app->view($instance->engine, $controller);
-        
+
         $view->render();
     }
 }

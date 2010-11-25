@@ -109,15 +109,8 @@ class CApplication extends AStandardObject
         {
             throw new EApplication("could not call action %s of %s", $pQuery, $model);
         }
-        /*if($model::DEFAULT_DB != "")
-        {
-            throw new EApplication("no database connection specified in model");
-        }
-        else
-        {*/
-            $instance = new $model(new Storage\CDatabase($model::DEFAULT_DB));
-            return $instance->dsQuery($pQuery);
-        //}
+        
+        return new $model(new Storage\CDatabase($model::DEFAULT_DB));
     }
 
     /**
@@ -125,13 +118,12 @@ class CApplication extends AStandardObject
      * @param MVC\IModel $pModel
      * @return mixed
      */
-    public function callController($pModel)
+    public function callController(MVC\IModel $pModel)
     {
         $file  = self::$CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $this->requestController . '.php';
         if(!\file_exists($file))
         {
-            //throw new EApplication("could not call controller %s", $this->requestController);
-            return $pModel;
+            return $pModel->dsQuery($this->requestAction);
         }
         require_once $file;
         if(!\method_exists($this->requestController, $this->requestAction))
@@ -154,7 +146,6 @@ class CApplication extends AStandardObject
         $pEngine->setTemplateDir(self::$VIEWS_DIR . \DIRECTORY_SEPARATOR . $this->requestController);
         $pEngine->setTemplate($tplFile);
         $data = new Storage\CValueObject(array('data' => $pController));
-        $data->name = "Broncko";
         $pEngine->assign($data);
         return $pEngine;
     }
