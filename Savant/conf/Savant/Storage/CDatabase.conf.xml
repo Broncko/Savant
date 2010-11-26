@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:savant="http://localhost/savant">
+<!DOCTYPE config SYSTEM "datasources.dtd">
+<config>
     <datasources>
         <datasource name="default">
+            <driver_class>CMySqlPdo</driver_class>
             <username>root</username>
             <password>3w4ghi8</password>
-            <driver_class>CMySqlPdo</driver_class>
         </datasource>
         <datasource name="test_sqlite">
             <driver_class>Savant\Storage\Driver\ASQLitePdo</driver_class>

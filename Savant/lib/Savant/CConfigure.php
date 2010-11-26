@@ -216,7 +216,7 @@ class CConfigure
         {
             throw new EConfigure("no config file for class %s found",$pClass);
         }
-        $config = self::load($configFile);
+        $config = self::load($configFile, true);
         $section = $config->configurations->xpath("//section[@name='".$pSection."']");
         return self::getConfigFromSection($section[0]);
     }

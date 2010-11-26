@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT config (datasources)>
+<!ELEMENT datasources (datasource)+>
+<!ELEMENT datasource (driver_class?, database?, username?, password?, host?, port?)>
+<!ATTLIST datasource
+    name NMTOKEN #REQUIRED>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+<!ELEMENT driver_class (#PCDATA)>
+<!ELEMENT database (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ELEMENT port (#PCDATA)>
