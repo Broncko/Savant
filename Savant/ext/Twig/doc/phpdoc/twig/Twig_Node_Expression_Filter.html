@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Twig_Node_Expression_Filter</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Twig_Node_Expression_Filter</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-vars">Vars</a>
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Abstract class for all nodes that represents an expression.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Fabien Potencier &lt;<a href="mailto:fabien.potencier@symfony-project.com">fabien.potencier@symfony-project.com</a>&gt;</li>
+				<li><span class="field">version:</span> SVN: $Id$</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Node---Expression---Filter.php.html">/Node/Expression/Filter.php</a> (line <span class="field">12</span>)
+		</p>
+		
+				
+		<pre><a href="../twig/Twig_Node.html">Twig_Node</a>
+   |
+   --<a href="../twig/Twig_Node_Expression.html">Twig_Node_Expression</a>
+      |
+      --Twig_Node_Expression_Filter</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-vars">Vars</a>
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																				
+												<div class="method-definition">
+											<span class="method-result">Twig_Node_Expression_Filter</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>&nbsp;<span class="var-name">$node</span>, <span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>&nbsp;<span class="var-name">$filters</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$lineno</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$tag</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#appendFilter" title="details" class="method-name">appendFilter</a>
+											(<span class="var-type"><a href="../twig/Twig_Node_Expression_Constant.html">Twig_Node_Expression_Constant</a></span>&nbsp;<span class="var-name">$name</span>, <span class="var-type"><a href="../twig/Twig_Node.html">Twig_Node</a></span>&nbsp;<span class="var-name">$end</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#appendFilters" title="details" class="method-name">appendFilters</a>
+											(<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>&nbsp;<span class="var-name">$filters</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#compile" title="details" class="method-name">compile</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$compiler</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#hasFilter" title="details" class="method-name">hasFilter</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$name</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#prependFilter" title="details" class="method-name">prependFilter</a>
+											(<span class="var-type"><a href="../twig/Twig_Node_Expression_Constant.html">Twig_Node_Expression_Constant</a></span>&nbsp;<span class="var-name">$name</span>, <span class="var-type"><a href="../twig/Twig_Node.html">Twig_Node</a></span>&nbsp;<span class="var-name">$end</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+										<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../twig/Twig_Node.html">Twig_Node</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../twig/Twig_Node.html#var$attributes">Twig_Node::$attributes</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../twig/Twig_Node.html#var$lineno">Twig_Node::$lineno</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../twig/Twig_Node.html#var$nodes">Twig_Node::$nodes</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../twig/Twig_Node.html#var$tag">Twig_Node::$tag</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-vars">Vars</a>
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">14</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Twig_Node_Expression_Filter</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>&nbsp;<span class="var-name">$node</span>, <span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>&nbsp;<span class="var-name">$filters</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$lineno</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$tag</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>
+				<span class="var-name">$node</span>			</li>
+					<li>
+				<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>
+				<span class="var-name">$filters</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$lineno</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$tag</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../twig/Twig_Node.html#method__construct">Twig_Node::__construct()</a></dt>
+						<dd>Constructor.</dd>
+					</dl>
+			
+	</div>
+<a name="methodappendFilter" id="appendFilter"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">appendFilter</span> (line <span class="line-number">58</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			appendFilter
+		</span>
+					(<span class="var-type"><a href="../twig/Twig_Node_Expression_Constant.html">Twig_Node_Expression_Constant</a></span>&nbsp;<span class="var-name">$name</span>, <span class="var-type"><a href="../twig/Twig_Node.html">Twig_Node</a></span>&nbsp;<span class="var-name">$end</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../twig/Twig_Node_Expression_Constant.html">Twig_Node_Expression_Constant</a></span>
+				<span class="var-name">$name</span>			</li>
+					<li>
+				<span class="var-type"><a href="../twig/Twig_Node.html">Twig_Node</a></span>
+				<span class="var-name">$end</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodappendFilters" id="appendFilters"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">appendFilters</span> (line <span class="line-number">71</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			appendFilters
+		</span>
+					(<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>&nbsp;<span class="var-name">$filters</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../twig/Twig_NodeInterface.html">Twig_NodeInterface</a></span>
+				<span class="var-name">$filters</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcompile" id="compile"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">compile</span> (line <span class="line-number">19</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			compile
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$compiler</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$compiler</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../twig/Twig_Node.html#methodcompile">Twig_Node::compile()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodhasFilter" id="hasFilter"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasFilter</span> (line <span class="line-number">78</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			hasFilter
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprependFilter" id="prependFilter"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">prependFilter</span> (line <span class="line-number">48</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			prependFilter
+		</span>
+					(<span class="var-type"><a href="../twig/Twig_Node_Expression_Constant.html">Twig_Node_Expression_Constant</a></span>&nbsp;<span class="var-name">$name</span>, <span class="var-type"><a href="../twig/Twig_Node.html">Twig_Node</a></span>&nbsp;<span class="var-name">$end</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../twig/Twig_Node_Expression_Constant.html">Twig_Node_Expression_Constant</a></span>
+				<span class="var-name">$name</span>			</li>
+					<li>
+				<span class="var-type"><a href="../twig/Twig_Node.html">Twig_Node</a></span>
+				<span class="var-name">$end</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../twig/Twig_Node.html">Twig_Node</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../twig/Twig_Node.html#method__construct">Twig_Node::__construct()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodcompile">Twig_Node::compile()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodcount">Twig_Node::count()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodgetIterator">Twig_Node::getIterator()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodgetLine">Twig_Node::getLine()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodgetNodeTag">Twig_Node::getNodeTag()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodoffsetExists">Twig_Node::offsetExists()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodoffsetGet">Twig_Node::offsetGet()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodoffsetSet">Twig_Node::offsetSet()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodoffsetUnset">Twig_Node::offsetUnset()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#methodtoXml">Twig_Node::toXml()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#method__get">Twig_Node::__get()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#method__isset">Twig_Node::__isset()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#method__set">Twig_Node::__set()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#method__toString">Twig_Node::__toString()</a></span><br>
+													<span class="method-name"><a href="../twig/Twig_Node.html#method__unset">Twig_Node::__unset()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 24 Oct 2010 20:29:19 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
