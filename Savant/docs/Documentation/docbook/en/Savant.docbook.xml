@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<book>
+  <title>Savant Application Framework</title>
+  <bookinfo>
+    <author>
+      <personname>
+        <firstname>Hendrik</firstname>
+        <surname>Heinemann</surname>
+      </personname>
+      <email>hendrik.heinemann@googlemail.com</email>
+    </author>
+    <copyright>
+      <year>2010</year>
+      <holder>Hendrik Heinemann</holder>
+    </copyright>
+  </bookinfo>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Overview.docbook.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Installation.docbook.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="MVC.docbook.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Configuration.docbook.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="AOPFramework.docbook.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Webservices.docbook.xml" encoding="UTF-8"/>
+</book>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<chapter>
+  <title>AOP Framework</title>
+  <section>
+    <title>Introduction</title>
+    <para>Aspect-Oriented Programming(AOP) is a programming paradigm which extends Object-Oriented Programming(OOP) to improve the applications modularization. The separation of concerns aims for making an application easier to maintain by grouping behaviour into manageable parts which have a specific usecase to take care of. </para>
+    <para>Some concerns a difficult to handle as they cross the boundaries of several classes or packages.  Many classes of an application need a similar functionality like for example Configuration. This is called a cross-cutting concern. AOP enables you to move the configuration aspect into its own package and leave other objects with clear responsibilities.</para>
+    <para>Savant does not provide full AOP support, just the parts which are needed by the framework itself are implemented yet.</para>
+  </section>
+  <section>
+    <title>Terminology</title>
+    <para>This chapter explains some aop terms  and introduces a bit more of the concept. </para>
+    <variablelist>
+      <varlistentry>
+        <term>Aspect</term>
+        <listitem>
+          <para>An aspect is an cross-cutting concern which takes care of functionality that is subject of multiple objects in the framework. Savant handles aspects as regular classes which must implement the <classname>Savant\AOP\IAspect</classname> and can derive from <classname>Savant\AOP\AAspect</classname> to use default aspect behaviour. The methods of an aspect class represent advices.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Joinpoint</term>
+        <listitem>
+          <para>A joinpoint is an entry-point in the flow of the program, for example the execution of a method, loading a class or throwing an exception. A joinpoint defines an event which occurs during the programflow. In Savant joinpoints must derive from <classname>Savant\AOP\AJoinPoint</classname> and should be declared in the <classname>Savant\AOP\JoinPoints</classname> namespace.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Advice</term>
+        <listitem>
+          <para>An advice is the action taken by an aspect at a particular joinpoint. It has to be implemented as a method of the aspect class and will be executed before or after the joinpoint is reached. The joinpoint and the executed object has to be passed as parameters to the advice.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Pointcut</term>
+        <listitem>
+          <para>A pointcut defines a set of joinpoints which needed to be matched before running an advice. </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section>
+    <title>Aspects</title>
+    <para>advices bla bla<example>
+        <title>Declaration of an aspect</title>
+        <programlisting>namespace Savant\AOP\Aspects;
+use Savant\AOP;
+
+abstract class MyAspect extends AOP\AAspect implements AOP\IAspect
+{ 
+}</programlisting>
+      </example></para>
+  </section>
+  <section>
+    <title>Pointcuts</title>
+    <para>pointcuts bla bla</para>
+    <example>
+      <title>Declaration of a pointcut</title>
+      <programlisting/>
+    </example>
+  </section>
+</chapter>

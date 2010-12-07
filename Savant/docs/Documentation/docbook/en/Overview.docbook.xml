@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<chapter>
+  <title>Introduction</title>
+  <section>
+    <title>Overview</title>
+    <para>The Savant Application Framework includes the following submodules:</para>
+    <para><itemizedlist>
+        <listitem>
+          <para>The Savant Bootstrap takes care of configuring and initializing the entire framework.</para>
+        </listitem>
+        <listitem>
+          <para>The AOP Framework supports some aspects of the powerful Aspect-Oriented-Programming Paradigma.</para>
+        </listitem>
+        <listitem>
+          <para>The Controller module provides some controller which are usually needed, like the front controller.</para>
+        </listitem>
+        <listitem>
+          <para>The MVC Framework handles requests and responses and provides an easy to use model-view-controller implementation.</para>
+        </listitem>
+        <listitem>
+          <para>The Ontology module has to be used if you want to add meta information to objects or documents</para>
+        </listitem>
+        <listitem>
+          <para>The Protocol module contains a set of classes which represent an abstraction of the most important web and network protocols.</para>
+        </listitem>
+        <listitem>
+          <para>The Security Framework provides handling of policies and principals based on JAAS (Java RFC ...)</para>
+        </listitem>
+        <listitem>
+          <para>The Service Package provides APIs for some services that could be useful(Google, Twitter, LastFm, will be extended continously).</para>
+        </listitem>
+        <listitem>
+          <para>The Storage Framework provides the main functionality of the framework, the exchanging of data between different services.</para>
+        </listitem>
+        <listitem>
+          <para>The System module provides some system specific functionality like locking processes or inter-process-communication (IPC)</para>
+        </listitem>
+        <listitem>
+          <para>The Template Framework provides generic template handling and some predefined template engines for example the creation of html files, graph files, images or json.</para>
+        </listitem>
+        <listitem>
+          <para>The Utils module is a toolset which covers many different basic usecases like logging, benchmarking, simple caching or compiling.</para>
+        </listitem>
+        <listitem>
+          <para>The Webservice Framework tries to simplify the use of webservices like soap or rest by hiding complex tasks from the developer.</para>
+        </listitem>
+        <listitem>
+          <para>The Core Module contains the required classes like configuration, unit-testing, cli, project and application handling.</para>
+        </listitem>
+      </itemizedlist></para>
+    <para>The following documentation dives into the modules, packages, frameworks above more deeply. </para>
+  </section>
+</chapter>

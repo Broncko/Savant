@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config PUBLIC "http://savant.localhost/config.dtd">
 <config>
     <configurations>
-        <default>
+        <section name="default">
             <member name="template_dir">/home/broncko/Documents/projects/Savant/skins</member>
             <member name="compile_dir">/home/broncko/Documents/projects/Savant/cache/Twig</member>
-            <broncko>shut the fuck up!</broncko>
-        </default>
+        </section>
     </configurations>
 </config>

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "../../config.dtd" []>
 <config>
     <configurations>
         <section name="default">
-                <member name="logfile">/home/broncko/Documents/projects/Savant/log/log.txt</member>
-                <member name="logtemplate">%TIMESTAMP %PID %LEVEL %CONTENT</member>
+            <member name="logfile"><![CDATA[/home/broncko/Documents/projects/Savant/log/log.txt]]></member>
+            <member name="logtemplate">%TIMESTAMP %PID %LEVEL %CONTENT</member>
         </section>
         <section name="kss_test">
-            <member name="logfile">/home/broncko/Documents/projects/Savant/log/ksslog.txt</member>
+            <member name="logfile"><![CDATA[/home/broncko/Documents/projects/Savant/log/ksslog.txt]]></member>
             <member name="logtemplate">%TIMESTAMP %CONTENT</member>
         </section>
     </configurations>

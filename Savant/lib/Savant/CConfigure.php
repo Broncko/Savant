@@ -94,6 +94,7 @@ class CConfigure
     {
         if($pValidate)
         {
+            //echo $pFile."<br/>";
             $simplexml = \simplexml_load_file($pFile, '\SimpleXMLElement', \LIBXML_DTDVALID);
         }
         else

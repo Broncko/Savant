@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<chapter>
+  <title>Installation</title>
+  <section>
+    <title>Requirements</title>
+    <para>The following minimum requirement should be operating system independent. Savant has been tested on Ubuntu Linux 10.04 (Debian fork) with an Apache webserver but Windows systems should should work as well. <itemizedlist>
+        <listitem>
+          <para>PHP 5.3 or newer (but PHP6 is not supported yet)<itemizedlist>
+              <listitem>
+                <para>Configuration: gpc_magic_quotes = off</para>
+              </listitem>
+              <listitem>
+                <para>Modules: pdo_sqlite</para>
+              </listitem>
+              <listitem>
+                <para>PECL Modules: bcompiler, PHPUnit </para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+        <listitem>
+          <para>Apache<itemizedlist>
+              <listitem>
+                <para>Modules: mod_rewrite</para>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+      </itemizedlist></para>
+  </section>
+  <section>
+    <title>Installation of Savant</title>
+    <para>The following steps require the server requirements to be set up. </para>
+    <procedure>
+      <step>
+        <para>Unzip it to a folder accessible by the webserver</para>
+      </step>
+      <step>
+        <para>Change the document root in the webserver configuration to <filename>htdocs</filename> folder in the Savant folderstructure</para>
+      </step>
+      <step>
+        <para>The webserver needs write permissions for some subfolders</para>
+      </step>
+    </procedure>
+    <para>To check if Savant works correctly, open <uri>http://<replaceable>&lt;hostname/&gt;</replaceable>/info.php</uri>. If everything works correctly you should see the phpinfo-screen. To use beautified URLs mod_rewrite has to be activated and the configuration <filename>.htaccess</filename> file has to be used.</para>
+  </section>
+</chapter>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<chapter>
+  <title>Configuration</title>
+  <para>Configuration is an important aspect of versatile applications. Savant provides a configuration mechanism which is convenient to use. Savant provides the configuration functionality as an aspect. </para>
+  <section>
+    <title>Configuration Files</title>
+    <para>The configuration files of the framework classes are in the conf folder, following the class directory structure being named like the class itself with <filename>.conf.xml</filename> as filenamesuffix. <example>
+        <title>Configuration Folder Structure</title>
+        <literallayout>conf/
+    Savant/
+        MySection/
+            MyClass.conf.xml
+lib/
+    Savant/
+        MySection/
+            MyClass.php</literallayout>
+      </example></para>
+  </section>
+  <section>
+    <title>Configuration Format</title>
+    <para>The Savant configuration format is XML. To configure a framework class you just have to create an xml file named like the class which looks similar to the example below. Default configuration files must include the <filename>config.dtd</filename> to ensure the configuration xml is valid.<example>
+        <title>Configuration example</title>
+        <programlisting>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE config SYSTEM &quot;http://savant.localhost/config.dtd&quot;&gt;
+&lt;config&gt;
+    &lt;configurations&gt;
+        &lt;section name=&quot;default&quot;&gt;
+            &lt;member name=&quot;RequestUri&quot;&gt;http://www.test-request.de/request&lt;/member&gt;
+            &lt;member name=&quot;RequestType&quot;&gt;POST&lt;/member&gt;
+            &lt;member name=&quot;ContentType&quot;&gt;application/x-www-form-urlencoded&lt;/member&gt;
+        &lt;/section&gt;
+    &lt;/configurations&gt;
+&lt;/config&gt;</programlisting>
+      </example></para>
+  </section>
+  <section>
+    <title>Accessing configuration</title>
+    <para>The default configuration mechanism &quot;fills&quot; the defined class members with the values of the configuration file. Therefor the class must derive from <classname>Savant\AStandardObject</classname> and implement the <classname>Savant\IConfigure</classname> interface. That interface does not contain any definitions it is only responsible to declare a class to be configured automatically. If the class can not be configured automatically by the default values, you can configure the class yourself by creating a <methodname>configure()</methodname> method. The configuration manager provides access to the  parsed and cascaded  configuration by the <methodname>conf</methodname> class member. </para>
+    <para><example>
+        <title>Automatical class configuration</title>
+        <programlisting>namespace Savant\MySection;
+
+class MyClass extends Savant\AStandardObject implements Savant\IConfigure
+{
+    public $RequestUri;
+
+    public $RequestType;
+
+    public $ContentType;
+
+    public function __construct($settings = &apos;default&apos;)
+    {
+         parent::__construct($settings);
+    }
+}</programlisting>
+      </example></para>
+    <para>The classmembers values are set automatically by the configuration aspect when the <classname>Savant\MySection\MyClass</classname> class will be invoked. The contructor expects a configuration section argument. </para>
+    <para>To configure the class manually you have to create a public  <methodname>configure()</methodname> method like in the example below.<example>
+        <title>Manual class configuration</title>
+        <programlisting>namespace Savant\MySection;
+
+class MyClass extends AStandardObject implements IConfigure
+{
+    public $RequestUri;
+
+    public $RequestType;
+
+    public $ContentType;
+
+    public function __construct($section = &apos;default&apos;)
+    {
+        parent::__construct($section);
+    }
+
+    public function configure()
+    {
+        $this-&gt;RequestUri = $this-&gt;conf-&gt;RequestUri;
+        $this-&gt;RequestType = $this-&gt;conf-&gt;RequestType;
+        $this-&gt;ContentType = $this-&gt;conf-&gt;ContentType;
+    }
+}</programlisting>
+      </example></para>
+  </section>
+</chapter>

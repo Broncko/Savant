@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT config (CONFIGURATIONS)+>
-<!ELEMENT CONFIGURATIONS (DEFAULT)+>
-<!ELEMENT DEFAULT ANY>
+<!ELEMENT config (configurations)+>
+<!ELEMENT configurations (section)+>
+<!ELEMENT section (member)+>
+<!ATTLIST section
+    name NMTOKEN #REQUIRED>
+<!ELEMENT member (#PCDATA)>
+<!ATTLIST member
+    name NMTOKEN #REQUIRED>
 
 

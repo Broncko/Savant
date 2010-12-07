@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Chapter 1. Webservices</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="chapter" lang="en">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="id2987164"></a>Chapter 1. Webservices</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="section"><a href="#id3027490">SOAP Webservices</a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id3021473">Architecture</a></span></dt></dl></dd>
+<dt><span class="section"><a href="#id2997198">Document/Literal Wrapped Style with Session Handling </a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id2997213">Communication Sequence</a></span></dt></dl></dd>
+</dl>
+</div>
+<p>This chapter introduces Savant's webservices to the developer. The framework supports differend kinds of webservices.</p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="id3027490"></a>SOAP Webservices</h2></div></div></div>
+<p>This section describes SOAP Webservices and the way they are handled by Savant.</p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="id3021473"></a>Architecture</h3></div></div></div>
+<div class="figure">
+<a name="id3022093"></a><p class="title"><b>Figure 1.1. Introduction to Webservice Framework</b></p>
+<div class="mediaobject"><img src="../../img/Webservice%20Architecture.png" alt="Introduction to Webservice Framework"></div>
+</div>
+<p>The webservice architecture in Savant hides the complexity of SOAP Webservices from the developer. Annoying tasks like writing wsdl files are no longer necessary. The framework generates proxy objects called &#8220;<span class="quote">stubs</span>&#8221; automatically around both client and server objects.</p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="id2997198"></a>Document/Literal Wrapped Style with Session Handling </h2></div></div></div>
+<p>The <code class="classname">Savant\Webservice\CSoapServer</code> class can be used to promote any business logic class with deterministic parameters to a SOAP webservice with automated security handling.</p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="id2997213"></a>Communication Sequence</h3></div></div></div>
+<p>The following communication sequence describes the communication between the client of a Savant Secure Soap Webservice and the server</p>
+<div class="figure">
+<a name="id2997225"></a><p class="title"><b>Figure 1.2. Subsequent call</b></p>
+<div class="mediaobject"><img src="../../img/Webservice%20Security%20Sequence%20Diagram.jpg" alt="Subsequent call"></div>
+</div>
+</div>
+</div>
+</div></body>
+</html>

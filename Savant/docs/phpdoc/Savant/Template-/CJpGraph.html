@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class CJpGraph</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class CJpGraph</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_Template---CJpGraph.php.html">/Template/CJpGraph.php</a> (line <span class="field">29</span>)
+		</p>
+		
+				
+		<pre>\
+   |
+   --<a href="../../Savant/Template-/AEngine.html">AEngine</a>
+      |
+      --CJpGraph</pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_BAR" title="details" class="const-name">GT_BAR</a> = 					<span class="var-type"> 'bartype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_CONTOUR" title="details" class="const-name">GT_CONTOUR</a> = 					<span class="var-type"> 'contourtype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_ERROR" title="details" class="const-name">GT_ERROR</a> = 					<span class="var-type"> 'errortype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_LINE" title="details" class="const-name">GT_LINE</a> = 					<span class="var-type"> 'linetype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_PIE" title="details" class="const-name">GT_PIE</a> = 					<span class="var-type"> 'pietype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_SCATTER" title="details" class="const-name">GT_SCATTER</a> = 					<span class="var-type"> 'scattertype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#GT_STOCK" title="details" class="const-name">GT_STOCK</a> = 					<span class="var-type"> 'stocktype'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_AREA" title="details" class="const-name">PT_AREA</a> = 					<span class="var-type"> 'areaplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_BALLOON" title="details" class="const-name">PT_BALLOON</a> = 					<span class="var-type"> 'balloon_plot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_BAR" title="details" class="const-name">PT_BAR</a> = 					<span class="var-type"> 'barplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_CONTOUR" title="details" class="const-name">PT_CONTOUR</a> = 					<span class="var-type"> 'contourplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_ERROR" title="details" class="const-name">PT_ERROR</a> = 					<span class="var-type"> 'errorplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_FIELD" title="details" class="const-name">PT_FIELD</a> = 					<span class="var-type"> 'fieldplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_IMPULS" title="details" class="const-name">PT_IMPULS</a> = 					<span class="var-type"> 'impulsplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_LINE" title="details" class="const-name">PT_LINE</a> = 					<span class="var-type"> 'lineplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_MAP" title="details" class="const-name">PT_MAP</a> = 					<span class="var-type"> 'geomapplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_PIE" title="details" class="const-name">PT_PIE</a> = 					<span class="var-type"> 'pieplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_SCATTER" title="details" class="const-name">PT_SCATTER</a> = 					<span class="var-type"> 'scatterplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_SPLINE" title="details" class="const-name">PT_SPLINE</a> = 					<span class="var-type"> 'splineplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PT_STOCK" title="details" class="const-name">PT_STOCK</a> = 					<span class="var-type"> 'stockplot'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#SUFFIX" title="details" class="const-name">SUFFIX</a> = 					<span class="var-type"> '.jpgraph.php'</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+												<div class="var-title">
+					static <span class="var-type">integer</span>
+					<a href="#$HEIGHT" title="details" class="var-name">$HEIGHT</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$JPGRAPH_DIR" title="details" class="var-name">$JPGRAPH_DIR</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">array</span>
+					<a href="#$MARGIN" title="details" class="var-name">$MARGIN</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$SUBTITLE" title="details" class="var-name">$SUBTITLE</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$TITLE" title="details" class="var-name">$TITLE</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">integer</span>
+					<a href="#$WIDTH" title="details" class="var-name">$WIDTH</a>
+				</div>
+																																																															</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																												
+												<div class="method-definition">
+											<span class="method-result">object plot,</span>
+										<a href="#addPlot" title="details" class="method-name">addPlot</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$pType</span> = <span class="var-default">self::PT_LINE</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$pOptions</span> = <span class="var-default">array()</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$pAdd</span> = <span class="var-default">true</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setProperties" title="details" class="method-name">setProperties</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">CJpGraph</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$pSection</span> = <span class="var-default">'default'</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_assign" title="details" class="method-name">_assign</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">object return</span>
+										<a href="#_render" title="details" class="method-name">_render</a>
+											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$pDisplay</span> = <span class="var-default">true</span>])
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$HEIGHT" id="$HEIGHT"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">integer</span>
+			<span class="var-name">$HEIGHT</span>
+			 = <span class="var-default"> 300</span>			(line <span class="line-number">173</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph height</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$JPGRAPH_DIR" id="$JPGRAPH_DIR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$JPGRAPH_DIR</span>
+						(line <span class="line-number">161</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph dir</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$MARGIN" id="$MARGIN"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">array</span>
+			<span class="var-name">$MARGIN</span>
+						(line <span class="line-number">191</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph margins</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$SUBTITLE" id="$SUBTITLE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$SUBTITLE</span>
+						(line <span class="line-number">185</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph subtitle</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$TITLE" id="$TITLE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$TITLE</span>
+						(line <span class="line-number">179</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph title</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$WIDTH" id="$WIDTH"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">integer</span>
+			<span class="var-name">$WIDTH</span>
+			 = <span class="var-default"> 400</span>			(line <span class="line-number">167</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph width</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Savant/Template-/AEngine.html">AEngine</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Savant/Template-/AEngine.html#var$COMPILE_DIR">AEngine::$COMPILE_DIR</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Savant/Template-/AEngine.html#var$data">AEngine::$data</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Savant/Template-/AEngine.html#var$template">AEngine::$template</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Savant/Template-/AEngine.html#var$TEMPLATE_DIR">AEngine::$TEMPLATE_DIR</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodaddPlot" id="addPlot"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addPlot</span> (line <span class="line-number">277</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">add plot to graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if not rendered directly</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object plot,</span>
+		<span class="method-name">
+			addPlot
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$pType</span> = <span class="var-default">self::PT_LINE</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$pOptions</span> = <span class="var-default">array()</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$pAdd</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pType</span><span class="var-description">: plot types self::PT_*</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$pOptions</span><span class="var-description">: plot options</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$pAdd</span><span class="var-description">: if false, return plot instead of adding to graph</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetProperties" id="setProperties"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setProperties</span> (line <span class="line-number">265</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">set graph properties</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setProperties
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">255</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">create graph renderer instance</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">CJpGraph</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$pSection</span> = <span class="var-default">'default'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pSection</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Savant/Template-/AEngine.html#method__construct">AEngine::__construct()</a></dt>
+						<dd>create template engine instance</dd>
+					</dl>
+			
+	</div>
+<a name="method_assign" id="_assign"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_assign</span> (line <span class="line-number">360</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">assign data</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_assign
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$data</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Savant/Template-/AEngine.html#method_assign">AEngine::_assign()</a></dt>
+						<dd>assign data</dd>
+					</dl>
+			
+	</div>
+<a name="method_render" id="_render"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_render</span> (line <span class="line-number">344</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">render graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> graph object instead of stroking, if $pDisplay ist  set to true</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object return</span>
+		<span class="method-name">
+			_render
+		</span>
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$pDisplay</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$pDisplay</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Savant/Template-/AEngine.html">AEngine</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Savant/Template-/AEngine.html#method__construct">AEngine::__construct()</a></span><br>
+													<span class="method-name"><a href="../../Savant/Template-/AEngine.html#method_assign">AEngine::_assign()</a></span><br>
+													<span class="method-name"><a href="../../Savant/Template-/AEngine.html#method_setTemplate">AEngine::_setTemplate()</a></span><br>
+													<span class="method-name"><a href="../../Savant/Template-/AEngine.html#method__get">AEngine::__get()</a></span><br>
+													<span class="method-name"><a href="../../Savant/Template-/AEngine.html#method__set">AEngine::__set()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constGT_BAR" id="GT_BAR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_BAR</span>
+			 = <span class="const-default"> 'bartype'</span>
+			(line <span class="line-number">125</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type bar</p>
+	
+	
+</div>
+<a name="constGT_CONTOUR" id="GT_CONTOUR"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_CONTOUR</span>
+			 = <span class="const-default"> 'contourtype'</span>
+			(line <span class="line-number">149</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type contour</p>
+	
+	
+</div>
+<a name="constGT_ERROR" id="GT_ERROR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_ERROR</span>
+			 = <span class="const-default"> 'errortype'</span>
+			(line <span class="line-number">131</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type error</p>
+	
+	
+</div>
+<a name="constGT_LINE" id="GT_LINE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_LINE</span>
+			 = <span class="const-default"> 'linetype'</span>
+			(line <span class="line-number">119</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type line</p>
+	
+	
+</div>
+<a name="constGT_PIE" id="GT_PIE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_PIE</span>
+			 = <span class="const-default"> 'pietype'</span>
+			(line <span class="line-number">155</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type piechart</p>
+	
+	
+</div>
+<a name="constGT_SCATTER" id="GT_SCATTER"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_SCATTER</span>
+			 = <span class="const-default"> 'scattertype'</span>
+			(line <span class="line-number">143</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type scatter</p>
+	
+	
+</div>
+<a name="constGT_STOCK" id="GT_STOCK"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">GT_STOCK</span>
+			 = <span class="const-default"> 'stocktype'</span>
+			(line <span class="line-number">137</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">graph type stock</p>
+	
+	
+</div>
+<a name="constPT_AREA" id="PT_AREA"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_AREA</span>
+			 = <span class="const-default"> 'areaplot'</span>
+			(line <span class="line-number">47</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type area</p>
+	
+	
+</div>
+<a name="constPT_BALLOON" id="PT_BALLOON"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_BALLOON</span>
+			 = <span class="const-default"> 'balloon_plot'</span>
+			(line <span class="line-number">95</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type balloon</p>
+	
+	
+</div>
+<a name="constPT_BAR" id="PT_BAR"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_BAR</span>
+			 = <span class="const-default"> 'barplot'</span>
+			(line <span class="line-number">53</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type bar</p>
+	
+	
+</div>
+<a name="constPT_CONTOUR" id="PT_CONTOUR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_CONTOUR</span>
+			 = <span class="const-default"> 'contourplot'</span>
+			(line <span class="line-number">107</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type contour</p>
+	
+	
+</div>
+<a name="constPT_ERROR" id="PT_ERROR"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_ERROR</span>
+			 = <span class="const-default"> 'errorplot'</span>
+			(line <span class="line-number">65</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type error</p>
+	
+	
+</div>
+<a name="constPT_FIELD" id="PT_FIELD"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_FIELD</span>
+			 = <span class="const-default"> 'fieldplot'</span>
+			(line <span class="line-number">59</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type field</p>
+	
+	
+</div>
+<a name="constPT_IMPULS" id="PT_IMPULS"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_IMPULS</span>
+			 = <span class="const-default"> 'impulsplot'</span>
+			(line <span class="line-number">83</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type impuls</p>
+	
+	
+</div>
+<a name="constPT_LINE" id="PT_LINE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_LINE</span>
+			 = <span class="const-default"> 'lineplot'</span>
+			(line <span class="line-number">41</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type line</p>
+	
+	
+</div>
+<a name="constPT_MAP" id="PT_MAP"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_MAP</span>
+			 = <span class="const-default"> 'geomapplot'</span>
+			(line <span class="line-number">77</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type geomap</p>
+	
+	
+</div>
+<a name="constPT_PIE" id="PT_PIE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_PIE</span>
+			 = <span class="const-default"> 'pieplot'</span>
+			(line <span class="line-number">113</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type piechart</p>
+	
+	
+</div>
+<a name="constPT_SCATTER" id="PT_SCATTER"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_SCATTER</span>
+			 = <span class="const-default"> 'scatterplot'</span>
+			(line <span class="line-number">101</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type scatter</p>
+	
+	
+</div>
+<a name="constPT_SPLINE" id="PT_SPLINE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_SPLINE</span>
+			 = <span class="const-default"> 'splineplot'</span>
+			(line <span class="line-number">89</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type spline</p>
+	
+	
+</div>
+<a name="constPT_STOCK" id="PT_STOCK"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PT_STOCK</span>
+			 = <span class="const-default"> 'stockplot'</span>
+			(line <span class="line-number">71</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">plot type stock</p>
+	
+	
+</div>
+<a name="constSUFFIX" id="SUFFIX"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SUFFIX</span>
+			 = <span class="const-default"> '.jpgraph.php'</span>
+			(line <span class="line-number">35</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">template suffix</p>
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 02 Nov 2010 22:39:18 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<chapter>
+  <title>Webservices</title>
+  <para>This chapter introduces Savant&apos;s webservices to the developer. The framework supports differend kinds of webservices.</para>
+  <section>
+    <title>SOAP Webservices</title>
+    <para>This section describes SOAP Webservices and the way they are handled by Savant.</para>
+    <section>
+      <title>Architecture</title>
+      <para><figure>
+          <title>Introduction to Webservice Framework</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="../../img/Webservice Architecture.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure></para>
+      <para>The webservice architecture in Savant hides the complexity of SOAP Webservices from the developer. Annoying tasks like writing wsdl files are no longer necessary. The framework generates proxy objects called <quote>stubs</quote> automatically around both client and server objects.</para>
+    </section>
+  </section>
+  <section>
+    <title>Document/Literal Wrapped Style with Session Handling </title>
+    <para>The <classname>Savant\Webservice\CSoapServer</classname> class can be used to promote any business logic class with deterministic parameters to a SOAP webservice with automated security handling.</para>
+    <section>
+      <title>Communication Sequence</title>
+      <para>The following communication sequence describes the communication between the client of a Savant Secure Soap Webservice and the server</para>
+      <para><figure>
+          <title>Subsequent call</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="../../img/Webservice Security Sequence Diagram.jpg"/>
+            </imageobject>
+          </mediaobject>
+        </figure></para>
+    </section>
+  </section>
+</chapter>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Chapter 1. AOP Framework</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="chapter" lang="en">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="id2640573"></a>Chapter 1. AOP Framework</h2></div></div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="section"><a href="#id2674568">Introduction</a></span></dt>
+<dt><span class="section"><a href="#id2662609">Terminology</a></span></dt>
+<dt><span class="section"><a href="#id2650666">Aspects</a></span></dt>
+</dl>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="id2674568"></a>Introduction</h2></div></div></div>
+<p>Aspect-Oriented Programming(AOP) is a programming paradigm which extends Object-Oriented Programming(OOP) to improve the applications modularization. The separation of concerns aims for making an application easier to maintain by grouping behaviour into manageable parts which have a specific usecase to take care of. </p>
+<p>Some concerns a difficult to handle as they cross the boundaries of several classes or packages.  Many classes of an application need a similar functionality like for example Configuration. This is called a cross-cutting concern. AOP enables you to move the configuration aspect into its own package and leave other objects with clear responsibilities.</p>
+<p>Savant does not provide full AOP support, just the parts which are needed by the framework itself are implemented yet.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="id2662609"></a>Terminology</h2></div></div></div>
+<p>This chapter explains some aop terms  and introduces a bit more of the concept. </p>
+<div class="variablelist"><dl>
+<dt><span class="term">Aspect</span></dt>
+<dd><p>An aspect is an cross-cutting concern which takes care of functionality that is subject of multiple objects in the framework. Savant handles aspects as regular classes which must implement the <code class="classname">Savant\AOP\IAspect</code> and can derive from <code class="classname">Savant\AOP\AAspect</code> to use default aspect behaviour. The methods of an aspect class represent advices.</p></dd>
+<dt><span class="term">Joinpoint</span></dt>
+<dd><p>A joinpoint is an entry-point in the flow of the program, for example the execution of a method, loading a class or throwing an exception. A joinpoint defines an event which occurs during the programflow. In Savant joinpoints must derive from <code class="classname">Savant\AOP\AJoinPoint</code> and should be declared in the <code class="classname">Savant\AOP\JoinPoints</code> namespace.</p></dd>
+<dt><span class="term">Advice</span></dt>
+<dd><p>An advice is the action taken by an aspect at a particular joinpoint. It has to be implemented as a method of the aspect class and will be executed before or after the joinpoint is reached. The joinpoint and the executed object has to be passed as parameters to the advice.</p></dd>
+<dt><span class="term">Pointcut</span></dt>
+<dd><p>A pointcut defines a set of joinpoints which needed to be matched before running an advice. </p></dd>
+</dl></div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="id2650666"></a>Aspects</h2></div></div></div>
+<p>advices bla bla</p>
+<div class="example">
+<a name="id2650674"></a><p class="title"><b>Example 1.1. Declaration of an aspect</b></p>
+<pre class="programlisting">namespace Savant\AOP\Aspects;
+use Savant\AOP;
+
+abstract class MyAspect extends AOP\AAspect implements AOP\IAspect
+{ 
+}</pre>
+</div>
+</div>
+</div></body>
+</html>

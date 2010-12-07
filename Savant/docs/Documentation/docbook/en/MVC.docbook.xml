@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<chapter>
+  <title>MVC Framework</title>
+  <section>
+    <title>Introduction</title>
+    <para>In Savants softare architecture I  tried to take care to seperate concerns and leave responsibility to each part of the framework. The Model-View-Controller pattern seperates business logic from the presentation by splitting up user interaction into three roles:</para>
+    <para><itemizedlist>
+        <listitem>
+          <para>The model object contains data and business logic of a specific domain. It does not contain information about the presentation of data or reacting on user input.</para>
+        </listitem>
+        <listitem>
+          <para>The view is only responsible for displaying the model. It only displays data, it does not create or modify it.</para>
+        </listitem>
+        <listitem>
+          <para>The controller selects a view and passes it the prepared model. It also manipulates the model before if required and reacts on user input.</para>
+        </listitem>
+      </itemizedlist></para>
+    <para><figure>
+        <title>Model-View-Controller Pattern</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="../../img/MVC Model Summary.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure></para>
+  </section>
+  <section>
+    <title>File Structure</title>
+    <para>Conventions for the directory layout simplifies the development, cause of this the following file structure is recommended:</para>
+    <para><example>
+        <title>Recommended File Structure</title>
+        <literallayout>apps/
+    MyApp/
+        controller/
+            Index.php
+        models/
+            Index.php
+        views/
+            Index/
+                default.twig.html
+        config.xml</literallayout>
+      </example></para>
+    <para>Adhering to these conventions has the advantage that the classname of the  model, the view and the controller is resolved automatically by the requested url. The URI to show the content of the default view would be <uri>http://&lt;hostname&gt;/MyApp/Index/default.html</uri> </para>
+    <para>This URI will be resolved into the application-name <emphasis>MyApp</emphasis>, controller-name <emphasis>Index</emphasis>, action-name <emphasis>default</emphasis> and the format <emphasis>html</emphasis>. In this case these are all the default values, except the application, which has not a default value. </para>
+  </section>
+  <section>
+    <title>Controller</title>
+    <para>The controllers job is to process a request and deliver the response. </para>
+  </section>
+</chapter>

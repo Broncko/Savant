@@ -1,0 +1,1470 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class CBootstrap</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class CBootstrap</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_CBootstrap.php.html">/CBootstrap.php</a> (line <span class="field">34</span>)
+		</p>
+		
+				
+		<pre><a href="../Savant/CApplication.html">CApplication</a>
+   |
+   --CBootstrap</pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#CONTENT_TYPE_HTML" title="details" class="const-name">CONTENT_TYPE_HTML</a> = 					<span class="var-type"> 'text/html'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#CONTENT_TYPE_XML" title="details" class="const-name">CONTENT_TYPE_XML</a> = 					<span class="var-type"> 'text/xml'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#CONTENT_TYPE_XMLRPC" title="details" class="const-name">CONTENT_TYPE_XMLRPC</a> = 					<span class="var-type"> 'application/x-www-form-urlencoded'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LEVEL_CRITICAL" title="details" class="const-name">LEVEL_CRITICAL</a> = 					<span class="var-type"> 'critical'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LEVEL_DEBUG" title="details" class="const-name">LEVEL_DEBUG</a> = 					<span class="var-type"> 'debug'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LEVEL_ERROR" title="details" class="const-name">LEVEL_ERROR</a> = 					<span class="var-type"> 'error'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LEVEL_INFO" title="details" class="const-name">LEVEL_INFO</a> = 					<span class="var-type"> 'info'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LEVEL_WARNING" title="details" class="const-name">LEVEL_WARNING</a> = 					<span class="var-type"> 'warning'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MODE_CLI" title="details" class="const-name">MODE_CLI</a> = 					<span class="var-type"> 'cli'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MODE_WEB" title="details" class="const-name">MODE_WEB</a> = 					<span class="var-type"> 'web'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#STATE_DEVELOPMENT" title="details" class="const-name">STATE_DEVELOPMENT</a> = 					<span class="var-type"> 'dev'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#STATE_PRODUCTION" title="details" class="const-name">STATE_PRODUCTION</a> = 					<span class="var-type"> 'live'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#STATUS_ACTIVE" title="details" class="const-name">STATUS_ACTIVE</a> = 					<span class="var-type"> 1</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#STATUS_FINALIZING" title="details" class="const-name">STATUS_FINALIZING</a> = 					<span class="var-type"> 3</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#STATUS_INACTIVE" title="details" class="const-name">STATUS_INACTIVE</a> = 					<span class="var-type"> 2</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#STATUS_INITIALIZING" title="details" class="const-name">STATUS_INITIALIZING</a> = 					<span class="var-type"> 0</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+												<div class="var-title">
+					static <span class="var-type">Savant\IApplication</span>
+					<a href="#$APPLICATION" title="details" class="var-name">$APPLICATION</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$ASPECT_DIR" title="details" class="var-name">$ASPECT_DIR</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">bool</span>
+					<a href="#$BENCHMARK" title="details" class="var-name">$BENCHMARK</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$DATA_DIR" title="details" class="var-name">$DATA_DIR</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$EXECUTE_STATE" title="details" class="var-name">$EXECUTE_STATE</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$EXT_DIR" title="details" class="var-name">$EXT_DIR</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$FRAMEWORK_DIR" title="details" class="var-name">$FRAMEWORK_DIR</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$JOINPOINT_DIR" title="details" class="var-name">$JOINPOINT_DIR</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$LEVEL" title="details" class="var-name">$LEVEL</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">Savant\Utils\ILogging</span>
+					<a href="#$LOGGER" title="details" class="var-name">$LOGGER</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$MODE" title="details" class="var-name">$MODE</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">bool</span>
+					<a href="#$PERMANENT_LOG" title="details" class="var-name">$PERMANENT_LOG</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">integer</span>
+					<a href="#$STATUS" title="details" class="var-name">$STATUS</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">string</span>
+					<a href="#$TESTS_DIR" title="details" class="var-name">$TESTS_DIR</a>
+				</div>
+																																																																																																																															</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																				<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#extensionLoaded" title="details" class="method-name">extensionLoaded</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pExtension</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#finalize" title="details" class="method-name">finalize</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">array</span>
+										<a href="#getClasses" title="details" class="method-name">getClasses</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$pSubclass</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">array</span>
+										<a href="#getClassesWithInterface" title="details" class="method-name">getClassesWithInterface</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pInterface</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#getConfigFile" title="details" class="method-name">getConfigFile</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pClass</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#getErrorCode" title="details" class="method-name">getErrorCode</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$pLevel</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#getErrorType" title="details" class="method-name">getErrorType</a>
+											([<span class="var-type">integer</span>&nbsp;<span class="var-name">$pCode</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">\RegexIterator</span>
+										<a href="#getFiles" title="details" class="method-name">getFiles</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pFolder</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$pType</span> = <span class="var-default">'php'</span>])
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#initializeAOP" title="details" class="method-name">initializeAOP</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result"><type></span>
+										<a href="#invoke" title="details" class="method-name">invoke</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pClass</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$pMethod</span> = <span class="var-default">'__construct'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$pArgs</span> = <span class="var-default">array()</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#log" title="details" class="method-name">log</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pContent</span>)
+									</div>
+																																<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#setContentType" title="details" class="method-name">setContentType</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$pType</span>)
+									</div>
+								
+												<div class="method-definition">
+											<span class="method-result">CBootstrap</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+										()
+									</div>
+																																																																																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#initialize" title="details" class="method-name">initialize</a>
+											([<span class="var-type"><a href="../Savant/IApplication.html">IApplication</a></span>&nbsp;<span class="var-name">$pApplication</span> = <span class="var-default">null</span>])
+									</div>
+																																								<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#registerClassLoader" title="details" class="method-name">registerClassLoader</a>
+											(<span class="var-type">function</span>&nbsp;<span class="var-name">$pCallback</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#run" title="details" class="method-name">run</a>
+											([<span class="var-type"><a href="../Savant/IApplication.html">IApplication</a></span>&nbsp;<span class="var-name">$pApplication</span> = <span class="var-default">null</span>])
+									</div>
+																</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$APPLICATION" id="$APPLICATION"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">Savant\IApplication</span>
+			<span class="var-name">$APPLICATION</span>
+						(line <span class="line-number">214</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">application name</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$ASPECT_DIR" id="$ASPECT_DIR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$ASPECT_DIR</span>
+						(line <span class="line-number">202</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">aspects folder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$BENCHMARK" id="$BENCHMARK"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">bool</span>
+			<span class="var-name">$BENCHMARK</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">160</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">benchmark application</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$DATA_DIR" id="$DATA_DIR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$DATA_DIR</span>
+						(line <span class="line-number">196</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">data folder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$EXECUTE_STATE" id="$EXECUTE_STATE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$EXECUTE_STATE</span>
+			 = <span class="var-default"> self::STATE_DEVELOPMENT</span>			(line <span class="line-number">166</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework execution state</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$EXT_DIR" id="$EXT_DIR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$EXT_DIR</span>
+						(line <span class="line-number">190</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">extension folder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$FRAMEWORK_DIR" id="$FRAMEWORK_DIR"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$FRAMEWORK_DIR</span>
+						(line <span class="line-number">178</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework folder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$JOINPOINT_DIR" id="$JOINPOINT_DIR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$JOINPOINT_DIR</span>
+						(line <span class="line-number">208</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">joinpoints folder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$LEVEL" id="$LEVEL"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$LEVEL</span>
+			 = <span class="var-default"> self::LEVEL_DEBUG</span>			(line <span class="line-number">142</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">log level</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$LOGGER" id="$LOGGER"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">Savant\Utils\ILogging</span>
+			<span class="var-name">$LOGGER</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">172</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">define logger</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$MODE" id="$MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$MODE</span>
+			 = <span class="var-default"> self::MODE_WEB</span>			(line <span class="line-number">136</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework mode</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$PERMANENT_LOG" id="$PERMANENT_LOG"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">bool</span>
+			<span class="var-name">$PERMANENT_LOG</span>
+			 = <span class="var-default"> true</span>			(line <span class="line-number">154</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">permanent logging</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$STATUS" id="$STATUS"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">integer</span>
+			<span class="var-name">$STATUS</span>
+			 = <span class="var-default"> self::STATUS_INACTIVE</span>			(line <span class="line-number">148</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">current framework status</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$TESTS_DIR" id="$TESTS_DIR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">string</span>
+			<span class="var-name">$TESTS_DIR</span>
+						(line <span class="line-number">184</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">unit tests folder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../Savant/CApplication.html">CApplication</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$BASE_DIR">CApplication::$BASE_DIR</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$CACHE_DIR">CApplication::$CACHE_DIR</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$CONF_DIR">CApplication::$CONF_DIR</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$DEFAULT_FOLDER_STRUCTURE">CApplication::$DEFAULT_FOLDER_STRUCTURE</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$LIB_DIR">CApplication::$LIB_DIR</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$NAME">CApplication::$NAME</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$ROOT_DIR">CApplication::$ROOT_DIR</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../Savant/CApplication.html#var$SKINS_DIR">CApplication::$SKINS_DIR</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodextensionLoaded" id="extensionLoaded"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method extensionLoaded</span> (line <span class="line-number">411</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">check if needed extension is loaded</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			extensionLoaded
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pExtension</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pExtension</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfinalize" id="finalize"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method finalize</span> (line <span class="line-number">335</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">shutdown framework</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			finalize
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetClasses" id="getClasses"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getClasses</span> (line <span class="line-number">472</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">returns a list of classes which extend the given subclass</p>
+<p class="description"><p>TODO: test subclass filter</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getClasses
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$pSubclass</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pSubclass</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetClassesWithInterface" id="getClassesWithInterface"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getClassesWithInterface</span> (line <span class="line-number">498</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">returns classes which implements given interface</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getClassesWithInterface
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pInterface</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pInterface</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetConfigFile" id="getConfigFile"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getConfigFile</span> (line <span class="line-number">364</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">returns path to config file from given class</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getConfigFile
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pClass</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pClass</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetErrorCode" id="getErrorCode"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getErrorCode</span> (line <span class="line-number">251</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get error code from error level</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> error code</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getErrorCode
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$pLevel</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pLevel</span><span class="var-description">: error level</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetErrorType" id="getErrorType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getErrorType</span> (line <span class="line-number">270</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get error type from error code</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> error level</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getErrorType
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$pCode</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$pCode</span><span class="var-description">: error code</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetFiles" id="getFiles"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getFiles</span> (line <span class="line-number">458</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">get files of pType from pFolder</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">\RegexIterator</span>
+		<span class="method-name">
+			getFiles
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pFolder</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$pType</span> = <span class="var-default">'php'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pFolder</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pType</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinitializeAOP" id="initializeAOP"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method initializeAOP</span> (line <span class="line-number">372</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">initialize aop framework</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			initializeAOP
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinvoke" id="invoke"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method invoke</span> (line <span class="line-number">438</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">invoke classmethod and return the result</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> mixed</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><type></span>
+		<span class="method-name">
+			invoke
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pClass</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$pMethod</span> = <span class="var-default">'__construct'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$pArgs</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pClass</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pMethod</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pArgs</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodlog" id="log"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method log</span> (line <span class="line-number">399</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">log</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			log
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pContent</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pContent</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetContentType" id="setContentType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method setContentType</span> (line <span class="line-number">423</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">set content type</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setContentType
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$pType</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$pType</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">231</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">create bootstrapper instance</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">CBootstrap</span>
+		<span class="method-name">
+			__construct
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Savant/CApplication.html#method__construct">CApplication::__construct()</a></dt>
+						<dd>create application instance</dd>
+					</dl>
+			
+	</div>
+<a name="methodinitialize" id="initialize"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">initialize</span> (line <span class="line-number">286</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">initialize bootstrapper</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			initialize
+		</span>
+					([<span class="var-type"><a href="../Savant/IApplication.html">IApplication</a></span>&nbsp;<span class="var-name">$pApplication</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Savant/IApplication.html">IApplication</a></span>
+				<span class="var-name">$pApplication</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodregisterClassLoader" id="registerClassLoader"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">registerClassLoader</span> (line <span class="line-number">346</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">register class loader</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			registerClassLoader
+		</span>
+					(<span class="var-type">function</span>&nbsp;<span class="var-name">$pCallback</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">function</span>
+				<span class="var-name">$pCallback</span><span class="var-description">: anonymus function to load classes</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrun" id="run"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">run</span> (line <span class="line-number">384</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">run bootstrapper</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			run
+		</span>
+					([<span class="var-type"><a href="../Savant/IApplication.html">IApplication</a></span>&nbsp;<span class="var-name">$pApplication</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Savant/IApplication.html">IApplication</a></span>
+				<span class="var-name">$pApplication</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../Savant/CApplication.html">CApplication</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../Savant/CApplication.html#method__construct">CApplication::__construct()</a></span><br>
+													<span class="method-name"><a href="../Savant/CApplication.html#methodgetBaseDir">CApplication::getBaseDir()</a></span><br>
+													<span class="method-name"><a href="../Savant/CApplication.html#methodloadClass">CApplication::loadClass()</a></span><br>
+													<span class="method-name"><a href="../Savant/CApplication.html#methodsetFolderStructure">CApplication::setFolderStructure()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constCONTENT_TYPE_HTML" id="CONTENT_TYPE_HTML"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">CONTENT_TYPE_HTML</span>
+			 = <span class="const-default"> 'text/html'</span>
+			(line <span class="line-number">106</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">content type html</p>
+	
+	
+</div>
+<a name="constCONTENT_TYPE_XML" id="CONTENT_TYPE_XML"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">CONTENT_TYPE_XML</span>
+			 = <span class="const-default"> 'text/xml'</span>
+			(line <span class="line-number">112</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">content type xml</p>
+	
+	
+</div>
+<a name="constCONTENT_TYPE_XMLRPC" id="CONTENT_TYPE_XMLRPC"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">CONTENT_TYPE_XMLRPC</span>
+			 = <span class="const-default"> 'application/x-www-form-urlencoded'</span>
+			(line <span class="line-number">118</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">content type for xmlrpc</p>
+	
+	
+</div>
+<a name="constLEVEL_CRITICAL" id="LEVEL_CRITICAL"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LEVEL_CRITICAL</span>
+			 = <span class="const-default"> 'critical'</span>
+			(line <span class="line-number">76</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">level critical</p>
+	
+	
+</div>
+<a name="constLEVEL_DEBUG" id="LEVEL_DEBUG"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LEVEL_DEBUG</span>
+			 = <span class="const-default"> 'debug'</span>
+			(line <span class="line-number">52</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">level debug</p>
+	
+	
+</div>
+<a name="constLEVEL_ERROR" id="LEVEL_ERROR"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LEVEL_ERROR</span>
+			 = <span class="const-default"> 'error'</span>
+			(line <span class="line-number">70</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">level error</p>
+	
+	
+</div>
+<a name="constLEVEL_INFO" id="LEVEL_INFO"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LEVEL_INFO</span>
+			 = <span class="const-default"> 'info'</span>
+			(line <span class="line-number">58</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">level info</p>
+	
+	
+</div>
+<a name="constLEVEL_WARNING" id="LEVEL_WARNING"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LEVEL_WARNING</span>
+			 = <span class="const-default"> 'warning'</span>
+			(line <span class="line-number">64</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">level warning</p>
+	
+	
+</div>
+<a name="constMODE_CLI" id="MODE_CLI"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MODE_CLI</span>
+			 = <span class="const-default"> 'cli'</span>
+			(line <span class="line-number">46</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework mode cli</p>
+	
+	
+</div>
+<a name="constMODE_WEB" id="MODE_WEB"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MODE_WEB</span>
+			 = <span class="const-default"> 'web'</span>
+			(line <span class="line-number">40</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework mode web</p>
+	
+	
+</div>
+<a name="constSTATE_DEVELOPMENT" id="STATE_DEVELOPMENT"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">STATE_DEVELOPMENT</span>
+			 = <span class="const-default"> 'dev'</span>
+			(line <span class="line-number">124</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework state development</p>
+	
+	
+</div>
+<a name="constSTATE_PRODUCTION" id="STATE_PRODUCTION"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">STATE_PRODUCTION</span>
+			 = <span class="const-default"> 'live'</span>
+			(line <span class="line-number">130</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework state production (live)</p>
+	
+	
+</div>
+<a name="constSTATUS_ACTIVE" id="STATUS_ACTIVE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">STATUS_ACTIVE</span>
+			 = <span class="const-default"> 1</span>
+			(line <span class="line-number">88</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework status active</p>
+	
+	
+</div>
+<a name="constSTATUS_FINALIZING" id="STATUS_FINALIZING"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">STATUS_FINALIZING</span>
+			 = <span class="const-default"> 3</span>
+			(line <span class="line-number">100</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework status finalizing</p>
+	
+	
+</div>
+<a name="constSTATUS_INACTIVE" id="STATUS_INACTIVE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">STATUS_INACTIVE</span>
+			 = <span class="const-default"> 2</span>
+			(line <span class="line-number">94</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework status inactive</p>
+	
+	
+</div>
+<a name="constSTATUS_INITIALIZING" id="STATUS_INITIALIZING"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">STATUS_INITIALIZING</span>
+			 = <span class="const-default"> 0</span>
+			(line <span class="line-number">82</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">framework status initializing</p>
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 02 Nov 2010 22:39:12 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
