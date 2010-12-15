@@ -48,7 +48,7 @@ class CFrontController extends \Savant\AStandardObject
      * response format xhtml
      * @var string
      */
-    const RSP_FORMAT_XHTML = 'xhtml';
+    const RSP_FORMAT_XHTML = 'html';
 
     /**
      * response format image
@@ -136,22 +136,33 @@ class CFrontController extends \Savant\AStandardObject
      */
     public static function parseUri($pUri)
     {
-        $uri = \parse_url($pUri);
-        $uriParts = \explode('/',$uri['path']);
-        \array_shift($uriParts);
         $res = array();
+        $uri = \parse_url($pUri);
+        $path = \explode('.', $uri['path']);
+        $res['format'] = \array_pop($path);
+        $uriParts = \explode('/',$path[0]);
+        \array_shift($uriParts);
         $res['app'] = $uriParts[0];
         $res['controller'] = (!empty($uriParts[1]) ? $uriParts[1] : 'index');
         $res['action'] = (!empty($uriParts[2]) ? $uriParts[2] : 'index');
-        if(isset($uri['query']))
-        {
-            foreach(\explode('&', $uri['query']) as $query)
-            {
-                list($key, $val) = \explode('=', $query);
-                $res['options'][$key] = $val;
-            }
-        }
+        print_r($res);
         return $res;
+    }
+
+    /**
+     * translating the payload
+     * @return mixed
+     */
+    private static function getPayload()
+    {
+        if(isset($_SERVER['CONTENT_LENGTH']) && $_SERVER['CONTENT_LENGTH'] > 0)
+        {
+            return \file_get_contents('php://input');
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -159,13 +170,45 @@ class CFrontController extends \Savant\AStandardObject
      * @param \Savant\Template\IEngine $pEngine
      * @param string $pUri
      */
-    public static function handle($pUri = '')
+    public static function handle($pUri = '', $pRequestType = 'GET')
     {
         $fcParts = self::parseUri($pUri);
-        //print_r($fcParts);
-        if(isset($fcParts['options']['fmt']) && $fcParts['options']['fmt'] != self::RSP_FORMAT_XHTML)
+
+        $app = new \Savant\CApplication($fcParts['app']);
+
+        $model = $app->getModel($fcParts['controller'], $fcParts['action']);
+
+        if($model instanceof \Savant\Webservice\IRestful)
         {
-            switch($fcParts['options']['fmt'])
+            $data = self::getPayload();
+            if($data !== false)
+            {
+                new \Savant\EApplication("no data sent to work with");
+            }
+            $data = \Savant\Protocol\CJson::decode($data);
+
+            switch($pRequestType)
+            {
+                case 'GET':
+                    $res = $model->read((array)$data);
+                    break;
+                case 'PUT':
+                    $res = $model->update((array)$data);
+                    break;
+                case 'POST':
+                    $res = $model->create((array)$data);
+                    break;
+                case 'DELETE':
+                    $res = $model->delete((array)$data);
+                    break;
+                default:
+                    $res = $app->callController($model);
+            }
+        }
+        
+        if(isset($fcParts['format']) && $fcParts['format'] != self::RSP_FORMAT_XHTML)
+        {
+            switch($fcParts['format'])
             {
                 case self::RSP_FORMAT_JSON:
                     $engine = new \Savant\Template\CJson();
@@ -177,18 +220,12 @@ class CFrontController extends \Savant\AStandardObject
         }
         else
         {
-            $engine = new \Savant\Template\CTwig();
+            $engine = new \Savant\Template\CTwig($app);
         }
         
         $instance = new self($engine);
 
-        $app = new \Savant\CApplication($fcParts['app']);
-
-        $model = $app->getModel($fcParts['controller'], $fcParts['action']);
-
-        $controller = $app->callController($model);
-
-        $view = $app->view($instance->engine, $controller);
+        $view = $app->view($instance->engine, $res);
 
         $view->render();
     }

@@ -123,7 +123,7 @@ class CParameter extends CValueObject
      * @param array $pConstraints
      * @param mixed $pDefault
      */
-    public function __construct($pName, $pValue, $pType = self::DT_STRING, $pDescription = '', $pConstraints = array(), $pDefault = null)
+    public function __construct($pName, $pType = self::DT_STRING, $pDescription = '', $pConstraints = array(), $pValue = null, $pDefault = null)
     {
         parent::__construct();
         $this->name = $pName;

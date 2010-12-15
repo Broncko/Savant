@@ -34,19 +34,19 @@ class CApplication extends AStandardObject
      * application models folder
      * @var string
      */
-    public static $MODELS_DIR;
+    public $MODELS_DIR;
 
     /**
      * application controller folder
      * @var string
      */
-    public static $CONTROLLER_DIR;
+    public $CONTROLLER_DIR;
 
     /**
      * application views dir
      * @var string
      */
-    public static $VIEWS_DIR;
+    public $VIEWS_DIR;
 
     /**
      * application name
@@ -58,13 +58,13 @@ class CApplication extends AStandardObject
      * request controller
      * @var string
      */
-    private $requestController;
+    public $requestController;
 
     /**
      * request action
      * @var string
      */
-    private $requestAction;
+    public $requestAction;
 
     /**
      * create application instance
@@ -82,9 +82,9 @@ class CApplication extends AStandardObject
     public function initialize()
     {
         $baseDir = self::$BASE_DIR = CBootstrap::$APP_DIR . \DIRECTORY_SEPARATOR . $this->name;
-        self::$MODELS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'models';
-        self::$CONTROLLER_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'controller';
-        self::$VIEWS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'views';
+        $this->MODELS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'models';
+        $this->CONTROLLER_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'controller';
+        $this->VIEWS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'views';
     }
 
     /**
@@ -98,19 +98,22 @@ class CApplication extends AStandardObject
         $this->requestController = $pModel;
         $this->requestAction = $pQuery;
 
-        $file = self::$MODELS_DIR . \DIRECTORY_SEPARATOR . $pModel.'.php';
+        $file = $this->MODELS_DIR . \DIRECTORY_SEPARATOR . $pModel.'.php';
         if(!\file_exists($file))
         {
             throw new EApplication("could not find file %s of model %s", $file, $pModel);
         }
         require_once $file;
-        $model = "\\".$this->name."\models\\".$pModel;
-        if(!\method_exists($model, 'query'.$pQuery))
+        $modelName = "\\".$this->name."\models\\".$pModel;
+
+        $model = new $modelName(new Storage\CDatabase($modelName::DEFAULT_DB));
+
+        if(!($model instanceof Webservice\IRestful) && !\method_exists($model, 'query'.$pQuery))
         {
             throw new EApplication("could not call action %s of %s", $pQuery, $model);
         }
         
-        return new $model(new Storage\CDatabase($model::DEFAULT_DB));
+        return $model;
     }
 
     /**
@@ -120,7 +123,7 @@ class CApplication extends AStandardObject
      */
     public function callController(MVC\IModel $pModel)
     {
-        $file  = self::$CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $this->requestController . '.php';
+        $file  = $this->CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $this->requestController . '.php';
         if(!\file_exists($file))
         {
             return $pModel->dsQuery($this->requestAction);
@@ -142,9 +145,6 @@ class CApplication extends AStandardObject
      */
     public function view(Template\IEngine $pEngine, $pController)
     {
-        $tplFile = $this->requestAction . $pEngine::SUFFIX;
-        $pEngine->setTemplateDir(self::$VIEWS_DIR . \DIRECTORY_SEPARATOR . $this->requestController);
-        $pEngine->setTemplate($tplFile);
         $data = new Storage\CValueObject(array('data' => $pController));
         $pEngine->assign($data);
         return $pEngine;

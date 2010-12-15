@@ -53,7 +53,7 @@
 					<th class="class-table-header">Description</th>
 				</tr>
 								<tr>
-					<td style="padding-right: 2em"><a href="../Savant/AExtension.html">AExtension</a></td>
+					<td style="padding-right: 2em"><a href="../Savant/CApplication.html">CApplication</a></td>
 					<td>
 											
 										</td>
@@ -119,7 +119,12 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																												
+																												<div class="method-definition">
+					static 						<span class="method-result">object</span>
+										<a href="#create" title="details" class="method-name">create</a>
+										()
+									</div>
+																																																
 												<div class="method-definition">
 											<span class="method-result">AStandardObject</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
@@ -130,9 +135,9 @@
 										<a href="#__destruct" title="details" class="method-name">__destruct</a>
 										()
 									</div>
-																<div class="method-definition">
-											<span class="method-result">object</span>
-										<a href="#create" title="details" class="method-name">create</a>
+																								<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#singleton" title="details" class="method-name">singleton</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -174,7 +179,7 @@
 					</div>
 		<div class="info-box-body">
 			<a name="var$_DTD_VALID" id="$_DTD_VALID"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -196,7 +201,7 @@
 
 </div>
 <a name="var$confFile" id="$confFile"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -218,7 +223,7 @@
 
 </div>
 <a name="var$config" id="$config"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -240,7 +245,7 @@
 
 </div>
 <a name="var$confSection" id="$confSection"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -262,7 +267,7 @@
 
 </div>
 <a name="var$LOGFILE" id="$LOGFILE"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -299,6 +304,31 @@
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
+<a name="methodcreate" id="create"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method create</span> (line <span class="line-number">131</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">create class instance, without using the constructor directly</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">object</span>
+		<span class="method-name">
+			create
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 
 <a name="method__construct" id="__construct"><!-- --></a>
 <div class="evenrow">
@@ -332,7 +362,8 @@
 		<div class="notes">Redefined in descendants as:</div>
 		<ul class="redefinitions">
 					<li>
-				<a href="../Savant/AExtension.html#method__construct">AExtension::__construct()</a>
+				<a href="../Savant/CApplication.html#method__construct">CApplication::__construct()</a>
+								: create application instance
 							</li>
 					<li>
 				<a href="../Savant/AConnection.html#method__construct">AConnection::__construct()</a>
@@ -363,31 +394,23 @@
 	
 		
 			
-			<hr class="separator" />
-		<div class="notes">Redefined in descendants as:</div>
-		<ul class="redefinitions">
-					<li>
-				<a href="../Savant/AExtension.html#method__destruct">AExtension::__destruct()</a>
-							</li>
-				</ul>
 	</div>
-<a name="methodcreate" id="create"><!-- --></a>
+<a name="methodsingleton" id="singleton"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">create</span> (line <span class="line-number">131</span>)
+		<span class="method-title">singleton</span> (line <span class="line-number">136</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">create class instance, without using the constructor directly</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">object</span>
+		<span class="method-result">void</span>
 		<span class="method-name">
-			create
+			singleton
 		</span>
 				()
 			</div>
@@ -512,7 +535,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 02 Nov 2010 22:39:11 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 13 Dec 2010 03:56:38 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

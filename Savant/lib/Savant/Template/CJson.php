@@ -40,7 +40,14 @@ class CJson extends AEngine implements IEngine
      */
     public function _render($pDisplay = true)
     {
-        return \Savant\Protocol\CJson::encode($this->data);
+        if($pDisplay)
+        {
+            echo \Savant\Protocol\CJson::encode($this->data['data']->getDataAsArray());
+        }
+        else
+        {
+            return \Savant\Protocol\CJson::encode($this->data['data']->getDataAsArray());
+        }
     }
 
     public function _setTemplate($pTemplate = '')

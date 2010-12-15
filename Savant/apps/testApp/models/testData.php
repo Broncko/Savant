@@ -1,27 +1,13 @@
 <?php
 namespace testApp\models;
 
-class testData extends \Savant\Storage\DataSet\ADataSetProvider implements \Savant\MVC\IModel
+class testData extends \Savant\Storage\ACrud
 {
     const DEFAULT_DB = 'savant_mysql';
 
-    public function queryName()
+    public function __construct(\Savant\Storage\CDatabase $pDb)
     {
-        $sql = "select
-                *
-                from
-                test";
-
-        return $this->db->query($sql);
-    }
-
-    public function meta__queryIndex()
-    {
-        return true;
-    }
-
-    public function queryIndex()
-    {
-        return true;
+        parent::__construct($pDb);
+        self::$TABLE = 'test';
     }
 }

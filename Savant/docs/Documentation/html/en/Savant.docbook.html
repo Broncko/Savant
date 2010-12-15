@@ -2,14 +2,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Savant Application Framework</title>
+<link rel="stylesheet" type="text/css" href="TheGuide.css" />
 <meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
-<link rel="Stylesheet" type="text/css" href="TheGuide.css" />
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="book" lang="en">
 <div class="titlepage">
 <div>
 <div><h1 class="title">
-<a name="id2983612"></a>Savant Application Framework</h1></div>
+<a name="id2531345"></a>Savant Application Framework</h1></div>
 <div><div class="author">
 <h3 class="author">
 <span class="firstname">Hendrik</span> <span class="surname">Heinemann</span>
@@ -23,81 +23,85 @@
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
-<dt><span class="chapter"><a href="#id3022975">1. Introduction</a></span></dt>
-<dd><dl><dt><span class="section"><a href="#id3068301">Overview</a></span></dt></dl></dd>
-<dt><span class="chapter"><a href="#id3031495">2. Installation</a></span></dt>
+<dt><span class="chapter"><a href="#id2571461">1. Introduction</a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id2616263">Overview</a></span></dt></dl></dd>
+<dt><span class="chapter"><a href="#id2566699">2. Installation</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="#id3075513">Requirements</a></span></dt>
-<dt><span class="section"><a href="#id3077457">Installation of Savant</a></span></dt>
+<dt><span class="section"><a href="#id2594351">Requirements</a></span></dt>
+<dt><span class="section"><a href="#id2620591">Installation of Savant</a></span></dt>
 </dl></dd>
-<dt><span class="chapter"><a href="#id3031353">3. MVC Framework</a></span></dt>
+<dt><span class="chapter"><a href="#id2574985">3. MVC Framework</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="#id3042481">Introduction</a></span></dt>
-<dt><span class="section"><a href="#id3065584">File Structure</a></span></dt>
-<dt><span class="section"><a href="#id3070985">Controller</a></span></dt>
+<dt><span class="section"><a href="#id2622398">Introduction</a></span></dt>
+<dt><span class="section"><a href="#id2588317">File Structure</a></span></dt>
+<dt><span class="section"><a href="#id2605008">Controller</a></span></dt>
 </dl></dd>
-<dt><span class="chapter"><a href="#id3020385">4. Configuration</a></span></dt>
+<dt><span class="chapter"><a href="#id2563306">4. Configuration</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="#id3053695">Configuration Files</a></span></dt>
-<dt><span class="section"><a href="#id3059323">Configuration Format</a></span></dt>
-<dt><span class="section"><a href="#id3064290">Accessing configuration</a></span></dt>
+<dt><span class="section"><a href="#id2597169">Configuration Files</a></span></dt>
+<dt><span class="section"><a href="#id2597562">Configuration Format</a></span></dt>
+<dt><span class="section"><a href="#id2610952">Accessing configuration</a></span></dt>
 </dl></dd>
-<dt><span class="chapter"><a href="#id3025146">5. AOP Framework</a></span></dt>
+<dt><span class="chapter"><a href="#id2565794">5. AOP Framework</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="#id3041190">Introduction</a></span></dt>
-<dt><span class="section"><a href="#id3085350">Terminology</a></span></dt>
-<dt><span class="section"><a href="#id3064161">Aspects</a></span></dt>
-<dt><span class="section"><a href="#id3064184">Pointcuts</a></span></dt>
+<dt><span class="section"><a href="#id2618318">Introduction</a></span></dt>
+<dt><span class="section"><a href="#id2624214">Terminology</a></span></dt>
+<dt><span class="section"><a href="#id2624987">Aspects</a></span></dt>
+<dt><span class="section"><a href="#id2625012">Pointcuts</a></span></dt>
 </dl></dd>
-<dt><span class="chapter"><a href="#id3020495">6. Webservices</a></span></dt>
+<dt><span class="chapter"><a href="#id2569881">6. Webservices</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="#id3079707">SOAP Webservices</a></span></dt>
-<dd><dl><dt><span class="section"><a href="#id2998327">Architecture</a></span></dt></dl></dd>
-<dt><span class="section"><a href="#id3085897">Document/Literal Wrapped Style with Session Handling </a></span></dt>
-<dd><dl><dt><span class="section"><a href="#id3046586">Communication Sequence</a></span></dt></dl></dd>
+<dt><span class="section"><a href="#id2614749">SOAP Webservices</a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id2587959">Architecture</a></span></dt></dl></dd>
+<dt><span class="section"><a href="#id2623986">Document/Literal Wrapped Style with Session Handling </a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id2624414">Communication Sequence</a></span></dt></dl></dd>
 </dl></dd>
 </dl>
 </div>
 <div class="list-of-figures">
 <p><b>List of Figures</b></p>
 <dl>
-<dt>3.1. <a href="#id3064445">Model-View-Controller Pattern</a>
+<dt>3.1. <a href="#id2619960">Model-View-Controller Pattern</a>
 </dt>
-<dt>6.1. <a href="#id3080436">Introduction to Webservice Framework</a>
+<dt>6.1. <a href="#id2617840">Introduction to Webservice Framework</a>
 </dt>
-<dt>6.2. <a href="#id3070165">Subsequent call</a>
+<dt>6.2. <a href="#id2606388">Subsequent call</a>
 </dt>
 </dl>
 </div>
 <div class="list-of-examples">
 <p><b>List of Examples</b></p>
 <dl>
-<dt>3.1. <a href="#id3021299">Recommended File Structure</a>
+<dt>3.1. <a href="#id2624891">Recommended File Structure</a>
 </dt>
-<dt>4.1. <a href="#id3064358">Configuration Folder Structure</a>
+<dt>4.1. <a href="#id2602067">Configuration Folder Structure</a>
 </dt>
-<dt>4.2. <a href="#id3069214">Configuration example</a>
+<dt>4.2. <a href="#id2604337">Configuration example</a>
 </dt>
-<dt>4.3. <a href="#id3063883">Automatical class configuration</a>
+<dt>4.3. <a href="#id2610594">Automatical class configuration</a>
 </dt>
-<dt>4.4. <a href="#id3063917">Manual class configuration</a>
+<dt>4.4. <a href="#id2610628">Manual class configuration</a>
 </dt>
-<dt>5.1. <a href="#id3064169">Declaration of an aspect</a>
+<dt>5.1. <a href="#id2624996">Declaration of an aspect</a>
 </dt>
-<dt>5.2. <a href="#id3064194">Declaration of a pointcut</a>
+<dt>5.2. <a href="#id2603082">Methodcall joinpoint declaration</a>
+</dt>
+<dt>5.3. <a href="#id2603095">Declaration of a pointcut</a>
 </dt>
 </dl>
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="id3022975"></a>Chapter 1. Introduction</h2></div></div></div>
+<a name="id2571461"></a>Chapter 1. Introduction</h2></div></div></div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
-<dl><dt><span class="section"><a href="#id3068301">Overview</a></span></dt></dl>
+<dl><dt><span class="section"><a href="#id2616263">Overview</a></span></dt></dl>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3068301"></a>Overview</h2></div></div></div>
+<a name="id2616263"></a>Overview</h2></div></div></div>
+<p>The Savant Application Framework is a PHP-based application framework. It is especially designed to develope enterprise applications. Supporting domain-driven architecture, convention over configuration and test-driven development is a main feature of the framework. </p>
+<p>The following reference describes all features of the framework, although it is not finished yet. It grows with the development of the framework itself.</p>
 <p>The Savant Application Framework includes the following submodules:</p>
 <div class="itemizedlist"><ul type="disc">
 <li><p>The Savant Bootstrap takes care of configuring and initializing the entire framework.</p></li>
@@ -120,17 +124,17 @@
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="id3031495"></a>Chapter 2. Installation</h2></div></div></div>
+<a name="id2566699"></a>Chapter 2. Installation</h2></div></div></div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
-<dt><span class="section"><a href="#id3075513">Requirements</a></span></dt>
-<dt><span class="section"><a href="#id3077457">Installation of Savant</a></span></dt>
+<dt><span class="section"><a href="#id2594351">Requirements</a></span></dt>
+<dt><span class="section"><a href="#id2620591">Installation of Savant</a></span></dt>
 </dl>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3075513"></a>Requirements</h2></div></div></div>
+<a name="id2594351"></a>Requirements</h2></div></div></div>
 <p>The following minimum requirement should be operating system independent. Savant has been tested on Ubuntu Linux 10.04 (Debian fork) with an Apache webserver but Windows systems should should work as well. </p>
 <div class="itemizedlist"><ul type="disc">
 <li>
@@ -149,7 +153,7 @@
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3077457"></a>Installation of Savant</h2></div></div></div>
+<a name="id2620591"></a>Installation of Savant</h2></div></div></div>
 <p>The following steps require the server requirements to be set up. </p>
 <div class="procedure"><ol type="1">
 <li><p>Unzip it to a folder accessible by the webserver</p></li>
@@ -161,18 +165,18 @@
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="id3031353"></a>Chapter 3. MVC Framework</h2></div></div></div>
+<a name="id2574985"></a>Chapter 3. MVC Framework</h2></div></div></div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
-<dt><span class="section"><a href="#id3042481">Introduction</a></span></dt>
-<dt><span class="section"><a href="#id3065584">File Structure</a></span></dt>
-<dt><span class="section"><a href="#id3070985">Controller</a></span></dt>
+<dt><span class="section"><a href="#id2622398">Introduction</a></span></dt>
+<dt><span class="section"><a href="#id2588317">File Structure</a></span></dt>
+<dt><span class="section"><a href="#id2605008">Controller</a></span></dt>
 </dl>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3042481"></a>Introduction</h2></div></div></div>
+<a name="id2622398"></a>Introduction</h2></div></div></div>
 <p>In Savants softare architecture I  tried to take care to seperate concerns and leave responsibility to each part of the framework. The Model-View-Controller pattern seperates business logic from the presentation by splitting up user interaction into three roles:</p>
 <div class="itemizedlist"><ul type="disc">
 <li><p>The model object contains data and business logic of a specific domain. It does not contain information about the presentation of data or reacting on user input.</p></li>
@@ -180,16 +184,16 @@
 <li><p>The controller selects a view and passes it the prepared model. It also manipulates the model before if required and reacts on user input.</p></li>
 </ul></div>
 <div class="figure">
-<a name="id3064445"></a><p class="title"><b>Figure 3.1. Model-View-Controller Pattern</b></p>
+<a name="id2619960"></a><p class="title"><b>Figure 3.1. Model-View-Controller Pattern</b></p>
 <div class="mediaobject"><img src="../../img/MVC%20Model%20Summary.png" alt="Model-View-Controller Pattern"></div>
 </div>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3065584"></a>File Structure</h2></div></div></div>
+<a name="id2588317"></a>File Structure</h2></div></div></div>
 <p>Conventions for the directory layout simplifies the development, cause of this the following file structure is recommended:</p>
 <div class="example">
-<a name="id3021299"></a><p class="title"><b>Example 3.1. Recommended File Structure</b></p>
+<a name="id2624891"></a><p class="title"><b>Example 3.1. Recommended File Structure</b></p>
 <div class="literallayout"><p>apps/<br>
     MyApp/<br>
         controller/<br>
@@ -206,28 +210,28 @@
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3070985"></a>Controller</h2></div></div></div>
-<p>The controllers job is to process a request and deliver the response. </p>
+<a name="id2605008"></a>Controller</h2></div></div></div>
+<p>The controllers job is to process a request and deliver the response. The default controller process is covered by the frontcontroller, if no controller class is defined. It takes the result of the model and passes it to the view component.</p>
 </div>
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="id3020385"></a>Chapter 4. Configuration</h2></div></div></div>
+<a name="id2563306"></a>Chapter 4. Configuration</h2></div></div></div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
-<dt><span class="section"><a href="#id3053695">Configuration Files</a></span></dt>
-<dt><span class="section"><a href="#id3059323">Configuration Format</a></span></dt>
-<dt><span class="section"><a href="#id3064290">Accessing configuration</a></span></dt>
+<dt><span class="section"><a href="#id2597169">Configuration Files</a></span></dt>
+<dt><span class="section"><a href="#id2597562">Configuration Format</a></span></dt>
+<dt><span class="section"><a href="#id2610952">Accessing configuration</a></span></dt>
 </dl>
 </div>
 <p>Configuration is an important aspect of versatile applications. Savant provides a configuration mechanism which is convenient to use. Savant provides the configuration functionality as an aspect. </p>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3053695"></a>Configuration Files</h2></div></div></div>
+<a name="id2597169"></a>Configuration Files</h2></div></div></div>
 <p>The configuration files of the framework classes are in the conf folder, following the class directory structure being named like the class itself with <code class="filename">.conf.xml</code> as filenamesuffix. </p>
 <div class="example">
-<a name="id3064358"></a><p class="title"><b>Example 4.1. Configuration Folder Structure</b></p>
+<a name="id2602067"></a><p class="title"><b>Example 4.1. Configuration Folder Structure</b></p>
 <div class="literallayout"><p>conf/<br>
     Savant/<br>
         MySection/<br>
@@ -240,10 +244,10 @@ lib/<br>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3059323"></a>Configuration Format</h2></div></div></div>
+<a name="id2597562"></a>Configuration Format</h2></div></div></div>
 <p>The Savant configuration format is XML. To configure a framework class you just have to create an xml file named like the class which looks similar to the example below. Default configuration files must include the <code class="filename">config.dtd</code> to ensure the configuration xml is valid.</p>
 <div class="example">
-<a name="id3069214"></a><p class="title"><b>Example 4.2. Configuration example</b></p>
+<a name="id2604337"></a><p class="title"><b>Example 4.2. Configuration example</b></p>
 <pre class="programlisting">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE config SYSTEM "http://savant.localhost/config.dtd"&gt;
 &lt;config&gt;
@@ -259,10 +263,10 @@ lib/<br>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3064290"></a>Accessing configuration</h2></div></div></div>
+<a name="id2610952"></a>Accessing configuration</h2></div></div></div>
 <p>The default configuration mechanism "fills" the defined class members with the values of the configuration file. Therefor the class must derive from <code class="classname">Savant\AStandardObject</code> and implement the <code class="classname">Savant\IConfigure</code> interface. That interface does not contain any definitions it is only responsible to declare a class to be configured automatically. If the class can not be configured automatically by the default values, you can configure the class yourself by creating a <code class="methodname">configure()</code> method. The configuration manager provides access to the  parsed and cascaded  configuration by the <code class="methodname">conf</code> class member. </p>
 <div class="example">
-<a name="id3063883"></a><p class="title"><b>Example 4.3. Automatical class configuration</b></p>
+<a name="id2610594"></a><p class="title"><b>Example 4.3. Automatical class configuration</b></p>
 <pre class="programlisting">namespace Savant\MySection;
 
 class MyClass extends Savant\AStandardObject implements Savant\IConfigure
@@ -282,7 +286,7 @@ class MyClass extends Savant\AStandardObject implements Savant\IConfigure
 <p>The classmembers values are set automatically by the configuration aspect when the <code class="classname">Savant\MySection\MyClass</code> class will be invoked. The contructor expects a configuration section argument. </p>
 <p>To configure the class manually you have to create a public  <code class="methodname">configure()</code> method like in the example below.</p>
 <div class="example">
-<a name="id3063917"></a><p class="title"><b>Example 4.4. Manual class configuration</b></p>
+<a name="id2610628"></a><p class="title"><b>Example 4.4. Manual class configuration</b></p>
 <pre class="programlisting">namespace Savant\MySection;
 
 class MyClass extends AStandardObject implements IConfigure
@@ -310,26 +314,26 @@ class MyClass extends AStandardObject implements IConfigure
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="id3025146"></a>Chapter 5. AOP Framework</h2></div></div></div>
+<a name="id2565794"></a>Chapter 5. AOP Framework</h2></div></div></div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
-<dt><span class="section"><a href="#id3041190">Introduction</a></span></dt>
-<dt><span class="section"><a href="#id3085350">Terminology</a></span></dt>
-<dt><span class="section"><a href="#id3064161">Aspects</a></span></dt>
-<dt><span class="section"><a href="#id3064184">Pointcuts</a></span></dt>
+<dt><span class="section"><a href="#id2618318">Introduction</a></span></dt>
+<dt><span class="section"><a href="#id2624214">Terminology</a></span></dt>
+<dt><span class="section"><a href="#id2624987">Aspects</a></span></dt>
+<dt><span class="section"><a href="#id2625012">Pointcuts</a></span></dt>
 </dl>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3041190"></a>Introduction</h2></div></div></div>
+<a name="id2618318"></a>Introduction</h2></div></div></div>
 <p>Aspect-Oriented Programming(AOP) is a programming paradigm which extends Object-Oriented Programming(OOP) to improve the applications modularization. The separation of concerns aims for making an application easier to maintain by grouping behaviour into manageable parts which have a specific usecase to take care of. </p>
 <p>Some concerns a difficult to handle as they cross the boundaries of several classes or packages.  Many classes of an application need a similar functionality like for example Configuration. This is called a cross-cutting concern. AOP enables you to move the configuration aspect into its own package and leave other objects with clear responsibilities.</p>
 <p>Savant does not provide full AOP support, just the parts which are needed by the framework itself are implemented yet.</p>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3085350"></a>Terminology</h2></div></div></div>
+<a name="id2624214"></a>Terminology</h2></div></div></div>
 <p>This chapter explains some aop terms  and introduces a bit more of the concept. </p>
 <div class="variablelist"><dl>
 <dt><span class="term">Aspect</span></dt>
@@ -344,50 +348,54 @@ class MyClass extends AStandardObject implements IConfigure
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3064161"></a>Aspects</h2></div></div></div>
+<a name="id2624987"></a>Aspects</h2></div></div></div>
 <p>advices bla bla</p>
 <div class="example">
-<a name="id3064169"></a><p class="title"><b>Example 5.1. Declaration of an aspect</b></p>
+<a name="id2624996"></a><p class="title"><b>Example 5.1. Declaration of an aspect</b></p>
 <pre class="programlisting">namespace Savant\AOP\Aspects;
 use Savant\AOP;
 
-abstract class MyAspect extends AOP\AAspect implements AOP\IAspect
+abstract class MyAspect implements AOP\IAspect
 { 
 }</pre>
 </div>
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3064184"></a>Pointcuts</h2></div></div></div>
-<p>pointcuts bla bla</p>
+<a name="id2625012"></a>Pointcuts</h2></div></div></div>
+<p>Savant does not make use of pointcut expressions to match joinpoints. Most of the use cases where to weave in aspects  in an application will be covered by the predefined joinpoints. The joinpoint which is used most, is the <code class="classname">Savant\AOP\Joinpoints\CMethodCall</code> class. To declare a method as a methodcall-joinpoint just type a underscore before.</p>
 <div class="example">
-<a name="id3064194"></a><p class="title"><b>Example 5.2. Declaration of a pointcut</b></p>
+<a name="id2603082"></a><p class="title"><b>Example 5.2. Methodcall joinpoint declaration</b></p>
+<pre class="programlisting">public function _myFunc() {}</pre>
+</div>
+<div class="example">
+<a name="id2603095"></a><p class="title"><b>Example 5.3. Declaration of a pointcut</b></p>
 <pre class="programlisting"></pre>
 </div>
 </div>
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
-<a name="id3020495"></a>Chapter 6. Webservices</h2></div></div></div>
+<a name="id2569881"></a>Chapter 6. Webservices</h2></div></div></div>
 <div class="toc">
 <p><b>Table of Contents</b></p>
 <dl>
-<dt><span class="section"><a href="#id3079707">SOAP Webservices</a></span></dt>
-<dd><dl><dt><span class="section"><a href="#id2998327">Architecture</a></span></dt></dl></dd>
-<dt><span class="section"><a href="#id3085897">Document/Literal Wrapped Style with Session Handling </a></span></dt>
-<dd><dl><dt><span class="section"><a href="#id3046586">Communication Sequence</a></span></dt></dl></dd>
+<dt><span class="section"><a href="#id2614749">SOAP Webservices</a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id2587959">Architecture</a></span></dt></dl></dd>
+<dt><span class="section"><a href="#id2623986">Document/Literal Wrapped Style with Session Handling </a></span></dt>
+<dd><dl><dt><span class="section"><a href="#id2624414">Communication Sequence</a></span></dt></dl></dd>
 </dl>
 </div>
 <p>This chapter introduces Savant's webservices to the developer. The framework supports differend kinds of webservices.</p>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3079707"></a>SOAP Webservices</h2></div></div></div>
+<a name="id2614749"></a>SOAP Webservices</h2></div></div></div>
 <p>This section describes SOAP Webservices and the way they are handled by Savant.</p>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="id2998327"></a>Architecture</h3></div></div></div>
+<a name="id2587959"></a>Architecture</h3></div></div></div>
 <div class="figure">
-<a name="id3080436"></a><p class="title"><b>Figure 6.1. Introduction to Webservice Framework</b></p>
+<a name="id2617840"></a><p class="title"><b>Figure 6.1. Introduction to Webservice Framework</b></p>
 <div class="mediaobject"><img src="../../img/Webservice%20Architecture.png" alt="Introduction to Webservice Framework"></div>
 </div>
 <p>The webservice architecture in Savant hides the complexity of SOAP Webservices from the developer. Annoying tasks like writing wsdl files are no longer necessary. The framework generates proxy objects called &#8220;<span class="quote">stubs</span>&#8221; automatically around both client and server objects.</p>
@@ -395,14 +403,14 @@ abstract class MyAspect extends AOP\AAspect implements AOP\IAspect
 </div>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
-<a name="id3085897"></a>Document/Literal Wrapped Style with Session Handling </h2></div></div></div>
+<a name="id2623986"></a>Document/Literal Wrapped Style with Session Handling </h2></div></div></div>
 <p>The <code class="classname">Savant\Webservice\CSoapServer</code> class can be used to promote any business logic class with deterministic parameters to a SOAP webservice with automated security handling.</p>
 <div class="section" lang="en">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="id3046586"></a>Communication Sequence</h3></div></div></div>
+<a name="id2624414"></a>Communication Sequence</h3></div></div></div>
 <p>The following communication sequence describes the communication between the client of a Savant Secure Soap Webservice and the server</p>
 <div class="figure">
-<a name="id3070165"></a><p class="title"><b>Figure 6.2. Subsequent call</b></p>
+<a name="id2606388"></a><p class="title"><b>Figure 6.2. Subsequent call</b></p>
 <div class="mediaobject"><img src="../../img/Webservice%20Security%20Sequence%20Diagram.jpg" alt="Subsequent call"></div>
 </div>
 </div>

@@ -43,17 +43,25 @@ class CTwig extends AEngine implements IEngine
     private $twig = null;
 
     /**
+     * application context
+     * @var \Savant\CApplication
+     */
+    private $application;
+
+    /**
      * create twig template engine instance
      * @param string $pSection
      */
-    public function __construct($pSection = 'default')
+    public function __construct(\Savant\CApplication $pApplication)
     {
-        parent::__construct($pSection);
+        parent::__construct('default');
         \Twig_Autoloader::register();
-        $loader = new \Twig_Loader_Filesystem($this->TEMPLATE_DIR);
+        $loader = new \Twig_Loader_Filesystem($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
         //$options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
         $options = array('cache' => false);
         $this->twig = new \Twig_Environment($loader, $options);
+        $this->application = $pApplication;
+        $this->setTemplateDir($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
     }
 
     /**
@@ -93,7 +101,7 @@ class CTwig extends AEngine implements IEngine
      */
     public function _render($pDisplay = true)
     {
-
+        $this->setTemplate($this->application->requestAction . self::SUFFIX);
         $out = $this->template->render($this->data);
         if($pDisplay)
         {

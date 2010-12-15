@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE config PUBLIC "http://savant.localhost/datasources.dtd">
+<!-- <!DOCTYPE config PUBLIC "http://savant.localhost/datasources.dtd"> -->
 <configurations>
 	<default>
 		<logfile>/Savant/log/log.txt</logfile>

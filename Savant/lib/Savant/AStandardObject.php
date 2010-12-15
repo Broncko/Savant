@@ -128,7 +128,7 @@ abstract class AStandardObject
      * create class instance, without using the constructor directly
      * @return object
      */
-    public static function create()
+    public static function invoke()
     {
         return CBootstrap::invoke(\get_class());
     }

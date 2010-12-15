@@ -45,14 +45,18 @@
         <programlisting>namespace Savant\AOP\Aspects;
 use Savant\AOP;
 
-abstract class MyAspect extends AOP\AAspect implements AOP\IAspect
+abstract class MyAspect implements AOP\IAspect
 { 
 }</programlisting>
       </example></para>
   </section>
   <section>
     <title>Pointcuts</title>
-    <para>pointcuts bla bla</para>
+    <para>Savant does not make use of pointcut expressions to match joinpoints. Most of the use cases where to weave in aspects  in an application will be covered by the predefined joinpoints. The joinpoint which is used most, is the <classname>Savant\AOP\Joinpoints\CMethodCall</classname> class. To declare a method as a methodcall-joinpoint just type a underscore before.</para>
+    <para><example>
+        <title>Methodcall joinpoint declaration</title>
+        <programlisting>public function _myFunc() {}</programlisting>
+      </example></para>
     <example>
       <title>Declaration of a pointcut</title>
       <programlisting/>

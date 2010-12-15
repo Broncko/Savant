@@ -35,6 +35,7 @@
 	<a class="index-letter" href="elementindex.html#n">n</a>
 	<a class="index-letter" href="elementindex.html#o">o</a>
 	<a class="index-letter" href="elementindex.html#p">p</a>
+	<a class="index-letter" href="elementindex.html#q">q</a>
 	<a class="index-letter" href="elementindex.html#r">r</a>
 	<a class="index-letter" href="elementindex.html#s">s</a>
 	<a class="index-letter" href="elementindex.html#t">t</a>
@@ -66,11 +67,18 @@
 							<div class="index-item-description">default api url, without parameters</div>
 					</dd>
 			<dt class="field">
-						<span class="var-title">$APPLICATION</span>
+						<span class="var-title">$APPS</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CBootstrap.html#var$APPLICATION">CBootstrap::$APPLICATION</a> in CBootstrap.php</div>
-							<div class="index-item-description">application name</div>
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#var$APPS">CBootstrap::$APPS</a> in CBootstrap.php</div>
+							<div class="index-item-description">apps which will be loaded into the framework</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$APP_DIR</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#var$APP_DIR">CBootstrap::$APP_DIR</a> in CBootstrap.php</div>
+							<div class="index-item-description">applications folder</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$ARGS</span>
@@ -226,7 +234,8 @@
 						<span class="method-title">advice</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AOP-/IAspect.html#methodadvice">IAspect::advice()</a> in IAspect.php</div>
+			<div class="index-item-details"><a href="AOP/Aspects-/ALogging.html#methodadvice">ALogging::advice()</a> in ALogging.php</div>
+							<div class="index-item-description">provides aspect functionality</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">advice</span>
@@ -238,7 +247,7 @@
 						<span class="method-title">advice</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/Aspects-/ALogging.html#methodadvice">ALogging::advice()</a> in ALogging.php</div>
+			<div class="index-item-details"><a href="AOP/Aspects-/AConfigure.html#methodadvice">AConfigure::advice()</a> in AConfigure.php</div>
 							<div class="index-item-description">provides aspect functionality</div>
 					</dd>
 			<dt class="field">
@@ -252,26 +261,13 @@
 						<span class="method-title">advice</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/Aspects-/AConfigure.html#methodadvice">AConfigure::advice()</a> in AConfigure.php</div>
-							<div class="index-item-description">provides aspect functionality</div>
+			<div class="index-item-details"><a href="Savant/AOP-/IAspect.html#methodadvice">IAspect::advice()</a> in IAspect.php</div>
 					</dd>
 			<dt class="field">
 						AEngine
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Template-/AEngine.html">AEngine</a> in AEngine.php</div>
-					</dd>
-			<dt class="field">
-						AExtension
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AExtension.html">AExtension</a> in AExtension.php</div>
-					</dd>
-			<dt class="field">
-						<span class="include-title">AExtension.php</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/_AExtension.php.html">AExtension.php</a> in AExtension.php</div>
 					</dd>
 			<dt class="field">
 						AFramework
@@ -301,13 +297,13 @@
 						ALogging
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/Aspects-/ALogging.html">ALogging</a> in ALogging.php</div>
+			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html">ALogging</a> in ALogging.php</div>
 					</dd>
 			<dt class="field">
 						ALogging
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html">ALogging</a> in ALogging.php</div>
+			<div class="index-item-details"><a href="AOP/Aspects-/ALogging.html">ALogging</a> in ALogging.php</div>
 					</dd>
 			<dt class="field">
 						AMySqlPdo
@@ -497,8 +493,15 @@
 						<span class="var-title">$BASE_DIR</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$BASE_DIR">CApplication::$BASE_DIR</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$BASE_DIR">CProject::$BASE_DIR</a> in CProject.php</div>
 							<div class="index-item-description">base folder</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$BASE_DIR</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#var$BASE_DIR">CApplication::$BASE_DIR</a> in CApplication.php</div>
+							<div class="index-item-description">application base folder</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$BENCHMARK</span>
@@ -519,7 +522,7 @@
 						<span class="var-title">$CACHE_DIR</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$CACHE_DIR">CApplication::$CACHE_DIR</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$CACHE_DIR">CProject::$CACHE_DIR</a> in CProject.php</div>
 							<div class="index-item-description">cache data folder</div>
 					</dd>
 			<dt class="field">
@@ -543,18 +546,18 @@
 							<div class="index-item-description">folder to store compiled templates in</div>
 					</dd>
 			<dt class="field">
-						<span class="var-title">$CON</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/CDbLogging.html#var$CON">CDbLogging::$CON</a> in CDbLogging.php</div>
-							<div class="index-item-description">database connection</div>
-					</dd>
-			<dt class="field">
 						<span class="var-title">$con</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/AConnection.html#var$con">AConnection::$con</a> in AConnection.php</div>
 							<div class="index-item-description">connection</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$CON</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Utils-/CDbLogging.html#var$CON">CDbLogging::$CON</a> in CDbLogging.php</div>
+							<div class="index-item-description">database connection</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$confFile</span>
@@ -581,7 +584,7 @@
 						<span class="var-title">$CONF_DIR</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$CONF_DIR">CApplication::$CONF_DIR</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$CONF_DIR">CProject::$CONF_DIR</a> in CProject.php</div>
 							<div class="index-item-description">configuration folder</div>
 					</dd>
 			<dt class="field">
@@ -597,6 +600,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Protocol-/CHttp.html#var$CONTENT_TYPE">CHttp::$CONTENT_TYPE</a> in CHttp.php</div>
 							<div class="index-item-description">set default content type</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$CONTROLLER_DIR</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#var$CONTROLLER_DIR">CApplication::$CONTROLLER_DIR</a> in CApplication.php</div>
+							<div class="index-item-description">application controller folder</div>
 					</dd>
 			<dt class="field">
 						<span class="include-title">CPointcut.php</span>
@@ -658,13 +668,6 @@
 						<span class="method-title">call</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AGenericCallInterface.html#methodcall">AGenericCallInterface::call()</a> in AGenericCallInterface.php</div>
-							<div class="index-item-description">execute given classmethod and return result</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">call</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#methodcall">CXMLRPCCLient::call()</a> in CXMLRPCClient.php</div>
 							<div class="index-item-description">execute xml remote procedure call</div>
 					</dd>
@@ -672,8 +675,22 @@
 						<span class="method-title">call</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AGenericCallInterface.html#methodcall">AGenericCallInterface::call()</a> in AGenericCallInterface.php</div>
+							<div class="index-item-description">execute given classmethod and return result</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">call</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CRemoteXMLRPCServer.html#methodcall">CRemoteXMLRPCServer::call()</a> in CRemoteXMLRPCServer.php</div>
 							<div class="index-item-description">invoke generic call interface to handle call</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">callController</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#methodcallController">CApplication::callController()</a> in CApplication.php</div>
+							<div class="index-item-description">call application controller</div>
 					</dd>
 			<dt class="field">
 						CApplication
@@ -839,6 +856,13 @@
 			<div class="index-item-details"><a href="Savant/Utils-/CI18n.html">CI18n</a> in CI18n.php</div>
 					</dd>
 			<dt class="field">
+						CIndex
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/CIndex.html">CIndex</a> in CIndex.php</div>
+							<div class="index-item-description">provides abstract action controller that can be used to derive action</div>
+					</dd>
+			<dt class="field">
 						CJpGraph
 					</dt>
 		<dd class="index-item-body">
@@ -904,6 +928,13 @@
 						<span class="method-title">configure</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#methodconfigure">CBootstrap::configure()</a> in CBootstrap.php</div>
+							<div class="index-item-description">configure bootstrap</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">configure</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CConfigure.html#methodconfigure">CConfigure::configure()</a> in CConfigure.php</div>
 							<div class="index-item-description">configures object</div>
 					</dd>
@@ -914,11 +945,25 @@
 			<div class="index-item-details"><a href="Savant/IStorage.html#methodconfigure">IStorage::configure()</a> in IStorage.php</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">configure</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#methodconfigure">CDatabase::configure()</a> in CDatabase.php</div>
+							<div class="index-item-description">configure database object from datasources</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">configureBySection</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CConfigure.html#methodconfigureBySection">CConfigure::configureBySection()</a> in CConfigure.php</div>
 							<div class="index-item-description">configures object from given xml element</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">connect</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/Driver-/AOraclePdo.html#methodconnect">AOraclePdo::connect()</a> in AOraclePdo.php</div>
+							<div class="index-item-description">connect database driver</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">connect</span>
@@ -938,7 +983,7 @@
 						<span class="method-title">connect</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/Driver-/AOraclePdo.html#methodconnect">AOraclePdo::connect()</a> in AOraclePdo.php</div>
+			<div class="index-item-details"><a href="Storage/Driver-/APostgreSqlPdo.html#methodconnect">APostgreSqlPdo::connect()</a> in APostgreSqlPdo.php</div>
 							<div class="index-item-description">connect database driver</div>
 					</dd>
 			<dt class="field">
@@ -946,13 +991,6 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Storage/Driver-/AMySqlPdo.html#methodconnect">AMySqlPdo::connect()</a> in AMySqlPdo.php</div>
-							<div class="index-item-description">connect database driver</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">connect</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/Driver-/APostgreSqlPdo.html#methodconnect">APostgreSqlPdo::connect()</a> in APostgreSqlPdo.php</div>
 							<div class="index-item-description">connect database driver</div>
 					</dd>
 			<dt class="field">
@@ -1020,6 +1058,18 @@
 			<div class="index-item-details"><a href="Benchmark/CProfiler.html">CProfiler</a> in CProfiler.php</div>
 					</dd>
 			<dt class="field">
+						CProject
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CProject.html">CProject</a> in CProject.php</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">CProject.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/_CProject.php.html">CProject.php</a> in CProject.php</div>
+					</dd>
+			<dt class="field">
 						CQuery
 					</dt>
 		<dd class="index-item-body">
@@ -1036,8 +1086,8 @@
 						<span class="method-title">create</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CContext.html#methodcreate">CContext::create()</a> in CContext.php</div>
-							<div class="index-item-description">create static instance of security context</div>
+			<div class="index-item-details"><a href="Savant/Security-/IModule.html#methodcreate">IModule::create()</a> in IModule.php</div>
+							<div class="index-item-description">create security module</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">create</span>
@@ -1050,8 +1100,15 @@
 						<span class="method-title">create</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CRemoteXMLRPCServer.html#methodcreate">CRemoteXMLRPCServer::create()</a> in CRemoteXMLRPCServer.php</div>
-							<div class="index-item-description">create remote server object</div>
+			<div class="index-item-details"><a href="System/Unix-/CProcess.html#methodcreate">CProcess::create()</a> in CProcess.php</div>
+							<div class="index-item-description">create instance of process handler</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">create</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Security-/CContext.html#methodcreate">CContext::create()</a> in CContext.php</div>
+							<div class="index-item-description">create static instance of security context</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">create</span>
@@ -1064,20 +1121,6 @@
 						<span class="method-title">create</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/DataSet-/ADataSetProvider.html#methodcreate">ADataSetProvider::create()</a> in ADataSetProvider.php</div>
-							<div class="index-item-description">create instance of dataset provider</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">create</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="System/Unix-/CProcess.html#methodcreate">CProcess::create()</a> in CProcess.php</div>
-							<div class="index-item-description">create instance of process handler</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">create</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Controller-/CRender.html#methodcreate">CRender::create()</a> in CRender.php</div>
 							<div class="index-item-description">create renderer instance and handle requests</div>
 					</dd>
@@ -1085,8 +1128,8 @@
 						<span class="method-title">create</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/IModule.html#methodcreate">IModule::create()</a> in IModule.php</div>
-							<div class="index-item-description">create security module</div>
+			<div class="index-item-details"><a href="Savant/CRemoteXMLRPCServer.html#methodcreate">CRemoteXMLRPCServer::create()</a> in CRemoteXMLRPCServer.php</div>
+							<div class="index-item-description">create remote server object</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">createDb</span>
@@ -1240,6 +1283,12 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html">CXMLRPCCLient</a> in CXMLRPCClient.php</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">CIndex.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/_MVC---CIndex.php.html">CIndex.php</a> in CIndex.php</div>
 					</dd>
 			<dt class="field">
 						<span class="include-title">CDublinCore.php</span>
@@ -1396,6 +1445,12 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Template-/_Template---CJpGraph.php.html">CJpGraph.php</a> in CJpGraph.php</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">CJson.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Template-/_Template---CJson.php.html">CJson.php</a> in CJson.php</div>
 					</dd>
 			<dt class="field">
 						<span class="include-title">CLatex.php</span>
@@ -1648,15 +1703,8 @@
 						<span class="var-title">$DEFAULT_FOLDER_STRUCTURE</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$DEFAULT_FOLDER_STRUCTURE">CApplication::$DEFAULT_FOLDER_STRUCTURE</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$DEFAULT_FOLDER_STRUCTURE">CProject::$DEFAULT_FOLDER_STRUCTURE</a> in CProject.php</div>
 							<div class="index-item-description">use default folder structure if set to true</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$description</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CParameter.html#var$description">CParameter::$description</a> in CParameter.php</div>
-							<div class="index-item-description">parameter description</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$description</span>
@@ -1666,10 +1714,11 @@
 							<div class="index-item-description">query description meta information</div>
 					</dd>
 			<dt class="field">
-						<span class="var-title">$DIR</span>
+						<span class="var-title">$description</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AExtension.html#var$DIR">AExtension::$DIR</a> in AExtension.php</div>
+			<div class="index-item-details"><a href="Savant/Storage-/CParameter.html#var$description">CParameter::$description</a> in CParameter.php</div>
+							<div class="index-item-description">parameter description</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$DIRECTION</span>
@@ -1699,13 +1748,6 @@
 							<div class="index-item-description">decode json data to native php datatypes</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">defaultQuery</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/IModel.html#methoddefaultQuery">IModel::defaultQuery()</a> in IModel.php</div>
-							<div class="index-item-description">default query</div>
-					</dd>
-			<dt class="field">
 						DEFAULT_TPL
 					</dt>
 		<dd class="index-item-body">
@@ -1716,13 +1758,13 @@
 						<span class="method-title">delete</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/IStorage.html#methoddelete">IStorage::delete()</a> in IStorage.php</div>
+			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#methoddelete">ARest::delete()</a> in ARest.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">delete</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#methoddelete">ARest::delete()</a> in ARest.php</div>
+			<div class="index-item-details"><a href="Savant/IStorage.html#methoddelete">IStorage::delete()</a> in IStorage.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">destroy</span>
@@ -1749,15 +1791,15 @@
 						<span class="method-title">disconnect</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/Driver-/AMySqlPdo.html#methoddisconnect">AMySqlPdo::disconnect()</a> in AMySqlPdo.php</div>
-							<div class="index-item-description">disconnect from database</div>
+			<div class="index-item-details"><a href="Savant/Driver/IDriver.html#methoddisconnect">IDriver::disconnect()</a> in IDriver.php</div>
+							<div class="index-item-description">kill db connection</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">disconnect</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Driver/IDriver.html#methoddisconnect">IDriver::disconnect()</a> in IDriver.php</div>
-							<div class="index-item-description">kill db connection</div>
+			<div class="index-item-details"><a href="Storage/Driver-/APostgreSqlPdo.html#methoddisconnect">APostgreSqlPdo::disconnect()</a> in APostgreSqlPdo.php</div>
+							<div class="index-item-description">disconnnect database driver</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">disconnect</span>
@@ -1770,8 +1812,8 @@
 						<span class="method-title">disconnect</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/Driver-/APostgreSqlPdo.html#methoddisconnect">APostgreSqlPdo::disconnect()</a> in APostgreSqlPdo.php</div>
-							<div class="index-item-description">disconnnect database driver</div>
+			<div class="index-item-details"><a href="Storage/Driver-/AMySqlPdo.html#methoddisconnect">AMySqlPdo::disconnect()</a> in AMySqlPdo.php</div>
+							<div class="index-item-description">disconnect from database</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">disconnect</span>
@@ -1998,12 +2040,6 @@
 			<div class="index-item-details"><a href="Savant/_EException.php.html">EException.php</a> in EException.php</div>
 					</dd>
 			<dt class="field">
-						EExtension
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/EExtension.html">EExtension</a> in AExtension.php</div>
-					</dd>
-			<dt class="field">
 						EFileLogging
 					</dt>
 		<dd class="index-item-body">
@@ -2045,6 +2081,12 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Utils-/EI18n.html">EI18n</a> in CI18n.php</div>
+					</dd>
+			<dt class="field">
+						EIndex
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/EIndex.html">EIndex</a> in CIndex.php</div>
 					</dd>
 			<dt class="field">
 						EJoinPoint
@@ -2139,6 +2181,12 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Benchmark/EProfiler.html">EProfiler</a> in CProfiler.php</div>
+					</dd>
+			<dt class="field">
+						EProject
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/EProject.html">EProject</a> in CProject.php</div>
 					</dd>
 			<dt class="field">
 						EQuery
@@ -2303,15 +2351,15 @@
 						<span class="method-title">getAll</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/DataSet-/CDataSet.html#methodgetAll">CDataSet::getAll()</a> in CDataSet.php</div>
-							<div class="index-item-description">return entire data</div>
+			<div class="index-item-details"><a href="Savant/Storage-/CValueObject.html#methodgetAll">CValueObject::getAll()</a> in CValueObject.php</div>
+							<div class="index-item-description">return entire data storage</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getAll</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CValueObject.html#methodgetAll">CValueObject::getAll()</a> in CValueObject.php</div>
-							<div class="index-item-description">return entire data storage</div>
+			<div class="index-item-details"><a href="Storage/DataSet-/CDataSet.html#methodgetAll">CDataSet::getAll()</a> in CDataSet.php</div>
+							<div class="index-item-description">return entire data</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getAspectsFromFolder</span>
@@ -2324,7 +2372,7 @@
 						<span class="method-title">getBaseDir</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#methodgetBaseDir">CApplication::getBaseDir()</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#methodgetBaseDir">CProject::getBaseDir()</a> in CProject.php</div>
 							<div class="index-item-description">return base dir</div>
 					</dd>
 			<dt class="field">
@@ -2412,24 +2460,18 @@
 							<div class="index-item-description">return session id</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">getInstance</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#methodgetInstance">CBootstrap::getInstance()</a> in CBootstrap.php</div>
+							<div class="index-item-description">returns instance of a stored object (singleton pattern)</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">getIterator</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Storage/DataSet-/CDataSet.html#methodgetIterator">CDataSet::getIterator()</a> in CDataSet.php</div>
 							<div class="index-item-description">provide iterator$pTemplate</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getJoinPointMask</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AOP-/AAspect.html#methodgetJoinPointMask">AAspect::getJoinPointMask()</a> in AAspect.php</div>
-							<div class="index-item-description">returns joinpointmask</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">getJoinPointMask</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AOP-/IAspect.html#methodgetJoinPointMask">IAspect::getJoinPointMask()</a> in IAspect.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getJoinPointMask</span>
@@ -2442,8 +2484,21 @@
 						<span class="method-title">getJoinPointMask</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AOP-/AAspect.html#methodgetJoinPointMask">AAspect::getJoinPointMask()</a> in AAspect.php</div>
+							<div class="index-item-description">returns joinpointmask</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getJoinPointMask</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="AOP/Aspects-/AConfigure.html#methodgetJoinPointMask">AConfigure::getJoinPointMask()</a> in AConfigure.php</div>
 							<div class="index-item-description">return list of joinpoints</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getJoinPointMask</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AOP-/IAspect.html#methodgetJoinPointMask">IAspect::getJoinPointMask()</a> in IAspect.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getJoinPointsFromFolder</span>
@@ -2465,6 +2520,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Controller/AAction.html#methodgetMetaInfo">AAction::getMetaInfo()</a> in AAction.php</div>
 							<div class="index-item-description">get meta info of given method</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getModel</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#methodgetModel">CApplication::getModel()</a> in CApplication.php</div>
+							<div class="index-item-description">get model of application</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getName</span>
@@ -2603,15 +2665,22 @@
 						<span class="var-title">$HOST</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#var$HOST">ARest::$HOST</a> in ARest.php</div>
+			<div class="index-item-details"><a href="Savant/AConnection.html#var$HOST">AConnection::$HOST</a> in AConnection.php</div>
 							<div class="index-item-description">host</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$HOST</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AConnection.html#var$HOST">AConnection::$HOST</a> in AConnection.php</div>
+			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#var$HOST">ARest::$HOST</a> in ARest.php</div>
 							<div class="index-item-description">host</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">handle</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#methodhandle">CFrontController::handle()</a> in CFrontController.php</div>
+							<div class="index-item-description">handle requests</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">hasChilds</span>
@@ -2636,6 +2705,13 @@
 							<div class="index-item-description">indent counter</div>
 					</dd>
 			<dt class="field">
+						<span class="var-title">$instances</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#var$instances">CBootstrap::$instances</a> in CBootstrap.php</div>
+							<div class="index-item-description">framework instances (used to store singleton classes for example)</div>
+					</dd>
+			<dt class="field">
 						<span class="include-title">IAspect.php</span>
 					</dt>
 		<dd class="index-item-body">
@@ -2647,18 +2723,6 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Controller/IAction.html">IAction</a> in IAction.php</div>
 							<div class="index-item-description">action controllers have to implement this interface</div>
-					</dd>
-			<dt class="field">
-						IApplication
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/IApplication.html">IApplication</a> in IApplication.php</div>
-					</dd>
-			<dt class="field">
-						<span class="include-title">IApplication.php</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/_IApplication.php.html">IApplication.php</a> in IApplication.php</div>
 					</dd>
 			<dt class="field">
 						IAspect
@@ -2739,11 +2803,24 @@
 							<div class="index-item-description">index action</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">index</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/CIndex.html#methodindex">CIndex::index()</a> in CIndex.php</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">initialize</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CBootstrap.html#methodinitialize">CBootstrap::initialize()</a> in CBootstrap.php</div>
 							<div class="index-item-description">initialize bootstrapper</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">initialize</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#methodinitialize">CApplication::initialize()</a> in CApplication.php</div>
+							<div class="index-item-description">initialize application</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">initializeAOP</span>
@@ -2758,6 +2835,18 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CBootstrap.html#methodinvoke">CBootstrap::invoke()</a> in CBootstrap.php</div>
 							<div class="index-item-description">invoke classmethod and return the result</div>
+					</dd>
+			<dt class="field">
+						IProject
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/IProject.html">IProject</a> in IProject.php</div>
+					</dd>
+			<dt class="field">
+						<span class="include-title">IProject.php</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/_IProject.php.html">IProject.php</a> in IProject.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">isLocked</span>
@@ -2886,20 +2975,6 @@
 						<span class="var-title">$LABEL</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CConstructor.html#var$LABEL">CConstructor::$LABEL</a> in CConstructor.php</div>
-							<div class="index-item-description">label</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$LABEL</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CClassLoader.html#var$LABEL">CClassLoader::$LABEL</a> in CClassLoader.php</div>
-							<div class="index-item-description">label</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$LABEL</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="AOP/JoinPoints-/CDestructor.html#var$LABEL">CDestructor::$LABEL</a> in CDestructor.php</div>
 							<div class="index-item-description">label</div>
 					</dd>
@@ -2908,6 +2983,13 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="AOP/JoinPoints-/CException.html#var$LABEL">CException::$LABEL</a> in CException.php</div>
+							<div class="index-item-description">label</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$LABEL</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CMethodCall.html#var$LABEL">CMethodCall::$LABEL</a> in CMethodCall.php</div>
 							<div class="index-item-description">label</div>
 					</dd>
 			<dt class="field">
@@ -2921,7 +3003,14 @@
 						<span class="var-title">$LABEL</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CMethodCall.html#var$LABEL">CMethodCall::$LABEL</a> in CMethodCall.php</div>
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CClassLoader.html#var$LABEL">CClassLoader::$LABEL</a> in CClassLoader.php</div>
+							<div class="index-item-description">label</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$LABEL</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CConstructor.html#var$LABEL">CConstructor::$LABEL</a> in CConstructor.php</div>
 							<div class="index-item-description">label</div>
 					</dd>
 			<dt class="field">
@@ -2949,7 +3038,7 @@
 						<span class="var-title">$LIB_DIR</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$LIB_DIR">CApplication::$LIB_DIR</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$LIB_DIR">CProject::$LIB_DIR</a> in CProject.php</div>
 							<div class="index-item-description">library folder</div>
 					</dd>
 			<dt class="field">
@@ -3019,28 +3108,28 @@
 						LEVEL_CRITICAL
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CBootstrap.html#constLEVEL_CRITICAL">CBootstrap::LEVEL_CRITICAL</a> in CBootstrap.php</div>
+			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html#constLEVEL_CRITICAL">ALogging::LEVEL_CRITICAL</a> in ALogging.php</div>
 							<div class="index-item-description">level critical</div>
 					</dd>
 			<dt class="field">
 						LEVEL_CRITICAL
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html#constLEVEL_CRITICAL">ALogging::LEVEL_CRITICAL</a> in ALogging.php</div>
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#constLEVEL_CRITICAL">CBootstrap::LEVEL_CRITICAL</a> in CBootstrap.php</div>
 							<div class="index-item-description">level critical</div>
 					</dd>
 			<dt class="field">
 						LEVEL_DEBUG
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CBootstrap.html#constLEVEL_DEBUG">CBootstrap::LEVEL_DEBUG</a> in CBootstrap.php</div>
+			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html#constLEVEL_DEBUG">ALogging::LEVEL_DEBUG</a> in ALogging.php</div>
 							<div class="index-item-description">level debug</div>
 					</dd>
 			<dt class="field">
 						LEVEL_DEBUG
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html#constLEVEL_DEBUG">ALogging::LEVEL_DEBUG</a> in ALogging.php</div>
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#constLEVEL_DEBUG">CBootstrap::LEVEL_DEBUG</a> in CBootstrap.php</div>
 							<div class="index-item-description">level debug</div>
 					</dd>
 			<dt class="field">
@@ -3093,23 +3182,10 @@
 							<div class="index-item-description">load xml configuration file</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">load</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AExtension.html#methodload">AExtension::load()</a> in AExtension.php</div>
-					</dd>
-			<dt class="field">
 						<span class="method-title">loadClass</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#methodloadClass">CApplication::loadClass()</a> in CApplication.php</div>
-							<div class="index-item-description">default class loader</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">loadClass</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/IApplication.html#methodloadClass">IApplication::loadClass()</a> in IApplication.php</div>
+			<div class="index-item-details"><a href="Savant/IProject.html#methodloadClass">IProject::loadClass()</a> in IProject.php</div>
 							<div class="index-item-description">class loader</div>
 					</dd>
 			<dt class="field">
@@ -3118,6 +3194,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#methodloadClass">CTwig::loadClass()</a> in CTwig.php</div>
 							<div class="index-item-description">class loader for twig classes</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">loadClass</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CProject.html#methodloadClass">CProject::loadClass()</a> in CProject.php</div>
+							<div class="index-item-description">default class loader</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">lock</span>
@@ -3144,14 +3227,14 @@
 						<span class="method-title">log</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/CFileLogging.html#methodlog">CFileLogging::log()</a> in CFileLogging.php</div>
+			<div class="index-item-details"><a href="Savant/Utils-/CDbLogging.html#methodlog">CDbLogging::log()</a> in CDbLogging.php</div>
 							<div class="index-item-description">log</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">log</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/CDbLogging.html#methodlog">CDbLogging::log()</a> in CDbLogging.php</div>
+			<div class="index-item-details"><a href="Savant/Utils-/CFileLogging.html#methodlog">CFileLogging::log()</a> in CFileLogging.php</div>
 							<div class="index-item-description">log</div>
 					</dd>
 			<dt class="field">
@@ -3165,14 +3248,14 @@
 						<span class="method-title">login</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CContext.html#methodlogin">CContext::login()</a> in CContext.php</div>
+			<div class="index-item-details"><a href="Savant/Security-/IModule.html#methodlogin">IModule::login()</a> in IModule.php</div>
 							<div class="index-item-description">login with given credentials</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">login</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/IModule.html#methodlogin">IModule::login()</a> in IModule.php</div>
+			<div class="index-item-details"><a href="Savant/Security-/CContext.html#methodlogin">CContext::login()</a> in CContext.php</div>
 							<div class="index-item-description">login with given credentials</div>
 					</dd>
 			<dt class="field">
@@ -3226,6 +3309,13 @@
 							<div class="index-item-description">framework mode</div>
 					</dd>
 			<dt class="field">
+						<span class="var-title">$MODELS_DIR</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#var$MODELS_DIR">CApplication::$MODELS_DIR</a> in CApplication.php</div>
+							<div class="index-item-description">application models folder</div>
+					</dd>
+			<dt class="field">
 						<span class="var-title">$MODULES</span>
 					</dt>
 		<dd class="index-item-body">
@@ -3261,10 +3351,10 @@
 							<div class="index-item-description">map public properties of value object to db columns</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">meta__DefaultQuery</span>
+						<span class="method-title">meta__queryIndex</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/IModel.html#methodmeta__DefaultQuery">IModel::meta__DefaultQuery()</a> in IModel.php</div>
+			<div class="index-item-details"><a href="Savant/Controller/IModel.html#methodmeta__queryIndex">IModel::meta__queryIndex()</a> in IModel.php</div>
 							<div class="index-item-description">get query meta data</div>
 					</dd>
 			<dt class="field">
@@ -3304,18 +3394,18 @@
 	</div>
 	<dl>
 			<dt class="field">
-						<span class="var-title">$NAME</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CMethodCall.html#var$NAME">CMethodCall::$NAME</a> in CMethodCall.php</div>
-							<div class="index-item-description">name</div>
-					</dd>
-			<dt class="field">
 						<span class="var-title">$name</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Storage-/CParameter.html#var$name">CParameter::$name</a> in CParameter.php</div>
 							<div class="index-item-description">parameter name</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$NAME</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CProject.html#var$NAME">CProject::$NAME</a> in CProject.php</div>
+							<div class="index-item-description">application name</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$name</span>
@@ -3335,7 +3425,21 @@
 						<span class="var-title">$NAME</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AExtension.html#var$NAME">AExtension::$NAME</a> in AExtension.php</div>
+			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#var$NAME">AJoinPoint::$NAME</a> in AJoinPoint.php</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$NAME</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CMethodCall.html#var$NAME">CMethodCall::$NAME</a> in CMethodCall.php</div>
+							<div class="index-item-description">name</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$name</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#var$name">CApplication::$name</a> in CApplication.php</div>
+							<div class="index-item-description">application name</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$NAME</span>
@@ -3343,26 +3447,6 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="AOP/JoinPoints-/CException.html#var$NAME">CException::$NAME</a> in CException.php</div>
 							<div class="index-item-description">name</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$NAME</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#var$NAME">AJoinPoint::$NAME</a> in AJoinPoint.php</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$NAME</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CDestructor.html#var$NAME">CDestructor::$NAME</a> in CDestructor.php</div>
-							<div class="index-item-description">name</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$NAME</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$NAME">CApplication::$NAME</a> in CApplication.php</div>
-							<div class="index-item-description">application name</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$NAME</span>
@@ -3376,6 +3460,13 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="AOP/JoinPoints-/CConstructor.html#var$NAME">CConstructor::$NAME</a> in CConstructor.php</div>
+							<div class="index-item-description">name</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$NAME</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CDestructor.html#var$NAME">CDestructor::$NAME</a> in CDestructor.php</div>
 							<div class="index-item-description">name</div>
 					</dd>
 			<dt class="field">
@@ -3440,14 +3531,14 @@
 						<span class="var-title">$PASSWORD</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#var$PASSWORD">CDatabase::$PASSWORD</a> in CDatabase.php</div>
-							<div class="index-item-description">connection password credential</div>
+			<div class="index-item-details"><a href="Savant/CSoapServer.html#var$PASSWORD">CSoapServer::$PASSWORD</a> in CSoapServer.php</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$PASSWORD</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CSoapServer.html#var$PASSWORD">CSoapServer::$PASSWORD</a> in CSoapServer.php</div>
+			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#var$PASSWORD">CDatabase::$PASSWORD</a> in CDatabase.php</div>
+							<div class="index-item-description">connection password credential</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$PATH</span>
@@ -3518,6 +3609,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#methodparseRequest">CFrontController::parseRequest()</a> in CFrontController.php</div>
 							<div class="index-item-description">parse url request</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">parseUri</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#methodparseUri">CFrontController::parseUri()</a> in CFrontController.php</div>
+							<div class="index-item-description">parse url</div>
 					</dd>
 			<dt class="field">
 						PROJECT_RESOURCE
@@ -3631,6 +3729,21 @@
 			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#methodput">ARest::put()</a> in ARest.php</div>
 					</dd>
 		</dl>
+	<a name="q"></a>
+	<div class="index-letter-section">
+		<div style="float: left" class="index-letter-title">q</div>
+		<div style="float: right"><a href="#top">top</a></div>
+		<div style="clear: both"></div>
+	</div>
+	<dl>
+			<dt class="field">
+						<span class="method-title">queryIndex</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/IModel.html#methodqueryIndex">IModel::queryIndex()</a> in IModel.php</div>
+							<div class="index-item-description">default query</div>
+					</dd>
+		</dl>
 	<a name="r"></a>
 	<div class="index-letter-section">
 		<div style="float: left" class="index-letter-title">r</div>
@@ -3677,7 +3790,7 @@
 						<span class="var-title">$ROOT_DIR</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$ROOT_DIR">CApplication::$ROOT_DIR</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$ROOT_DIR">CProject::$ROOT_DIR</a> in CProject.php</div>
 							<div class="index-item-description">root folder</div>
 					</dd>
 			<dt class="field">
@@ -3765,6 +3878,34 @@
 							<div class="index-item-description">request method put</div>
 					</dd>
 			<dt class="field">
+						RSP_FORMAT_IMG
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#constRSP_FORMAT_IMG">CFrontController::RSP_FORMAT_IMG</a> in CFrontController.php</div>
+							<div class="index-item-description">response format image</div>
+					</dd>
+			<dt class="field">
+						RSP_FORMAT_JSON
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#constRSP_FORMAT_JSON">CFrontController::RSP_FORMAT_JSON</a> in CFrontController.php</div>
+							<div class="index-item-description">response format json</div>
+					</dd>
+			<dt class="field">
+						RSP_FORMAT_XHTML
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#constRSP_FORMAT_XHTML">CFrontController::RSP_FORMAT_XHTML</a> in CFrontController.php</div>
+							<div class="index-item-description">response format xhtml</div>
+					</dd>
+			<dt class="field">
+						RSP_FORMAT_XML
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#constRSP_FORMAT_XML">CFrontController::RSP_FORMAT_XML</a> in CFrontController.php</div>
+							<div class="index-item-description">response format xml</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">run</span>
 					</dt>
 		<dd class="index-item-body">
@@ -3811,15 +3952,8 @@
 						<span class="var-title">$SKINS_DIR</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#var$SKINS_DIR">CApplication::$SKINS_DIR</a> in CApplication.php</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#var$SKINS_DIR">CProject::$SKINS_DIR</a> in CProject.php</div>
 							<div class="index-item-description">skins folder</div>
-					</dd>
-			<dt class="field">
-						<span class="var-title">$stack</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#var$stack">AJoinPoint::$stack</a> in AJoinPoint.php</div>
-							<div class="index-item-description">stores pointcuts</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$stack</span>
@@ -3827,6 +3961,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Benchmark/CProfiler.html#var$stack">CProfiler::$stack</a> in CProfiler.php</div>
 							<div class="index-item-description">stack</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$stack</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#var$stack">AJoinPoint::$stack</a> in AJoinPoint.php</div>
+							<div class="index-item-description">stores pointcuts</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$STATUS</span>
@@ -3887,15 +4028,15 @@
 						<span class="method-title">setFolderStructure</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/IApplication.html#methodsetFolderStructure">IApplication::setFolderStructure()</a> in IApplication.php</div>
-							<div class="index-item-description">set application folder structure</div>
+			<div class="index-item-details"><a href="Savant/CProject.html#methodsetFolderStructure">CProject::setFolderStructure()</a> in CProject.php</div>
+							<div class="index-item-description">set default folder structure below basedir</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setFolderStructure</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CApplication.html#methodsetFolderStructure">CApplication::setFolderStructure()</a> in CApplication.php</div>
-							<div class="index-item-description">set default folder structure below basedir</div>
+			<div class="index-item-details"><a href="Savant/IProject.html#methodsetFolderStructure">IProject::setFolderStructure()</a> in IProject.php</div>
+							<div class="index-item-description">set application folder structure</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setMetaInformation</span>
@@ -3919,11 +4060,11 @@
 							<div class="index-item-description">Set stream pointer</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">setUp</span>
+						<span class="method-title">setTemplateDir</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/ATestCase.html#methodsetUp">ATestCase::setUp()</a> in ATestCase.php</div>
-							<div class="index-item-description">just a reminder, if you forget to define a setUp() method in the testcase</div>
+			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#methodsetTemplateDir">CTwig::setTemplateDir()</a> in CTwig.php</div>
+							<div class="index-item-description">set template dir</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">setUp</span>
@@ -3931,6 +4072,19 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/ITestCase.html#methodsetUp">ITestCase::setUp()</a> in ITestCase.php</div>
 							<div class="index-item-description">set up testcase properties and object etc.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">setUp</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/ATestCase.html#methodsetUp">ATestCase::setUp()</a> in ATestCase.php</div>
+							<div class="index-item-description">just a reminder, if you forget to define a setUp() method in the testcase</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">singleton</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AStandardObject.html#methodsingleton">AStandardObject::singleton()</a> in AStandardObject.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">start</span>
@@ -4013,20 +4167,13 @@
 						<span class="method-title">store</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/IStorage.html#methodstore">IStorage::store()</a> in IStorage.php</div>
+			<div class="index-item-details"><a href="Savant/IStorageObject.html#methodstore">IStorageObject::store()</a> in IStorageObject.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">store</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/IStorageObject.html#methodstore">IStorageObject::store()</a> in IStorageObject.php</div>
-					</dd>
-			<dt class="field">
-						SUFFIX
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#constSUFFIX">CChunk::SUFFIX</a> in CChunk.php</div>
-							<div class="index-item-description">template suffix (eg. test.chunk.html)</div>
+			<div class="index-item-details"><a href="Savant/IStorage.html#methodstore">IStorage::store()</a> in IStorage.php</div>
 					</dd>
 			<dt class="field">
 						SUFFIX
@@ -4041,6 +4188,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Template-/CJpGraph.html#constSUFFIX">CJpGraph::SUFFIX</a> in CJpGraph.php</div>
 							<div class="index-item-description">template suffix</div>
+					</dd>
+			<dt class="field">
+						SUFFIX
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#constSUFFIX">CChunk::SUFFIX</a> in CChunk.php</div>
+							<div class="index-item-description">template suffix (eg. test.chunk.html)</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">suite</span>
@@ -4063,6 +4217,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Utils-/CDbLogging.html#var$TABLE">CDbLogging::$TABLE</a> in CDbLogging.php</div>
 							<div class="index-item-description">database table</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$TABLE</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/DataSet-/ADataSetProvider.html#var$TABLE">ADataSetProvider::$TABLE</a> in ADataSetProvider.php</div>
+							<div class="index-item-description">table name</div>
 					</dd>
 			<dt class="field">
 						<span class="var-title">$template</span>
@@ -4131,15 +4292,15 @@
 						<span class="method-title">tearDown</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/ITestCase.html#methodtearDown">ITestCase::tearDown()</a> in ITestCase.php</div>
-							<div class="index-item-description">kill needed objects (connections, filehandles etc.)</div>
+			<div class="index-item-details"><a href="Savant/ATestCase.html#methodtearDown">ATestCase::tearDown()</a> in ATestCase.php</div>
+							<div class="index-item-description">just a reminder, if you forget to define a tearDown() method in the testcase</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">tearDown</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/ATestCase.html#methodtearDown">ATestCase::tearDown()</a> in ATestCase.php</div>
-							<div class="index-item-description">just a reminder, if you forget to define a tearDown() method in the testcase</div>
+			<div class="index-item-details"><a href="Savant/ITestCase.html#methodtearDown">ITestCase::tearDown()</a> in ITestCase.php</div>
+							<div class="index-item-description">kill needed objects (connections, filehandles etc.)</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">timeElapsed</span>
@@ -4147,6 +4308,12 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Benchmark/CTimer.html#methodtimeElapsed">CTimer::timeElapsed()</a> in CTimer.php</div>
 							<div class="index-item-description">return start-stop duration (public alias of getDifference)</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">toXml</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/DataSet-/CDataSet.html#methodtoXml">CDataSet::toXml()</a> in CDataSet.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">translate</span>
@@ -4206,11 +4373,25 @@
 							<div class="index-item-description">parameter value</div>
 					</dd>
 			<dt class="field">
+						<span class="var-title">$VIEWS_DIR</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#var$VIEWS_DIR">CApplication::$VIEWS_DIR</a> in CApplication.php</div>
+							<div class="index-item-description">application views dir</div>
+					</dd>
+			<dt class="field">
 						VAR_KEY
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="System/Unix-/CProcess.html#constVAR_KEY">CProcess::VAR_KEY</a> in CProcess.php</div>
 							<div class="index-item-description">shared memory variable key</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">view</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CApplication.html#methodview">CApplication::view()</a> in CApplication.php</div>
+							<div class="index-item-description">application view</div>
 					</dd>
 		</dl>
 	<a name="w"></a>
@@ -4273,22 +4454,15 @@
 						<span class="method-title">_assign</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/AEngine.html#method_assign">AEngine::_assign()</a> in AEngine.php</div>
-							<div class="index-item-description">assign data</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_assign</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/CJpGraph.html#method_assign">CJpGraph::_assign()</a> in CJpGraph.php</div>
-							<div class="index-item-description">assign data</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_assign</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method_assign">CChunk::_assign()</a> in CChunk.php</div>
 							<div class="index-item-description">assigns array of type key =&gt; value to template</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_assign</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Template-/AEngine.html#method_assign">AEngine::_assign()</a> in AEngine.php</div>
+							<div class="index-item-description">assign data</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_assign</span>
@@ -4298,18 +4472,11 @@
 							<div class="index-item-description">assign data to template</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">_connect</span>
+						<span class="method-title">_assign</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method_connect">CDatabase::_connect()</a> in CDatabase.php</div>
-							<div class="index-item-description">connect to defined database driver</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_connect</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#method_connect">CXMLRPCCLient::_connect()</a> in CXMLRPCClient.php</div>
-							<div class="index-item-description">establish connection</div>
+			<div class="index-item-details"><a href="Savant/Template-/CJpGraph.html#method_assign">CJpGraph::_assign()</a> in CJpGraph.php</div>
+							<div class="index-item-description">assign data</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_connect</span>
@@ -4322,8 +4489,22 @@
 						<span class="method-title">_connect</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#method_connect">CXMLRPCCLient::_connect()</a> in CXMLRPCClient.php</div>
+							<div class="index-item-description">establish connection</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_connect</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Storage/CMemcache.html#method_connect">CMemcache::_connect()</a> in CMemcache.php</div>
 							<div class="index-item-description">conntect to memcache server</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_connect</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method_connect">CDatabase::_connect()</a> in CDatabase.php</div>
+							<div class="index-item-description">connect to defined database driver</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_connectionIsSet</span>
@@ -4331,6 +4512,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method_connectionIsSet">CDatabase::_connectionIsSet()</a> in CDatabase.php</div>
 							<div class="index-item-description">check if connection is set</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_disconnect</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#method_disconnect">CXMLRPCCLient::_disconnect()</a> in CXMLRPCClient.php</div>
+							<div class="index-item-description">disconnect</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_disconnect</span>
@@ -4352,13 +4540,6 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method_disconnect">CDatabase::_disconnect()</a> in CDatabase.php</div>
 							<div class="index-item-description">kill database connection</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_disconnect</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#method_disconnect">CXMLRPCCLient::_disconnect()</a> in CXMLRPCClient.php</div>
-							<div class="index-item-description">disconnect</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_dsQuery</span>
@@ -4396,13 +4577,6 @@
 							<div class="index-item-description">handle renderer requests</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">_handle</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#method_handle">CFrontController::_handle()</a> in CFrontController.php</div>
-							<div class="index-item-description">handle requests</div>
-					</dd>
-			<dt class="field">
 						<span class="method-title">_isConnected</span>
 					</dt>
 		<dd class="index-item-body">
@@ -4422,13 +4596,6 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#method_out">CFrontController::_out()</a> in CFrontController.php</div>
 							<div class="index-item-description">print template</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_parseUri</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#method_parseUri">CFrontController::_parseUri()</a> in CFrontController.php</div>
-							<div class="index-item-description">parse url</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_query</span>
@@ -4454,14 +4621,7 @@
 						<span class="method-title">_render</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#method_render">CTwig::_render()</a> in CTwig.php</div>
-							<div class="index-item-description">render template</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_render</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method_render">CChunk::_render()</a> in CChunk.php</div>
+			<div class="index-item-details"><a href="Savant/Template-/IEngine.html#method_render">IEngine::_render()</a> in IEngine.php</div>
 							<div class="index-item-description">render template</div>
 					</dd>
 			<dt class="field">
@@ -4475,7 +4635,14 @@
 						<span class="method-title">_render</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/IEngine.html#method_render">IEngine::_render()</a> in IEngine.php</div>
+			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#method_render">CTwig::_render()</a> in CTwig.php</div>
+							<div class="index-item-description">render template</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_render</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method_render">CChunk::_render()</a> in CChunk.php</div>
 							<div class="index-item-description">render template</div>
 					</dd>
 			<dt class="field">
@@ -4489,15 +4656,15 @@
 						<span class="method-title">_setTemplate</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#method_setTemplate">CTwig::_setTemplate()</a> in CTwig.php</div>
-							<div class="index-item-description">load template from file</div>
+			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method_setTemplate">CChunk::_setTemplate()</a> in CChunk.php</div>
+							<div class="index-item-description">set template</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_setTemplate</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method_setTemplate">CChunk::_setTemplate()</a> in CChunk.php</div>
-							<div class="index-item-description">set template</div>
+			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#method_setTemplate">CTwig::_setTemplate()</a> in CTwig.php</div>
+							<div class="index-item-description">load template from file</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_setTemplate</span>
@@ -4524,15 +4691,82 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/CFileLogging.html#method__construct">CFileLogging::__construct()</a> in CFileLogging.php</div>
+			<div class="index-item-details"><a href="Storage/CMemcache.html#method__construct">CMemcache::__construct()</a> in CMemcache.php</div>
+							<div class="index-item-description">create memcache instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Template/CLatex.html#method__construct">CLatex::__construct()</a> in CLatex.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/CIndex.html#method__construct">CIndex::__construct()</a> in CIndex.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#method__construct">CFrontController::__construct()</a> in CFrontController.php</div>
+							<div class="index-item-description">create frontcontroller instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Protocol-/CHttp.html#method__construct">CHttp::__construct()</a> in CHttp.php</div>
 							<div class="index-item-description">Constructor</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/EException.html#method__construct">EException::__construct()</a> in EException.php</div>
-							<div class="index-item-description">Constructor</div>
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CMethodCall.html#method__construct">CMethodCall::__construct()</a> in CMethodCall.php</div>
+							<div class="index-item-description">create joinpoint instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Template-/CJpGraph.html#method__construct">CJpGraph::__construct()</a> in CJpGraph.php</div>
+							<div class="index-item-description">create graph renderer instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller-/CRender.html#method__construct">CRender::__construct()</a> in CRender.php</div>
+							<div class="index-item-description">create renderer instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Benchmark/CTimer.html#method__construct">CTimer::__construct()</a> in CTimer.php</div>
+							<div class="index-item-description">create timer instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Security-/CSubject.html#method__construct">CSubject::__construct()</a> in CSubject.php</div>
+							<div class="index-item-description">create security subject instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CSoapServer.html#method__construct">CSoapServer::__construct()</a> in CSoapServer.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#method__construct">CTwig::__construct()</a> in CTwig.php</div>
+							<div class="index-item-description">create twig template engine instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4545,7 +4779,7 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Protocol-/CHttp.html#method__construct">CHttp::__construct()</a> in CHttp.php</div>
+			<div class="index-item-details"><a href="Savant/EException.html#method__construct">EException::__construct()</a> in EException.php</div>
 							<div class="index-item-description">Constructor</div>
 					</dd>
 			<dt class="field">
@@ -4566,22 +4800,15 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller-/CFrontController.html#method__construct">CFrontController::__construct()</a> in CFrontController.php</div>
-							<div class="index-item-description">create frontcontroller instance</div>
+			<div class="index-item-details"><a href="Savant/Security-/CSession.html#method__construct">CSession::__construct()</a> in CSession.php</div>
+							<div class="index-item-description">create instance of session handling class</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/CTwig.html#method__construct">CTwig::__construct()</a> in CTwig.php</div>
-							<div class="index-item-description">create twig template engine instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Benchmark/CProfiler.html#method__construct">CProfiler::__construct()</a> in CProfiler.php</div>
-							<div class="index-item-description">create profiler instance</div>
+			<div class="index-item-details"><a href="Savant/Utils-/CFileLogging.html#method__construct">CFileLogging::__construct()</a> in CFileLogging.php</div>
+							<div class="index-item-description">Constructor</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4601,8 +4828,22 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/DataSet-/CQuery.html#method__construct">CQuery::__construct()</a> in CQuery.php</div>
-							<div class="index-item-description">create database query instance</div>
+			<div class="index-item-details"><a href="Savant/Storage-/CParameter.html#method__construct">CParameter::__construct()</a> in CParameter.php</div>
+							<div class="index-item-description">create parameter instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Benchmark/CProfiler.html#method__construct">CProfiler::__construct()</a> in CProfiler.php</div>
+							<div class="index-item-description">create profiler instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CProject.html#method__construct">CProject::__construct()</a> in CProject.php</div>
+							<div class="index-item-description">create application instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4615,95 +4856,14 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller-/CRender.html#method__construct">CRender::__construct()</a> in CRender.php</div>
-							<div class="index-item-description">create renderer instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CSoapServer.html#method__construct">CSoapServer::__construct()</a> in CSoapServer.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CException.html#method__construct">CException::__construct()</a> in CException.php</div>
-							<div class="index-item-description">create joinpoint instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CParameter.html#method__construct">CParameter::__construct()</a> in CParameter.php</div>
-							<div class="index-item-description">create parameter instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CSession.html#method__construct">CSession::__construct()</a> in CSession.php</div>
-							<div class="index-item-description">create instance of session handling class</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/CMemcache.html#method__construct">CMemcache::__construct()</a> in CMemcache.php</div>
-							<div class="index-item-description">create memcache instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template/CLatex.html#method__construct">CLatex::__construct()</a> in CLatex.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Benchmark/CTimer.html#method__construct">CTimer::__construct()</a> in CTimer.php</div>
-							<div class="index-item-description">create timer instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CSubject.html#method__construct">CSubject::__construct()</a> in CSubject.php</div>
-							<div class="index-item-description">create security subject instance</div>
+			<div class="index-item-details"><a href="Storage/DataSet-/CQuery.html#method__construct">CQuery::__construct()</a> in CQuery.php</div>
+							<div class="index-item-description">create database query instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CNestedSet.html#method__construct">CNestedSet::__construct()</a> in CNestedSet.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CMethodCall.html#method__construct">CMethodCall::__construct()</a> in CMethodCall.php</div>
-							<div class="index-item-description">create joinpoint instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/CJpGraph.html#method__construct">CJpGraph::__construct()</a> in CJpGraph.php</div>
-							<div class="index-item-description">create graph renderer instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CDbMapper.html#method__construct">CDbMapper::__construct()</a> in CDbMapper.php</div>
-							<div class="index-item-description">Constructor</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils/CBenchmark.html#method__construct">CBenchmark::__construct()</a> in CBenchmark.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4716,8 +4876,8 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Protocol-/AXMLRPCServer.html#method__construct">AXMLRPCServer::__construct()</a> in AXMLRPCServer.php</div>
-							<div class="index-item-description">create xmlrpc server instance</div>
+			<div class="index-item-details"><a href="Savant/CBootstrap.html#method__construct">CBootstrap::__construct()</a> in CBootstrap.php</div>
+							<div class="index-item-description">create bootstrapper instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4730,15 +4890,7 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CBootstrap.html#method__construct">CBootstrap::__construct()</a> in CBootstrap.php</div>
-							<div class="index-item-description">create bootstrapper instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method__construct">CChunk::__construct()</a> in CChunk.php</div>
-							<div class="index-item-description">create chunk instance</div>
+			<div class="index-item-details"><a href="Savant/Utils/CBenchmark.html#method__construct">CBenchmark::__construct()</a> in CBenchmark.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4751,55 +4903,21 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__construct">AStandardObject::__construct()</a> in AStandardObject.php</div>
-							<div class="index-item-description">create a standardobject instance</div>
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CException.html#method__construct">CException::__construct()</a> in CException.php</div>
+							<div class="index-item-description">create joinpoint instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#method__construct">ARest::__construct()</a> in ARest.php</div>
-							<div class="index-item-description">create rest client instance</div>
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CConstructor.html#method__construct">CConstructor::__construct()</a> in CConstructor.php</div>
+							<div class="index-item-description">create joinpoint instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/DataSet-/ADataSetProvider.html#method__construct">ADataSetProvider::__construct()</a> in ADataSetProvider.php</div>
-							<div class="index-item-description">create datasetprovider instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AConnection.html#method__construct">AConnection::__construct()</a> in AConnection.php</div>
-							<div class="index-item-description">create connection instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/AEngine.html#method__construct">AEngine::__construct()</a> in AEngine.php</div>
-							<div class="index-item-description">create template engine instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AExtension.html#method__construct">AExtension::__construct()</a> in AExtension.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html#method__construct">ALogging::__construct()</a> in ALogging.php</div>
-							<div class="index-item-description">Constructor</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#method__construct">AJoinPoint::__construct()</a> in AJoinPoint.php</div>
+			<div class="index-item-details"><a href="Savant/CConfigure.html#method__construct">CConfigure::__construct()</a> in CConfigure.php</div>
 							<div class="index-item-description">Constructor</div>
 					</dd>
 			<dt class="field">
@@ -4820,8 +4938,57 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/DataSet-/CDataSet.html#method__construct">CDataSet::__construct()</a> in CDataSet.php</div>
-							<div class="index-item-description">create dataset instance</div>
+			<div class="index-item-details"><a href="Savant/Protocol-/AXMLRPCServer.html#method__construct">AXMLRPCServer::__construct()</a> in AXMLRPCServer.php</div>
+							<div class="index-item-description">create xmlrpc server instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Template-/AEngine.html#method__construct">AEngine::__construct()</a> in AEngine.php</div>
+							<div class="index-item-description">create template engine instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/DataSet-/ADataSetProvider.html#method__construct">ADataSetProvider::__construct()</a> in ADataSetProvider.php</div>
+							<div class="index-item-description">create datasetprovider instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AConnection.html#method__construct">AConnection::__construct()</a> in AConnection.php</div>
+							<div class="index-item-description">create connection instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#method__construct">AJoinPoint::__construct()</a> in AJoinPoint.php</div>
+							<div class="index-item-description">Constructor</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Utils-/ALogging.html#method__construct">ALogging::__construct()</a> in ALogging.php</div>
+							<div class="index-item-description">Constructor</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__construct">AStandardObject::__construct()</a> in AStandardObject.php</div>
+							<div class="index-item-description">create a standardobject instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Protocol-/ARest.html#method__construct">ARest::__construct()</a> in ARest.php</div>
+							<div class="index-item-description">create rest client instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4834,15 +5001,8 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method__construct">CDatabase::__construct()</a> in CDatabase.php</div>
-							<div class="index-item-description">create database instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CCouchDb.html#method__construct">CCouchDb::__construct()</a> in CCouchDb.php</div>
-							<div class="index-item-description">create couchdb instance</div>
+			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method__construct">CChunk::__construct()</a> in CChunk.php</div>
+							<div class="index-item-description">create chunk instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4855,22 +5015,29 @@
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CConstructor.html#method__construct">CConstructor::__construct()</a> in CConstructor.php</div>
-							<div class="index-item-description">create joinpoint instance</div>
+			<div class="index-item-details"><a href="Storage/DataSet-/CDataSet.html#method__construct">CDataSet::__construct()</a> in CDataSet.php</div>
+							<div class="index-item-description">create dataset instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CConfigure.html#method__construct">CConfigure::__construct()</a> in CConfigure.php</div>
+			<div class="index-item-details"><a href="Savant/CCouchDb.html#method__construct">CCouchDb::__construct()</a> in CCouchDb.php</div>
+							<div class="index-item-description">create couchdb instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method__construct">CDatabase::__construct()</a> in CDatabase.php</div>
+							<div class="index-item-description">create database instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Storage-/CDbMapper.html#method__construct">CDbMapper::__construct()</a> in CDbMapper.php</div>
 							<div class="index-item-description">Constructor</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="AOP/JoinPoints-/CDestructor.html#method__construct">CDestructor::__construct()</a> in CDestructor.php</div>
-							<div class="index-item-description">create joinpoint instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
@@ -4878,6 +5045,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CouchDb-/CDocument.html#method__construct">CDocument::__construct()</a> in CDocument.php</div>
 							<div class="index-item-description">create a document wrapper instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="AOP/JoinPoints-/CDestructor.html#method__construct">CDestructor::__construct()</a> in CDestructor.php</div>
+							<div class="index-item-description">create joinpoint instance</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__destruct</span>
@@ -4890,63 +5064,8 @@
 						<span class="method-title">__destruct</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#method__destruct">CXMLRPCCLient::__destruct()</a> in CXMLRPCClient.php</div>
-							<div class="index-item-description">destroy xmlrpc client</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Storage-/CDatabase.html#method__destruct">CDatabase::__destruct()</a> in CDatabase.php</div>
 							<div class="index-item-description">kill database object</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__destruct">AStandardObject::__destruct()</a> in AStandardObject.php</div>
-							<div class="index-item-description">Destructor</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AExtension.html#method__destruct">AExtension::__destruct()</a> in AExtension.php</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CSubject.html#method__destruct">CSubject::__destruct()</a> in CSubject.php</div>
-							<div class="index-item-description">kill security subject</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CContext.html#method__destruct">CContext::__destruct()</a> in CContext.php</div>
-							<div class="index-item-description">kill security context</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Protocol-/AXMLRPCServer.html#method__destruct">AXMLRPCServer::__destruct()</a> in AXMLRPCServer.php</div>
-							<div class="index-item-description">destroy xmlrpc server instance</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="System/Unix-/CProcess.html#method__destruct">CProcess::__destruct()</a> in CProcess.php</div>
-							<div class="index-item-description">destroy process handler instance, alias of unlock()</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__destruct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/CMemcache.html#method__destruct">CMemcache::__destruct()</a> in CMemcache.php</div>
-							<div class="index-item-description">close connection when object will be destroyed</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__destruct</span>
@@ -4959,6 +5078,48 @@
 						<span class="method-title">__destruct</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Security-/CSubject.html#method__destruct">CSubject::__destruct()</a> in CSubject.php</div>
+							<div class="index-item-description">kill security subject</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__destruct">AStandardObject::__destruct()</a> in AStandardObject.php</div>
+							<div class="index-item-description">Destructor</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Webservice-/CXMLRPCCLient.html#method__destruct">CXMLRPCCLient::__destruct()</a> in CXMLRPCClient.php</div>
+							<div class="index-item-description">destroy xmlrpc client</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Protocol-/AXMLRPCServer.html#method__destruct">AXMLRPCServer::__destruct()</a> in AXMLRPCServer.php</div>
+							<div class="index-item-description">destroy xmlrpc server instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Security-/CContext.html#method__destruct">CContext::__destruct()</a> in CContext.php</div>
+							<div class="index-item-description">kill security context</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/CMemcache.html#method__destruct">CMemcache::__destruct()</a> in CMemcache.php</div>
+							<div class="index-item-description">close connection when object will be destroyed</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Benchmark/CProfiler.html#method__destruct">CProfiler::__destruct()</a> in CProfiler.php</div>
 							<div class="index-item-description">is called when profiler is destroyed</div>
 					</dd>
@@ -4966,8 +5127,36 @@
 						<span class="method-title">__destruct</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="System/Unix-/CProcess.html#method__destruct">CProcess::__destruct()</a> in CProcess.php</div>
+							<div class="index-item-description">destroy process handler instance, alias of unlock()</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__destruct</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/CRemoteXMLRPCServer.html#method__destruct">CRemoteXMLRPCServer::__destruct()</a> in CRemoteXMLRPCServer.php</div>
 							<div class="index-item-description">destroy remote xmlrpc server instance</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__get</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__get">AStandardObject::__get()</a> in AStandardObject.php</div>
+							<div class="index-item-description">magic function __get</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__get</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Security-/CSession.html#method__get">CSession::__get()</a> in CSession.php</div>
+							<div class="index-item-description">get a session value if exists otherwise true</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__get</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/CMemcache.html#method__get">CMemcache::__get()</a> in CMemcache.php</div>
+							<div class="index-item-description">get object from memcache</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__get</span>
@@ -4987,15 +5176,8 @@
 						<span class="method-title">__get</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/CMemcache.html#method__get">CMemcache::__get()</a> in CMemcache.php</div>
-							<div class="index-item-description">get object from memcache</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__get</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__get">AStandardObject::__get()</a> in AStandardObject.php</div>
-							<div class="index-item-description">magic function __get</div>
+			<div class="index-item-details"><a href="Savant/Template-/AEngine.html#method__get">AEngine::__get()</a> in AEngine.php</div>
+							<div class="index-item-description">get data value</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__get</span>
@@ -5004,39 +5186,11 @@
 			<div class="index-item-details"><a href="Savant/AOP-/AJoinPoint.html#method__get">AJoinPoint::__get()</a> in AJoinPoint.php</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">__get</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Security-/CSession.html#method__get">CSession::__get()</a> in CSession.php</div>
-							<div class="index-item-description">get a session value if exists otherwise true</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__get</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Template-/AEngine.html#method__get">AEngine::__get()</a> in AEngine.php</div>
-							<div class="index-item-description">get data value</div>
-					</dd>
-			<dt class="field">
 						<span class="method-title">__set</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Storage-/CValueObject.html#method__set">CValueObject::__set()</a> in CValueObject.php</div>
-							<div class="index-item-description">set data with key</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__set</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Storage/CMemcache.html#method__set">CMemcache::__set()</a> in CMemcache.php</div>
-							<div class="index-item-description">store object in memcache</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__set</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method__set">CChunk::__set()</a> in CChunk.php</div>
-							<div class="index-item-description">replace template var with value, alias of assignVar</div>
+			<div class="index-item-details"><a href="Savant/CConfigure.html#method__set">CConfigure::__set()</a> in CConfigure.php</div>
+							<div class="index-item-description">magic function __set</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__set</span>
@@ -5056,8 +5210,22 @@
 						<span class="method-title">__set</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CConfigure.html#method__set">CConfigure::__set()</a> in CConfigure.php</div>
-							<div class="index-item-description">magic function __set</div>
+			<div class="index-item-details"><a href="Savant/Storage-/CValueObject.html#method__set">CValueObject::__set()</a> in CValueObject.php</div>
+							<div class="index-item-description">set data with key</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__set</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method__set">CChunk::__set()</a> in CChunk.php</div>
+							<div class="index-item-description">replace template var with value, alias of assignVar</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__set</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Storage/CMemcache.html#method__set">CMemcache::__set()</a> in CMemcache.php</div>
+							<div class="index-item-description">store object in memcache</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__set</span>
@@ -5084,13 +5252,6 @@
 						<span class="method-title">__toString</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method__toString">CChunk::__toString()</a> in CChunk.php</div>
-							<div class="index-item-description">alias of render(), just for easier usage</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__toString</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/Savant/ECommandLineInterface.html#method__toString">ECommandLineInterface::__toString()</a> in ACommandLineInterface.php</div>
 					</dd>
 			<dt class="field">
@@ -5108,11 +5269,11 @@
 							<div class="index-item-description">alias for out()</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">__wakeup</span>
+						<span class="method-title">__toString</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Savant/CouchDb-/CDocument.html#method__wakeup">CDocument::__wakeup()</a> in CDocument.php</div>
-							<div class="index-item-description">decode json and return native php when object is unserialized</div>
+			<div class="index-item-details"><a href="Savant/Controller/CChunk.html#method__toString">CChunk::__toString()</a> in CChunk.php</div>
+							<div class="index-item-description">alias of render(), just for easier usage</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__wakeup</span>
@@ -5120,6 +5281,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Savant/AStandardObject.html#method__wakeup">AStandardObject::__wakeup()</a> in AStandardObject.php</div>
 							<div class="index-item-description">execute when object is unserialized</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__wakeup</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Savant/CouchDb-/CDocument.html#method__wakeup">CDocument::__wakeup()</a> in CDocument.php</div>
+							<div class="index-item-description">decode json and return native php when object is unserialized</div>
 					</dd>
 		</dl>
 
@@ -5139,6 +5307,7 @@
 	<a class="index-letter" href="elementindex.html#n">n</a>
 	<a class="index-letter" href="elementindex.html#o">o</a>
 	<a class="index-letter" href="elementindex.html#p">p</a>
+	<a class="index-letter" href="elementindex.html#q">q</a>
 	<a class="index-letter" href="elementindex.html#r">r</a>
 	<a class="index-letter" href="elementindex.html#s">s</a>
 	<a class="index-letter" href="elementindex.html#t">t</a>

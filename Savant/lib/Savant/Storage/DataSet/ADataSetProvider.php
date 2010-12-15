@@ -28,6 +28,12 @@ class EDataSetProvider extends \Savant\EException {}
 class ADataSetProvider extends \Savant\AStandardObject
 {
     /**
+     * table name
+     * @var string
+     */
+    protected static $TABLE;
+
+    /**
      * database object
      * @var \Savant\Storage\CDatabase
      */
@@ -41,6 +47,7 @@ class ADataSetProvider extends \Savant\AStandardObject
     {
         parent::__construct();
         $this->db = $pDb;
+        self::$TABLE = \array_pop(\explode('\\', \get_class($this)));
     }
     
     /**
