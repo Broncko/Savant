@@ -180,26 +180,35 @@ class CFrontController extends \Savant\AStandardObject
 
         if($model instanceof \Savant\Webservice\IRestful)
         {
-            $data = self::getPayload();
-            if($data !== false)
-            {
-                new \Savant\EApplication("no data sent to work with");
-            }
-            $data = \Savant\Protocol\CJson::decode($data);
-
             switch($pRequestType)
             {
                 case 'GET':
-                    $res = $model->read((array)$data);
+                    $data = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
+                    $res = $model->read(array(":id"=>$data));
                     break;
                 case 'PUT':
+                    $postdata = self::getPayload();
+                    print_r($postdata);
+                    if($postdata !== false)
+                    {
+                        new \Savant\EApplication("no data sent to work with");
+                    }
+                    $data["fields"] = (array)\Savant\Protocol\CJson::decode($postdata);
+                    $data[":id"] = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
                     $res = $model->update((array)$data);
                     break;
                 case 'POST':
+                    $data = self::getPayload();
+                    if($data !== false)
+                    {
+                        new \Savant\EApplication("no data sent to work with");
+                    }
+                    $data = \Savant\Protocol\CJson::decode($data);
                     $res = $model->create((array)$data);
                     break;
                 case 'DELETE':
-                    $res = $model->delete((array)$data);
+                    $data = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
+                    $res = $model->delete(array(":id"=>$data));
                     break;
                 default:
                     $res = $app->callController($model);

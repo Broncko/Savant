@@ -42,7 +42,6 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
      */
     public function create($pData)
     {
-        print_r($pData);
         $sql = "insert into %s (%s) values ('%s')";
 
         $filled = sprintf($sql,
@@ -50,11 +49,7 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
                           \implode(",", \array_keys((array)$pData['fields'])),
                           \implode("','", \array_values((array)$pData['fields'])));
 
-        echo $filled;
-
-        $res = $this->db->exec($filled);
-
-        print_r($res);
+        return $this->db->exec($filled);
     }
 
     /**
@@ -64,15 +59,27 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
      */
     public function read($pData = null)
     {
-        $sql = "select :fields from %s";
-        if(!\is_null($pData) && \key_exists('id', $pData))
+        $sql = "select * from %s";
+        if(!\is_null($pData) && \key_exists(':id', $pData))
         {
-            $sql .= " where testcol=:id";
+            $sql .= " where testcol = %s";
+
+            $filled = sprintf($sql, self::$TABLE, $pData[':id']);
+
+            foreach($this->db->exec($filled) as $row)
+            {
+                $res[] = $row;
+            }
+            return $res;
         }
 
         $filled = sprintf($sql, self::$TABLE);
-
-        return $this->db->query($filled, $pData);
+        
+        foreach($this->db->exec($filled) as $row)
+        {
+            $res[] = $row;
+        }
+        return $res;
     }
 
     /**
@@ -82,17 +89,17 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
      */
     public function update($pData)
     {
-        $sql = "update %s set (%s) where testcol=:id";
-
+        $sql = "update %s set %s where testcol=:id";
         foreach($pData['fields'] as $field => $value)
         {
-            $fields[] = $field . '=' . $value;
+            $fields[] = $field . '=\'' . $value . '\'';
         }
         $filled = sprintf($sql,
                           self::$TABLE,
-                          \implode(',', $fields));
+                          \implode(",", $fields));
 
-        return $this->db->query($filled, $pData);
+        unset($pData['fields']);
+        return array("success" => $this->db->query($filled, $pData));
     }
 
     /**
@@ -106,6 +113,6 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
 
         $filled = sprintf($sql, self::$TABLE);
 
-        return $this->db->query($filled, $pData);
+        return array("success" => $this->db->query($filled, $pData));
     }
 }

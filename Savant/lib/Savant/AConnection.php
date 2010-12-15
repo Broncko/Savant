@@ -40,7 +40,7 @@ abstract class AConnection extends AStandardObject implements IConfigure
      * connection
      * @var PDO
      */
-    protected $con = null;
+    public $con = null;
 
     /**
      * create connection instance

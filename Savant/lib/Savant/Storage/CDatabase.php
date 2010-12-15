@@ -169,7 +169,7 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
         {
             throw new EDatabase("this method requires a database connection");
         }
-        $this->con->exec($pSql);
+        return $this->con->exec($pSql);
     }
 
     /**
