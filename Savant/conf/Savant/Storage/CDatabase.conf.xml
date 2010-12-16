@@ -3,7 +3,7 @@
 <config>
     <datasources>
         <datasource name="default">
-            <driver_class>CMySqlPdo</driver_class>
+            <driver_class>Savant\Storage\Driver\AMySqlPdo</driver_class>
             <username>root</username>
             <password>3w4ghi8</password>
         </datasource>

@@ -459,7 +459,15 @@ final class CBootstrap extends CProject
         {
             throw new EBootstrap("method %s of class %s dont exists", $pMethod, $pClass);
         }
-        $res = \forward_static_call_array(array($pClass,$pMethod),$pArgs);
+        $res = AGenericCallInterface::call($pClass, $pMethod, $pArgs);
+        if($pMethod == '__construct')
+        {
+            AOP\AFramework::weave(null, new AOP\JoinPoints\CClassLoader($pClass));
+        }
+        else
+        {
+            AOP\AFramework::weave(null, new AOP\JoinPoints\CMethodCall($pClass, $pMethod, $pArgs));
+        }
         return $res;
     }
 
@@ -473,7 +481,7 @@ final class CBootstrap extends CProject
         $classHash = md5($pClass);
         if(!\array_key_exists($classHash, self::$instances))
         {
-            self::$instances[$classHash] = AGenericCallInterface::call($pClass, '__construct', $pArgs);
+            self::$instances[$classHash] = self::invoke($pClass, '__construct', $pArgs);
         }
         return $this->instances[$classHash];
     }

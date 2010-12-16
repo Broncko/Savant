@@ -90,7 +90,7 @@ class CDatabase extends \Savant\AConnection implements \Savant\IConfigure, \Sava
             try
             {
                 $this->con = \Savant\AGenericCallInterface::call((string)$this->DRIVER_CLASS, 'connect', array($this));
-                \Savant\CBootstrap::log("connect to ".$this->confSection." as ".$this->USERNAME);
+                \Savant\CBootstrap::log(\Savant\Utils\CFileLogging::getIndent()."connect to ".$this->confSection." as ".$this->USERNAME);
             }
             catch(EDatabase $e)
             {

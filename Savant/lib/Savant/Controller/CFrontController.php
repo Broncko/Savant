@@ -145,7 +145,6 @@ class CFrontController extends \Savant\AStandardObject
         $res['app'] = $uriParts[0];
         $res['controller'] = (!empty($uriParts[1]) ? $uriParts[1] : 'index');
         $res['action'] = (!empty($uriParts[2]) ? $uriParts[2] : 'index');
-        print_r($res);
         return $res;
     }
 
@@ -173,7 +172,7 @@ class CFrontController extends \Savant\AStandardObject
     public static function handle($pUri = '', $pRequestType = 'GET')
     {
         $fcParts = self::parseUri($pUri);
-
+        
         $app = new \Savant\CApplication($fcParts['app']);
 
         $model = $app->getModel($fcParts['controller'], $fcParts['action']);
@@ -184,7 +183,7 @@ class CFrontController extends \Savant\AStandardObject
             {
                 case 'GET':
                     $data = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
-                    $res = $model->read(array(":id"=>$data));
+                    $res = $model->read();
                     break;
                 case 'PUT':
                     $postdata = self::getPayload();

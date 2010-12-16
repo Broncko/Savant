@@ -80,6 +80,15 @@ class CFileLogging extends \Savant\AStandardObject implements ILogging, \Savant\
     }
 
     /**
+     * get current log indent
+     * @return string
+     */
+    public static function getIndent()
+    {
+        return \str_repeat(self::LOG_INDENT, self::$INDENT_COUNT);
+    }
+
+    /**
      * log
      * @param string $pText content
      * @param string $pLevel loglevel

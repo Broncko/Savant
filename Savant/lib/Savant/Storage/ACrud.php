@@ -49,7 +49,7 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
                           \implode(",", \array_keys((array)$pData['fields'])),
                           \implode("','", \array_values((array)$pData['fields'])));
 
-        return $this->db->exec($filled);
+        return $this->db->query($filled);
     }
 
     /**
@@ -62,20 +62,12 @@ abstract class ACrud extends DataSet\ADataSetProvider implements \Savant\Webserv
         $sql = "select * from %s";
         if(!\is_null($pData) && \key_exists(':id', $pData))
         {
-            $sql .= " where testcol = %s";
-
-            $filled = sprintf($sql, self::$TABLE, $pData[':id']);
-
-            foreach($this->db->exec($filled) as $row)
-            {
-                $res[] = $row;
-            }
-            return $res;
+            $sql .= sprintf(" where exc_id = %s", $pData[':id']);
         }
 
         $filled = sprintf($sql, self::$TABLE);
         
-        foreach($this->db->exec($filled) as $row)
+        foreach($this->db->query($filled) as $row)
         {
             $res[] = $row;
         }

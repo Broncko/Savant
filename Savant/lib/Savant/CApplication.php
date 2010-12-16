@@ -82,9 +82,9 @@ class CApplication extends AStandardObject
     public function initialize()
     {
         $baseDir = self::$BASE_DIR = CBootstrap::$APP_DIR . \DIRECTORY_SEPARATOR . $this->name;
-        $this->MODELS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'models';
-        $this->CONTROLLER_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'controller';
-        $this->VIEWS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'views';
+        $this->MODELS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'Models';
+        $this->CONTROLLER_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'Controller';
+        $this->VIEWS_DIR = $baseDir . \DIRECTORY_SEPARATOR . 'Views';
     }
 
     /**
@@ -93,7 +93,7 @@ class CApplication extends AStandardObject
      * @param string $pQuery
      * @return mixed
      */
-    public function getModel($pModel = 'index', $pQuery = 'index')
+    public function _getModel($pModel = 'index', $pQuery = 'index')
     {
         $this->requestController = $pModel;
         $this->requestAction = $pQuery;
@@ -104,11 +104,11 @@ class CApplication extends AStandardObject
             throw new EApplication("could not find file %s of model %s", $file, $pModel);
         }
         require_once $file;
-        $modelName = "\\".$this->name."\models\\".$pModel;
+        $modelName = "\\".$this->name."\Models\\".$pModel;
 
         $model = new $modelName(new Storage\CDatabase($modelName::DEFAULT_DB));
 
-        if(!($model instanceof Webservice\IRestful) && !\method_exists($model, 'query'.$pQuery))
+        if(!($model instanceof Webservice\IRestful) && !\method_exists($model, $pQuery))
         {
             throw new EApplication("could not call action %s of %s", $pQuery, $model);
         }
@@ -121,7 +121,7 @@ class CApplication extends AStandardObject
      * @param MVC\IModel $pModel
      * @return mixed
      */
-    public function callController(MVC\IModel $pModel)
+    public function _callController(MVC\IModel $pModel)
     {
         $file  = $this->CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $this->requestController . '.php';
         if(!\file_exists($file))
@@ -143,7 +143,7 @@ class CApplication extends AStandardObject
      * @param mixed $pController application controller
      * @return Template\IEngine template engine
      */
-    public function view(Template\IEngine $pEngine, $pController)
+    public function _view(Template\IEngine $pEngine, $pController)
     {
         $data = new Storage\CValueObject(array('data' => $pController));
         $pEngine->assign($data);

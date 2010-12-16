@@ -56,12 +56,23 @@ class CTwig extends AEngine implements IEngine
     {
         parent::__construct('default');
         \Twig_Autoloader::register();
+        try
+        {
         $loader = new \Twig_Loader_Filesystem($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
         //$options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
         $options = array('cache' => false);
         $this->twig = new \Twig_Environment($loader, $options);
         $this->application = $pApplication;
         $this->setTemplateDir($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
+        }
+        catch(\InvalidArgumentException $e)
+        {
+            throw new ETwig("Unaible to load view %s", $pApplication->requestController);
+        }
+        catch(\Exception $e)
+        {
+            throw new ETwig("could not initialize Twig Template Engine - error: ".$e->getMessage());
+        }
     }
 
     /**
