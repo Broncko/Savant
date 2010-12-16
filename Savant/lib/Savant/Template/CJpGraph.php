@@ -26,7 +26,7 @@ class EJpGraph extends \Savant\EException {}
  * @subpackage Template
  * wrapper of the extension JpGraph
  */
-class CJpGraph extends AEngine
+class CJpGraph extends AEngine implements IEngine
 {
     /**
      * template suffix
@@ -357,11 +357,11 @@ class CJpGraph extends AEngine
      * assign data
      * @param array $data
      */
-    public function _assign($data)
+    public function _assign(\Savant\Storage\CValueObject $pData)
     {
         $this->graph->SetScale('intlin');
-        $this->dataX = $data['x'];
-        $this->dataY = $data['y'];
+        $this->dataX = $pData->data['x'];
+        $this->dataY = $pData->data['y'];
     }
 
     /**

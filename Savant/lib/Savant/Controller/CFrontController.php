@@ -138,8 +138,16 @@ class CFrontController extends \Savant\AStandardObject
     {
         $res = array();
         $uri = \parse_url($pUri);
-        $path = \explode('.', $uri['path']);
-        $res['format'] = \array_pop($path);
+        if(\strpos($uri['path'], '.') !== false)
+        {
+            $path = \explode('.', $uri['path']);
+            $res['format'] = \array_pop($path);
+        }
+        else
+        {
+            $path[0] = $uri['path'];
+            $res['format'] = 'html';
+        }
         $uriParts = \explode('/',$path[0]);
         \array_shift($uriParts);
         $res['app'] = $uriParts[0];
