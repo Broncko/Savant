@@ -58,16 +58,17 @@ class CTwig extends AEngine implements IEngine
         \Twig_Autoloader::register();
         try
         {
-        $loader = new \Twig_Loader_Filesystem($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
-        //$options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
-        $options = array('cache' => false);
-        $this->twig = new \Twig_Environment($loader, $options);
-        $this->application = $pApplication;
-        $this->setTemplateDir($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
+            $tplFolder = $pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController;
+            $loader = new \Twig_Loader_Filesystem($tplFolder);
+            $options = array('cache' => $this->COMPILE_DIR . \DIRECTORY_SEPARATOR . 'Twig');
+            $options = array('cache' => false);
+            $this->twig = new \Twig_Environment($loader, $options);
+            $this->application = $pApplication;
+            $this->setTemplateDir($pApplication->VIEWS_DIR . \DIRECTORY_SEPARATOR . $pApplication->requestController);
         }
         catch(\InvalidArgumentException $e)
         {
-            throw new ETwig("Unaible to load view %s", $pApplication->requestController);
+            throw new ETwig("Unaible to load view %s from %s", $pApplication->requestController, $tplFolder);
         }
         catch(\Exception $e)
         {
@@ -112,7 +113,8 @@ class CTwig extends AEngine implements IEngine
      */
     public function _render($pDisplay = true)
     {
-        $this->setTemplate($this->application->requestAction . self::SUFFIX);
+        $action = (!\is_null($this->application->requestAction) ?: 'index');
+        $this->setTemplate($action . self::SUFFIX);
         $out = $this->template->render($this->data);
         if($pDisplay)
         {

@@ -21,7 +21,7 @@ class EChunk extends \Savant\EException {}
 /**
  * provides minimal template functionality
  */
-class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfigure
+class CChunk extends AEngine implements IEngine, \Savant\IConfigure
 {
     /**
      * template suffix (eg. test.chunk.html)
@@ -42,12 +42,6 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
     const ENDDEL = "{{";
 
     /**
-     * html template
-     * @var string
-     */
-    private $Html = '';
-
-    /**
      * create chunk instance
      */
     public function __construct($pSection = 'default')
@@ -65,14 +59,14 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
         switch(true)
         {
             case \is_string($pValue):
-                $this->Html = \str_replace(self::STARTDEL.$pParam.self::ENDDEL, $pValue, $this->Html);
+                $this->template = \str_replace(self::STARTDEL.$pParam.self::ENDDEL, $pValue, $this->template);
                 break;
             case \is_array($pValue):
-                $res = \preg_match('/{{for (?<var>\w+) in (?<arr>)\w+)}}(?<content>){{\/for}}/', $this->Html);
+                $res = \preg_match('/{{for (?<var>\w+) in (?<arr>)\w+)}}(?<content>){{\/for}}/', $this->template);
                 print_r($res);
                 break;
             case \is_object($pValue):
-                \preg_match_all('/{{([\w]+)\.([\w]+)}}/', $this->Html, $res);
+                \preg_match_all('/{{([\w]+)\.([\w]+)}}/', $this->template, $res);
                 \print_r($res);
                 break;
         }
@@ -114,7 +108,7 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
         {
             throw new EChunk("template doesnt exist %s",$pTemplateFile);
         }
-        $this->Html = \file_get_contents($pTemplateFile);
+        $this->template = \file_get_contents($pTemplateFile);
     }
 
     /**
@@ -126,11 +120,11 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
     {
         if($pDisplay == true)
         {
-            echo $this->Html;
+            echo $this->template;
         }
         else
         {
-            return $this->Html;
+            return $this->template;
         }
     }
 
@@ -141,5 +135,21 @@ class CChunk extends \Savant\AStandardObject implements IEngine, \Savant\IConfig
     public function __toString()
     {
         return $this->render();
+    }
+
+    /**
+     *
+     * @param <type> $pTemplate
+     * @param <type> $pData
+     */
+    public static function create($pTemplate, $pData)
+    {
+        $instance = new self();
+        $instance->template = $pTemplate;
+        foreach($pData as $tplKey => $tplVar)
+        {
+            $instance->assignVar($tplKey, $tplVar);
+        }
+        return $instance;
     }
 }

@@ -52,13 +52,16 @@ abstract class AGenericCallInterface
      */
     public static function call($pClass, $pMethod = 'main', $pArgs = array(), $pOpts = array())
     {
-        if(!\class_exists($pClass))
-        {
-            throw new EGenericCallInterface('class %s does not exist', $pClass);
-        }
-        if(!\method_exists($pClass, $pMethod))
-        {
-            throw new EGenericCallInterface('method %s::%s does not exist', $pClass, $pMethod);
+        if(!\is_object($pClass))
+            {
+            if(!\class_exists($pClass))
+            {
+                throw new EGenericCallInterface('class %s does not exist', $pClass);
+            }
+            if(!\method_exists($pClass, $pMethod))
+            {
+                throw new EGenericCallInterface('method %s::%s does not exist', $pClass, $pMethod);
+            }
         }
         $mode = (!empty($pOpts['mode']) ? $pOpts['mode'] : self::getCallMode($pClass, $pMethod));
         try

@@ -459,15 +459,15 @@ final class CBootstrap extends CProject
         {
             throw new EBootstrap("method %s of class %s dont exists", $pMethod, $pClass);
         }
-        $res = AGenericCallInterface::call($pClass, $pMethod, $pArgs);
         if($pMethod == '__construct')
         {
-            AOP\AFramework::weave(null, new AOP\JoinPoints\CClassLoader($pClass));
+            AOP\AFramework::weave(null, new AOP\JoinPoints\CConstructor($pClass));
         }
         else
         {
             AOP\AFramework::weave(null, new AOP\JoinPoints\CMethodCall($pClass, $pMethod, $pArgs));
         }
+        $res = AGenericCallInterface::call($pClass, $pMethod, $pArgs);
         return $res;
     }
 

@@ -55,24 +55,30 @@ class CApplication extends AStandardObject
     public $name;
 
     /**
+     * request model
+     * @var string
+     */
+    public $model;
+
+    /**
      * request controller
      * @var string
      */
-    public $requestController;
+    public $controller;
 
     /**
      * request action
      * @var string
      */
-    public $requestAction;
+    public $action;
 
     /**
      * create application instance
      * @param string $pName application name
      */
-    public function __construct($pName)
+    public function __construct($pUriParts)
     {
-        $this->name = $pName;
+        $this->name = $pUriParts['app'];
         $this->initialize();
     }
 
@@ -93,27 +99,29 @@ class CApplication extends AStandardObject
      * @param string $pQuery
      * @return mixed
      */
-    public function _getModel($pModel = 'index', $pQuery = 'index')
+    public function _getModel($pModel, $pAction = 'index')
     {
-        $this->requestController = $pModel;
-        $this->requestAction = $pQuery;
+        $this->model = $modelName = $this->name . '\Models\\' . $pModel;
+        $this->action = $pAction;
 
         $file = $this->MODELS_DIR . \DIRECTORY_SEPARATOR . $pModel.'.php';
         if(!\file_exists($file))
         {
             throw new EApplication("could not find file %s of model %s", $file, $pModel);
         }
-        require_once $file;
-        $modelName = "\\".$this->name."\Models\\".$pModel;
+        include_once($file);
+
+        AOP\AFramework::weave(null, new AOP\JoinPoints\CClassLoader($this->model, null, $file));
 
         $model = new $modelName(new Storage\CDatabase($modelName::DEFAULT_DB));
 
-        if(!($model instanceof Webservice\IRestful) && !\method_exists($model, $pQuery))
+        if(!($model instanceof Webservice\IRestful) && !\method_exists($model, $pAction))
         {
-            throw new EApplication("could not call action %s of %s", $pQuery, $model);
+            throw new EApplication("could not call action %s of %s", $pAction, $this->model);
         }
-        
+
         return $model;
+
     }
 
     /**
@@ -121,19 +129,25 @@ class CApplication extends AStandardObject
      * @param MVC\IModel $pModel
      * @return mixed
      */
-    public function _callController(MVC\IModel $pModel)
+    public function _callController($pModel = null)
     {
-        $file  = $this->CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $this->requestController . '.php';
-        if(!\file_exists($file))
-        {
-            return $pModel->dsQuery($this->requestAction);
-        }
+        $this->controller = $this->name . '\Controller\\' . $pController;
+        $file  = $this->CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $pController . '.php';
+        
         require_once $file;
-        if(!\method_exists($this->requestController, $this->requestAction))
+        if(!\method_exists($this->controller, $this->action))
         {
-            throw new EApplication("could not call action %s of %s", $this->requestController, $this->requestQuery);
+            throw new EApplication("could not call action %s of %s", $this->controller, $this->action);
         }
-        $res = AGenericCallInterface::call('controller/'.$this->requestController, $this->requestQuery, array($pModel));
+
+        if(!\is_null($pModel))
+        {
+            $res = AGenericCallInterface::call($this->controller, $this->action, array($pModel));
+        }
+        else
+        {
+            $res = AGenericCallInterface::call($this->controller, $this->action);
+        }
         return $res;
     }
 
@@ -145,7 +159,7 @@ class CApplication extends AStandardObject
      */
     public function _view(Template\IEngine $pEngine, $pController)
     {
-        $data = new Storage\CValueObject(array('data' => $pController));
+        $data = new Storage\CValueObject(array($this->requestController. 's' => $pController));
         $pEngine->assign($data);
         return $pEngine;
     }

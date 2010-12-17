@@ -150,9 +150,31 @@ class CFrontController extends \Savant\AStandardObject
         }
         $uriParts = \explode('/',$path[0]);
         \array_shift($uriParts);
-        $res['app'] = $uriParts[0];
-        $res['controller'] = (!empty($uriParts[1]) ? $uriParts[1] : 'index');
-        $res['action'] = (!empty($uriParts[2]) ? $uriParts[2] : 'index');
+        $uriHasParts = function($parts)
+        {
+            return (count($parts) > 0 ? true : false);
+        };
+        $res['app'] = \array_shift($uriParts);
+        $res['controller'] = ($uriHasParts($uriParts) ? \array_shift($uriParts) : null);
+        $res['action'] = ($uriHasParts($uriParts) ? \array_shift($uriParts) : null);
+        if($uriHasParts($uriParts))
+        {
+            if(count($uriParts) > 1)
+            {
+                for($i = 0; $i < count($uriParts); $i+2)
+                {
+                    $res['data'][\array_shift($uriParts)] = \array_shift($uriParts);
+                }
+            }
+            else
+            {
+                $res['data'] = \array_shift($uriParts);
+            }
+        }
+        else
+        {
+            $res['data'] = null;
+        }
         return $res;
     }
 
@@ -180,48 +202,11 @@ class CFrontController extends \Savant\AStandardObject
     public static function handle($pUri = '', $pRequestType = 'GET')
     {
         $fcParts = self::parseUri($pUri);
-        
-        $app = new \Savant\CApplication($fcParts['app']);
+
+        $app = new \Savant\CApplication($fcParts);
 
         $model = $app->getModel($fcParts['controller'], $fcParts['action']);
 
-        if($model instanceof \Savant\Webservice\IRestful)
-        {
-            switch($pRequestType)
-            {
-                case 'GET':
-                    $data = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
-                    $res = $model->read();
-                    break;
-                case 'PUT':
-                    $postdata = self::getPayload();
-                    print_r($postdata);
-                    if($postdata !== false)
-                    {
-                        new \Savant\EApplication("no data sent to work with");
-                    }
-                    $data["fields"] = (array)\Savant\Protocol\CJson::decode($postdata);
-                    $data[":id"] = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
-                    $res = $model->update((array)$data);
-                    break;
-                case 'POST':
-                    $data = self::getPayload();
-                    if($data !== false)
-                    {
-                        new \Savant\EApplication("no data sent to work with");
-                    }
-                    $data = \Savant\Protocol\CJson::decode($data);
-                    $res = $model->create((array)$data);
-                    break;
-                case 'DELETE':
-                    $data = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
-                    $res = $model->delete(array(":id"=>$data));
-                    break;
-                default:
-                    $res = $app->callController($model);
-            }
-        }
-        
         if(isset($fcParts['format']) && $fcParts['format'] != self::RSP_FORMAT_XHTML)
         {
             switch($fcParts['format'])
@@ -238,8 +223,52 @@ class CFrontController extends \Savant\AStandardObject
         {
             $engine = new \Savant\Template\CTwig($app);
         }
-        
+
         $instance = new self($engine);
+
+        if($app->callController() == false)
+        {
+            if($model instanceof \Savant\Webservice\IRestful)
+            {
+                switch($pRequestType)
+                {
+                    case 'GET':
+                        if(!\is_null($fcParts['action']) && \method_exists($model, $fcParts['action']))
+                        {
+                            $res = \Savant\AGenericCallInterface::call($model, $fcParts['action']);
+                        }
+                        else
+                        {
+                            $res = $model->read($fcParts['data']);
+                        }
+                        break;
+                    case 'PUT':
+                        $postdata = self::getPayload();
+                        if($postdata !== false)
+                        {
+                            new \Savant\EApplication("no data sent to work with");
+                        }
+                        $data["fields"] = (array)\Savant\Protocol\CJson::decode($postdata);
+                        $data[":id"] = ($fcParts['action'] == 'index' ? null : $fcParts['action']);
+                        $res = $model->update((array)$data);
+                        break;
+                    case 'POST':
+                        $data = self::getPayload();
+                        if($data !== false)
+                        {
+                            new \Savant\EApplication("no data sent to work with");
+                        }
+                        $data = \Savant\Protocol\CJson::decode($data);
+                        $res = $model->create((array)$data);
+                        break;
+                    case 'DELETE':
+                        $res = $model->delete($fcParts['data']);
+                        break;
+                    default:
+                        $res = $app->callController($model);
+                }
+            }
+        }
 
         $view = $app->view($instance->engine, $res);
 

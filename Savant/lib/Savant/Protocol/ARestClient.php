@@ -27,7 +27,7 @@ class ERest extends \Savant\EException {}
  * handles REST-Requests
  * 
  */
-abstract class ARest extends CHttp implements \Savant\IConfigure
+abstract class ARestClient extends CHttp implements \Savant\IConfigure
 {
     /**
      * request method put
