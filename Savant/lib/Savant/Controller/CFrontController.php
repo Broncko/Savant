@@ -226,7 +226,11 @@ class CFrontController extends \Savant\AStandardObject
 
         $instance = new self($engine);
 
-        if($app->callController() == false)
+        try
+        {
+            $res = $app->callController();
+        }
+        catch(\Savant\EApplication $e)
         {
             if($model instanceof \Savant\Webservice\IRestful)
             {

@@ -76,6 +76,6 @@ class CProfiler extends CTimer
 
     public function getSummary()
     {
-        
+        return $this->sections;
     }
 }

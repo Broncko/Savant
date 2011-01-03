@@ -40,6 +40,7 @@ class CJson extends AEngine implements IEngine
      */
     public function _render($pDisplay = true)
     {
+        print_r($this->data);
         $data = $this->data['data'];
         if($data instanceof \Savant\Storage\DataSet\CDataSet)
         {

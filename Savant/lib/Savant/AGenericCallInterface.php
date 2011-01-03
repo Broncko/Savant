@@ -50,7 +50,7 @@ abstract class AGenericCallInterface
      * @param array $pArgs method arguments
      * @param array $pOpts call options
      */
-    public static function call($pClass, $pMethod = 'main', $pArgs = array(), $pOpts = array())
+    public static function call($pClass, $pMethod = '__construct', $pArgs = array(), $pOpts = array())
     {
         if(!\is_object($pClass))
             {
@@ -72,7 +72,15 @@ abstract class AGenericCallInterface
                     $res = \call_user_func_array(array($pClass, $pMethod), $pArgs);
                     break;
                 case self::MODE_OBJECT:
-                    $res = \call_user_func_array(array($pClass, $pMethod), $pArgs);
+                    $obj = new $pClass();
+                    if($pMethod == '__construct')
+                    {
+                        $res = $obj;
+                    }
+                    else
+                    {
+                        $res = \call_user_func_array(array($obj, $pMethod), $pArgs);
+                    }
                     break;
             }
             return $res;

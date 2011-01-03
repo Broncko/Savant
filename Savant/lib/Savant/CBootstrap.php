@@ -325,13 +325,13 @@ final class CBootstrap extends CProject
         
         \register_shutdown_function(array('Savant\CBootstrap', 'finalize'));
 
-        if(isset($_SERVER['HTTP_USER_AGENT']))
+        if(PHP_SAPI === 'cli')
         {
-            self::$MODE = self::MODE_WEB;
+            self::$MODE = self::MODE_CLI;
         }
         else
         {
-            self::$MODE = self::MODE_CLI;
+            self::$MODE = self::MODE_WEB;
         }
 
         self::$LOGGER = new Utils\CMultiLogging();
@@ -403,6 +403,7 @@ final class CBootstrap extends CProject
             return;
         }
         $this->initialize();
+
         self::$STATUS = self::STATUS_ACTIVE;
     }
 
@@ -461,13 +462,14 @@ final class CBootstrap extends CProject
         }
         if($pMethod == '__construct')
         {
-            AOP\AFramework::weave(null, new AOP\JoinPoints\CConstructor($pClass));
+            $res = AGenericCallInterface::call($pClass, $pMethod, $pArgs);
+            AOP\AFramework::weave($res, new AOP\JoinPoints\CConstructor($pClass));
         }
         else
         {
             AOP\AFramework::weave(null, new AOP\JoinPoints\CMethodCall($pClass, $pMethod, $pArgs));
+            $res = AGenericCallInterface::call($pClass, $pMethod, $pArgs);
         }
-        $res = AGenericCallInterface::call($pClass, $pMethod, $pArgs);
         return $res;
     }
 
@@ -483,7 +485,7 @@ final class CBootstrap extends CProject
         {
             self::$instances[$classHash] = self::invoke($pClass, '__construct', $pArgs);
         }
-        return $this->instances[$classHash];
+        return self::$instances[$classHash];
     }
 
     /**

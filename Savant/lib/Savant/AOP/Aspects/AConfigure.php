@@ -60,7 +60,7 @@ abstract class AConfigure extends AOP\AAspect implements AOP\IAspect
      * @param IConfigure $pObj
      * @param AOP\AJoinPoint $pJoinPoint
      */
-    public static function onBeforeConstructor(\Savant\AStandardObject &$pObj, AOP\AJoinPoint $pJoinPoint)
+    public static function onBeforeConstructor(&$pObj, AOP\AJoinPoint $pJoinPoint)
     {
         if(!($pObj instanceof \Savant\IConfigure))
         {

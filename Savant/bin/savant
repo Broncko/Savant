@@ -3,7 +3,7 @@
 # Savant PHP Data Platform
 # Command Line Interface for Unix
 #
-# Usage: savant [OPTIONS] CLASS[::METHOD] [ARGUMENTS]
+# Usage: savant PACKAGE CONTROLLER[-ACTION] [ARGUMENTS]
 # ---------------------------------------------------------------------------
 # ===========================================================================
 SAVANT_PHP_FILE=`readlink -f $0`

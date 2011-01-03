@@ -45,7 +45,7 @@ abstract class ACommandLineInterface
         }
         if(count($pArgs) < 2)
         {
-            print("Usage: savant [OPTIONS] CLASS[::METHOD] [ARGUMENTS]\nTry savant --help for more information\n");
+            print("Usage: savant [PACKAGE] [CONTROLLER]-[ACTION] [ARGUMENTS] \nTry savant --help for more information\n");
         }
         else
         {

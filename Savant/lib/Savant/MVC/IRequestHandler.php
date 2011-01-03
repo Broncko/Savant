@@ -7,30 +7,31 @@
  *
  * @category   Savant
  * @package    Savant
- * @subpackage Controller
+ * @subpackage MVC
  * @author     Hendrik Heinemann <hendrik.heinemann@googlemail.com>
  * @copyright  Copyright (C) 2009-2010 Hendrik Heinemann
  */
 namespace Savant\MVC;
 
 /**
- * exception handling of AAction
+ *  provides interface for mvc request handlers
+ *  @package Savant
+ *  @subpackage MVC
  */
-class EActionController extends \Savant\EException {}
-
-/**
- * provides abstract action controller that can be used to derive action
- * controller classes from
- */
-abstract class AActionController
+interface IRequestHandler
 {
-    public function resolveAction()
-    {
+    /**
+     * handle requests
+     */
+    public function _handle(CRequest $pRequest);
 
-    }
+    /**
+     * check if request can be handled
+     */
+    public function checkRequest(CRequest $pRequest);
 
-    public function processRequest(CRequest $pRequest)
-    {
-
-    }
+    /**
+     * get request handler priority
+     */
+    public function getPriority();
 }

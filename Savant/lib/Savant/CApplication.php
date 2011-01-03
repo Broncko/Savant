@@ -129,25 +129,26 @@ class CApplication extends AStandardObject
      * @param MVC\IModel $pModel
      * @return mixed
      */
-    public function _callController($pModel = null)
+    public function _callController($pController = null)
     {
         $this->controller = $this->name . '\Controller\\' . $pController;
         $file  = $this->CONTROLLER_DIR . \DIRECTORY_SEPARATOR . $pController . '.php';
         
-        require_once $file;
-        if(!\method_exists($this->controller, $this->action))
+        if(\file_exists($file))
         {
-            throw new EApplication("could not call action %s of %s", $this->controller, $this->action);
-        }
-
-        if(!\is_null($pModel))
-        {
-            $res = AGenericCallInterface::call($this->controller, $this->action, array($pModel));
+            require_once $file;
+            if(!\method_exists($this->controller, $this->action))
+            {
+                throw new EApplication("could not call action %s of %s", $this->controller, $this->action);
+            }
         }
         else
         {
-            $res = AGenericCallInterface::call($this->controller, $this->action);
+            return false;
         }
+
+        $res = AGenericCallInterface::call($this->controller, $this->action);
+
         return $res;
     }
 
