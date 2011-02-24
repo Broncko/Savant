@@ -50,7 +50,7 @@ class CChunk extends AEngine implements IEngine, \Savant\IConfigure
     }
 
     /**
-     * replace template var with value
+     * replace template var with valueprotected
      * @param string $pParam
      * @param string $pValue
      */

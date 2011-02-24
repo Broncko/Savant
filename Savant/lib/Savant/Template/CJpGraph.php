@@ -338,7 +338,7 @@ class CJpGraph extends AEngine implements IEngine
     /**
      * render graph
      * @param boolean $pDisplay
-     * @return object return graph object instead of stroking, if $pDisplay ist
+     * @return object return graph object instead of stroking, if $pDisplay is
      * set to true
      */
     public function _render($pDisplay = true)
