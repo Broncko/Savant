@@ -1,0 +1,10 @@
+Savant Application Framework v0.something
+
+Welcome!
+
+Following a few things to get started with Savant. You can find the complete documentation in docs/Documentation (e.g. docs/Documentation/html/en/Savant.docbook.html).
+
+in a nutshell:
+1. set up a virtual host on your webserver which points to the Savant/htdocs directory.
+2. set the correct file permissions (there will be a script for that shortly)
+3. call the url leading to the url from a webbrowser

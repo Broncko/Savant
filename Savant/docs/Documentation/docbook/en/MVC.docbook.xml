@@ -48,4 +48,12 @@
     <title>Controller</title>
     <para>The controllers job is to process a request and deliver the response. The default controller process is covered by the frontcontroller, if no controller class is defined. It takes the result of the model and passes it to the view component.</para>
   </section>
+  <section>
+    <title>Request and Response</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="../../img/RequestResponseWorkflow.png"/>
+      </imageobject>
+    </mediaobject>
+  </section>
 </chapter>
