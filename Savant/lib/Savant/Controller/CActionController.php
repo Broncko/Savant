@@ -35,7 +35,7 @@ class CActionController extends AController
 
     protected $response;
     
-    protected $controllerNamePattern = 'Savant\{{app}}\Controller\{{controller}}';
+    protected $controllerNamePattern = 'Savant\{{app}}\{{controller}}';
 
     public function resolveControllerName()
     {
