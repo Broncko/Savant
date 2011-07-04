@@ -2,3 +2,7 @@ nbproject/
 docs/TODO
 docs/savant_future
 log/log.txt
+vpproject/
+htdocs/*
+vhost
+skins/*
